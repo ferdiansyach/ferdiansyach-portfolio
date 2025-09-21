@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Proyek | Website UNAS FEST</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body{font-family:'Inter',sans-serif; background-color: #111827; color: #D1D5DB;}
+        .tag{background-color:#374151;color:#9CA3AF;padding:.25rem .75rem;border-radius:9999px;font-size:.875rem;font-weight:500}
+        .hover-scale{transition:transform .3s ease-in-out}
+        .hover-scale:hover{transform:scale(1.05)}
+    </style>
+</head>
+<body class="antialiased">
+
+    <main class="container mx-auto px-6 py-12">
+        <div class="max-w-4xl mx-auto">
+            
+            <a href="index.html" class="inline-block mb-8 text-sky-400 hover:text-sky-300 transition">&larr; Kembali ke Portofolio</a>
+            
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Website UNAS FEST</h1>
+            <p class="text-lg text-gray-400 mb-8">Website resmi untuk acara festival terbesar di Universitas Nasional.</p>
+            
+            <img src="./images/unasfest.png" alt="Screenshot Proyek UNAS FEST" class="w-full rounded-lg shadow-2xl mb-8">
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="md:col-span-2 text-gray-300 space-y-4">
+                    <h2 class="text-2xl font-bold text-white border-b border-gray-700 pb-2">Deskripsi Proyek</h2>
+                    <p>
+                        Sebagai bagian dari kepanitiaan, saya bertugas sebagai Fullstack Developer dengan fokus utama pada front-end untuk website resmi UNAS FEST. Website ini berfungsi sebagai pusat informasi utama untuk seluruh rangkaian acara, mulai dari jadwal, pendaftaran, hingga galeri.
+                    </p>
+                    <p>
+                        Saya bertanggung jawab untuk membuat komponen website dari awal, menerjemahkan desain UI/UX menjadi kode, dan memastikan website dapat diakses dengan baik di berbagai perangkat (responsif). Selain itu, saya juga terlibat aktif dalam proses testing dan debugging untuk menjamin stabilitas website selama periode acara yang padat pengunjung.
+                    </p>
+                    <h3 class="text-xl font-bold text-white pt-4">Tantangan & Solusi</h3>
+                    <p>
+                        Tantangan utamanya adalah memastikan performa website tetap optimal meskipun diakses oleh ribuan pengunjung secara bersamaan selama puncak acara. Solusinya adalah dengan melakukan optimasi pada aset gambar, menerapkan *lazy loading*, dan memastikan kode TypeScript yang ditulis efisien dan tidak menyebabkan *bottleneck* pada rendering.
+                    </p>
+                </div>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-3">Teknologi</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">React</span>
+                            <span class="tag">Tailwind CSS</span>
+                            <span class="tag">Fullstack</span>
+                            <span class="tag">Debugging</span>
+                        </div>
+                    </div>
+                     <div>
+                        <h3 class="text-xl font-bold text-white mb-3">Tautan</h3>
+                        <p class="text-gray-400">Repositori bersifat pribadi karena kebijakan internal, namun detail teknis dapat didiskusikan lebih lanjut.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
