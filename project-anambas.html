@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Proyek | Website Pariwisata Anambas</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body{font-family:'Inter',sans-serif; background-color: #111827; color: #D1D5DB;}
+        .tag{background-color:#374151;color:#9CA3AF;padding:.25rem .75rem;border-radius:9999px;font-size:.875rem;font-weight:500}
+        .hover-scale{transition:transform .3s ease-in-out}
+        .hover-scale:hover{transform:scale(1.05)}
+    </style>
+</head>
+<body class="antialiased">
+
+    <main class="container mx-auto px-6 py-12">
+        <div class="max-w-4xl mx-auto">
+            
+            <a href="index.html" class="inline-block mb-8 text-sky-400 hover:text-sky-300 transition">&larr; Kembali ke Portofolio</a>
+            
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Website Pariwisata Anambas</h1>
+            <p class="text-lg text-gray-400 mb-8">Pengembangan komponen front-end untuk proyek website pariwisata.</p>
+            
+            <img src="./images/anambas.png" alt="Screenshot Proyek Anambas" class="w-full rounded-lg shadow-2xl mb-8">
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="md:col-span-2 text-gray-300 space-y-4">
+                    <h2 class="text-2xl font-bold text-white border-b border-gray-700 pb-2">Deskripsi Proyek</h2>
+                    <p>
+                        Proyek ini bertujuan untuk membuat sebuah platform digital yang mempromosikan pariwisata di Kepulauan Anambas, Riau. Saya berfokus pada pengembangan sisi front-end.
+                    </p>
+                    <p>
+                        Peran saya adalah mengembangkan berbagai komponen UI yang menarik dan responsif menggunakan Next.js dan Tailwind CSS. Saya berkolaborasi dengan tim untuk mengimplementasikan desain UI/UX, memastikan website memiliki performa yang baik, dan memberikan pengalaman navigasi yang intuitif bagi pengguna.
+                    </p>
+                    <h3 class="text-xl font-bold text-white pt-4">Tantangan & Solusi</h3>
+                    <p>
+                       Tantangan terbesar adalah memastikan setiap komponen yang dibuat dapat digunakan kembali (*reusable*) dan mudah di-maintain. Saya mengatasinya dengan menerapkan prinsip-prinsip desain atomik, di mana saya membangun komponen dari unit-unit kecil (atom) hingga menjadi template halaman yang kompleks. Pendekatan ini membuat struktur kode lebih rapi dan mempercepat proses pengembangan.
+                    </p>
+                </div>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-3">Teknologi</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag">Next.js</span>
+                            <span class="tag">React</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Tailwind CSS</span>
+                            <span class="tag">Responsive Design</span>
+                        </div>
+                    </div>
+                     <div>
+                        <h3 class="text-xl font-bold text-white mb-3">Tautan</h3>
+                        <a href="https://github.com/ferdiansyach/anambas-app" target="_blank" class="text-sky-400 font-semibold hover:underline block">Lihat Kode di GitHub &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
