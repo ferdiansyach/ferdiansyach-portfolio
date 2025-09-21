@@ -11,47 +11,61 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        body{font-family:'Inter',sans-serif; background-color: #111827; color: #D1D5DB;}
-        .tag{background-color:#374151;color:#9CA3AF;padding:.25rem .75rem;border-radius:9999px;font-size:.875rem;font-weight:500}
-        .hover-scale{transition:transform .3s ease-in-out}
-        .hover-scale:hover{transform:scale(1.05)}
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827;
+            color: #D1D5DB;
+        }
+        .tag {
+            background-color: #374151;
+            color: #9CA3AF;
+            padding: .25rem .75rem;
+            border-radius: 9999px;
+            font-size: .875rem;
+            font-weight: 500;
+        }
+        .gallery-item {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
     </style>
 </head>
 <body class="antialiased">
 
     <main class="container mx-auto px-6 py-12">
-        <div class="max-w-4xl mx-auto">
+        <div class="max-w-5xl mx-auto">
             
             <a href="index.html" class="inline-block mb-8 text-sky-400 hover:text-sky-300 transition">&larr; Kembali ke Portofolio</a>
             
             <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Website Pariwisata Anambas</h1>
-            <p class="text-lg text-gray-400 mb-8">Pengembangan komponen front-end untuk proyek website pariwisata.</p>
+            <p class="text-lg text-gray-400 mb-8">Platform pariwisata yang dinamis dan informatif untuk mempromosikan keindahan Kepulauan Anambas, dibangun menggunakan Next.js.</p>
             
-            <img src="./images/anambas.png" alt="Screenshot Proyek Anambas" class="w-full rounded-lg shadow-2xl mb-8">
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="md:col-span-2 text-gray-300 space-y-4">
+            <div class="grid md:grid-cols-5 gap-8 mb-12">
+                <div class="md:col-span-3 text-gray-300 space-y-4">
                     <h2 class="text-2xl font-bold text-white border-b border-gray-700 pb-2">Deskripsi Proyek</h2>
                     <p>
-                        Proyek ini bertujuan untuk membuat sebuah platform digital yang mempromosikan pariwisata di Kepulauan Anambas, Riau. Saya berfokus pada pengembangan sisi front-end.
+                        Sebagai Front-End Developer dalam tim, saya berkontribusi dalam pengembangan platform digital untuk mempromosikan pariwisata di Kepulauan Anambas. Proyek ini dirancang untuk memberikan pengalaman pengguna yang kaya akan informasi visual dan tekstual mengenai destinasi, budaya, dan aktivitas wisata.
                     </p>
                     <p>
-                        Peran saya adalah mengembangkan berbagai komponen UI yang menarik dan responsif menggunakan Next.js dan Tailwind CSS. Saya berkolaborasi dengan tim untuk mengimplementasikan desain UI/UX, memastikan website memiliki performa yang baik, dan memberikan pengalaman navigasi yang intuitif bagi pengguna.
+                        Tanggung jawab utama saya adalah menerjemahkan desain UI/UX menjadi komponen-komponen interaktif dan reusable menggunakan Next.js dan Tailwind CSS. Saya membangun berbagai fitur, mulai dari halaman autentikasi pengguna, display informasi dinamis untuk destinasi dan berita, hingga memastikan tata letak yang responsif di berbagai perangkat.
                     </p>
                     <h3 class="text-xl font-bold text-white pt-4">Tantangan & Solusi</h3>
                     <p>
-                       Tantangan terbesar adalah memastikan setiap komponen yang dibuat dapat digunakan kembali (*reusable*) dan mudah di-maintain. Saya mengatasinya dengan menerapkan prinsip-prinsip desain atomik, di mana saya membangun komponen dari unit-unit kecil (atom) hingga menjadi template halaman yang kompleks. Pendekatan ini membuat struktur kode lebih rapi dan mempercepat proses pengembangan.
+                        Tantangan terbesar adalah merancang arsitektur front-end yang fleksibel untuk menampilkan beragam jenis konten pariwisata secara dinamis. Saya mengatasinya dengan menerapkan prinsip-prinsip desain atomik untuk komponen UI, yang memungkinkan konsistensi dan kemudahan dalam pengembangan. Untuk manajemen state pada sisi klien, kami menggunakan Zustand yang ringan dan efisien, memastikan performa website tetap cepat saat memuat data.
                     </p>
                 </div>
                 
-                <div class="space-y-6">
+                <div class="md:col-span-2 space-y-6">
                     <div>
-                        <h3 class="text-xl font-bold text-white mb-3">Teknologi</h3>
+                        <h3 class="text-xl font-bold text-white mb-3">Teknologi Utama</h3>
                         <div class="flex flex-wrap gap-2">
                             <span class="tag">Next.js</span>
                             <span class="tag">React</span>
-                            <span class="tag">JavaScript</span>
                             <span class="tag">Tailwind CSS</span>
+                            <span class="tag">Zustand</span>
                             <span class="tag">Responsive Design</span>
                         </div>
                     </div>
@@ -61,7 +75,96 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Galeri Fitur -->
+            <h2 class="text-3xl font-bold text-white border-b border-gray-700 pb-2 mb-8">Galeri Fitur</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Halaman Utama -->
+                <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+                    <img src="./images/anambas1.jpeg" alt="Halaman Utama" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-bold text-white">Halaman Utama (Hero Section)</h4>
+                        <p class="text-sm text-gray-400 mt-1">Tampilan utama yang menyambut pengunjung dengan visual yang menarik dan navigasi yang jelas.</p>
+                    </div>
+                </div>
+
+                <!-- Tentang Anambas -->
+                <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+                    <img src="./images/anambas5.jpeg" alt="Tentang Anambas" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-bold text-white">Jelajahi Kecamatan</h4>
+                        <p class="text-sm text-gray-400 mt-1">Bagian yang menampilkan informasi mengenai berbagai kecamatan sebagai gerbang destinasi wisata.</p>
+                    </div>
+                </div>
+
+                <!-- Aktivitas -->
+                <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+                    <img src="./images/anambas2.jpeg" alt="Aktivitas" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-bold text-white">Pilihan Aktivitas Wisata</h4>
+                        <p class="text-sm text-gray-400 mt-1">Menampilkan beragam kegiatan wisata menarik yang dapat dipilih oleh turis saat berkunjung.</p>
+                    </div>
+                </div>
+
+                <!-- Berita Terkini -->
+                <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+                    <img src="./images/anambas9.jpeg" alt="Berita" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-bold text-white">Berita & Informasi Terkini</h4>
+                        <p class="text-sm text-gray-400 mt-1">Bagian dinamis untuk menampilkan artikel dan berita terbaru seputar pariwisata Anambas.</p>
+                    </div>
+                </div>
+
+                <!-- Halaman Detail Budaya -->
+                <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+                    <img src="./images/anambas15.jpeg" alt="Halaman Detail Budaya" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-bold text-white">Halaman Detail Budaya</h4>
+                        <p class="text-sm text-gray-400 mt-1">Tampilan mendalam yang menjelaskan salah satu aspek budaya atau kesenian khas Anambas.</p>
+                    </div>
+                </div>
+                
+                <!-- Halaman Detail Destinasi -->
+                <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+                    <img src="./images/anambas14.jpeg" alt="Halaman Detail Destinasi" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-bold text-white">Halaman Detail Destinasi</h4>
+                        <p class="text-sm text-gray-400 mt-1">Menyajikan informasi lengkap mengenai salah satu destinasi wisata unggulan.</p>
+                    </div>
+                </div>
+
+                <!-- Halaman Detail Berita -->
+                <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+                    <img src="./images/anambas10.jpeg" alt="Halaman Detail Berita" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-bold text-white">Halaman Detail Berita</h4>
+                        <p class="text-sm text-gray-400 mt-1">Tampilan untuk membaca artikel berita secara lengkap dengan gambar pendukung.</p>
+                    </div>
+                </div>
+
+                <!-- Pilihan Akomodasi -->
+                <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+                    <img src="./images/anambas12.jpeg" alt="Pilihan Akomodasi" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-bold text-white">Pilihan Akomodasi</h4>
+                        <p class="text-sm text-gray-400 mt-1">Menampilkan daftar penginapan atau hotel yang tersedia bagi para wisatawan.</p>
+                    </div>
+                </div>
+
+                 <!-- Footer -->
+                 <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+                    <img src="./images/anambas8.jpeg" alt="Footer" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-bold text-white">Footer Informasi</h4>
+                        <p class="text-sm text-gray-400 mt-1">Bagian akhir halaman yang memuat informasi kontak dan tautan cepat.</p>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </main>
+
 </body>
 </html>
+
