@@ -148,11 +148,10 @@
 
         <!-- Projects Section -->
         <section id="projects" class="py-24 section">
-            <h2 class="text-3xl font-bold text-center text-white mb-12" data-en="Featured Projects" data-id="Proyek Unggulan">Proyek Unggulan</h2>
+            <h2 class="text-3xl font-bold text-center text-white mb-12" data-en="Projects" data-id="Proyek">Proyek</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Project 1: Indosaji -->
                 <div class="card rounded-lg overflow-hidden hover-scale">
-                    <!-- GANTI DENGAN GAMBAR PROYEK ANDA -->
                     <img src="./images/indosaji.png" alt="Proyek Indosaji" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-white mb-2">Indosaji E-commerce</h3>
@@ -160,12 +159,11 @@
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="tag text-xs">React</span><span class="tag text-xs">Node.js</span><span class="tag text-xs">MongoDB</span>
                         </div>
-                        <a href="https://github.com/ferdiansyach/indosaji" target="_blank" class="text-sky-400 font-semibold hover:underline">Lihat Kode &rarr;</a>
+                        <a href="project-indosaji.html" class="text-sky-400 font-semibold hover:underline" data-en="View Details &rarr;" data-id="Lihat Detail &rarr;">Lihat Detail &rarr;</a>
                     </div>
                 </div>
                 <!-- Project 2: Smart Meter -->
                 <div class="card rounded-lg overflow-hidden hover-scale">
-                    <!-- GANTI DENGAN GAMBAR PROYEK ANDA -->
                     <img src="./images/smart-meter.png" alt="Proyek Analisis Smart Meter" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-white mb-2">Smart Meter Analysis</h3>
@@ -173,12 +171,11 @@
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="tag text-xs">Python</span><span class="tag text-xs">Machine Learning</span><span class="tag text-xs">Data Analysis</span>
                         </div>
-                        <a href="https://github.com/ferdiansyach/metopen1" target="_blank" class="text-sky-400 font-semibold hover:underline">Lihat Kode &rarr;</a>
+                        <a href="project-smart-meter.html" class="text-sky-400 font-semibold hover:underline" data-en="View Details &rarr;" data-id="Lihat Detail &rarr;">Lihat Detail &rarr;</a>
                     </div>
                 </div>
                  <!-- Project 3: Anambas App -->
                 <div class="card rounded-lg overflow-hidden hover-scale">
-                    <!-- GANTI DENGAN GAMBAR PROYEK ANDA -->
                     <img src="./images/anambas.png" alt="Proyek Anambas App" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-white mb-2">Anambas Tourism Website</h3>
@@ -186,12 +183,11 @@
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="tag text-xs">Next.js</span><span class="tag text-xs">React</span><span class="tag text-xs">Tailwind CSS</span>
                         </div>
-                        <a href="https://github.com/ferdiansyach/anambas-app" target="_blank" class="text-sky-400 font-semibold hover:underline">Lihat Kode &rarr;</a>
+                        <a href="project-anambas.html" class="text-sky-400 font-semibold hover:underline" data-en="View Details &rarr;" data-id="Lihat Detail &rarr;">Lihat Detail &rarr;</a>
                     </div>
                 </div>
                 <!-- Project 4: UNAS FEST -->
                 <div class="card rounded-lg overflow-hidden hover-scale">
-                    <!-- GANTI DENGAN GAMBAR PROYEK ANDA -->
                     <img src="./images/unasfest.png" alt="Proyek UNAS FEST" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-white mb-2">Website UNAS FEST</h3>
@@ -199,12 +195,11 @@
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="tag text-xs">TypeScript</span><span class="tag text-xs">React</span><span class="tag text-xs">Tailwind CSS</span>
                         </div>
-                        <a href="#" class="text-gray-500 font-semibold cursor-not-allowed" data-en="Private Repository" data-id="Repositori Pribadi">Private Repository</a>
+                        <a href="project-unasfest.html" class="text-sky-400 font-semibold hover:underline" data-en="View Details &rarr;" data-id="Lihat Detail &rarr;">Lihat Detail &rarr;</a>
                     </div>
                 </div>
                 <!-- Project 5: HIMASI Website -->
                 <div class="card rounded-lg overflow-hidden hover-scale">
-                    <!-- GANTI DENGAN GAMBAR PROYEK ANDA -->
                     <img src="./images/himasi.png" alt="Proyek Website HIMASI" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-white mb-2">HIMASI UNAS Website</h3>
@@ -212,7 +207,7 @@
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="tag text-xs">WordPress</span><span class="tag text-xs">Content Management</span>
                         </div>
-                        <a href="#" class="text-gray-500 font-semibold cursor-not-allowed">Live Site</a>
+                        <a href="project-himasi.html" class="text-sky-400 font-semibold hover:underline" data-en="View Details &rarr;" data-id="Lihat Detail &rarr;">Lihat Detail &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -341,8 +336,11 @@
             let charIndex = 0;
             let isDeleting = false;
             let currentLang = localStorage.getItem('lang') || 'id';
+            let typeTimeout;
 
             function type() {
+                if (typeTimeout) clearTimeout(typeTimeout);
+
                 const currentRole = roles[roleIndex];
                 const displayedText = currentLang === 'id' ? translations[currentRole] : currentRole;
                 
@@ -355,14 +353,14 @@
                 }
 
                 if (!isDeleting && charIndex === displayedText.length) {
-                    setTimeout(() => isDeleting = true, 2000);
+                    typeTimeout = setTimeout(() => isDeleting = true, 2000);
                 } else if (isDeleting && charIndex === 0) {
                     isDeleting = false;
                     roleIndex = (roleIndex + 1) % roles.length;
                 }
                 
                 const typingSpeed = isDeleting ? 100 : 150;
-                setTimeout(type, typingSpeed);
+                typeTimeout = setTimeout(type, typingSpeed);
             }
 
             // Theme Toggle
@@ -394,21 +392,26 @@
             // Language Toggle
             const langToggle = document.getElementById('lang-toggle');
             const langText = document.getElementById('lang-text');
-            
             const translatableElements = document.querySelectorAll('[data-en]');
             
             function switchLanguage(lang) {
                 currentLang = lang;
+                localStorage.setItem('lang', lang);
                 translatableElements.forEach(el => {
-                    el.textContent = el.dataset[lang];
+                    if (el.dataset[lang]) {
+                        el.textContent = el.dataset[lang];
+                    }
                 });
                 langText.textContent = lang === 'id' ? 'EN' : 'ID';
-                localStorage.setItem('lang', lang);
-
+                
                 // Restart typing animation with new language
-                roleIndex = 0;
-                charIndex = 0;
-                isDeleting = false;
+                if (typingTextEl) {
+                    clearTimeout(typeTimeout);
+                    roleIndex = 0;
+                    charIndex = 0;
+                    isDeleting = false;
+                    type();
+                }
             }
 
             langToggle.addEventListener('click', () => {
@@ -420,13 +423,15 @@
             const savedTheme = localStorage.getItem('theme') || 'dark';
             applyTheme(savedTheme);
             switchLanguage(currentLang);
-            type();
 
             // Mobile menu toggle
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenuButton.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
+            });
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
             });
 
             // Scroll Animations
@@ -441,12 +446,13 @@
             sections.forEach(section => observer.observe(section));
 
             // Nav active state
-            const navLinks = document.querySelectorAll('nav a.nav-link');
+            const navLinks = document.querySelectorAll('header nav a.nav-link');
             const allSections = document.querySelectorAll('section');
             window.addEventListener('scroll', () => {
-                let current = '';
+                let current = 'home';
                 allSections.forEach(section => {
-                    if (pageYOffset >= section.offsetTop - 150) {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 150) {
                         current = section.getAttribute('id');
                     }
                 });
@@ -461,6 +467,4 @@
     </script>
 </body>
 </html>
-
-
 
