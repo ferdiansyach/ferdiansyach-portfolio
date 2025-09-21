@@ -1,67 +1,257 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Proyek | Analisis Smart Meter</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <style>
-        body{font-family:'Inter',sans-serif; background-color: #111827; color: #D1D5DB;}
-        .tag{background-color:#374151;color:#9CA3AF;padding:.25rem .75rem;border-radius:9999px;font-size:.875rem;font-weight:500}
-        .hover-scale{transition:transform .3s ease-in-out}
-        .hover-scale:hover{transform:scale(1.05)}
-    </style>
-</head>
-<body class="antialiased">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Proyek | Analisis AI Smart Meter</title>
 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #111827;
+        color: #d1d5db;
+      }
+      .tag {
+        background-color: #374151;
+        color: #9ca3af;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+      .gallery-item {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .gallery-item:hover {
+        transform: scale(1.03);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      }
+    </style>
+  </head>
+  <body class="antialiased">
     <main class="container mx-auto px-6 py-12">
-        <div class="max-w-4xl mx-auto">
-            
-            <a href="index.html" class="inline-block mb-8 text-sky-400 hover:text-sky-300 transition">&larr; Kembali ke Portofolio</a>
-            
-            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Analisis Smart Meter dengan AI</h1>
-            <p class="text-lg text-gray-400 mb-8">Proyek analisis data dan machine learning untuk mendeteksi anomali konsumsi energi.</p>
-            
-            <img src="./images/smart-meter.png" alt="Screenshot Proyek Smart Meter" class="w-full rounded-lg shadow-2xl mb-8">
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="md:col-span-2 text-gray-300 space-y-4">
-                    <h2 class="text-2xl font-bold text-white border-b border-gray-700 pb-2">Deskripsi Proyek</h2>
-                    <p>
-                        Proyek ini merupakan bagian dari magang saya, di mana saya melakukan analisis tekno-ekonomi untuk efisiensi energi di gedung pintar. Tujuannya adalah untuk membangun model yang dapat memprediksi konsumsi energi dan menandai penggunaan yang tidak normal (anomali).
-                    </p>
-                    <p>
-                        Saya bertanggung jawab atas seluruh alur kerja data science, mulai dari pengumpulan data, pembersihan, pra-pemrosesan (termasuk interpolasi dan integrasi data cuaca), hingga membangun dan mengevaluasi beberapa model machine learning seperti Gradient Boosting dan LSTM.
-                    </p>
-                    <h3 class="text-xl font-bold text-white pt-4">Tantangan & Solusi</h3>
-                    <p>
-                        Tantangan utamanya adalah menangani data time-series yang memiliki banyak nilai hilang (*missing values*). Saya mengatasinya dengan menerapkan teknik interpolasi linear untuk mengisi kekosongan data secara logis. Selain itu, pemilihan fitur yang relevan dari puluhan variabel juga krusial, yang saya selesaikan dengan analisis korelasi untuk mengurangi multikolinearitas dan meningkatkan akurasi model.
-                    </p>
-                </div>
-                
-                <div class="space-y-6">
-                    <div>
-                        <h3 class="text-xl font-bold text-white mb-3">Teknologi</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="tag">Python</span>
-                            <span class="tag">Pandas</span>
-                            <span class="tag">Scikit-learn</span>
-                            <span class="tag">Machine Learning</span>
-                            <span class="tag">Data Analysis</span>
-                        </div>
-                    </div>
-                     <div>
-                        <h3 class="text-xl font-bold text-white mb-3">Tautan</h3>
-                        <a href="https://github.com/ferdiansyach/metopen1" target="_blank" class="text-sky-400 font-semibold hover:underline block">Lihat Kode di GitHub &rarr;</a>
-                    </div>
-                </div>
+      <div class="max-w-5xl mx-auto">
+        <a
+          href="index.html"
+          class="inline-block mb-8 text-sky-400 hover:text-sky-300 transition"
+          >&larr; Kembali ke Portofolio</a
+        >
+
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+          Dashboard Analisis AI Smart Meter
+        </h1>
+        <p class="text-lg text-gray-400 mb-8">
+          Proyek analisis data end-to-end untuk deteksi anomali konsumsi energi
+          dan analisis tekno-ekonomi menggunakan Python, Machine Learning, dan
+          Streamlit.
+        </p>
+
+        <div class="grid md:grid-cols-5 gap-8 mb-12">
+          <div class="md:col-span-3 text-gray-300 space-y-4">
+            <h2
+              class="text-2xl font-bold text-white border-b border-gray-700 pb-2"
+            >
+              Deskripsi Proyek
+            </h2>
+            <p>
+              Proyek ini dikembangkan selama magang saya di Telkom Infranexia
+              sebagai bagian dari analisis tekno-ekonomi untuk manajemen energi
+              di gedung pintar. Tujuannya adalah untuk membangun sebuah sistem
+              cerdas yang mampu menganalisis pola konsumsi energi, mendeteksi
+              anomali (pemborosan), dan memberikan rekomendasi tindakan serta
+              estimasi kelayakan ekonomi dari implementasi AI.
+            </p>
+            <p>
+              Saya bertanggung jawab penuh atas seluruh siklus hidup proyek
+              data, mulai dari pengumpulan dan pembersihan data mentah smart
+              meter, integrasi dengan data cuaca eksternal, hingga membangun,
+              melatih, dan mengevaluasi beberapa model machine learning
+              (Random Forest, Gradient Boosting, LSTM). Model terbaik kemudian
+              digunakan sebagai dasar untuk deteksi anomali.
+            </p>
+            <h3 class="text-xl font-bold text-white pt-4">
+              Tantangan & Solusi
+            </h3>
+            <p>
+              Tantangan utama adalah mengolah dataset time-series yang besar
+              dengan data yang hilang dan tidak terstruktur. Saya mengatasinya
+              dengan melakukan interpolasi data untuk mengisi kekosongan dan
+              rekayasa fitur (feature engineering) untuk menemukan
+              variabel yang paling berpengaruh. Untuk memvisualisasikan hasil
+              analisis yang kompleks, saya membangun dashboard interaktif
+              menggunakan Streamlit, yang memungkinkan pengguna untuk
+              memfilter data berdasarkan gedung dan perangkat, serta melihat
+              hasil deteksi anomali dan perhitungan ROI secara dinamis.
+            </p>
+          </div>
+
+          <div class="md:col-span-2 space-y-6">
+            <div>
+              <h3 class="text-xl font-bold text-white mb-3">
+                Teknologi & Metode
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="tag">Python</span>
+                <span class="tag">Streamlit</span>
+                <span class="tag">Pandas</span>
+                <span class="tag">Scikit-learn</span>
+                <span class="tag">Machine Learning</span>
+                <span class="tag">Data Visualization</span>
+              </div>
             </div>
+            <div>
+              <h3 class="text-xl font-bold text-white mb-3">Tautan</h3>
+              <a
+                href="https://github.com/ferdiansyach/metopen1"
+                target="_blank"
+                class="text-sky-400 font-semibold hover:underline block"
+                >Lihat Kode di GitHub &rarr;</a
+              >
+            </div>
+          </div>
         </div>
+
+        <!-- Galeri Fitur -->
+        <h2
+          class="text-3xl font-bold text-white border-b border-gray-700 pb-2 mb-8"
+        >
+          Galeri Fitur & Proses Analisis
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+            <img
+              src="./images/intern1.jpeg"
+              alt="Dashboard Utama"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-white">Dashboard Utama</h4>
+              <p class="text-sm text-gray-400 mt-1">
+                Antarmuka utama yang menyajikan visualisasi konsumsi energi
+                secara keseluruhan.
+              </p>
+            </div>
+          </div>
+          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+            <img
+              src="./images/intern2.jpeg"
+              alt="Pemisahan Data"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-white">
+                Preprocessing: Pemisahan Data
+              </h4>
+              <p class="text-sm text-gray-400 mt-1">
+                Strukturisasi data mentah berdasarkan gedung dan perangkat untuk
+                analisis terperinci.
+              </p>
+            </div>
+          </div>
+          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+            <img
+              src="./images/intern3.jpeg"
+              alt="Analisis Konsumsi Energi OverTime"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-white">
+                Grafik Analisis Konsumsi Energi OverTime
+              </h4>
+              <p class="text-sm text-gray-400 mt-1">
+                Grafik Analisis Konsumsi Energi Tiap Waktu.
+              </p>
+            </div>
+          </div>
+          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+            <img
+              src="./images/intern4.jpeg"
+              alt="Building Analysis"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-white">Building Analysis</h4>
+              <p class="text-sm text-gray-400 mt-1">Tipe Devices di Gedung .</p>
+            </div>
+          </div>
+          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+            <img
+              src="./images/intern5.jpeg"
+              alt="Visualisasi Distribusi Rata rata Devices"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-white">Visualisasi Distribusi Rata rata Devices</h4>
+              <p class="text-sm text-gray-400 mt-1">
+                Visualisasi Distribusi Rata rata Devices per Unit.
+              </p>
+            </div>
+          </div>
+          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+            <img
+              src="./images/intern6.jpeg"
+              alt="Visualisasi Konsumsi Energi"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-white">
+                Visualisasi Konsumsi Energi
+              </h4>
+              <p class="text-sm text-gray-400 mt-1">
+                Tabel hasil kalkulasi total energi yang divisualisasikan.
+              </p>
+            </div>
+          </div>
+          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+            <img
+              src="./images/intern7.jpeg"
+              alt="Rekomendasi Tindakan"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-white">Distribusi Konsumsi Gedung</h4>
+              <p class="text-sm text-gray-400 mt-1">
+                Analisa Distribusi Konsumsi Energi.
+              </p>
+            </div>
+          </div>
+          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+            <img
+              src="./images/intern10.jpeg"
+              alt="Analisis Struktur Biaya"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-white">Analisis Struktur Biaya</h4>
+              <p class="text-sm text-gray-400 mt-1">
+                Perhitungan detail CAPEX & OPEX sebagai dasar analisis ekonomi.
+              </p>
+            </div>
+          </div>
+          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+            <img
+              src="./images/intern11.jpeg"
+              alt="Analisis Ekonomi"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-white">Analisis Kelayakan Ekonomi</h4>
+              <p class="text-sm text-gray-400 mt-1">
+                Hasil akhir perhitungan Payback Period dan ROI untuk
+                implementasi sistem AI.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
-</body>
+  </body>
 </html>
