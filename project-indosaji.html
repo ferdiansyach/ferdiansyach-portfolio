@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Proyek | Indosaji E-commerce</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body{font-family:'Inter',sans-serif; background-color: #111827; color: #D1D5DB;}
+        .tag{background-color:#374151;color:#9CA3AF;padding:.25rem .75rem;border-radius:9999px;font-size:.875rem;font-weight:500}
+        .hover-scale{transition:transform .3s ease-in-out}
+        .hover-scale:hover{transform:scale(1.05)}
+    </style>
+</head>
+<body class="antialiased">
+
+    <main class="container mx-auto px-6 py-12">
+        <div class="max-w-4xl mx-auto">
+            
+            <a href="index.html" class="inline-block mb-8 text-sky-400 hover:text-sky-300 transition">&larr; Kembali ke Portofolio</a>
+            
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Indosaji E-commerce</h1>
+            <p class="text-lg text-gray-400 mb-8">Platform e-commerce makanan yang dibangun secara fullstack menggunakan MERN Stack.</p>
+            
+            <img src="./images/indosaji.png" alt="Screenshot Proyek Indosaji" class="w-full rounded-lg shadow-2xl mb-8">
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="md:col-span-2 text-gray-300 space-y-4">
+                    <h2 class="text-2xl font-bold text-white border-b border-gray-700 pb-2">Deskripsi Proyek</h2>
+                    <p>
+                        Indosaji adalah proyek aplikasi web e-commerce yang dirancang untuk penjualan produk makanan secara online. Aplikasi ini memiliki fitur lengkap mulai dari pemilihan produk, sistem keranjang belanja, hingga proses pembayaran.
+                    </p>
+                    <p>
+                        Saya bertanggung jawab penuh sebagai Fullstack Developer, mulai dari merancang skema database di MongoDB, membangun RESTful API dengan Node.js dan Express, hingga mengembangkan antarmuka pengguna (UI) yang interaktif menggunakan React.
+                    </p>
+                    <h3 class="text-xl font-bold text-white pt-4">Tantangan & Solusi</h3>
+                    <p>
+                        Salah satu tantangan utama adalah mengelola state aplikasi secara efisien, terutama pada fitur keranjang belanja. Solusinya adalah dengan mengimplementasikan React Context API untuk manajemen state global, sehingga data keranjang belanja dapat diakses dan diperbarui secara konsisten di seluruh komponen aplikasi.
+                    </p>
+                </div>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-3">Teknologi</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">Express.js</span>
+                            <span class="tag">MongoDB</span>
+                            <span class="tag">REST API</span>
+                            <span class="tag">CSS</span>
+                        </div>
+                    </div>
+                     <div>
+                        <h3 class="text-xl font-bold text-white mb-3">Tautan</h3>
+                        <a href="https://github.com/ferdiansyach/indosaji" target="_blank" class="text-sky-400 font-semibold hover:underline block">Lihat Kode di GitHub &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
