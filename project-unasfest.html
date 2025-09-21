@@ -1,67 +1,388 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Detail Proyek | Website UNAS FEST</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <style>
-        body{font-family:'Inter',sans-serif; background-color: #111827; color: #D1D5DB;}
-        .tag{background-color:#374151;color:#9CA3AF;padding:.25rem .75rem;border-radius:9999px;font-size:.875rem;font-weight:500}
-        .hover-scale{transition:transform .3s ease-in-out}
-        .hover-scale:hover{transform:scale(1.05)}
-    </style>
-</head>
-<body class="antialiased">
 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #111827;
+        color: #d1d5db;
+      }
+      .tag {
+        background-color: #374151;
+        color: #9ca3af;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+      .gallery-item {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .gallery-item:hover {
+        transform: scale(1.03);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      }
+    </style>
+  </head>
+  <body class="antialiased">
     <main class="container mx-auto px-6 py-12">
-        <div class="max-w-4xl mx-auto">
-            
-            <a href="index.html" class="inline-block mb-8 text-sky-400 hover:text-sky-300 transition">&larr; Kembali ke Portofolio</a>
-            
-            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Website UNAS FEST</h1>
-            <p class="text-lg text-gray-400 mb-8">Website resmi untuk acara festival terbesar di Universitas Nasional.</p>
-            
-            <img src="./images/unasfest.png" alt="Screenshot Proyek UNAS FEST" class="w-full rounded-lg shadow-2xl mb-8">
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="md:col-span-2 text-gray-300 space-y-4">
-                    <h2 class="text-2xl font-bold text-white border-b border-gray-700 pb-2">Deskripsi Proyek</h2>
-                    <p>
-                        Sebagai bagian dari kepanitiaan, saya bertugas sebagai Fullstack Developer dengan fokus utama pada front-end untuk website resmi UNAS FEST. Website ini berfungsi sebagai pusat informasi utama untuk seluruh rangkaian acara, mulai dari jadwal, pendaftaran, hingga galeri.
-                    </p>
-                    <p>
-                        Saya bertanggung jawab untuk membuat komponen website dari awal, menerjemahkan desain UI/UX menjadi kode, dan memastikan website dapat diakses dengan baik di berbagai perangkat (responsif). Selain itu, saya juga terlibat aktif dalam proses testing dan debugging untuk menjamin stabilitas website selama periode acara yang padat pengunjung.
-                    </p>
-                    <h3 class="text-xl font-bold text-white pt-4">Tantangan & Solusi</h3>
-                    <p>
-                        Tantangan utamanya adalah memastikan performa website tetap optimal meskipun diakses oleh ribuan pengunjung secara bersamaan selama puncak acara. Solusinya adalah dengan melakukan optimasi pada aset gambar, menerapkan *lazy loading*, dan memastikan kode TypeScript yang ditulis efisien dan tidak menyebabkan *bottleneck* pada rendering.
-                    </p>
-                </div>
-                
-                <div class="space-y-6">
-                    <div>
-                        <h3 class="text-xl font-bold text-white mb-3">Teknologi</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="tag">TypeScript</span>
-                            <span class="tag">React</span>
-                            <span class="tag">Tailwind CSS</span>
-                            <span class="tag">Fullstack</span>
-                            <span class="tag">Debugging</span>
-                        </div>
-                    </div>
-                     <div>
-                        <h3 class="text-xl font-bold text-white mb-3">Tautan</h3>
-                        <p class="text-gray-400">Repositori bersifat pribadi karena kebijakan internal, namun detail teknis dapat didiskusikan lebih lanjut.</p>
-                    </div>
-                </div>
+      <div class="max-w-5xl mx-auto">
+        <a
+          href="index.html"
+          class="inline-block mb-8 text-sky-400 hover:text-sky-300 transition"
+          >&larr; Kembali ke Portofolio</a
+        >
+
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+          Website UNAS FEST 2024
+        </h1>
+        <p class="text-lg text-gray-400 mb-8">
+          Platform digital resmi untuk festival universitas terbesar, UNAS FEST,
+          yang melayani ribuan pengunjung.
+        </p>
+
+        <div class="grid md:grid-cols-5 gap-8 mb-12">
+          <div class="md:col-span-3 text-gray-300 space-y-4">
+            <h2
+              class="text-2xl font-bold text-white border-b border-gray-700 pb-2"
+            >
+              Deskripsi Proyek
+            </h2>
+            <p>
+              Sebagai Fullstack Developer di kepanitiaan, saya memegang peran
+              kunci dalam pengembangan antarmuka (front-end) untuk website resmi
+              UNAS FEST 2024. Proyek ini bertujuan untuk menjadi pusat informasi
+              bagi seluruh rangkaian acara, termasuk seminar, webinar, dan
+              berbagai kompetisi.
+            </p>
+            <p>
+              Tugas saya meliputi pembuatan komponen UI dari awal menggunakan
+              TypeScript dan Tailwind CSS, merancang tata letak halaman yang
+              responsif, dan memastikan fungsionalitas berjalan lancar. Saya
+              berkolaborasi erat dengan tim desain dan back-end untuk
+              mengintegrasikan data acara dan konten secara dinamis.
+            </p>
+            <h3 class="text-xl font-bold text-white pt-4">
+              Tantangan & Solusi
+            </h3>
+            <p>
+              Tantangan utama adalah menciptakan website yang stabil dan
+              berperforma tinggi untuk menangani lonjakan trafik selama periode
+              puncak festival. Solusinya, saya fokus pada optimasi komponen
+              React, melakukan code splitting, dan melakukan pengujian serta
+              *debugging* secara intensif untuk memastikan tidak ada
+              *bottleneck*. Hasilnya, website dapat berjalan dengan optimal dan
+              memberikan pengalaman pengguna yang baik bagi lebih dari 10.000
+              pengunjung.
+            </p>
+          </div>
+
+          <div class="md:col-span-2 space-y-6">
+            <div>
+              <h3 class="text-xl font-bold text-white mb-3">Teknologi Utama</h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="tag">TypeScript</span>
+                <span class="tag">React</span>
+                <span class="tag">Tailwind CSS</span>
+                <span class="tag">Responsive Design</span>
+                <span class="tag">Event Platform</span>
+              </div>
             </div>
+            <div>
+              <h3 class="text-xl font-bold text-white mb-3">Tautan</h3>
+              <a
+                href="https://github.com/ferdiansyach/unasfest-end"
+                target="_blank"
+                class="text-sky-400 font-semibold hover:underline block"
+                >Lihat Kode di GitHub &rarr;</a
+              >
+            </div>
+          </div>
         </div>
+
+        <!-- Galeri Fitur -->
+        <h2
+          class="text-3xl font-bold text-white border-b border-gray-700 pb-2 mb-8"
+        >
+          Galeri Fitur
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+            <img
+              src="./images/unasfest1.jpeg"
+              alt="Halaman Utama"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-white">Halaman Utama</h4>
+              <p class="text-sm text-gray-400 mt-1">
+                Tampilan utama yang menyambut pengunjung festival.
+              </p>
+            </div>
+          </div>
+          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+            <img
+              src="./images/unasfest2.jpeg"
+              alt="Lomba"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-white">Daftar Lomba</h4>
+              <p class="text-sm text-gray-400 mt-1">
+                Menampilkan semua kategori kompetisi yang tersedia.
+              </p>
+            </div>
+          </div>
+          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+            <img
+              src="./images/unasfest3.jpeg"
+              alt="Rangkaian Internasional Seminar"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-white">Rangkaian Internasional Seminar</h4>
+              <p class="text-sm text-gray-400 mt-1">
+                Informasi jadwal dan topik untuk acara Internasional seminar.
+              </p>
+            </div>
+          </div>
+          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+            <img
+              src="./images/unasfest4.jpeg"
+              alt="Webinar"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-white">Short Movie Kompetisi</h4>
+              <p class="text-sm text-gray-400 mt-1">
+                Finalis Kompetisi Short Movie.
+              </p>
+            </div>
+          </div>
+          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+            <img
+              src="./images/unasfest5.jpeg"
+              alt="Section Banner Benefit UnasFest 2024"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-white">Section Banner Benefit UnasFest 2024</h4>
+              <p class="text-sm text-gray-400 mt-1">
+                Section Banner Benefit UnasFest 2024.
+              </p>
+            </div>
+          </div>
+          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+            <img
+              src="./images/unasfest6.jpeg"
+              alt="Galeri"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-white">Galeri</h4>
+              <p class="text-sm text-gray-400 mt-1">
+                Section Banner Galeri UnasFest 2024.
+              </p>
+            </div>
+          </div>
+          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+            <img
+              src="./images/unasfest7.jpeg"
+              alt="Timeline Kompetisi"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-white">Timeline Kompetisi</h4>
+              <p class="text-sm text-gray-400 mt-1">
+                Informasi lengkap untuk setiap Kompetisi UnasFest 2024.
+              </p>
+            </div>
+          </div>
+          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+            <img
+              src="./images/unasfest8.jpeg"
+              alt="Footer"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-white">Footer</h4>
+              <p class="text-sm text-gray-400 mt-1">
+                Informasi Website Pada Footer.
+              </p>
+            </div>
+          </div>
+          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+            <img
+              src="./images/unasfest9.jpeg"
+              alt="Kompetisi Debat Bahasa Indonesia"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-white">Kompetisi Debat Bahasa Indonesia</h4>
+              <p class="text-sm text-gray-400 mt-1">
+                Halaman Kompetisi Debat Bahasa Indonesia.
+              </p>
+            </div>
+          </div>
+          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+            <img
+              src="./images/unasfest10.jpeg"
+              alt="Container Para Juri Kompetisi"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-white">Container Para Juri Kompetisi</h4>
+              <p class="text-sm text-gray-400 mt-1">
+                Informasi Latar Belakang Para Juri Kompetisi.
+              </p>
+            </div>
+          </div>
+          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+            <img
+              src="./images/unasfest11.jpeg"
+              alt="Kompetisi English Debate"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-white">Kompetisi English Debate</h4>
+              <p class="text-sm text-gray-400 mt-1">
+                Pages Informasi Kompetisi English Debate.
+              </p>
+            </div>
+          </div>
+          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+            <img
+              src="./images/unasfest12.jpeg"
+              alt="Scientific Paper Competition"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-white">Scientific Paper Competition</h4>
+              <p class="text-sm text-gray-400 mt-1">
+                Halaman Khusus Untuk Kompetisi Scientific Paper Competition
+              </p>
+            </div>
+          </div>
+          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+            <img
+              src="./images/unasfest13.jpeg"
+              alt="Detail Lomba Tari"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-white">Detail Internasional Seminar</h4>
+              <p class="text-sm text-gray-400 mt-1">
+                Rincian Informasi Internasional Seminar.
+              </p>
+            </div>
+          </div>
+          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+            <img
+              src="./images/unasfest14.jpeg"
+              alt="Detail Lomba hort Movie"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-white">Detail Lomba Short Movie</h4>
+              <p class="text-sm text-gray-400 mt-1">
+                Informasi pendaftaran untuk kompetisi hort Movie.
+              </p>
+            </div>
+          </div>
+          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+            <img
+              src="./images/unasfest15.jpeg"
+              alt="Profile Juri Kompetisi"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-white">Profile Juri Kompetisi</h4>
+              <p class="text-sm text-gray-400 mt-1">
+                Profile Detail Juri Kompetisi.
+              </p>
+            </div>
+          </div>
+          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+            <img
+              src="./images/unasfest17.jpeg"
+              alt="Kaliedeskop UnasFest 2023"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-white">Kaliedeskop UnasFest 2023</h4>
+              <p class="text-sm text-gray-400 mt-1">
+                Video Kaliedeskop UnasFest 2023.
+              </p>
+            </div>
+          </div>
+          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+            <img
+              src="./images/unasfest18.jpeg"
+              alt="Galeri UnasFest 2024"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-white">Galeri UnasFest 2024</h4>
+              <p class="text-sm text-gray-400 mt-1">
+                Galeri Kompetisi UnasFest 2024.
+              </p>
+            </div>
+          </div>
+          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+            <img
+              src="./images/unasfest19.jpeg"
+              alt="Memori From The Past UnasFest"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-white">
+                Memori From The Past UnasFest
+              </h4>
+              <p class="text-sm text-gray-400 mt-1">
+                Galeri UnasFest 2022, 2023, 2024.
+              </p>
+            </div>
+          </div>
+          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+            <img
+              src="./images/unasfest20.jpeg"
+              alt="Detail Lomba Cipta Puisi"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-white">Detail Lomba Cipta Puisi</h4>
+              <p class="text-sm text-gray-400 mt-1">
+                Informasi lengkap untuk kompetisi cipta puisi.
+              </p>
+            </div>
+          </div>
+          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
+            <img
+              src="./images/unasfest21.jpeg"
+              alt="Visi Misi Section"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-white">Visi Misi Section</h4>
+              <p class="text-sm text-gray-400 mt-1">
+                Section Visi Misi Unasfest 2024
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
-</body>
+  </body>
 </html>
