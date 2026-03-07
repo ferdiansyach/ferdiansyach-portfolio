@@ -1,275 +1,158 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Detail Proyek | Indosaji E-commerce</title>
+<html lang="id">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detail Proyek | Indosaji E-commerce</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
-    <style>
-      body {
-        font-family: "Inter", sans-serif;
-        background-color: #111827;
-        color: #d1d5db;
-      }
-      .tag {
-        background-color: #374151;
-        color: #9ca3af;
-        padding: 0.25rem 0.75rem;
-        border-radius: 9999px;
-        font-size: 0.875rem;
-        font-weight: 500;
-      }
-      .gallery-item {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-      .gallery-item:hover {
-        transform: scale(1.03);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-      }
-    </style>
-  </head>
-  <body class="antialiased">
-    <main class="container mx-auto px-6 py-12">
-      <div class="max-w-5xl mx-auto">
-        <a
-          href="index.html"
-          class="inline-block mb-8 text-sky-400 hover:text-sky-300 transition"
-          >&larr; Kembali ke Portofolio</a
-        >
+<body class="dark antialiased">
+  <main class="container mx-auto px-6 py-12">
+    <div class="max-w-5xl mx-auto">
+      <a href="index.html" class="inline-flex items-center gap-2 text-sky-400 hover:text-sky-300 transition mb-8 group">
+        <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Kembali ke Portofolio
+      </a>
 
-        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
-          Indosaji E-commerce
-        </h1>
-        <p class="text-lg text-gray-400 mb-8">
-          Platform e-commerce makanan yang fungsional dan komprehensif, dibangun
-          dari awal menggunakan MERN Stack.
-        </p>
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 reveal">Indosaji E-commerce</h1>
+      <p class="text-lg text-slate-400 mb-8 reveal">Platform e-commerce makanan yang fungsional dan komprehensif,
+        dibangun dari awal menggunakan MERN Stack.</p>
 
-        <div class="grid md:grid-cols-5 gap-8 mb-12">
-          <div class="md:col-span-3 text-gray-300 space-y-4">
-            <h2
-              class="text-2xl font-bold text-white border-b border-gray-700 pb-2"
-            >
-              Deskripsi Proyek
-            </h2>
-            <p>
-              Indosaji adalah aplikasi web e-commerce yang dirancang khusus
-              untuk industri makanan dan minuman. Proyek ini saya kembangkan
-              secara end-to-end, mencakup sisi klien (pengguna) dan sisi
-              server (admin), untuk memberikan pengalaman belanja online yang
-              mulus dan manajemen yang efisien.
-            </p>
-            <p>
-              Sebagai Fullstack Developer, saya bertanggung jawab penuh atas
-              arsitektur aplikasi, mulai dari perancangan skema database di
-              MongoDB, pembuatan RESTful API menggunakan Node.js & Express,
-              hingga pengembangan antarmuka pengguna (UI) yang dinamis dan
-              interaktif dengan React. Proyek ini juga mengintegrasikan
-              payment gateway Stripe untuk proses transaksi yang aman.
-            </p>
-            <h3 class="text-xl font-bold text-white pt-4">
-              Tantangan & Solusi
-            </h3>
-            <p>
-              Salah satu tantangan utama adalah mengelola state aplikasi secara
-              global dan efisien, terutama untuk fitur krusial seperti
-              autentikasi pengguna dan keranjang belanja. Untuk mengatasinya,
-              saya mengimplementasikan React Context API agar data dapat
-              diakses secara konsisten. Selain itu, tantangan lainnya adalah
-              mengintegrasikan sistem pembayaran yang aman. Saya berhasil
-              mengimplementasikan Stripe API di sisi backend untuk memproses
-              transaksi dan memverifikasi pembayaran sebelum pesanan
-              dikonfirmasi.
-            </p>
-          </div>
-
-          <div class="md:col-span-2 space-y-6">
-            <div>
-              <h3 class="text-xl font-bold text-white mb-3">Teknologi Utama</h3>
-              <div class="flex flex-wrap gap-2">
-                <span class="tag">React</span>
-                <span class="tag">Node.js</span>
-                <span class="tag">Express.js</span>
-                <span class="tag">MongoDB</span>
-                <span class="tag">REST API</span>
-                <span class="tag">JWT Auth</span>
-                <span class="tag">Stripe</span>
-              </div>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold text-white mb-3">Tautan</h3>
-              <a
-                href="https://github.com/ferdiansyach/indosaji"
-                target="_blank"
-                class="text-sky-400 font-semibold hover:underline block"
-                >Lihat Kode di GitHub &rarr;</a
-              >
-            </div>
-          </div>
+      <div class="grid md:grid-cols-5 gap-8 mb-16">
+        <div class="md:col-span-3 text-slate-300 space-y-4 reveal">
+          <h2 class="text-2xl font-bold text-white border-b border-slate-700/50 pb-2">Deskripsi Proyek</h2>
+          <p>Indosaji adalah aplikasi web e-commerce yang dirancang khusus untuk industri makanan dan minuman. Proyek
+            ini saya kembangkan secara end-to-end, mencakup sisi klien (pengguna) dan sisi server (admin), untuk
+            memberikan pengalaman belanja online yang mulus dan manajemen yang efisien.</p>
+          <p>Sebagai Fullstack Developer, saya bertanggung jawab penuh atas arsitektur aplikasi, mulai dari perancangan
+            skema database di MongoDB, pembuatan RESTful API menggunakan Node.js & Express, hingga pengembangan
+            antarmuka pengguna (UI) yang dinamis dan interaktif dengan React. Proyek ini juga mengintegrasikan payment
+            gateway Stripe untuk proses transaksi yang aman.</p>
+          <h3 class="text-xl font-bold text-white pt-4">Tantangan & Solusi</h3>
+          <p>Salah satu tantangan utama adalah mengelola state aplikasi secara global dan efisien, terutama untuk fitur
+            krusial seperti autentikasi pengguna dan keranjang belanja. Untuk mengatasinya, saya mengimplementasikan
+            React Context API agar data dapat diakses secara konsisten. Selain itu, tantangan lainnya adalah
+            mengintegrasikan sistem pembayaran yang aman. Saya berhasil mengimplementasikan Stripe API di sisi backend
+            untuk memproses transaksi dan memverifikasi pembayaran sebelum pesanan dikonfirmasi.</p>
         </div>
-
-        <!-- Galeri Fitur -->
-        <h2
-          class="text-3xl font-bold text-white border-b border-gray-700 pb-2 mb-8"
-        >
-          Galeri Fitur
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Halaman Utama -->
-          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
-            <img
-              src="./images/indosaji7.jpeg"
-              alt="Halaman Utama"
-              class="w-full h-48 object-cover"
-            />
-            <div class="p-4">
-              <h4 class="font-bold text-white">
-                Halaman Utama & Display Produk
-              </h4>
-              <p class="text-sm text-gray-400 mt-1">
-                Antarmuka utama di mana pengguna dapat melihat dan memfilter
-                produk berdasarkan kategori.
-              </p>
+        <div class="md:col-span-2 space-y-6 reveal">
+          <div>
+            <h3 class="text-xl font-bold text-white mb-3">Teknologi Utama</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">Express.js</span><span
+                class="tag">MongoDB</span><span class="tag">REST API</span><span class="tag">JWT Auth</span><span
+                class="tag">Stripe</span>
             </div>
           </div>
-
-          <!-- Login & Register -->
-          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
-            <img
-              src="./images/indosaji1.jpeg"
-              alt="Login & Register"
-              class="w-full h-48 object-cover"
-            />
-            <div class="p-4">
-              <h4 class="font-bold text-white">Autentikasi Pengguna</h4>
-              <p class="text-sm text-gray-400 mt-1">
-                Sistem login dan registrasi menggunakan popup modal untuk
-                pengalaman pengguna yang lancar.
-              </p>
-            </div>
-          </div>
-
-          <!-- Keranjang Belanja -->
-          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
-            <img
-              src="./images/indosaji4.jpeg"
-              alt="Keranjang Belanja"
-              class="w-full h-48 object-cover"
-            />
-            <div class="p-4">
-              <h4 class="font-bold text-white">Keranjang Belanja</h4>
-              <p class="text-sm text-gray-400 mt-1">
-                Halaman keranjang yang fungsional di mana pengguna dapat
-                melihat, mengubah jumlah, dan menghapus item.
-              </p>
-            </div>
-          </div>
-
-          <!-- Halaman Checkout -->
-          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
-            <img
-              src="images\indosaji7.jpeg"
-              alt="Halaman Checkout"
-              class="w-full h-48 object-cover"
-            />
-            <div class="p-4">
-              <h4 class="font-bold text-white">Proses Pemesanan</h4>
-              <p class="text-sm text-gray-400 mt-1">
-                Formulir untuk mengisi detail pengiriman dan melanjutkan ke
-                proses pembayaran.
-              </p>
-            </div>
-          </div>
-
-          <!-- Pembayaran Stripe -->
-          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
-            <img
-              src="./images/indosaji8.jpeg"
-              alt="Pembayaran Stripe"
-              class="w-full h-48 object-cover"
-            />
-            <div class="p-4">
-              <h4 class="font-bold text-white">Integrasi Pembayaran Stripe</h4>
-              <p class="text-sm text-gray-400 mt-1">
-                Pengguna diarahkan ke halaman pembayaran Stripe yang aman untuk
-                menyelesaikan transaksi.
-              </p>
-            </div>
-          </div>
-
-          <!-- Riwayat Pesanan -->
-          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
-            <img
-              src="./images/indosaji5.jpeg"
-              alt="Riwayat Pesanan"
-              class="w-full h-48 object-cover"
-            />
-            <div class="p-4">
-              <h4 class="font-bold text-white">Riwayat Pesanan Pengguna</h4>
-              <p class="text-sm text-gray-400 mt-1">
-                Pengguna dapat melihat status dan detail dari semua pesanan yang
-                pernah mereka buat.
-              </p>
-            </div>
-          </div>
-
-          <!-- Admin: Tambah Produk -->
-          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
-            <img
-              src="images\indosaji10.jpeg"
-              alt="Admin Tambah Produk"
-              class="w-full h-48 object-cover"
-            />
-            <div class="p-4">
-              <h4 class="font-bold text-white">Admin: Tambah Produk</h4>
-              <p class="text-sm text-gray-400 mt-1">
-                Formulir di dashboard admin untuk menambahkan produk baru
-                lengkap dengan gambar, harga, dan deskripsi.
-              </p>
-            </div>
-          </div>
-
-          <!-- Admin: Daftar Produk -->
-          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
-            <img
-              src="./images/indosaji3.jpeg"
-              alt="Admin Daftar Produk"
-              class="w-full h-48 object-cover"
-            />
-            <div class="p-4">
-              <h4 class="font-bold text-white">Admin: Manajemen Produk</h4>
-              <p class="text-sm text-gray-400 mt-1">
-                Tampilan daftar semua produk yang ada di database, dengan opsi
-                untuk menghapus item.
-              </p>
-            </div>
-          </div>
-
-          <!-- Admin: Daftar Pesanan -->
-          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
-            <img
-              src="./images/indosaji9.jpeg"
-              alt="Admin Daftar Pesanan"
-              class="w-full h-48 object-cover"
-            />
-            <div class="p-4">
-              <h4 class="font-bold text-white">Admin: Manajemen Pesanan</h4>
-              <p class="text-sm text-gray-400 mt-1">
-                Dashboard untuk admin melihat semua pesanan yang masuk dari
-                pelanggan, lengkap dengan statusnya.
-              </p>
-            </div>
+          <div>
+            <h3 class="text-xl font-bold text-white mb-3">Tautan</h3>
+            <a href="https://github.com/ferdiansyach/indosaji" target="_blank"
+              class="inline-flex items-center gap-2 text-sky-400 font-semibold hover:underline">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+              </svg>
+              Lihat Kode di GitHub →
+            </a>
           </div>
         </div>
       </div>
-    </main>
-  </body>
+
+      <h2 class="text-3xl font-bold text-white border-b border-slate-700/50 pb-2 mb-8 reveal">Galeri Fitur</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="glass-card overflow-hidden reveal reveal-delay-1 cursor-pointer" onclick="openLightbox(this)"><img
+            src="./images/indosaji7.jpeg" alt="Halaman Utama" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h4 class="font-bold text-white">Halaman Utama & Display Produk</h4>
+            <p class="text-sm text-slate-400 mt-1">Antarmuka utama di mana pengguna dapat melihat dan memfilter produk
+              berdasarkan kategori.</p>
+          </div>
+        </div>
+        <div class="glass-card overflow-hidden reveal reveal-delay-2 cursor-pointer" onclick="openLightbox(this)"><img
+            src="./images/indosaji1.jpeg" alt="Login & Register" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h4 class="font-bold text-white">Autentikasi Pengguna</h4>
+            <p class="text-sm text-slate-400 mt-1">Sistem login dan registrasi menggunakan popup modal untuk pengalaman
+              pengguna yang lancar.</p>
+          </div>
+        </div>
+        <div class="glass-card overflow-hidden reveal reveal-delay-3 cursor-pointer" onclick="openLightbox(this)"><img
+            src="./images/indosaji4.jpeg" alt="Keranjang" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h4 class="font-bold text-white">Keranjang Belanja</h4>
+            <p class="text-sm text-slate-400 mt-1">Halaman keranjang yang fungsional di mana pengguna dapat melihat,
+              mengubah jumlah, dan menghapus item.</p>
+          </div>
+        </div>
+        <div class="glass-card overflow-hidden reveal reveal-delay-1 cursor-pointer" onclick="openLightbox(this)"><img
+            src="./images/indosaji6.jpeg" alt="Checkout" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h4 class="font-bold text-white">Proses Pemesanan</h4>
+            <p class="text-sm text-slate-400 mt-1">Formulir untuk mengisi detail pengiriman dan melanjutkan ke proses
+              pembayaran.</p>
+          </div>
+        </div>
+        <div class="glass-card overflow-hidden reveal reveal-delay-2 cursor-pointer" onclick="openLightbox(this)"><img
+            src="./images/indosaji8.jpeg" alt="Stripe" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h4 class="font-bold text-white">Integrasi Pembayaran Stripe</h4>
+            <p class="text-sm text-slate-400 mt-1">Pengguna diarahkan ke halaman pembayaran Stripe yang aman untuk
+              menyelesaikan transaksi.</p>
+          </div>
+        </div>
+        <div class="glass-card overflow-hidden reveal reveal-delay-3 cursor-pointer" onclick="openLightbox(this)"><img
+            src="./images/indosaji5.jpeg" alt="Riwayat" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h4 class="font-bold text-white">Riwayat Pesanan Pengguna</h4>
+            <p class="text-sm text-slate-400 mt-1">Pengguna dapat melihat status dan detail dari semua pesanan yang
+              pernah mereka buat.</p>
+          </div>
+        </div>
+        <div class="glass-card overflow-hidden reveal reveal-delay-1 cursor-pointer" onclick="openLightbox(this)"><img
+            src="./images/indosaji10.jpeg" alt="Admin Tambah" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h4 class="font-bold text-white">Admin: Tambah Produk</h4>
+            <p class="text-sm text-slate-400 mt-1">Formulir di dashboard admin untuk menambahkan produk baru lengkap
+              dengan gambar, harga, dan deskripsi.</p>
+          </div>
+        </div>
+        <div class="glass-card overflow-hidden reveal reveal-delay-2 cursor-pointer" onclick="openLightbox(this)"><img
+            src="./images/indosaji3.jpeg" alt="Admin Daftar" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h4 class="font-bold text-white">Admin: Manajemen Produk</h4>
+            <p class="text-sm text-slate-400 mt-1">Tampilan daftar semua produk yang ada di database, dengan opsi untuk
+              menghapus item.</p>
+          </div>
+        </div>
+        <div class="glass-card overflow-hidden reveal reveal-delay-3 cursor-pointer" onclick="openLightbox(this)"><img
+            src="./images/indosaji9.jpeg" alt="Admin Pesanan" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h4 class="font-bold text-white">Admin: Manajemen Pesanan</h4>
+            <p class="text-sm text-slate-400 mt-1">Dashboard untuk admin melihat semua pesanan yang masuk dari
+              pelanggan, lengkap dengan statusnya.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()"><img id="lightbox-img" src="" alt="Preview" /></div>
+  <script>
+    function openLightbox(el) { const img = el.querySelector('img'); const lb = document.getElementById('lightbox'); document.getElementById('lightbox-img').src = img.src; lb.classList.add('active'); }
+    function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+    const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(s => obs.observe(s));
+  </script>
+</body>
+
 </html>

@@ -1,213 +1,122 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Detail Proyek | Website HIMASI UNAS</title>
+<html lang="id">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detail Proyek | Website HIMASI UNAS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
-    <style>
-      body {
-        font-family: "Inter", sans-serif;
-        background-color: #111827;
-        color: #d1d5db;
-      }
-      .tag {
-        background-color: #374151;
-        color: #9ca3af;
-        padding: 0.25rem 0.75rem;
-        border-radius: 9999px;
-        font-size: 0.875rem;
-        font-weight: 500;
-      }
-      .gallery-item {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-      .gallery-item:hover {
-        transform: scale(1.03);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-      }
-    </style>
-  </head>
-  <body class="antialiased">
-    <main class="container mx-auto px-6 py-12">
-      <div class="max-w-5xl mx-auto">
-        <a
-          href="index.html"
-          class="inline-block mb-8 text-sky-400 hover:text-sky-300 transition"
-          >&larr; Kembali ke Portofolio</a
-        >
+<body class="dark antialiased">
+  <main class="container mx-auto px-6 py-12">
+    <div class="max-w-5xl mx-auto">
+      <a href="index.html" class="inline-flex items-center gap-2 text-sky-400 hover:text-sky-300 transition mb-8 group">
+        <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Kembali ke Portofolio
+      </a>
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 reveal">Website HIMASI UNAS</h1>
+      <p class="text-lg text-slate-400 mb-8 reveal">Platform informasi terpusat untuk kegiatan Himpunan Mahasiswa Sistem
+        Informasi Universitas Nasional.</p>
 
-        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
-          Website HIMASI UNAS
-        </h1>
-        <p class="text-lg text-gray-400 mb-8">
-          Platform informasi terpusat untuk kegiatan Himpunan Mahasiswa Sistem
-          Informasi Universitas Nasional.
-        </p>
-
-        <div class="grid md:grid-cols-5 gap-8 mb-12">
-          <div class="md:col-span-3 text-gray-300 space-y-4">
-            <h2
-              class="text-2xl font-bold text-white border-b border-gray-700 pb-2"
-            >
-              Deskripsi Proyek
-            </h2>
-            <p>
-              Sebagai anggota Divisi Penelitian dan Pengembangan (Litbang), saya
-              berperan aktif dalam pengembangan dan pengelolaan website resmi
-              HIMASI. Platform ini berfungsi sebagai pusat informasi utama bagi
-              mahasiswa Sistem Informasi, menyajikan berita terkini, jadwal
-              seminar, informasi webinar, dan dokumentasi kegiatan.
-            </p>
-            <p>
-              Saya bertanggung jawab atas beberapa aspek teknis menggunakan
-              WordPress, mulai dari kustomisasi tema, manajemen plugin, hingga
-              memastikan konten yang disajikan selalu relevan dan terstruktur.
-              Proyek ini juga mengasah kemampuan saya dalam mengelola sebuah
-              platform digital yang melayani banyak pengguna.
-            </p>
-            <h3 class="text-xl font-bold text-white pt-4">
-              Tantangan & Solusi
-            </h3>
-            <p>
-              Tantangan terbesar adalah menciptakan website yang informatif
-              namun tetap mudah diakses dan dikelola oleh anggota himpunan
-              lainnya. Saya mengatasinya dengan memilih tema yang fleksibel dan
-              mudah dikustomisasi, serta mengimplementasikan Content Management
-              System (CMS) WordPress secara efektif. Dengan menyediakan
-              antarmuka yang intuitif di backend, proses pembaruan konten oleh
-              tim menjadi lebih efisien, yang pada akhirnya berhasil
-              meningkatkan keterlibatan anggota.
-            </p>
-          </div>
-
-          <div class="md:col-span-2 space-y-6">
-            <div>
-              <h3 class="text-xl font-bold text-white mb-3">Teknologi Utama</h3>
-              <div class="flex flex-wrap gap-2">
-                <span class="tag">WordPress</span>
-                <span class="tag">CMS</span>
-                <span class="tag">Content Management</span>
-                <span class="tag">SEO (Dasar)</span>
-              </div>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold text-white mb-3">Tautan</h3>
-              <p class="text-gray-400 text-sm">
-                Website bersifat internal untuk organisasi.
-              </p>
-            </div>
-          </div>
+      <div class="grid md:grid-cols-5 gap-8 mb-16">
+        <div class="md:col-span-3 text-slate-300 space-y-4 reveal">
+          <h2 class="text-2xl font-bold text-white border-b border-slate-700/50 pb-2">Deskripsi Proyek</h2>
+          <p>Sebagai anggota Divisi Penelitian dan Pengembangan (Litbang), saya berperan aktif dalam pengembangan dan
+            pengelolaan website resmi HIMASI. Platform ini berfungsi sebagai pusat informasi utama bagi mahasiswa Sistem
+            Informasi, menyajikan berita terkini, jadwal seminar, informasi webinar, dan dokumentasi kegiatan.</p>
+          <p>Saya bertanggung jawab atas beberapa aspek teknis menggunakan WordPress, mulai dari kustomisasi tema,
+            manajemen plugin, hingga memastikan konten yang disajikan selalu relevan dan terstruktur. Proyek ini juga
+            mengasah kemampuan saya dalam mengelola sebuah platform digital yang melayani banyak pengguna.</p>
+          <h3 class="text-xl font-bold text-white pt-4">Tantangan & Solusi</h3>
+          <p>Tantangan terbesar adalah menciptakan website yang informatif namun tetap mudah diakses dan dikelola oleh
+            anggota himpunan lainnya. Saya mengatasinya dengan memilih tema yang fleksibel dan mudah dikustomisasi,
+            serta mengimplementasikan Content Management System (CMS) WordPress secara efektif. Dengan menyediakan
+            antarmuka yang intuitif di backend, proses pembaruan konten oleh tim menjadi lebih efisien, yang pada
+            akhirnya berhasil meningkatkan keterlibatan anggota.</p>
         </div>
-
-        <!-- Galeri Fitur -->
-        <h2
-          class="text-3xl font-bold text-white border-b border-gray-700 pb-2 mb-8"
-        >
-          Galeri Fitur
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
-            <img
-              src="./images/himasi1.jpeg"
-              alt="Halaman Utama"
-              class="w-full h-48 object-cover"
-            />
-            <div class="p-4">
-              <h4 class="font-bold text-white">Halaman Utama</h4>
-              <p class="text-sm text-gray-400 mt-1">
-                Tampilan utama yang menyambut anggota dan pengunjung.
-              </p>
-            </div>
+        <div class="md:col-span-2 space-y-6 reveal">
+          <div>
+            <h3 class="text-xl font-bold text-white mb-3">Teknologi Utama</h3>
+            <div class="flex flex-wrap gap-2"><span class="tag">WordPress</span><span class="tag">CMS</span><span
+                class="tag">Content Management</span><span class="tag">SEO (Dasar)</span></div>
           </div>
-          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
-            <img
-              src="./images/himasi5.jpeg"
-              alt="Event"
-              class="w-full h-48 object-cover"
-            />
-            <div class="p-4">
-              <h4 class="font-bold text-white">Publikasi Acara</h4>
-              <p class="text-sm text-gray-400 mt-1">
-                Menampilkan poster seminar dan webinar mendatang.
-              </p>
-            </div>
-          </div>
-          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
-            <img
-              src="./images/himasi6.png"
-              alt="Struktur Organisasi"
-              class="w-full h-48 object-cover"
-            />
-            <div class="p-4">
-              <h4 class="font-bold text-white">Struktur Organisasi</h4>
-              <p class="text-sm text-gray-400 mt-1">
-                Halaman yang menampilkan bagan kepengurusan himpunan.
-              </p>
-            </div>
-          </div>
-          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
-            <img
-              src="./images/himasi7.jpeg"
-              alt="Galeri"
-              class="w-full h-48 object-cover"
-            />
-            <div class="p-4">
-              <h4 class="font-bold text-white">Galeri Kegiatan</h4>
-              <p class="text-sm text-gray-400 mt-1">
-                Kumpulan dokumentasi foto dari acara yang telah berlangsung.
-              </p>
-            </div>
-          </div>
-          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
-            <img
-              src="./images/himasi3.jpeg"
-              alt="Detail Seminar"
-              class="w-full h-48 object-cover"
-            />
-            <div class="p-4">
-              <h4 class="font-bold text-white">Detail Seminar Nasional</h4>
-              <p class="text-sm text-gray-400 mt-1">
-                Halaman informasi lengkap untuk acara seminar nasional.
-              </p>
-            </div>
-          </div>
-          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
-            <img
-              src="./images/himasi2.jpeg"
-              alt="Tentang HIMASI"
-              class="w-full h-48 object-cover"
-            />
-            <div class="p-4">
-              <h4 class="font-bold text-white">Tentang HIMASI</h4>
-              <p class="text-sm text-gray-400 mt-1">
-                Deskripsi visi, misi, dan sejarah singkat himpunan.
-              </p>
-            </div>
-          </div>
-          <div class="gallery-item bg-gray-800 rounded-lg overflow-hidden">
-            <img
-              src="./images/himasi4.jpeg"
-              alt="Footer"
-              class="w-full h-48 object-cover"
-            />
-            <div class="p-4">
-              <h4 class="font-bold text-white">Footer Website</h4>
-              <p class="text-sm text-gray-400 mt-1">
-                Bagian bawah halaman dengan informasi kontak dan media sosial.
-              </p>
-            </div>
+          <div>
+            <h3 class="text-xl font-bold text-white mb-3">Tautan</h3>
+            <p class="text-slate-400 text-sm">Website bersifat internal untuk organisasi.</p>
           </div>
         </div>
       </div>
-    </main>
-  </body>
+
+      <h2 class="text-3xl font-bold text-white border-b border-slate-700/50 pb-2 mb-8 reveal">Galeri Fitur</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="glass-card overflow-hidden reveal reveal-delay-1 cursor-pointer" onclick="openLightbox(this)"><img
+            src="./images/himasi1.jpeg" alt="Halaman Utama" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h4 class="font-bold text-white">Halaman Utama</h4>
+            <p class="text-sm text-slate-400 mt-1">Tampilan utama yang menyambut anggota dan pengunjung.</p>
+          </div>
+        </div>
+        <div class="glass-card overflow-hidden reveal reveal-delay-2 cursor-pointer" onclick="openLightbox(this)"><img
+            src="./images/himasi5.jpeg" alt="Event" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h4 class="font-bold text-white">Publikasi Acara</h4>
+            <p class="text-sm text-slate-400 mt-1">Menampilkan poster seminar dan webinar mendatang.</p>
+          </div>
+        </div>
+        <div class="glass-card overflow-hidden reveal reveal-delay-3 cursor-pointer" onclick="openLightbox(this)"><img
+            src="./images/himasi6.png" alt="Struktur" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h4 class="font-bold text-white">Struktur Organisasi</h4>
+            <p class="text-sm text-slate-400 mt-1">Halaman yang menampilkan bagan kepengurusan himpunan.</p>
+          </div>
+        </div>
+        <div class="glass-card overflow-hidden reveal reveal-delay-1 cursor-pointer" onclick="openLightbox(this)"><img
+            src="./images/himasi7.jpeg" alt="Galeri" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h4 class="font-bold text-white">Galeri Kegiatan</h4>
+            <p class="text-sm text-slate-400 mt-1">Kumpulan dokumentasi foto dari acara yang telah berlangsung.</p>
+          </div>
+        </div>
+        <div class="glass-card overflow-hidden reveal reveal-delay-2 cursor-pointer" onclick="openLightbox(this)"><img
+            src="./images/himasi3.jpeg" alt="Seminar" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h4 class="font-bold text-white">Detail Seminar Nasional</h4>
+            <p class="text-sm text-slate-400 mt-1">Halaman informasi lengkap untuk acara seminar nasional.</p>
+          </div>
+        </div>
+        <div class="glass-card overflow-hidden reveal reveal-delay-3 cursor-pointer" onclick="openLightbox(this)"><img
+            src="./images/himasi2.jpeg" alt="Tentang" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h4 class="font-bold text-white">Tentang HIMASI</h4>
+            <p class="text-sm text-slate-400 mt-1">Deskripsi visi, misi, dan sejarah singkat himpunan.</p>
+          </div>
+        </div>
+        <div class="glass-card overflow-hidden reveal reveal-delay-1 cursor-pointer" onclick="openLightbox(this)"><img
+            src="./images/himasi4.jpeg" alt="Footer" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h4 class="font-bold text-white">Footer Website</h4>
+            <p class="text-sm text-slate-400 mt-1">Bagian bawah halaman dengan informasi kontak dan media sosial.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()"><img id="lightbox-img" src="" alt="Preview" /></div>
+  <script>
+    function openLightbox(el) { document.getElementById('lightbox-img').src = el.querySelector('img').src; document.getElementById('lightbox').classList.add('active'); }
+    function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+    const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(s => obs.observe(s));
+  </script>
+</body>
+
 </html>
