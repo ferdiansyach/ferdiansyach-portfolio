@@ -1,0 +1,33 @@
+﻿
+C:\Users\iyan\Downloads\personalwebsite\src\components\sections\CertificationsSection.tsx
+  10:40  warning  'fadeUp' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\iyan\Downloads\personalwebsite\src\components\sections\ContactSection.tsx
+  7:40  warning  'fadeUp' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\iyan\Downloads\personalwebsite\src\components\sections\EducationSection.tsx
+  8:40  warning  'fadeUp' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\iyan\Downloads\personalwebsite\src\components\sections\SkillsSection.tsx
+  11:40  warning  'fadeUp' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\iyan\Downloads\personalwebsite\src\components\sections\TestimonialsSection.tsx
+  56:7  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\iyan\Downloads\personalwebsite\src\components\sections\TestimonialsSection.tsx:56:7
+  54 |   useEffect(() => {
+  55 |     if (isPaused) {
+> 56 |       setProgress(0);
+     |       ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  57 |       return;
+  58 |     }
+  59 |     const start = Date.now();  react-hooks/set-state-in-effect
+
+Γ£û 5 problems (1 error, 4 warnings)
+

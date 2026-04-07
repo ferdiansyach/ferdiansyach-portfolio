@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ferdiansyach | Fullstack Developer & Data Analyst</title>
+  <meta name="description"
+    content="Ferdiansyach - Mahasiswa Sistem Informasi Universitas Nasional. Fullstack Developer & Data Analyst dengan keahlian dalam React, Python, WordPress, dan analisis data." />
+  <meta name="keywords"
+    content="Ferdiansyach, Web Developer, Fullstack Developer, Data Analyst, React, Python, WordPress, Jakarta" />
+  <meta name="author" content="Ferdiansyach" />
+  <meta property="og:title" content="Ferdiansyach - Fullstack Developer & Data Analyst" />
+  <meta property="og:description"
+    content="Portfolio profesional Ferdiansyach. Mahasiswa SI dengan fokus pada web development dan data analysis." />
+  <meta property="og:type" content="website" />
+  <meta name="robots" content="index, follow" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="antialiased">
+
+  <!-- Toggle Buttons -->
+  <div class="fixed top-20 right-5 z-50 flex flex-col gap-3">
+    <button id="theme-toggle" class="toggle-btn" aria-label="Toggle theme">
+      <svg id="sun-icon" class="h-5 w-5 hidden" viewBox="0 0 20 20" fill="currentColor">
+        <path
+          d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" />
+      </svg>
+      <svg id="moon-icon" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+      </svg>
+    </button>
+    <button id="lang-toggle" class="toggle-btn text-xs font-bold"><span id="lang-text">EN</span></button>
+  </div>
+
+  <!-- Header -->
+  <header id="header" class="nav-glass fixed top-0 left-0 right-0 z-40 transition-all duration-300">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#" class="text-xl font-extrabold gradient-text tracking-tight">Ferdiansyach</a>
+      <nav class="hidden md:flex space-x-8 items-center">
+        <a href="#about" class="nav-link text-slate-300" data-en="About" data-id="Tentang">Tentang</a>
+        <a href="#skills" class="nav-link text-slate-300" data-en="Skills" data-id="Keahlian">Keahlian</a>
+        <a href="#projects" class="nav-link text-slate-300" data-en="Projects" data-id="Proyek">Proyek</a>
+        <a href="#experience" class="nav-link text-slate-300" data-en="Experience" data-id="Pengalaman">Pengalaman</a>
+        <a href="#contact" class="nav-link text-slate-300" data-en="Contact" data-id="Kontak">Kontak</a>
+      </nav>
+      <button id="mobile-menu-button" class="md:hidden text-white">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-1">
+      <a href="#about" class="block py-2 text-slate-300 hover:text-sky-400" data-en="About"
+        data-id="Tentang">Tentang</a>
+      <a href="#skills" class="block py-2 text-slate-300 hover:text-sky-400" data-en="Skills"
+        data-id="Keahlian">Keahlian</a>
+      <a href="#projects" class="block py-2 text-slate-300 hover:text-sky-400" data-en="Projects"
+        data-id="Proyek">Proyek</a>
+      <a href="#experience" class="block py-2 text-slate-300 hover:text-sky-400" data-en="Experience"
+        data-id="Pengalaman">Pengalaman</a>
+      <a href="#contact" class="block py-2 text-slate-300 hover:text-sky-400" data-en="Contact"
+        data-id="Kontak">Kontak</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center pt-20">
+      <div class="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center justify-between gap-12">
+        <div class="md:w-3/5 text-center md:text-left">
+          <p class="text-sky-400 font-semibold text-lg tracking-wide uppercase reveal"
+            data-en="Information Systems Student" data-id="Mahasiswa Sistem Informasi">Mahasiswa Sistem Informasi</p>
+          <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight mt-3 reveal reveal-delay-1">
+            <span data-en="Hi, I'm" data-id="Hai, Saya">Hai, Saya</span> <span class="gradient-text">Ferdiansyach</span>
+          </h1>
+          <p class="mt-4 text-xl md:text-3xl text-slate-300 font-semibold h-10 reveal reveal-delay-2">
+            <span id="typing-text"></span><span class="typing-cursor">&nbsp;</span>
+          </p>
+          <p class="mt-6 text-base md:text-lg text-slate-400 max-w-xl mx-auto md:mx-0 leading-relaxed reveal reveal-delay-3"
+            data-en="A highly motivated student with skills in WordPress, Fullstack Development (React & Node.js), and Data Analysis (Python & SQL). Ready to contribute to innovative projects."
+            data-id="Seorang mahasiswa yang sangat termotivasi dengan keterampilan dalam WordPress, Pengembangan Fullstack (React & Node.js), dan Analisis Data (Python & SQL). Siap berkontribusi pada proyek-proyek inovatif.">
+            Seorang mahasiswa yang sangat termotivasi dengan keterampilan dalam WordPress, Pengembangan Fullstack (React
+            & Node.js), dan Analisis Data (Python & SQL). Siap berkontribusi pada proyek-proyek inovatif.
+          </p>
+          <div class="mt-10 flex justify-center md:justify-start gap-4 reveal reveal-delay-4">
+            <a href="#contact"
+              class="inline-flex items-center gap-2 bg-gradient-to-r from-sky-500 to-indigo-500 text-white font-semibold py-3 px-8 rounded-xl hover:shadow-lg hover:shadow-sky-500/25 transition-all duration-300 hover:-translate-y-0.5"
+              data-en="Contact Me" data-id="Hubungi Saya">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              Hubungi Saya
+            </a>
+            <a href="https://github.com/ferdiansyach" target="_blank"
+              class="inline-flex items-center gap-2 border-2 border-slate-600 text-white font-semibold py-3 px-8 rounded-xl hover:border-sky-400 hover:text-sky-400 transition-all duration-300 hover:-translate-y-0.5">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+              </svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div class="md:w-2/5 flex justify-center md:justify-end reveal">
+          <div class="profile-ring">
+            <img src="images/fotoprofil.jpeg" alt="Foto Ferdiansyach"
+              class="rounded-full w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 object-cover" />
+          </div>
+        </div>
+      </div>
+      <!-- Scroll Indicator -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden md:block">
+        <svg class="w-6 h-6 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 container mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <p class="text-sky-400 font-semibold text-sm tracking-widest uppercase mb-2" data-en="Why Me?"
+          data-id="Mengapa Saya?">Mengapa Saya?</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-white" data-en="The Right Candidate in Tech"
+          data-id="Kandidat yang Tepat di Bidang Teknologi">Kandidat yang Tepat di Bidang Teknologi</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <!-- Card 1 -->
+        <div class="glass-card p-8 text-center reveal reveal-delay-1">
+          <div
+            class="w-14 h-14 mx-auto mb-5 rounded-xl bg-gradient-to-br from-sky-500/20 to-indigo-500/20 flex items-center justify-center">
+            <svg class="w-7 h-7 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3" data-en="Website & System Developer"
+            data-id="Developer Website & Sistem">Developer Website & Sistem</h3>
+          <p class="text-slate-400 text-sm leading-relaxed"
+            data-en="Strong foundation in HTML, CSS, JavaScript, and Python. Experienced with WordPress, proven in the HIMASI website project. Ready to develop and manage robust systems."
+            data-id="Fondasi kuat dalam HTML, CSS, JavaScript, dan Python. Berpengalaman dengan WordPress, terbukti dalam proyek website HIMASI. Siap mengembangkan dan mengelola sistem yang andal.">
+            Fondasi kuat dalam HTML, CSS, JavaScript, dan Python. Berpengalaman dengan WordPress, terbukti dalam proyek
+            website HIMASI. Siap mengembangkan dan mengelola sistem yang andal.</p>
+        </div>
+        <!-- Card 2 -->
+        <div class="glass-card p-8 text-center reveal reveal-delay-2">
+          <div
+            class="w-14 h-14 mx-auto mb-5 rounded-xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 flex items-center justify-center">
+            <svg class="w-7 h-7 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Fullstack Ready</h3>
+          <p class="text-slate-400 text-sm leading-relaxed"
+            data-en="Hands-on experience building end-to-end applications with the MERN stack (React, Node.js). Eager to learn and adapt to new frameworks like Laravel."
+            data-id="Pengalaman langsung membangun aplikasi end-to-end dengan MERN stack (React, Node.js). Bersemangat untuk belajar dan beradaptasi dengan framework baru seperti Laravel.">
+            Pengalaman langsung membangun aplikasi end-to-end dengan MERN stack (React, Node.js). Bersemangat untuk
+            belajar dan beradaptasi dengan framework baru seperti Laravel.</p>
+        </div>
+        <!-- Card 3 -->
+        <div class="glass-card p-8 text-center reveal reveal-delay-3">
+          <div
+            class="w-14 h-14 mx-auto mb-5 rounded-xl bg-gradient-to-br from-emerald-500/20 to-sky-500/20 flex items-center justify-center">
+            <svg class="w-7 h-7 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Data-Driven Analyst</h3>
+          <p class="text-slate-400 text-sm leading-relaxed"
+            data-en="Proficient in data analysis using Python and advanced Excel. Experience in implementing machine learning models and familiar with SQL for data querying."
+            data-id="Mahir dalam analisis data menggunakan Python dan Excel tingkat lanjut. Berpengalaman mengimplementasikan model machine learning dan familiar dengan SQL untuk kueri data.">
+            Mahir dalam analisis data menggunakan Python dan Excel tingkat lanjut. Berpengalaman mengimplementasikan
+            model machine learning dan familiar dengan SQL untuk kueri data.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 container mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <p class="text-sky-400 font-semibold text-sm tracking-widest uppercase mb-2" data-en="Tech Stack"
+          data-id="Tech Stack">Tech Stack</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-white" data-en="Technologies I Work With"
+          data-id="Teknologi yang Saya Gunakan">Teknologi yang Saya Gunakan</h2>
+      </div>
+      <div class="glass-card p-8 md:p-12 max-w-4xl mx-auto reveal">
+        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
+          <div class="skill-item">
+            <div class="skill-icon">⚛️</div><span class="text-xs text-slate-400 font-medium">React</span>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">🟢</div><span class="text-xs text-slate-400 font-medium">Node.js</span>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">🐍</div><span class="text-xs text-slate-400 font-medium">Python</span>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">🍃</div><span class="text-xs text-slate-400 font-medium">MongoDB</span>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">🌐</div><span class="text-xs text-slate-400 font-medium">WordPress</span>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">📊</div><span class="text-xs text-slate-400 font-medium">SQL</span>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">🔷</div><span class="text-xs text-slate-400 font-medium">TypeScript</span>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">🎨</div><span class="text-xs text-slate-400 font-medium">Tailwind</span>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">⚡</div><span class="text-xs text-slate-400 font-medium">Next.js</span>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">🔗</div><span class="text-xs text-slate-400 font-medium">REST API</span>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">📈</div><span class="text-xs text-slate-400 font-medium">Excel</span>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">🤖</div><span class="text-xs text-slate-400 font-medium">ML</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 container mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <p class="text-sky-400 font-semibold text-sm tracking-widest uppercase mb-2" data-en="Portfolio"
+          data-id="Portofolio">Portofolio</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-white" data-en="Featured Projects" data-id="Proyek Unggulan">
+          Proyek Unggulan</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <!-- Project 1 -->
+        <a href="project-indosaji.html" class="project-card glass-card reveal reveal-delay-1">
+          <div class="relative overflow-hidden"><img src="images/indosaji2.jpeg" alt="Indosaji" class="project-img" />
+            <div class="project-overlay"><span data-en="View Details →" data-id="Lihat Detail →">Lihat Detail →</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-bold text-white mb-2">Indosaji E-commerce</h3>
+            <p class="text-slate-400 text-sm mb-4" data-en="Fullstack food e-commerce app built with the MERN Stack."
+              data-id="Aplikasi e-commerce makanan fullstack dengan MERN Stack.">Aplikasi e-commerce makanan fullstack
+              dengan MERN Stack.</p>
+            <div class="flex flex-wrap gap-2"><span class="tag">React</span><span class="tag">Node.js</span><span
+                class="tag">MongoDB</span></div>
+          </div>
+        </a>
+        <!-- Project 2 -->
+        <a href="project-smart-meter.html" class="project-card glass-card reveal reveal-delay-2">
+          <div class="relative overflow-hidden"><img src="images/intern1.jpeg" alt="Smart Meter" class="project-img" />
+            <div class="project-overlay"><span data-en="View Details →" data-id="Lihat Detail →">Lihat Detail →</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-bold text-white mb-2">Smart Meter Analysis</h3>
+            <p class="text-slate-400 text-sm mb-4"
+              data-en="Machine learning model to detect energy consumption anomalies."
+              data-id="Model machine learning untuk deteksi anomali konsumsi energi.">Model machine learning untuk
+              deteksi anomali konsumsi energi.</p>
+            <div class="flex flex-wrap gap-2"><span class="tag">Python</span><span class="tag">Machine
+                Learning</span><span class="tag">Data Analysis</span></div>
+          </div>
+        </a>
+        <!-- Project 3 -->
+        <a href="project-anambas.html" class="project-card glass-card reveal reveal-delay-3">
+          <div class="relative overflow-hidden"><img src="images/anambas1.jpeg" alt="Anambas" class="project-img" />
+            <div class="project-overlay"><span data-en="View Details →" data-id="Lihat Detail →">Lihat Detail →</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-bold text-white mb-2">Anambas Tourism Website</h3>
+            <p class="text-slate-400 text-sm mb-4" data-en="Component development for a tourism website using Next.js."
+              data-id="Pengembangan komponen untuk web pariwisata dengan Next.js.">Pengembangan komponen untuk web
+              pariwisata dengan Next.js.</p>
+            <div class="flex flex-wrap gap-2"><span class="tag">Next.js</span><span class="tag">React</span><span
+                class="tag">Tailwind CSS</span></div>
+          </div>
+        </a>
+        <!-- Project 4 -->
+        <a href="project-unasfest.html" class="project-card glass-card reveal reveal-delay-1">
+          <div class="relative overflow-hidden"><img src="images/unasfest1.jpeg" alt="UNAS FEST" class="project-img" />
+            <div class="project-overlay"><span data-en="View Details →" data-id="Lihat Detail →">Lihat Detail →</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-bold text-white mb-2">Website UNAS FEST</h3>
+            <p class="text-slate-400 text-sm mb-4"
+              data-en="Fullstack developer for the university's official festival website."
+              data-id="Fullstack developer untuk website resmi festival universitas.">Fullstack developer untuk website
+              resmi festival universitas.</p>
+            <div class="flex flex-wrap gap-2"><span class="tag">TypeScript</span><span class="tag">React</span><span
+                class="tag">Tailwind CSS</span></div>
+          </div>
+        </a>
+        <!-- Project 5 -->
+        <a href="project-himasi.html" class="project-card glass-card reveal reveal-delay-2">
+          <div class="relative overflow-hidden"><img src="images/himasi1.jpeg" alt="HIMASI" class="project-img" />
+            <div class="project-overlay"><span data-en="View Details →" data-id="Lihat Detail →">Lihat Detail →</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-bold text-white mb-2">HIMASI UNAS Website</h3>
+            <p class="text-slate-400 text-sm mb-4"
+              data-en="Developed and managed the official student association website."
+              data-id="Mengembangkan dan mengelola website resmi himpunan mahasiswa.">Mengembangkan dan mengelola
+              website resmi himpunan mahasiswa.</p>
+            <div class="flex flex-wrap gap-2"><span class="tag">WordPress</span><span class="tag">Content
+                Management</span></div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-24 container mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <p class="text-sky-400 font-semibold text-sm tracking-widest uppercase mb-2" data-en="Career" data-id="Karir">
+          Karir</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-white" data-en="Experience" data-id="Pengalaman">Pengalaman</h2>
+      </div>
+      <div class="max-w-3xl mx-auto">
+        <div class="timeline ml-2">
+          <!-- Exp 1 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <span class="text-sky-400 text-xs font-semibold tracking-wide">April 2025 — September 2025</span>
+              <h3 class="text-lg font-bold text-white mt-1" data-en="Business Development Intern"
+                data-id="Intern Pengembangan Bisnis">Business Development Intern</h3>
+              <p class="text-slate-400 text-sm mb-3">Telkom Infranexia</p>
+              <ul class="space-y-1.5 text-slate-400 text-sm">
+                <li class="flex gap-2"><span class="text-sky-400 mt-0.5">›</span><span
+                    data-en="Led a techno-economic analysis on smart building energy efficiency, developing a predictive AI model."
+                    data-id="Memimpin analisis tekno-ekonomi untuk efisiensi energi gedung pintar, mengembangkan model AI prediktif.">Memimpin
+                    analisis tekno-ekonomi untuk efisiensi energi gedung pintar, mengembangkan model AI
+                    prediktif.</span></li>
+                <li class="flex gap-2"><span class="text-sky-400 mt-0.5">›</span><span
+                    data-en="Developed an end-to-end data pipeline from processing to model training (Gradient Boosting, LSTM)."
+                    data-id="Mengembangkan pipeline data end-to-end mulai dari pemrosesan hingga pelatihan model (Gradient Boosting, LSTM).">Mengembangkan
+                    pipeline data end-to-end mulai dari pemrosesan hingga pelatihan model (Gradient Boosting,
+                    LSTM).</span></li>
+                <li class="flex gap-2"><span class="text-sky-400 mt-0.5">›</span><span
+                    data-en="Collaborated in designing and deploying a web-based internship platform."
+                    data-id="Berkolaborasi dalam merancang dan menerapkan platform magang berbasis web.">Berkolaborasi
+                    dalam merancang dan menerapkan platform magang berbasis web.</span></li>
+              </ul>
+            </div>
+          </div>
+          <!-- Exp 2 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <span class="text-sky-400 text-xs font-semibold tracking-wide">September 2024 — September 2025</span>
+              <h3 class="text-lg font-bold text-white mt-1" data-en="Computer Laboratory Assistant"
+                data-id="Asisten Laboratorium Komputer">Computer Laboratory Assistant</h3>
+              <p class="text-slate-400 text-sm mb-3">Universitas Nasional</p>
+              <ul class="space-y-1.5 text-slate-400 text-sm">
+                <li class="flex gap-2"><span class="text-sky-400 mt-0.5">›</span><span
+                    data-en="Provided technical support for laboratory equipment and software."
+                    data-id="Memberikan dukungan teknis untuk peralatan dan perangkat lunak laboratorium.">Memberikan
+                    dukungan teknis untuk peralatan dan perangkat lunak laboratorium.</span></li>
+                <li class="flex gap-2"><span class="text-sky-400 mt-0.5">›</span><span
+                    data-en="Performed periodic maintenance and software installation on lab computers."
+                    data-id="Melakukan pemeliharaan berkala dan instalasi perangkat lunak di komputer lab.">Melakukan
+                    pemeliharaan berkala dan instalasi perangkat lunak di komputer lab.</span></li>
+              </ul>
+            </div>
+          </div>
+          <!-- Exp 3 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <span class="text-sky-400 text-xs font-semibold tracking-wide">Juli 2024 — Agustus 2025</span>
+              <h3 class="text-lg font-bold text-white mt-1" data-en="Member of R&D Division"
+                data-id="Anggota Divisi Litbang">Member of R&D Division</h3>
+              <p class="text-slate-400 text-sm mb-3">HIMASI Universitas Nasional</p>
+              <ul class="space-y-1.5 text-slate-400 text-sm">
+                <li class="flex gap-2"><span class="text-sky-400 mt-0.5">›</span><span
+                    data-en="Led a technology seminar as Chief Executive, managing the event from planning to execution."
+                    data-id="Memimpin seminar teknologi sebagai Ketua Pelaksana, mengelola acara dari perencanaan hingga eksekusi.">Memimpin
+                    seminar teknologi sebagai Ketua Pelaksana, mengelola acara dari perencanaan hingga eksekusi.</span>
+                </li>
+                <li class="flex gap-2"><span class="text-sky-400 mt-0.5">›</span><span
+                    data-en="Co-developed and managed the association's official WordPress website, increasing member engagement."
+                    data-id="Turut mengembangkan dan mengelola website resmi himpunan menggunakan WordPress, meningkatkan keterlibatan anggota.">Turut
+                    mengembangkan dan mengelola website resmi himpunan menggunakan WordPress, meningkatkan keterlibatan
+                    anggota.</span></li>
+              </ul>
+            </div>
+          </div>
+          <!-- Exp 4 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <span class="text-sky-400 text-xs font-semibold tracking-wide">April 2024 — November 2024</span>
+              <h3 class="text-lg font-bold text-white mt-1">Fullstack Developer Committee</h3>
+              <p class="text-slate-400 text-sm mb-3">Universitas Nasional Festival (UNAS FEST)</p>
+              <ul class="space-y-1.5 text-slate-400 text-sm">
+                <li class="flex gap-2"><span class="text-sky-400 mt-0.5">›</span><span
+                    data-en="Developed responsive website components using TypeScript and Tailwind CSS."
+                    data-id="Mengembangkan komponen website yang responsif menggunakan TypeScript dan Tailwind CSS.">Mengembangkan
+                    komponen website yang responsif menggunakan TypeScript dan Tailwind CSS.</span></li>
+                <li class="flex gap-2"><span class="text-sky-400 mt-0.5">›</span><span
+                    data-en="Tested and debugged components to ensure optimal stability and performance."
+                    data-id="Menguji dan melakukan debug pada komponen untuk memastikan stabilitas dan performa optimal.">Menguji
+                    dan melakukan debug pada komponen untuk memastikan stabilitas dan performa optimal.</span></li>
+              </ul>
+            </div>
+          </div>
+          <!-- Exp 5 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <span class="text-sky-400 text-xs font-semibold tracking-wide">Agustus 2024 — Oktober 2024</span>
+              <h3 class="text-lg font-bold text-white mt-1" data-en="Front End Developer" data-id="Front End Developer">
+                Front End Developer</h3>
+              <p class="text-slate-400 text-sm mb-3">Anambas Website Project</p>
+              <ul class="space-y-1.5 text-slate-400 text-sm">
+                <li class="flex gap-2"><span class="text-sky-400 mt-0.5">›</span><span
+                    data-en="Developed attractive and responsive UI components for a tourism project."
+                    data-id="Mengembangkan komponen UI yang menarik dan responsif untuk proyek pariwisata.">Mengembangkan
+                    komponen UI yang menarik dan responsif untuk proyek pariwisata.</span></li>
+                <li class="flex gap-2"><span class="text-sky-400 mt-0.5">›</span><span
+                    data-en="Collaborated on front-end architecture to enhance website performance."
+                    data-id="Berkolaborasi dalam arsitektur front-end untuk meningkatkan performa website.">Berkolaborasi
+                    dalam arsitektur front-end untuk meningkatkan performa website.</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 container mx-auto px-6">
+      <div class="cta-gradient max-w-3xl mx-auto p-12 md:p-16 text-center reveal">
+        <p class="text-sky-400 font-semibold text-sm tracking-widest uppercase mb-2" data-en="Let's Connect"
+          data-id="Mari Terhubung">Mari Terhubung</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4" data-en="Get In Touch" data-id="Hubungi Saya">Hubungi
+          Saya</h2>
+        <p class="text-slate-400 text-lg mb-10 max-w-lg mx-auto"
+          data-en="I'm open to new opportunities and collaborations. Feel free to reach out!"
+          data-id="Saya terbuka untuk kesempatan dan kolaborasi baru. Jangan ragu untuk menghubungi saya!">Saya terbuka
+          untuk kesempatan dan kolaborasi baru. Jangan ragu untuk menghubungi saya!</p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a href="https://mail.google.com/mail/?view=cm&to=iyanferdiansyach30@gmail.com" target="_blank"
+            class="social-btn">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            Email
+          </a>
+          <a href="https://wa.me/628886007599" target="_blank" class="social-btn">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
+            </svg>
+            WhatsApp
+          </a>
+          <a href="https://www.linkedin.com/in/ferdiansyach-845930246/" target="_blank" class="social-btn">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
+            LinkedIn
+          </a>
+          <a href="https://github.com/ferdiansyach" target="_blank" class="social-btn">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+            </svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-12 py-8">
+    <div class="container mx-auto px-6 text-center">
+      <div class="flex justify-center gap-6 mb-4">
+        <a href="https://github.com/ferdiansyach" target="_blank"
+          class="text-slate-500 hover:text-sky-400 transition"><svg class="w-5 h-5" fill="currentColor"
+            viewBox="0 0 24 24">
+            <path
+              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+          </svg></a>
+        <a href="https://www.linkedin.com/in/ferdiansyach-845930246/" target="_blank"
+          class="text-slate-500 hover:text-sky-400 transition"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
+            <circle cx="4" cy="4" r="2" />
+          </svg></a>
+        <a href="mailto:iyanferdiansyach30@gmail.com" class="text-slate-500 hover:text-sky-400 transition"><svg
+            class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg></a>
+      </div>
+      <p class="text-slate-500 text-sm" data-en="&copy; 2025 Ferdiansyach. Built with passion and code."
+        data-id="&copy; 2025 Ferdiansyach. Dibuat dengan semangat dan kode.">&copy; 2025 Ferdiansyach. Dibuat dengan
+        semangat dan kode.</p>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top -->
+  <button id="scroll-top" aria-label="Scroll to top">
+    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7" />
+    </svg>
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Typing animation
+      const translations = { 'Fullstack Developer': 'Fullstack Developer', 'Data Analyst': 'Analis Data', 'System Developer': 'System Developer', 'WordPress Developer': 'WordPress Developer' };
+      const typingEl = document.getElementById('typing-text');
+      const roles = Object.keys(translations);
+      let rIdx = 0, cIdx = 0, del = false, lang = localStorage.getItem('lang') || 'id', tTO;
+
+      function typeAnim() {
+        if (tTO) clearTimeout(tTO);
+        const role = roles[rIdx], txt = lang === 'id' ? translations[role] : role;
+        if (del) { typingEl.textContent = txt.substring(0, --cIdx); }
+        else { typingEl.textContent = txt.substring(0, ++cIdx); }
+        if (!del && cIdx === txt.length) tTO = setTimeout(() => del = true, 2000);
+        else if (del && cIdx === 0) { del = false; rIdx = (rIdx + 1) % roles.length; }
+        tTO = setTimeout(typeAnim, del ? 80 : 120);
+      }
+
+      // Theme
+      const body = document.body, themeBtn = document.getElementById('theme-toggle'), sun = document.getElementById('sun-icon'), moon = document.getElementById('moon-icon');
+      function setTheme(t) {
+        body.classList.remove('dark', 'light'); body.classList.add(t);
+        if (t === 'light') { sun.classList.remove('hidden'); moon.classList.add('hidden'); }
+        else { moon.classList.remove('hidden'); sun.classList.add('hidden'); }
+      }
+      themeBtn.onclick = () => { const n = body.classList.contains('dark') ? 'light' : 'dark'; localStorage.setItem('theme', n); setTheme(n); };
+      setTheme(localStorage.getItem('theme') || 'dark');
+
+      // Language
+      const langBtn = document.getElementById('lang-toggle'), langTxt = document.getElementById('lang-text'), tEls = document.querySelectorAll('[data-en]');
+      function setLang(l) {
+        lang = l; localStorage.setItem('lang', l);
+        tEls.forEach(e => { if (e.dataset[l]) e.textContent = e.dataset[l]; });
+        langTxt.textContent = l === 'id' ? 'EN' : 'ID';
+        if (typingEl) { clearTimeout(tTO); rIdx = 0; cIdx = 0; del = false; typeAnim(); }
+      }
+      langBtn.onclick = () => setLang(lang === 'id' ? 'en' : 'id');
+      setLang(lang);
+
+      // Mobile menu
+      const mBtn = document.getElementById('mobile-menu-button'), mMenu = document.getElementById('mobile-menu');
+      mBtn.onclick = () => mMenu.classList.toggle('hidden');
+      mMenu.querySelectorAll('a').forEach(a => a.onclick = () => mMenu.classList.add('hidden'));
+
+      // Scroll reveal
+      const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
+      document.querySelectorAll('.reveal').forEach(s => obs.observe(s));
+
+      // Active nav
+      const navLinks = document.querySelectorAll('header nav a.nav-link'), secs = document.querySelectorAll('section');
+      window.addEventListener('scroll', () => {
+        let cur = 'home';
+        secs.forEach(s => { if (pageYOffset >= s.offsetTop - 150) cur = s.id; });
+        navLinks.forEach(l => { l.classList.remove('active'); if (l.getAttribute('href').includes(cur)) l.classList.add('active'); });
+      });
+
+      // Scroll to top
+      const sTop = document.getElementById('scroll-top');
+      window.addEventListener('scroll', () => { sTop.classList.toggle('show', window.scrollY > 400); });
+      sTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+
+</html>

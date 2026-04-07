@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detail Proyek | Analisis AI Smart Meter</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="dark antialiased">
+  <main class="container mx-auto px-6 py-12">
+    <div class="max-w-5xl mx-auto">
+      <a href="index.html" class="inline-flex items-center gap-2 text-sky-400 hover:text-sky-300 transition mb-8 group">
+        <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Kembali ke Portofolio
+      </a>
+
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 reveal">Dashboard Analisis AI Smart Meter</h1>
+      <p class="text-lg text-slate-400 mb-8 reveal">Proyek analisis data end-to-end untuk deteksi anomali konsumsi
+        energi dan analisis tekno-ekonomi menggunakan Python, Machine Learning, dan Streamlit.</p>
+
+      <div class="grid md:grid-cols-5 gap-8 mb-16">
+        <div class="md:col-span-3 text-slate-300 space-y-4 reveal">
+          <h2 class="text-2xl font-bold text-white border-b border-slate-700/50 pb-2">Deskripsi Proyek</h2>
+          <p>Proyek ini dikembangkan selama magang saya di Telkom Infranexia sebagai bagian dari analisis tekno-ekonomi
+            untuk manajemen energi di gedung pintar. Tujuannya adalah untuk membangun sebuah sistem cerdas yang mampu
+            menganalisis pola konsumsi energi, mendeteksi anomali (pemborosan), dan memberikan rekomendasi tindakan
+            serta estimasi kelayakan ekonomi dari implementasi AI.</p>
+          <p>Saya bertanggung jawab penuh atas seluruh siklus hidup proyek data, mulai dari pengumpulan dan pembersihan
+            data mentah smart meter, integrasi dengan data cuaca eksternal, hingga membangun, melatih, dan mengevaluasi
+            beberapa model machine learning (Random Forest, Gradient Boosting, LSTM). Model terbaik kemudian digunakan
+            sebagai dasar untuk deteksi anomali.</p>
+          <h3 class="text-xl font-bold text-white pt-4">Tantangan & Solusi</h3>
+          <p>Tantangan utama adalah mengolah dataset time-series yang besar dengan data yang hilang dan tidak
+            terstruktur. Saya mengatasinya dengan melakukan interpolasi data untuk mengisi kekosongan dan rekayasa fitur
+            (feature engineering) untuk menemukan variabel yang paling berpengaruh. Untuk memvisualisasikan hasil
+            analisis yang kompleks, saya membangun dashboard interaktif menggunakan Streamlit, yang memungkinkan
+            pengguna untuk memfilter data berdasarkan gedung dan perangkat, serta melihat hasil deteksi anomali dan
+            perhitungan ROI secara dinamis.</p>
+        </div>
+        <div class="md:col-span-2 space-y-6 reveal">
+          <div>
+            <h3 class="text-xl font-bold text-white mb-3">Teknologi & Metode</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">Pandas</span><span
+                class="tag">Scikit-learn</span><span class="tag">Machine Learning</span><span class="tag">Data
+                Visualization</span>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white mb-3">Tautan</h3>
+            <a href="https://github.com/ferdiansyach/metopen1" target="_blank"
+              class="inline-flex items-center gap-2 text-sky-400 font-semibold hover:underline">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+              </svg>
+              Lihat Kode di GitHub →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="text-3xl font-bold text-white border-b border-slate-700/50 pb-2 mb-8 reveal">Galeri Fitur & Proses
+        Analisis</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="glass-card overflow-hidden reveal reveal-delay-1 cursor-pointer" onclick="openLightbox(this)"><img
+            src="./images/intern1.jpeg" alt="Dashboard" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h4 class="font-bold text-white">Dashboard Utama</h4>
+            <p class="text-sm text-slate-400 mt-1">Antarmuka utama yang menyajikan visualisasi konsumsi energi secara
+              keseluruhan.</p>
+          </div>
+        </div>
+        <div class="glass-card overflow-hidden reveal reveal-delay-2 cursor-pointer" onclick="openLightbox(this)"><img
+            src="./images/intern2.jpeg" alt="Preprocessing" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h4 class="font-bold text-white">Preprocessing: Pemisahan Data</h4>
+            <p class="text-sm text-slate-400 mt-1">Strukturisasi data mentah berdasarkan gedung dan perangkat untuk
+              analisis terperinci.</p>
+          </div>
+        </div>
+        <div class="glass-card overflow-hidden reveal reveal-delay-3 cursor-pointer" onclick="openLightbox(this)"><img
+            src="./images/intern3.jpeg" alt="Analisis" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h4 class="font-bold text-white">Grafik Analisis Konsumsi Energi OverTime</h4>
+            <p class="text-sm text-slate-400 mt-1">Grafik Analisis Konsumsi Energi Tiap Waktu.</p>
+          </div>
+        </div>
+        <div class="glass-card overflow-hidden reveal reveal-delay-1 cursor-pointer" onclick="openLightbox(this)"><img
+            src="./images/intern4.jpeg" alt="Building" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h4 class="font-bold text-white">Building Analysis</h4>
+            <p class="text-sm text-slate-400 mt-1">Tipe Devices di Gedung.</p>
+          </div>
+        </div>
+        <div class="glass-card overflow-hidden reveal reveal-delay-2 cursor-pointer" onclick="openLightbox(this)"><img
+            src="./images/intern5.jpeg" alt="Distribusi" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h4 class="font-bold text-white">Visualisasi Distribusi Rata rata Devices</h4>
+            <p class="text-sm text-slate-400 mt-1">Visualisasi Distribusi Rata rata Devices per Unit.</p>
+          </div>
+        </div>
+        <div class="glass-card overflow-hidden reveal reveal-delay-3 cursor-pointer" onclick="openLightbox(this)"><img
+            src="./images/intern6.jpeg" alt="Konsumsi" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h4 class="font-bold text-white">Visualisasi Konsumsi Energi</h4>
+            <p class="text-sm text-slate-400 mt-1">Tabel hasil kalkulasi total energi yang divisualisasikan.</p>
+          </div>
+        </div>
+        <div class="glass-card overflow-hidden reveal reveal-delay-1 cursor-pointer" onclick="openLightbox(this)"><img
+            src="./images/intern7.jpeg" alt="Distribusi Gedung" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h4 class="font-bold text-white">Distribusi Konsumsi Gedung</h4>
+            <p class="text-sm text-slate-400 mt-1">Analisa Distribusi Konsumsi Energi.</p>
+          </div>
+        </div>
+        <div class="glass-card overflow-hidden reveal reveal-delay-2 cursor-pointer" onclick="openLightbox(this)"><img
+            src="./images/intern10.jpeg" alt="Biaya" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h4 class="font-bold text-white">Analisis Struktur Biaya</h4>
+            <p class="text-sm text-slate-400 mt-1">Perhitungan detail CAPEX & OPEX sebagai dasar analisis ekonomi.</p>
+          </div>
+        </div>
+        <div class="glass-card overflow-hidden reveal reveal-delay-3 cursor-pointer" onclick="openLightbox(this)"><img
+            src="./images/intern11.jpeg" alt="Ekonomi" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h4 class="font-bold text-white">Analisis Kelayakan Ekonomi</h4>
+            <p class="text-sm text-slate-400 mt-1">Hasil akhir perhitungan Payback Period dan ROI untuk implementasi
+              sistem AI.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()"><img id="lightbox-img" src="" alt="Preview" /></div>
+  <script>
+    function openLightbox(el) { const img = el.querySelector('img'); document.getElementById('lightbox-img').src = img.src; document.getElementById('lightbox').classList.add('active'); }
+    function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+    const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(s => obs.observe(s));
+  </script>
+</body>
+
+</html>
