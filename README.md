@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
+  <img src="./src/app/opengraph-image.jpg" alt="Ferdiansyach Portfolio Preview" width="100%">
+  
+  <br />
+  <br />
 
-## Getting Started
+  # 🚀 Ferdiansyach — Personal Portfolio
+  
+  **Fullstack Developer & Data Analyst**
 
-First, run the development server:
+  [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+  [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+  [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+  [![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion/)
+  
+  <br />
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+  **[View Live Website](https://ferdiansyach-portfolio.vercel.app)** • **[Download CV PDF](https://ferdiansyach-portfolio.vercel.app/portfolio-pdf)**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+</div>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 👨‍💻 About This Project
 
-## Learn More
+This repository contains the source code for my personal portfolio website. It was designed and developed from scratch to showcase my skills, professional experience, and selected projects in both **Software Development** (Web, Fullstack) and **Data Science** (Machine Learning, Data Analysis).
 
-To learn more about Next.js, take a look at the following resources:
+The website emphasizes modern UI/UX principles, performance optimization, and clean code architecture.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ✨ Key Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **🌐 Bilingual Support (i18n):** Seamlessly switch between Indonesian (ID) and English (EN) without page reloads.
+- **🌙 Dark/Light Mode:** Full theme toggling support for optimal viewing experiences.
+- **📄 Native PDF Generation:** Includes a specialized, ATS-friendly `/portfolio-pdf` route designed specifically for printing/downloading a professional CV.
+- **✨ Advanced Animations:** Utilizing Framer Motion for fluid page transitions, scroll-linked animations, and interactive 3D card effects.
+- **📱 Fully Responsive:** Carefully crafted layouts that look perfect on mobile phones, tablets, and large desktop screens.
+- **⚡ High Performance:** Built with Next.js App Router, optimized images (`next/image`), and strict TypeScript typing.
 
-## Deploy on Vercel
+## 🛠️ Tech Stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Core
+- **Framework:** [Next.js (App Router)](https://nextjs.org/)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Deployment & Tools
+- **Hosting:** [Vercel](https://vercel.com/)
+- **Linting:** ESLint
+- **Icons:** Heroicons / Custom SVGs
+
+## 🚀 Getting Started (Local Development)
+
+If you'd like to clone this repository and run it locally to see the code in action:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/ferdiansyach/ferdiansyach-portfolio.git
+   ```
+
+2. **Navigate to the directory:**
+   ```bash
+   cd ferdiansyach-portfolio
+   ```
+
+3. **Install dependencies:**
+   ```bash
+   npm install
+   # or yarn install / pnpm install
+   ```
+
+4. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## 📬 Let's Connect
+
+I am always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+
+- **Email:** [iyanferdiansyach30@gmail.com](https://mail.google.com/mail/?view=cm&fs=1&to=iyanferdiansyach30@gmail.com)
+- **LinkedIn:** [linkedin.com/in/ferdiansyach-845930246](https://www.linkedin.com/in/ferdiansyach-845930246/)
+- **WhatsApp:** [+62 888 6007 599](https://wa.me/628886007599)
+
+---
+
+<div align="center">
+  <i>Designed & Developed by Ferdiansyach © 2026</i>
+</div>
