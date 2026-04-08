@@ -136,6 +136,14 @@ body {
   box-shadow: 0 20px 40px -12px rgba(56, 189, 248, 0.08);
 }
 
+/* ===== Hero floating badges ===== */
+.hero-badge {
+  background: rgba(30, 41, 59, 0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(71, 85, 105, 0.7);
+}
+
 /* ===== Section Divider ===== */
 .section-divider {
   height: 1px;
@@ -144,7 +152,9 @@ body {
   max-width: 200px;
 }
 
-/* ===== Light Mode Text Overrides ===== */
+/* ===== Light Mode Overrides ===== */
+
+/* --- Text --- */
 .light .text-white {
   color: #0f172a !important;
 }
@@ -160,20 +170,29 @@ body {
   color: #475569 !important;
 }
 
+/* --- Glass cards --- */
 .light .glass-card {
-  background: var(--bg-card);
-  border-color: var(--border-color);
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(203, 213, 225, 0.7);
+  box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.06);
 }
 
 .light .glass-card:hover {
-  box-shadow: 0 20px 40px -12px rgba(56, 189, 248, 0.12);
+  box-shadow: 0 20px 40px -12px rgba(56, 189, 248, 0.15),
+    0 4px 16px -4px rgba(0, 0, 0, 0.08);
 }
 
+/* --- Borders --- */
 .light .border-slate-700,
 .light .border-slate-800 {
   border-color: rgba(203, 213, 225, 0.6) !important;
 }
 
+.light .border-slate-600 {
+  border-color: rgba(203, 213, 225, 0.7) !important;
+}
+
+/* --- Backgrounds --- */
 .light .bg-slate-800\/50,
 .light .bg-slate-800\/60,
 .light .bg-slate-800\/90 {
@@ -194,6 +213,63 @@ body {
 
 .light .bg-slate-700\/50 {
   background: rgba(226, 232, 240, 0.5) !important;
+}
+
+.light .bg-slate-800 {
+  background: rgba(241, 245, 249, 1) !important;
+}
+
+/* --- Hero floating badges — keep dark for contrast in light mode --- */
+.light .hero-badge {
+  background: rgba(30, 41, 59, 0.88) !important;
+  border-color: rgba(71, 85, 105, 0.5) !important;
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Hero profile ring background --- */
+.light .hero-badge ~ .bg-slate-900 {
+  background: #f8fafc !important;
+}
+
+/* --- Navbar in light mode --- */
+.light header.bg-slate-900\/80,
+.light header[class*="bg-slate-900"] {
+  background: rgba(248, 250, 252, 0.85) !important;
+}
+
+/* --- Footer in light mode --- */
+.light footer {
+  border-color: rgba(203, 213, 225, 0.5) !important;
+}
+
+.light footer .bg-slate-800\/60 {
+  background: rgba(241, 245, 249, 0.9) !important;
+  border-color: rgba(203, 213, 225, 0.5) !important;
+}
+
+.light footer .text-white {
+  color: #1e293b !important;
+}
+
+/* --- Experience timeline in light mode --- */
+.light .border-l-sky-400 {
+  border-left-color: #38bdf8 !important;
+}
+
+/* --- Section divider in light mode --- */
+.light .section-divider {
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.3), transparent);
+}
+
+/* --- Skill bar background in light mode --- */
+.light .bg-slate-700\/50 {
+  background: rgba(226, 232, 240, 0.7) !important;
+}
+
+/* --- Contact card in light mode --- */
+.light .bg-slate-800\/40 {
+  background: rgba(248, 250, 252, 0.9) !important;
+  border-color: rgba(203, 213, 225, 0.6) !important;
 }
 
 /* ===== Keyframe Animations ===== */

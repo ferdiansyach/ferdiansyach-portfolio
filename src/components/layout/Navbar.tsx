@@ -23,6 +23,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [hoveredSection, setHoveredSection] = useState<string | null>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
@@ -72,30 +73,44 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className={`relative text-sm font-medium transition-colors duration-300 pb-1 ${
-                activeSection === item.href.slice(1)
-                  ? "text-sky-400"
-                  : "text-slate-300 hover:text-sky-400"
-              }`}
-            >
-              {t(item.label)}
-              <motion.span
-                className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-sky-400 to-indigo-500 rounded-full"
-                initial={false}
-                animate={{
-                  scaleX: activeSection === item.href.slice(1) ? 1 : 0,
-                  opacity: activeSection === item.href.slice(1) ? 1 : 0,
-                }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-                style={{ originX: 0.5 }}
-              />
-            </a>
-          ))}
+        <nav 
+          className="hidden md:flex items-center gap-2 relative"
+          onMouseLeave={() => setHoveredSection(null)}
+        >
+          {navItems.map((item) => {
+            const sectionId = item.href.slice(1);
+            const isActive = activeSection === sectionId;
+            const isHovered = hoveredSection === sectionId;
+
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                onMouseEnter={() => setHoveredSection(sectionId)}
+                className={`relative px-4 py-2 text-sm font-medium transition-colors duration-300 rounded-full z-10 ${
+                  isActive || isHovered ? "text-sky-400" : "text-slate-300"
+                }`}
+              >
+                {t(item.label)}
+                {/* Active Underline */}
+                {isActive && !isHovered && (
+                  <motion.span
+                    layoutId="activeNavLine"
+                    className="absolute -bottom-1 left-4 right-4 h-0.5 bg-gradient-to-r from-sky-400 to-indigo-500 rounded-full"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+                {/* Hover Pill */}
+                {isHovered && (
+                  <motion.span
+                    layoutId="navHoverPill"
+                    className="absolute inset-0 bg-sky-400/10 rounded-full -z-10 border border-sky-400/20"
+                    transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
+                  />
+                )}
+              </a>
+            );
+          })}
         </nav>
 
         {/* Toggle buttons */}

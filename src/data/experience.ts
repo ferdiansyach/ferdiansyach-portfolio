@@ -96,7 +96,7 @@ export const education: Education = {
     en: "Bachelor of Computer Science (S.Kom) — Information Systems",
   },
   period: "2022 — 2026",
-  gpa: "3.74",
+  gpa: "3.77",
   courses: [
     { id: "Pemrograman Web", en: "Web Programming" },
     { id: "Basis Data", en: "Database Systems" },

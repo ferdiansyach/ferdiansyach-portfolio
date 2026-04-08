@@ -5,6 +5,8 @@ import { ThemeProvider } from "@/hooks/useTheme";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ScrollToTop from "@/components/layout/ScrollToTop";
+import CursorGlow from "@/components/ui/CursorGlow";
+import PageLoader from "@/components/ui/PageLoader";
 import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/sections/AboutSection";
 import StatsSection from "@/components/sections/StatsSection";
@@ -20,7 +22,9 @@ export default function Home() {
   return (
     <ThemeProvider>
       <LanguageProvider>
+        <PageLoader />
         <Navbar />
+        <CursorGlow />
         <main>
           <HeroSection />
           <div className="section-divider" />

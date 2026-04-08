@@ -4,8 +4,8 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { translations } from "@/data/translations";
 import { education } from "@/data/experience";
 import SectionHeader from "@/components/ui/SectionHeader";
-import GlassCard from "@/components/ui/GlassCard";
-import { AnimatedSection, AnimatedDiv, slideRight } from "@/components/ui/AnimatedSection";
+import TiltCard from "@/components/ui/TiltCard";
+import { AnimatedSection, AnimatedDiv } from "@/components/ui/AnimatedSection";
 
 export default function EducationSection() {
   const { t } = useLanguage();
@@ -15,58 +15,106 @@ export default function EducationSection() {
       <AnimatedDiv>
         <SectionHeader label={translations.education.label} title={translations.education.title} />
       </AnimatedDiv>
-      <AnimatedDiv className="max-w-3xl mx-auto" variants={slideRight}>
-        <GlassCard delay={0} className="p-10 md:p-14">
-          <div className="flex flex-col md:flex-row md:items-start gap-8">
-            {/* University icon */}
-            <div className="w-16 h-16 shrink-0 rounded-2xl bg-gradient-to-br from-sky-500/20 to-indigo-500/20 flex items-center justify-center">
-              <svg className="w-8 h-8 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
-              </svg>
-            </div>
-
-            <div className="flex-1">
-              <h3 className="text-2xl font-bold text-white">{education.institution}</h3>
-              <p className="text-sky-400 font-semibold mt-1">{t(education.degree)}</p>
-              <p className="text-slate-400 text-sm mt-1">{education.period}</p>
-
-              {education.gpa && (
-                <div className="mt-4 inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 rounded-lg px-4 py-2">
-                  <span className="text-sky-400 font-bold text-lg">{education.gpa}</span>
-                  <span className="text-slate-400 text-sm">IPK / GPA</span>
-                </div>
-              )}
-
-              {education.thesis && (
-                <div className="mt-4">
-                  <p className="text-sm text-slate-400">
-                    <span className="text-white font-semibold">Skripsi: </span>
-                    {t(education.thesis)}
-                  </p>
-                </div>
-              )}
-
-              {/* Relevant courses */}
-              {education.courses && (
-                <div className="mt-6">
-                  <h4 className="text-sm font-semibold text-white mb-3">
-                    {t(translations.education.relevantCourses)}
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {education.courses.map((course, i) => (
-                      <span
-                        key={i}
-                        className="bg-slate-700/50 text-slate-300 border border-slate-600/50 px-3 py-1.5 rounded-lg text-xs font-medium hover:border-sky-400/30 hover:text-sky-400 transition-colors duration-300 cursor-default"
-                      >
-                        {t(course)}
-                      </span>
-                    ))}
+      
+      <AnimatedDiv className="max-w-4xl mx-auto mt-12">
+        <TiltCard maxTilt={3} glareEnabled={true}>
+          <div className="relative group overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-slate-800/80 to-slate-900/90 border border-slate-700/50 shadow-2xl">
+            {/* Background Glows */}
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-sky-500/10 blur-[100px] rounded-full z-0 group-hover:bg-sky-500/20 transition-colors duration-700 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-indigo-500/10 blur-[100px] rounded-full z-0 group-hover:bg-indigo-500/20 transition-colors duration-700 pointer-events-none" />
+            
+            <div className="relative z-10 p-8 md:p-14">
+              
+              {/* Header / Spotlight Area */}
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-10 pb-10 border-b border-slate-700/50">
+                <div className="flex items-center gap-6">
+                  {/* Glowing Cap Icon */}
+                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-sky-400/20 to-indigo-500/20 border border-sky-400/30 flex items-center justify-center shadow-[0_0_30px_rgba(56,189,248,0.2)] group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 shrink-0">
+                    <svg className="w-10 h-10 text-sky-400 drop-shadow-[0_0_10px_rgba(56,189,248,0.8)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                      <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0v6" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-300 mb-2 tracking-tight">
+                      {education.institution}
+                    </h3>
+                    <p className="text-xl text-sky-400 font-semibold">{t(education.degree)}</p>
                   </div>
                 </div>
-              )}
+                
+                {/* Period Badge */}
+                <div className="px-5 py-2.5 rounded-full bg-slate-800/80 border border-slate-700 shadow-inner shrink-0 whitespace-nowrap">
+                  <span className="text-sm font-bold tracking-widest text-slate-300 uppercase">
+                    {education.period}
+                  </span>
+                </div>
+              </div>
+
+              {/* Dashboard Content Grid */}
+              <div className="grid md:grid-cols-12 gap-8">
+                
+                {/* Highlights Panel */}
+                <div className="md:col-span-5 space-y-4">
+                  {education.gpa && (
+                    <div className="bg-slate-800/40 hover:bg-slate-800/60 transition-colors duration-300 rounded-2xl p-5 border border-slate-700/50 flex items-center gap-5">
+                      <div className="w-12 h-12 rounded-full bg-sky-500/10 border border-sky-400/20 flex items-center justify-center shrink-0">
+                        <svg className="w-6 h-6 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <p className="text-xs text-slate-400 font-bold uppercase tracking-widest mb-0.5">IPK / GPA</p>
+                        <p className="text-2xl font-black text-white drop-shadow-md">{education.gpa}</p>
+                      </div>
+                    </div>
+                  )}
+
+                  {education.thesis && (
+                    <div className="bg-slate-800/40 hover:bg-slate-800/60 transition-colors duration-300 rounded-2xl p-5 border border-slate-700/50">
+                      <p className="text-xs text-slate-400 font-bold uppercase tracking-widest mb-2 flex items-center gap-2">
+                        <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        Skripsi / Thesis
+                      </p>
+                      <p className="text-sm text-slate-300 font-medium leading-relaxed italic">
+                        "{t(education.thesis)}"
+                      </p>
+                    </div>
+                  )}
+                </div>
+
+                {/* Courses Panel */}
+                <div className="md:col-span-7 bg-slate-800/30 rounded-2xl p-6 border border-slate-700/30">
+                  <h4 className="text-sm font-bold text-slate-200 mb-5 flex items-center gap-2 uppercase tracking-wide">
+                    <svg className="w-5 h-5 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                    </svg>
+                    {t(translations.education.relevantCourses)}
+                  </h4>
+                  {education.courses && (
+                    <div className="flex flex-wrap gap-2.5">
+                      {education.courses.map((course, i) => (
+                        <div
+                          key={i}
+                          className="group/course relative px-4 py-2 bg-slate-800/80 border border-slate-700 rounded-lg hover:border-sky-400/50 hover:bg-sky-500/10 transition-all duration-300 cursor-default overflow-hidden"
+                        >
+                          <div className="absolute inset-0 bg-gradient-to-r from-sky-400/0 via-sky-400/5 to-sky-400/0 -translate-x-full group-hover/course:animate-[shine_1s_ease-in-out_inherit]" />
+                          <span className="relative z-10 text-xs font-semibold text-slate-300 group-hover/course:text-sky-300 transition-colors">
+                            {t(course)}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+              </div>
             </div>
           </div>
-        </GlassCard>
+        </TiltCard>
       </AnimatedDiv>
     </AnimatedSection>
   );

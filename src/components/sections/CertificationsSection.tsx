@@ -7,6 +7,7 @@ import { translations } from "@/data/translations";
 import { certifications } from "@/data/certifications";
 import SectionHeader from "@/components/ui/SectionHeader";
 import GlassCard from "@/components/ui/GlassCard";
+import TiltCard from "@/components/ui/TiltCard";
 import { AnimatedSection, AnimatedDiv } from "@/components/ui/AnimatedSection";
 
 type CertFilter = "all" | "technical" | "cloud" | "methodology" | "data";
@@ -60,28 +61,30 @@ export default function CertificationsSection() {
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.3, delay: i * 0.05 }}
             >
-              <GlassCard delay={0} className="p-8 md:p-10 group h-full">
-                <div className="flex items-start gap-5">
-                  <div className="w-14 h-14 shrink-0 rounded-xl bg-gradient-to-br from-sky-500/20 to-indigo-500/20 flex items-center justify-center text-3xl group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
-                    {cert.badge}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-base font-bold text-white leading-tight mb-1 group-hover:text-sky-400 transition-colors">
-                      {t(cert.name)}
-                    </h3>
-                    <p className="text-slate-400 text-sm">{cert.issuer}</p>
-                    <div className="flex items-center gap-2 mt-3">
-                      <span className="text-xs text-slate-500 font-medium">{cert.date}</span>
-                      <span className="inline-flex items-center gap-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded-full">
-                        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                        </svg>
-                        {t(translations.certifications.verified)}
-                      </span>
+              <TiltCard maxTilt={4} className="h-full">
+                <GlassCard delay={0} className="p-8 md:p-10 group h-full hover:border-sky-400/40">
+                  <div className="flex items-start gap-5">
+                    <div className="w-14 h-14 shrink-0 rounded-xl bg-gradient-to-br from-sky-500/20 to-indigo-500/20 flex items-center justify-center text-3xl group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                      {cert.badge}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-base font-bold text-white leading-tight mb-1 group-hover:text-sky-400 transition-colors">
+                        {t(cert.name)}
+                      </h3>
+                      <p className="text-slate-400 text-sm">{cert.issuer}</p>
+                      <div className="flex items-center gap-2 mt-3">
+                        <span className="text-xs text-slate-500 font-medium">{cert.date}</span>
+                        <span className="inline-flex items-center gap-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded-full">
+                          <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                          </svg>
+                          {t(translations.certifications.verified)}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </GlassCard>
+                </GlassCard>
+              </TiltCard>
             </motion.div>
           ))}
         </AnimatePresence>

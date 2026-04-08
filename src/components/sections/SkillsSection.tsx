@@ -35,17 +35,19 @@ export default function SkillsSection() {
       {/* Category tabs */}
       <AnimatedDiv className="flex flex-wrap justify-center gap-3 mb-12">
         {skillCategories.map((category, i) => (
-          <button
+          <motion.button
             key={i}
             onClick={() => setActiveTab(i)}
-            className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 border ${
+            whileHover={{ y: -3 }}
+            whileTap={{ scale: 0.95 }}
+            className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 border ${
               activeTab === i
                 ? "bg-gradient-to-r from-sky-500 to-indigo-500 text-white border-transparent shadow-lg shadow-sky-500/20"
                 : "border-slate-600 text-slate-400 hover:border-sky-400 hover:text-sky-400"
             }`}
           >
             {t(category.title)}
-          </button>
+          </motion.button>
         ))}
       </AnimatedDiv>
 
