@@ -5,8 +5,8 @@ export const projects: Project[] = [
     slug: "indosaji",
     title: "Indosaji E-commerce",
     description: {
-      id: "Aplikasi e-commerce makanan fullstack dengan MERN Stack.",
-      en: "Fullstack food e-commerce app built with the MERN Stack.",
+      id: "Platform e-commerce full-stack end-to-end berbasis MERN dengan integrasi payment gateway.",
+      en: "An end-to-end full-stack e-commerce platform based on MERN with payment gateway integration.",
     },
     longDescription: {
       id: "Indosaji adalah aplikasi web e-commerce yang dirancang khusus untuk industri makanan dan minuman. Proyek ini dikembangkan secara end-to-end, mencakup sisi klien (pengguna) dan sisi server (admin), untuk memberikan pengalaman belanja online yang mulus dan manajemen yang efisien. Sebagai Fullstack Developer, bertanggung jawab penuh atas arsitektur aplikasi, mulai dari perancangan skema database di MongoDB, pembuatan RESTful API menggunakan Node.js & Express, hingga pengembangan antarmuka pengguna (UI) yang dinamis dan interaktif dengan React. Proyek ini juga mengintegrasikan payment gateway Stripe untuk proses transaksi yang aman.",
@@ -36,8 +36,8 @@ export const projects: Project[] = [
     slug: "smart-meter",
     title: "Smart Meter Analysis",
     description: {
-      id: "Model machine learning untuk deteksi anomali konsumsi energi.",
-      en: "Machine learning model to detect energy consumption anomalies.",
+      id: "Model AI prediktif (LSTM & XGBoost) untuk deteksi anomali energi dengan dashboard interaktif real-time.",
+      en: "Predictive AI models (LSTM & XGBoost) for energy anomaly detection with a real-time interactive dashboard.",
     },
     longDescription: {
       id: "Proyek analisis data konsumsi energi smart meter menggunakan teknik machine learning untuk mendeteksi pola anomali dan mengoptimalkan efisiensi energi. Melibatkan pemrosesan data besar, feature engineering, dan implementasi model prediktif menggunakan Gradient Boosting dan LSTM. Dashboard interaktif dibangun menggunakan Streamlit untuk visualisasi hasil analisis secara real-time.",
@@ -65,8 +65,8 @@ export const projects: Project[] = [
     slug: "anambas",
     title: "Anambas Tourism Website",
     description: {
-      id: "Pengembangan komponen untuk web pariwisata dengan Next.js.",
-      en: "Component development for a tourism website using Next.js.",
+      id: "Platform pariwisata interaktif yang responsif, dibangun dengan ekosistem Next.js dan Tailwind CSS.",
+      en: "An interactive and responsive tourism platform built with the Next.js and Tailwind CSS ecosystem.",
     },
     longDescription: {
       id: "Proyek pengembangan website pariwisata untuk Kepulauan Anambas menggunakan Next.js dan Tailwind CSS. Bertanggung jawab dalam mengembangkan komponen-komponen UI yang menarik dan responsif, serta berkolaborasi dalam arsitektur front-end untuk meningkatkan performa website secara keseluruhan.",
@@ -93,8 +93,8 @@ export const projects: Project[] = [
     slug: "unasfest",
     title: "Website UNAS FEST",
     description: {
-      id: "Fullstack developer untuk website resmi festival universitas.",
-      en: "Fullstack developer for the university's official festival website.",
+      id: "Portal website resmi berskala besar untuk mendukung operasional festival tahunan universitas.",
+      en: "A large-scale official web portal to support the operations of the university's annual festival.",
     },
     longDescription: {
       id: "Website resmi untuk UNAS FEST (Universitas Nasional Festival), sebuah acara besar tahunan universitas. Dikembangkan sebagai fullstack developer yang bertanggung jawab dalam membangun komponen website yang responsif menggunakan TypeScript dan Tailwind CSS. Melakukan pengujian dan debugging komponen untuk memastikan stabilitas dan performa optimal.",
@@ -121,8 +121,8 @@ export const projects: Project[] = [
     slug: "himasi",
     title: "HIMASI UNAS Website",
     description: {
-      id: "Mengembangkan dan mengelola website resmi himpunan mahasiswa.",
-      en: "Developed and managed the official student association website.",
+      id: "Sistem Manajemen Konten (CMS) profesional yang dioptimalkan untuk organisasi himpunan mahasiswa.",
+      en: "A professional Content Management System (CMS) optimized for the student association.",
     },
     longDescription: {
       id: "Website resmi Himpunan Mahasiswa Sistem Informasi (HIMASI) Universitas Nasional. Bertanggung jawab dalam mengembangkan dan mengelola website menggunakan WordPress, termasuk pembuatan konten, manajemen plugin, dan optimasi performa untuk meningkatkan keterlibatan anggota himpunan.",
