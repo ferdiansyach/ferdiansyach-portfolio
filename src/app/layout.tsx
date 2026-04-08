@@ -51,7 +51,7 @@ const jsonLd = {
   "@type": "Person",
   name: "Ferdiansyach",
   jobTitle: "Fullstack Developer & Data Analyst",
-  url: "https://personalwebsite-olive-xi.vercel.app",
+  url: "https://ferdiansyach-portfolio.vercel.app",
   alumniOf: {
     "@type": "CollegeOrUniversity",
     name: "Universitas Nasional",

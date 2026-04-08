@@ -83,7 +83,7 @@ export default function PortfolioPDF() {
               <span className="text-gray-400">&bull;</span>
               <a href="https://github.com/ferdiansyach" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">github.com/ferdiansyach</a>
               <span className="text-gray-400">&bull;</span>
-              <a href="https://personalwebsite-olive-xi.vercel.app" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">personalwebsite-olive-xi.vercel.app</a>
+              <a href="https://ferdiansyach-portfolio.vercel.app" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">ferdiansyach-portfolio.vercel.app</a>
             </div>
           </header>
 
