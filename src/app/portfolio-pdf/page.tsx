@@ -32,7 +32,7 @@ export default function PortfolioPDF() {
       </Head>
 
       <div className="max-w-4xl mx-auto p-8 md:p-12 print:p-0 print:max-w-none">
-        
+
         {/* Controls (Hidden on Print) */}
         <div className="no-print flex justify-between items-center mb-8 pb-4 border-b border-gray-200">
           <div>
@@ -40,21 +40,21 @@ export default function PortfolioPDF() {
             <p className="text-sm text-gray-500">Press Ctrl+P or the button to save as A4 PDF.</p>
           </div>
           <div className="flex gap-4">
-            <select 
-              value={lang} 
+            <select
+              value={lang}
               onChange={(e) => setLang(e.target.value as "id" | "en")}
               className="border border-gray-300 rounded px-3 py-2 text-sm bg-white text-gray-700"
             >
               <option value="id">Bahasa Indonesia</option>
               <option value="en">English</option>
             </select>
-            <button 
+            <button
               onClick={() => window.print()}
               className="bg-blue-600 text-white px-5 py-2 rounded font-semibold hover:bg-blue-700 transition"
             >
               Download PDF
             </button>
-            <button 
+            <button
               onClick={() => window.close()}
               className="bg-gray-200 text-gray-700 px-5 py-2 rounded font-semibold hover:bg-gray-300 transition"
             >
@@ -71,11 +71,19 @@ export default function PortfolioPDF() {
             <div className="text-lg text-blue-700 font-semibold mb-3">
               Fullstack Developer & Data Analyst
             </div>
-            <div className="flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-600">
+            <div className="flex flex-wrap items-center gap-2 text-sm text-gray-700 font-medium">
               <span>Jakarta, Indonesia</span>
-              <span>github.com/ferdiansyach</span>
-              <span>linkedin.com/in/ferdiansyach-845930246</span>
-              <span>portfolio: ferdiansyach.vercel.app</span>
+              <span className="text-gray-400">&bull;</span>
+              <a href="mailto:iyanferdiansyach30@gmail.com" className="text-blue-700 hover:underline">iyanferdiansyach30@gmail.com</a>
+              <span className="text-gray-400">&bull;</span>
+              <span>+62 888 6007 599</span>
+            </div>
+            <div className="flex flex-wrap items-center gap-2 text-sm text-gray-700 font-medium mt-1">
+              <a href="https://www.linkedin.com/in/ferdiansyach-845930246" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">linkedin.com/in/ferdiansyach-845930246</a>
+              <span className="text-gray-400">&bull;</span>
+              <a href="https://github.com/ferdiansyach" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">github.com/ferdiansyach</a>
+              <span className="text-gray-400">&bull;</span>
+              <a href="https://personalwebsite-olive-xi.vercel.app" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">personalwebsite-olive-xi.vercel.app</a>
             </div>
           </header>
 
@@ -85,7 +93,7 @@ export default function PortfolioPDF() {
               {lang === "id" ? "Profil" : "Profile Summary"}
             </h2>
             <p className="text-sm text-gray-700 leading-relaxed text-justify">
-              {lang === "id" 
+              {lang === "id"
                 ? "Fullstack Developer dan Data Analyst dengan dedikasi tinggi. Memiliki fondasi kuat dalam membangun aplikasi web yang responsif serta merancang model Machine Learning (AI) yang prediktif. Terbiasa bekerja dalam tim, terstruktur dalam manajemen proyek, dan antusias untuk berkontribusi secara langsung pada solusi teknologi masa depan."
                 : "A highly dedicated Fullstack Developer and Data Analyst. Possesses a strong foundation in building responsive web applications and designing predictive Machine Learning (AI) models. Accustomed to working in teams, structured in project management, and enthusiastic to contribute directly to future technological solutions."
               }
@@ -178,7 +186,7 @@ export default function PortfolioPDF() {
               ))}
             </div>
           </section>
-          
+
           {/* Certifications Overview */}
           <section style={{ pageBreakInside: "avoid" }}>
             <h2 className="text-xl font-bold text-gray-800 border-b border-gray-300 mb-3 pb-1 uppercase tracking-wide">
