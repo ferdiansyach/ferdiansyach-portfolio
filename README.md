@@ -1,9 +1,4 @@
 <div align="center">
-  <img src="./src/app/opengraph-image.jpg" alt="Ferdiansyach Portfolio Preview" width="100%">
-  
-  <br />
-  <br />
-
   # 🚀 Ferdiansyach — Personal Portfolio
   
   **Fullstack Developer & Data Analyst**
