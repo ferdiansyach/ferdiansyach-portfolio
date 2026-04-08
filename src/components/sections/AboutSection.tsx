@@ -53,8 +53,8 @@ export default function AboutSection() {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {aboutCards.map((card, i) => (
           <AnimatedDiv key={i} variants={fadeUp}>
-            <GlassCard delay={0} className={`p-10 md:p-12 text-center h-full ${card.borderHover} transition-all duration-500`}>
-              <div className={`w-16 h-16 mx-auto mb-8 rounded-2xl bg-gradient-to-br ${card.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+            <GlassCard delay={0} className={`p-10 md:p-12 text-left h-full ${card.borderHover} transition-all duration-500 group`}>
+              <div className={`w-16 h-16 mb-8 rounded-2xl bg-gradient-to-br ${card.gradient} flex items-center justify-center group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 origin-bottom-left`}>
                 {card.icon}
               </div>
               <h3 className="text-xl font-bold text-white mb-5">{t(card.title)}</h3>
