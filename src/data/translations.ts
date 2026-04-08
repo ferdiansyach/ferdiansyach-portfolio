@@ -25,18 +25,18 @@ export const translations = {
     title: { id: "Kandidat yang Tepat di Bidang Teknologi", en: "The Right Candidate in Tech" },
     card1Title: { id: "Developer Website & Sistem", en: "Website & System Developer" },
     card1Desc: {
-      id: "Fondasi kuat dalam HTML, CSS, JavaScript, dan Python. Berpengalaman dengan WordPress, terbukti dalam proyek website HIMASI. Siap mengembangkan dan mengelola sistem yang andal.",
-      en: "Strong foundation in HTML, CSS, JavaScript, and Python. Experienced with WordPress, proven in the HIMASI website project. Ready to develop and manage robust systems.",
+      id: "Spesialis dalam mengembangkan antarmuka web modern dan responsif. Terbukti berhasil merancang arsitektur front-end berkinerja tinggi menggunakan ekosistem React, Next.js, dan Tailwind CSS untuk berbagai proyek nyata.",
+      en: "Specializes in developing modern and responsive web interfaces. Proven track record in designing high-performance front-end architectures using React, Next.js, and Tailwind CSS ecosystems for real-world projects.",
     },
     card2Title: { id: "Fullstack Ready", en: "Fullstack Ready" },
     card2Desc: {
-      id: "Pengalaman langsung membangun aplikasi end-to-end dengan MERN stack (React, Node.js). Bersemangat untuk belajar dan beradaptasi dengan framework baru seperti Laravel.",
-      en: "Hands-on experience building end-to-end applications with the MERN stack (React, Node.js). Eager to learn and adapt to new frameworks like Laravel.",
+      id: "Mampu merancang arsitektur aplikasi secara menyeluruh (Frontend & Backend). Berpengalaman membangun platform e-commerce kompleks berbasis MERN Stack yang dilengkapi dengan sistem autentikasi keamanan dan integrasi payment gateway.",
+      en: "Capable of designing comprehensive application architectures (Frontend & Backend). Experienced in building complex e-commerce platforms based on the MERN Stack, equipped with secure authentication and payment gateway integration.",
     },
     card3Title: { id: "Data-Driven Analyst", en: "Data-Driven Analyst" },
     card3Desc: {
-      id: "Mahir dalam analisis data menggunakan Python dan Excel tingkat lanjut. Berpengalaman mengimplementasikan model machine learning dan familiar dengan SQL untuk kueri data.",
-      en: "Proficient in data analysis using Python and advanced Excel. Experience in implementing machine learning models and familiar with SQL for data querying.",
+      id: "Memiliki ketajaman analitik dengan Python. Membuktikan kompetensinya di Telkom Indonesia dengan mengelola pipeline data berskala besar dan membangun model Machine Learning prediktif (XGBoost, LSTM) untuk optimasi efisiensi.",
+      en: "Possesses sharp analytical acumen using Python. Proved competence at Telkom Indonesia by managing large-scale data pipelines and building predictive Machine Learning models (XGBoost, LSTM) for efficiency optimization.",
     },
   },
   skills: {
