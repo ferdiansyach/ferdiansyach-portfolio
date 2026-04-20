@@ -18,18 +18,18 @@ export default function EducationSection() {
       
       <AnimatedDiv className="max-w-4xl mx-auto mt-12">
         <TiltCard maxTilt={3} glareEnabled={true}>
-          <div className="relative group overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-white/90 to-slate-50 border border-slate-200 dark:from-slate-800/80 dark:to-slate-900/90 dark:border-slate-700/50 shadow-2xl transition-colors duration-300">
+          <div className="relative group overflow-hidden rounded-2xl sm:rounded-[2.5rem] bg-gradient-to-br from-white/90 to-slate-50 border border-slate-200 dark:from-slate-800/80 dark:to-slate-900/90 dark:border-slate-700/50 shadow-2xl transition-colors duration-300">
             {/* Background Glows */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-rose-500/10 blur-[100px] rounded-full z-0 group-hover:bg-rose-500/20 transition-colors duration-700 pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-fuchsia-500/10 blur-[100px] rounded-full z-0 group-hover:bg-fuchsia-500/20 transition-colors duration-700 pointer-events-none" />
             
-            <div className="relative z-10 p-8 md:p-14">
+            <div className="relative z-10 p-5 sm:p-8 md:p-14">
               
               {/* Header / Spotlight Area */}
               <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-10 pb-10 border-b border-slate-200 dark:border-slate-700/50 transition-colors duration-300">
                 <div className="flex items-center gap-6">
                   {/* Glowing Cap Icon */}
-                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-rose-400/20 to-fuchsia-500/20 border border-rose-400/30 flex items-center justify-center shadow-[0_0_30px_rgba(56,189,248,0.2)] group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 shrink-0">
+                  <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl bg-gradient-to-br from-rose-400/20 to-fuchsia-500/20 border border-rose-400/30 flex items-center justify-center shadow-[0_0_30px_rgba(56,189,248,0.2)] group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 shrink-0">
                     <svg className="w-10 h-10 text-rose-400 drop-shadow-[0_0_10px_rgba(56,189,248,0.8)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path d="M12 14l9-5-9-5-9 5 9 5z" />
                       <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
@@ -37,10 +37,10 @@ export default function EducationSection() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-3xl md:text-4xl font-black text-slate-800 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-white dark:to-slate-300 mb-2 tracking-tight transition-colors duration-300">
+                    <h3 className="text-xl sm:text-3xl md:text-4xl font-black text-slate-800 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-white dark:to-slate-300 mb-2 tracking-tight transition-colors duration-300">
                       {education.institution}
                     </h3>
-                    <p className="text-xl text-rose-500 dark:text-rose-400 font-semibold">{t(education.degree)}</p>
+                    <p className="text-sm sm:text-xl text-rose-500 dark:text-rose-400 font-semibold">{t(education.degree)}</p>
                   </div>
                 </div>
                 

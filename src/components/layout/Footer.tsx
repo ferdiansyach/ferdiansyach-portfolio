@@ -18,7 +18,7 @@ export default function Footer() {
       {/* Gradient divider */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-px bg-gradient-to-r from-transparent via-rose-400/40 to-transparent" />
 
-      <div className="container mx-auto px-6 py-10">
+      <div className="container mx-auto px-6 pt-10 pb-20 sm:pb-10">
         <div className="flex flex-col items-center gap-6">
           {/* Social links */}
           <div className="flex justify-center gap-6">

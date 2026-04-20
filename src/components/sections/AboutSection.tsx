@@ -55,8 +55,8 @@ export default function AboutSection() {
         {aboutCards.map((card, i) => (
           <AnimatedDiv key={i} variants={fadeUp}>
             <TiltCard maxTilt={6}>
-              <GlassCard delay={0} className={`p-10 md:p-12 text-left h-full ${card.borderHover} transition-all duration-500 group`}>
-                <div className={`w-16 h-16 mb-8 rounded-2xl bg-gradient-to-br ${card.gradient} flex items-center justify-center group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 origin-bottom-left`}>
+              <GlassCard delay={0} className={`p-6 sm:p-8 md:p-12 text-left h-full ${card.borderHover} transition-all duration-500 group`}>
+                <div className={`w-14 h-14 sm:w-16 sm:h-16 mb-5 sm:mb-8 rounded-2xl bg-gradient-to-br ${card.gradient} flex items-center justify-center group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 origin-bottom-left`}>
                   {card.icon}
                 </div>
                 <h3 className="text-xl font-bold text-white mb-5">{t(card.title)}</h3>

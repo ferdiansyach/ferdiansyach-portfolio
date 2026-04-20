@@ -72,6 +72,7 @@ export default function PortfolioPDF() {
             padding: 0 !important;
             box-shadow: none !important;
             border-radius: 0 !important;
+            transform: none !important;
           }
 
           .cv-inner {
@@ -88,6 +89,10 @@ export default function PortfolioPDF() {
             page-break-inside: avoid;
             break-inside: avoid;
           }
+
+          .cert-grid {
+            grid-template-columns: 1fr 1fr !important;
+          }
         }
 
         @media screen {
@@ -102,22 +107,166 @@ export default function PortfolioPDF() {
             border: 1px solid #e2e8f0;
           }
         }
+
+        /* ===== RESPONSIVE: Scale A4 on smaller screens ===== */
+        @media screen and (max-width: 860px) {
+          .cv-page {
+            width: 100% !important;
+            min-height: auto !important;
+            margin: 0 auto 32px !important;
+            border-radius: 0 !important;
+            border-left: none !important;
+            border-right: none !important;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08) !important;
+          }
+
+          .cv-inner {
+            padding: 24px 20px !important;
+          }
+        }
+
+        @media screen and (max-width: 480px) {
+          .cv-inner {
+            padding: 20px 16px !important;
+          }
+
+          .cv-section-title {
+            font-size: 10.5px;
+          }
+        }
+
+        /* ===== RESPONSIVE: Contact info wrapping ===== */
+        .contact-row {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 4px 8px;
+          font-size: 9px;
+          color: #475569;
+          margin-top: 6px;
+          line-height: 1.4;
+        }
+
+        @media screen and (max-width: 560px) {
+          .contact-row {
+            gap: 3px 6px;
+            font-size: 8.5px;
+          }
+
+          .contact-separator {
+            display: none;
+          }
+
+          .contact-row {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 2px;
+          }
+        }
+
+        /* ===== RESPONSIVE: Certifications grid ===== */
+        .cert-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 2px 24px;
+        }
+
+        @media screen and (max-width: 560px) {
+          .cert-grid {
+            grid-template-columns: 1fr;
+            gap: 3px;
+          }
+        }
+
+        /* ===== RESPONSIVE: Experience row ===== */
+        .exp-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: baseline;
+        }
+
+        @media screen and (max-width: 480px) {
+          .exp-header {
+            flex-direction: column;
+            gap: 1px;
+          }
+        }
+
+        /* ===== RESPONSIVE: Toolbar ===== */
+        .toolbar-inner {
+          max-width: 56rem;
+          margin: 0 auto;
+          padding: 12px 24px;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          align-items: center;
+          gap: 12px;
+        }
+
+        @media screen and (max-width: 560px) {
+          .toolbar-inner {
+            padding: 10px 16px;
+            gap: 10px;
+          }
+
+          .toolbar-actions {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            gap: 6px;
+          }
+
+          .toolbar-actions select,
+          .toolbar-actions button {
+            flex: 1;
+            min-width: 0;
+            justify-content: center;
+            text-align: center;
+          }
+
+          .toolbar-title-main {
+            font-size: 13px !important;
+          }
+
+          .toolbar-title-sub {
+            font-size: 11px !important;
+          }
+        }
+
+        @media screen and (max-width: 380px) {
+          .toolbar-actions {
+            flex-wrap: wrap;
+          }
+
+          .toolbar-actions select {
+            flex: 1 1 100%;
+          }
+
+          .toolbar-actions button {
+            flex: 1 1 45%;
+          }
+        }
       `}</style>
 
       <div className="bg-gray-100 min-h-screen">
         {/* ===== TOOLBAR ===== */}
         <div className="no-print bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-          <div className="max-w-4xl mx-auto px-6 py-3 flex flex-wrap justify-between items-center gap-3">
+          <div className="toolbar-inner">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">
+              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
                 CV
               </div>
               <div>
-                <h1 className="text-sm font-bold text-gray-800">Resume Preview — 1 Page</h1>
-                <p className="text-xs text-gray-500">Optimized for corporate (PT) applications</p>
+                <h1 className="toolbar-title-main" style={{ fontSize: '14px', fontWeight: 700, color: '#1e293b' }}>
+                  {lang === "id" ? "Pratinjau Resume — 1 Halaman" : "Resume Preview — 1 Page"}
+                </h1>
+                <p className="toolbar-title-sub" style={{ fontSize: '12px', color: '#64748b' }}>
+                  {lang === "id" ? "Dioptimalkan untuk lamaran kerja korporat" : "Optimized for corporate job applications"}
+                </p>
               </div>
             </div>
-            <div className="flex gap-2 items-center">
+            <div className="toolbar-actions flex gap-2 items-center">
               <select
                 value={lang}
                 onChange={(e) => setLang(e.target.value as "id" | "en")}
@@ -131,13 +280,14 @@ export default function PortfolioPDF() {
                 className="bg-blue-600 text-white px-4 py-1.5 rounded-lg font-semibold hover:bg-blue-700 transition text-sm shadow-sm flex items-center gap-1.5"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                Download PDF
+                <span className="hidden sm:inline">Download PDF</span>
+                <span className="sm:hidden">PDF</span>
               </button>
               <button
                 onClick={() => window.history.back()}
                 className="bg-gray-100 text-gray-600 px-3 py-1.5 rounded-lg font-medium hover:bg-gray-200 transition text-sm border border-gray-200"
               >
-                ← Back
+                ← {lang === "id" ? "Kembali" : "Back"}
               </button>
             </div>
           </div>
@@ -153,19 +303,19 @@ export default function PortfolioPDF() {
                 Ferdiansyach
               </h1>
               <div style={{ fontSize: '12px', color: '#1d4ed8', fontWeight: 600, marginTop: '3px' }}>
-                Fullstack Developer & Data Analyst
+                Fullstack Developer &amp; Data Analyst
               </div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '4px 8px', fontSize: '9px', color: '#475569', marginTop: '6px', lineHeight: 1.4 }}>
+              <div className="contact-row">
                 <span>Jakarta, Indonesia</span>
-                <span style={{ color: '#cbd5e1' }}>|</span>
+                <span className="contact-separator" style={{ color: '#cbd5e1' }}>|</span>
                 <a href="mailto:iyanferdiansyach30@gmail.com" style={{ color: '#1d4ed8' }}>iyanferdiansyach30@gmail.com</a>
-                <span style={{ color: '#cbd5e1' }}>|</span>
+                <span className="contact-separator" style={{ color: '#cbd5e1' }}>|</span>
                 <span>+62 888 6007 599</span>
-                <span style={{ color: '#cbd5e1' }}>|</span>
+                <span className="contact-separator" style={{ color: '#cbd5e1' }}>|</span>
                 <a href="https://linkedin.com/in/ferdiansyach-845930246" style={{ color: '#1d4ed8' }}>linkedin.com/in/ferdiansyach</a>
-                <span style={{ color: '#cbd5e1' }}>|</span>
+                <span className="contact-separator" style={{ color: '#cbd5e1' }}>|</span>
                 <a href="https://github.com/ferdiansyach" style={{ color: '#1d4ed8' }}>github.com/ferdiansyach</a>
-                <span style={{ color: '#cbd5e1' }}>|</span>
+                <span className="contact-separator" style={{ color: '#cbd5e1' }}>|</span>
                 <a href="https://ferdiansyach-portfolio.vercel.app" style={{ color: '#1d4ed8' }}>ferdiansyach-portfolio.vercel.app</a>
               </div>
               <div style={{ borderBottom: '2px solid #1e293b', marginTop: '8px' }} />
@@ -174,12 +324,12 @@ export default function PortfolioPDF() {
             {/* ===== PROFILE SUMMARY ===== */}
             <section style={{ marginBottom: '10px' }}>
               <h2 className="cv-section-title">
-                {lang === "id" ? "PROFIL" : "PROFILE SUMMARY"}
+                {lang === "id" ? "PROFIL PROFESIONAL" : "PROFESSIONAL SUMMARY"}
               </h2>
               <p style={{ fontSize: '9.5px', color: '#374151', lineHeight: 1.55, textAlign: 'justify', margin: 0 }}>
                 {lang === "id"
-                  ? "Lulusan S1 Sistem Informasi (IPK 3.77) dengan pengalaman magang di Telkom Indonesia. Terampil membangun aplikasi web full-stack (React, Node.js, Next.js) dan model Machine Learning prediktif (Python, LSTM, XGBoost). Bersertifikasi BNSP Junior Web Developer dan IT Specialist Python. Memiliki pengalaman kepemimpinan organisasi dan kolaborasi tim lintas fungsi. Siap berkontribusi langsung pada pengembangan solusi teknologi di lingkungan profesional."
-                  : "Information Systems graduate (GPA 3.77) with internship experience at Telkom Indonesia. Skilled in building full-stack web applications (React, Node.js, Next.js) and predictive Machine Learning models (Python, LSTM, XGBoost). BNSP-certified Junior Web Developer and Certiport IT Specialist in Python. Experienced in organizational leadership and cross-functional team collaboration. Ready to contribute directly to technology solutions in a professional environment."
+                  ? "Sarjana Sistem Informasi dari Universitas Nasional (IPK 3.77) dengan pengalaman profesional di Telkom Indonesia. Menguasai pengembangan aplikasi web full-stack menggunakan React, Node.js, dan Next.js, serta pemodelan Machine Learning prediktif dengan Python, LSTM, dan XGBoost. Tersertifikasi BNSP sebagai Junior Web Developer dan Certiport IT Specialist di bidang Python. Berpengalaman dalam kepemimpinan organisasi serta kolaborasi tim lintas fungsi. Berdedikasi untuk memberikan solusi teknologi inovatif dalam lingkungan kerja profesional."
+                  : "Information Systems graduate from Universitas Nasional (GPA 3.77) with professional experience at Telkom Indonesia. Proficient in full-stack web development using React, Node.js, and Next.js, as well as predictive Machine Learning modeling with Python, LSTM, and XGBoost. BNSP-certified Junior Web Developer and Certiport IT Specialist in Python. Experienced in organizational leadership and cross-functional team collaboration. Committed to delivering innovative technology solutions in a professional environment."
                 }
               </p>
             </section>
@@ -187,12 +337,12 @@ export default function PortfolioPDF() {
             {/* ===== EXPERIENCE — All 5 ===== */}
             <section style={{ marginBottom: '10px' }}>
               <h2 className="cv-section-title">
-                {lang === "id" ? "PENGALAMAN" : "EXPERIENCE"}
+                {lang === "id" ? "PENGALAMAN PROFESIONAL" : "PROFESSIONAL EXPERIENCE"}
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
                 {experiences.map((exp) => (
                   <div key={exp.id}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                    <div className="exp-header">
                       <h3 style={{ fontSize: '10.5px', fontWeight: 700, color: '#0f172a', margin: 0 }}>{t(exp.role)}</h3>
                       <span style={{ fontSize: '8.5px', fontWeight: 500, color: '#64748b', whiteSpace: 'nowrap', marginLeft: '12px' }}>{exp.period}</span>
                     </div>
@@ -215,14 +365,14 @@ export default function PortfolioPDF() {
                 {lang === "id" ? "PENDIDIKAN" : "EDUCATION"}
               </h2>
               <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                <div className="exp-header">
                   <h3 style={{ fontSize: '10.5px', fontWeight: 700, color: '#0f172a', margin: 0 }}>{education.institution}</h3>
                   <span style={{ fontSize: '8.5px', fontWeight: 500, color: '#64748b', whiteSpace: 'nowrap', marginLeft: '12px' }}>{education.period}</span>
                 </div>
                 <div style={{ fontSize: '9.5px', color: '#1e293b', fontWeight: 600 }}>{t(education.degree)}</div>
                 {education.gpa && (
                   <div style={{ fontSize: '9px', color: '#475569' }}>
-                    <span style={{ fontWeight: 700, color: '#1e293b' }}>IPK/GPA:</span> {education.gpa}
+                    <span style={{ fontWeight: 700, color: '#1e293b' }}>{lang === "id" ? "IPK:" : "GPA:"}</span> {education.gpa}
                   </div>
                 )}
                 {education.courses && (
@@ -237,7 +387,7 @@ export default function PortfolioPDF() {
             {/* ===== TECHNICAL SKILLS ===== */}
             <section style={{ marginBottom: '10px' }}>
               <h2 className="cv-section-title">
-                {lang === "id" ? "KEAHLIAN TEKNIS" : "TECHNICAL SKILLS"}
+                {lang === "id" ? "KOMPETENSI TEKNIS" : "TECHNICAL SKILLS"}
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
                 {skillCategories.map((cat, i) => (
@@ -254,12 +404,12 @@ export default function PortfolioPDF() {
             {/* ===== SELECTED PROJECTS — 3 projects ===== */}
             <section style={{ marginBottom: '10px' }}>
               <h2 className="cv-section-title">
-                {lang === "id" ? "PROYEK PILIHAN" : "SELECTED PROJECTS"}
+                {lang === "id" ? "PROYEK UNGGULAN" : "SELECTED PROJECTS"}
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                 {topProjects.map((proj) => (
                   <div key={proj.slug}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                    <div className="exp-header">
                       <h3 style={{ fontSize: '10px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
                         {typeof proj.title === 'string' ? proj.title : t(proj.title)}
                       </h3>
@@ -283,9 +433,9 @@ export default function PortfolioPDF() {
             {/* ===== CERTIFICATIONS — All 6 ===== */}
             <section>
               <h2 className="cv-section-title">
-                {lang === "id" ? "SERTIFIKASI" : "CERTIFICATIONS"}
+                {lang === "id" ? "SERTIFIKASI & LISENSI" : "CERTIFICATIONS & LICENSES"}
               </h2>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2px 24px' }}>
+              <div className="cert-grid">
                 {certifications.map((cert) => (
                   <div key={cert.id} style={{ fontSize: '9px', color: '#374151', lineHeight: 1.55 }}>
                     <span style={{ fontWeight: 700, color: '#0f172a' }}>{t(cert.name)}</span>
