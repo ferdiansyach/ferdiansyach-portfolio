@@ -109,10 +109,10 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_600px_600px_at_20%_50%,rgba(251,113,133,0.12),transparent),radial-gradient(ellipse_500px_500px_at_80%_20%,rgba(217,70,239,0.10),transparent),radial-gradient(ellipse_400px_400px_at_60%_80%,rgba(139,92,246,0.07),transparent)] animate-mesh" />
       </div>
 
-      <div className="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center justify-between gap-16 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 flex flex-col-reverse md:flex-row items-center justify-between gap-8 md:gap-16 relative z-10">
         {/* Text content: staggered entrance */}
         <motion.div
-          className="md:w-3/5 text-left"
+          className="w-full md:w-3/5 text-left"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -125,7 +125,7 @@ export default function HeroSection() {
           {/* Subtitle */}
           <motion.p
             variants={itemVariants}
-            className="text-rose-400 font-semibold text-lg tracking-wide uppercase"
+            className="text-rose-400 font-semibold text-xs sm:text-sm md:text-lg tracking-normal sm:tracking-wide uppercase leading-snug"
           >
             {t(translations.hero.subtitle)}
           </motion.p>
@@ -133,7 +133,7 @@ export default function HeroSection() {
           {/* Name — gradient text with shimmer */}
           <motion.h1
             variants={itemVariants}
-            className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mt-3"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black leading-tight mt-2 sm:mt-3 tracking-tighter sm:tracking-normal whitespace-normal"
           >
             <span className="text-white">{t(translations.hero.greeting)} </span>
             <span className="relative">
@@ -153,7 +153,7 @@ export default function HeroSection() {
           {/* Typing effect */}
           <motion.p
             variants={itemVariants}
-            className="mt-6 text-xl md:text-3xl text-slate-300 font-semibold h-10"
+            className="mt-4 sm:mt-6 text-base sm:text-xl md:text-3xl text-slate-300 font-semibold h-10"
           >
             <span>{displayText}</span>
             <span className="border-r-[3px] border-rose-400 animate-blink ml-0.5">&nbsp;</span>
@@ -182,7 +182,7 @@ export default function HeroSection() {
           {/* Mini stats row */}
           <motion.div
             variants={itemVariants}
-            className="mt-8 flex items-center justify-start gap-8"
+            className="mt-6 sm:mt-8 flex flex-wrap items-center justify-start gap-x-4 gap-y-3 sm:gap-6 md:gap-8"
           >
             {statsItems.map((stat, i) => (
               <div key={i} className="flex items-center gap-2">
@@ -259,7 +259,7 @@ export default function HeroSection() {
 
         {/* Profile image with animated ring */}
         <motion.div
-          className="md:w-2/5 flex justify-center md:justify-end"
+          className="w-full md:w-2/5 flex justify-center md:justify-end"
           variants={imageVariants}
           initial="hidden"
           animate="visible"

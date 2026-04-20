@@ -62,7 +62,7 @@ export default function CertificationsSection() {
               transition={{ duration: 0.3, delay: i * 0.05 }}
             >
               <TiltCard maxTilt={4} className="h-full">
-                <GlassCard delay={0} className="p-8 md:p-10 group h-full hover:border-rose-400/40">
+                <GlassCard delay={0} className="p-5 sm:p-8 md:p-10 group h-full hover:border-rose-400/40">
                   <div className="flex items-start gap-5">
                     <div className="w-14 h-14 shrink-0 rounded-xl bg-gradient-to-br from-rose-500/20 to-fuchsia-500/20 flex items-center justify-center text-3xl group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
                       {cert.badge}

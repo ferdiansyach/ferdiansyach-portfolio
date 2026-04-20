@@ -94,7 +94,7 @@ export default function ContactSection() {
   return (
     <AnimatedSection id="contact" className="py-32 container mx-auto px-6">
       <AnimatedDiv className="max-w-4xl mx-auto">
-        <div className="bg-gradient-to-br from-rose-400/10 via-fuchsia-500/10 to-violet-500/10 border border-rose-400/15 rounded-[2.5rem] p-10 md:p-16 relative overflow-hidden">
+        <div className="bg-gradient-to-br from-rose-400/10 via-fuchsia-500/10 to-violet-500/10 border border-rose-400/15 rounded-2xl sm:rounded-[2.5rem] p-6 sm:p-10 md:p-16 relative overflow-hidden">
           {/* Background glow */}
           <div className="absolute -top-24 -right-24 w-64 h-64 bg-rose-500/10 rounded-full blur-3xl" />
           <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-fuchsia-500/10 rounded-full blur-3xl" />

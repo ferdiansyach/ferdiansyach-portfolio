@@ -38,7 +38,7 @@ function TimelineItem({ exp, index }: { exp: typeof experiences[0]; index: numbe
       </div>
 
       {/* Card */}
-      <div className="glass-card p-10 md:p-12 border-l-[3px] border-l-rose-400 hover:translate-x-1 hover:shadow-[0_8px_30px_-8px_rgba(56,189,248,0.15)] transition-all duration-300">
+      <div className="glass-card p-6 sm:p-8 md:p-12 border-l-[3px] border-l-rose-400 hover:translate-x-1 hover:shadow-[0_8px_30px_-8px_rgba(56,189,248,0.15)] transition-all duration-300">
         <div className="flex items-center gap-3 mb-3">
           <span className="text-rose-400 text-xs font-semibold tracking-wide">{exp.period}</span>
           {exp.isCurrent && (

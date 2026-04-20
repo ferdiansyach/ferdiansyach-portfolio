@@ -81,7 +81,7 @@ export default function TestimonialsSection() {
       </AnimatedDiv>
       <AnimatedDiv className="max-w-3xl mx-auto">
         <div
-          className="glass-card p-10 md:p-14 relative overflow-hidden"
+          className="glass-card p-6 sm:p-8 md:p-14 relative overflow-hidden"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
