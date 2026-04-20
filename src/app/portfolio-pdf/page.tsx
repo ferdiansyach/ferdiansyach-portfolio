@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Head from "next/head";
 import { experiences, education } from "@/data/experience";
 import { skillCategories } from "@/data/skills";
 import { projects } from "@/data/projects";
@@ -11,16 +10,11 @@ export default function PortfolioPDF() {
   const [lang, setLang] = useState<"id" | "en">("id");
 
   useEffect(() => {
-    // Sync language from localStorage if available
     const savedLang = localStorage.getItem("lang") as "id" | "en";
     if (savedLang) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setLang(savedLang);
     }
-
-    // Provide a small delay before triggering print so fonts load
-    // Commented out automatic print so user can preview before printing
-    // setTimeout(() => window.print(), 1000);
   }, []);
 
   const t = (textObj: { id: string; en: string } | string) => {
@@ -28,184 +22,282 @@ export default function PortfolioPDF() {
     return textObj[lang];
   };
 
+  // Show all experiences, top 3 projects, all certifications
+  const topProjects = projects.slice(0, 3);
+
   return (
-    <div className="bg-white min-h-screen text-black print:bg-white print:text-black antialiased font-sans">
-      <Head>
-        <title>Ferdiansyach - Professional Portfolio</title>
-      </Head>
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-      <div className="max-w-4xl mx-auto p-8 md:p-12 print:p-0 print:max-w-none">
+        .cv-page * {
+          font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+        }
 
-        {/* Controls (Hidden on Print) */}
-        <div className="no-print flex justify-between items-center mb-8 pb-4 border-b border-gray-200">
-          <div>
-            <h1 className="text-xl font-bold text-gray-800">Print Preview</h1>
-            <p className="text-sm text-gray-500">Press Ctrl+P or the button to save as A4 PDF.</p>
-          </div>
-          <div className="flex gap-4">
-            <select
-              value={lang}
-              onChange={(e) => setLang(e.target.value as "id" | "en")}
-              className="border border-gray-300 rounded px-3 py-2 text-sm bg-white text-gray-700"
-            >
-              <option value="id">Bahasa Indonesia</option>
-              <option value="en">English</option>
-            </select>
-            <button
-              onClick={() => window.print()}
-              className="bg-blue-600 text-white px-5 py-2 rounded font-semibold hover:bg-blue-700 transition"
-            >
-              Download PDF
-            </button>
-            <button
-              onClick={() => window.close()}
-              className="bg-gray-200 text-gray-700 px-5 py-2 rounded font-semibold hover:bg-gray-300 transition"
-            >
-              Close
-            </button>
+        .cv-section-title {
+          font-size: 11px;
+          font-weight: 800;
+          color: #1e293b;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          border-bottom: 1.5px solid #334155;
+          padding-bottom: 2px;
+          margin-bottom: 6px;
+        }
+
+        @media print {
+          html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+            background: white !important;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+          }
+
+          @page {
+            size: A4 portrait;
+            margin: 0;
+          }
+
+          .no-print {
+            display: none !important;
+          }
+
+          .cv-page {
+            width: 210mm !important;
+            height: 297mm !important;
+            max-height: 297mm !important;
+            overflow: hidden !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            box-shadow: none !important;
+            border-radius: 0 !important;
+          }
+
+          .cv-inner {
+            padding: 12mm 15mm !important;
+          }
+
+          a {
+            color: #1d4ed8 !important;
+            text-decoration: none !important;
+          }
+
+          .cv-page {
+            page-break-after: avoid;
+            page-break-inside: avoid;
+            break-inside: avoid;
+          }
+        }
+
+        @media screen {
+          .cv-page {
+            width: 210mm;
+            min-height: 297mm;
+            box-shadow:
+              0 1px 3px rgba(0,0,0,0.04),
+              0 8px 32px -4px rgba(0,0,0,0.12);
+            margin: 24px auto 64px;
+            border-radius: 4px;
+            border: 1px solid #e2e8f0;
+          }
+        }
+      `}</style>
+
+      <div className="bg-gray-100 min-h-screen">
+        {/* ===== TOOLBAR ===== */}
+        <div className="no-print bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+          <div className="max-w-4xl mx-auto px-6 py-3 flex flex-wrap justify-between items-center gap-3">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">
+                CV
+              </div>
+              <div>
+                <h1 className="text-sm font-bold text-gray-800">Resume Preview — 1 Page</h1>
+                <p className="text-xs text-gray-500">Optimized for corporate (PT) applications</p>
+              </div>
+            </div>
+            <div className="flex gap-2 items-center">
+              <select
+                value={lang}
+                onChange={(e) => setLang(e.target.value as "id" | "en")}
+                className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm bg-white text-gray-700 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              >
+                <option value="id">🇮🇩 Indonesia</option>
+                <option value="en">🇬🇧 English</option>
+              </select>
+              <button
+                onClick={() => window.print()}
+                className="bg-blue-600 text-white px-4 py-1.5 rounded-lg font-semibold hover:bg-blue-700 transition text-sm shadow-sm flex items-center gap-1.5"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download PDF
+              </button>
+              <button
+                onClick={() => window.history.back()}
+                className="bg-gray-100 text-gray-600 px-3 py-1.5 rounded-lg font-medium hover:bg-gray-200 transition text-sm border border-gray-200"
+              >
+                ← Back
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* --- PDF CONTENT START --- */}
-        <div className="print-content">
-          {/* Header */}
-          <header className="border-b-2 border-gray-800 pb-4 mb-6">
-            <h1 className="text-4xl font-black text-gray-900 tracking-tight mb-2 uppercase">Ferdiansyach</h1>
-            <div className="text-lg text-blue-700 font-semibold mb-3">
-              Fullstack Developer & Data Analyst
-            </div>
-            <div className="flex flex-wrap items-center gap-2 text-sm text-gray-700 font-medium">
-              <span>Jakarta, Indonesia</span>
-              <span className="text-gray-400">&bull;</span>
-              <a href="mailto:iyanferdiansyach30@gmail.com" className="text-blue-700 hover:underline">iyanferdiansyach30@gmail.com</a>
-              <span className="text-gray-400">&bull;</span>
-              <span>+62 888 6007 599</span>
-            </div>
-            <div className="flex flex-wrap items-center gap-2 text-sm text-gray-700 font-medium mt-1">
-              <a href="https://www.linkedin.com/in/ferdiansyach-845930246" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">linkedin.com/in/ferdiansyach-845930246</a>
-              <span className="text-gray-400">&bull;</span>
-              <a href="https://github.com/ferdiansyach" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">github.com/ferdiansyach</a>
-              <span className="text-gray-400">&bull;</span>
-              <a href="https://ferdiansyach-portfolio.vercel.app" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">ferdiansyach-portfolio.vercel.app</a>
-            </div>
-          </header>
+        {/* ===== A4 CV CONTENT ===== */}
+        <div className="cv-page bg-white text-black antialiased">
+          <div className="cv-inner" style={{ padding: '12mm 15mm' }}>
 
-          {/* Profile Summary */}
-          <section className="mb-6">
-            <h2 className="text-xl font-bold text-gray-800 border-b border-gray-300 mb-3 pb-1 uppercase tracking-wide">
-              {lang === "id" ? "Profil" : "Profile Summary"}
-            </h2>
-            <p className="text-sm text-gray-700 leading-relaxed text-justify">
-              {lang === "id"
-                ? "Fullstack Developer dan Data Analyst dengan dedikasi tinggi. Memiliki fondasi kuat dalam membangun aplikasi web yang responsif serta merancang model Machine Learning (AI) yang prediktif. Terbiasa bekerja dalam tim, terstruktur dalam manajemen proyek, dan antusias untuk berkontribusi secara langsung pada solusi teknologi masa depan."
-                : "A highly dedicated Fullstack Developer and Data Analyst. Possesses a strong foundation in building responsive web applications and designing predictive Machine Learning (AI) models. Accustomed to working in teams, structured in project management, and enthusiastic to contribute directly to future technological solutions."
-              }
-            </p>
-          </section>
-
-          {/* Experience */}
-          <section className="mb-6">
-            <h2 className="text-xl font-bold text-gray-800 border-b border-gray-300 mb-4 pb-1 uppercase tracking-wide">
-              {lang === "id" ? "Pengalaman" : "Experience"}
-            </h2>
-            <div className="space-y-4">
-              {experiences.map((exp) => (
-                <div key={exp.id}>
-                  <div className="flex justify-between items-baseline mb-1">
-                    <h3 className="text-base font-bold text-gray-900">{t(exp.role)}</h3>
-                    <span className="text-sm font-semibold text-gray-600 whitespace-nowrap ml-4">{exp.period}</span>
-                  </div>
-                  <div className="text-sm text-blue-700 font-medium mb-1">{exp.company}</div>
-                  <ul className="list-disc list-outside ml-4 mt-1 space-y-1">
-                    {exp.bullets.map((bullet, i) => (
-                      <li key={i} className="text-sm text-gray-700 leading-snug pl-1">
-                        {t(bullet)}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Education */}
-          <section className="mb-6">
-            <h2 className="text-xl font-bold text-gray-800 border-b border-gray-300 mb-4 pb-1 uppercase tracking-wide">
-              {lang === "id" ? "Pendidikan" : "Education"}
-            </h2>
-            <div>
-              <div className="flex justify-between items-baseline mb-1">
-                <h3 className="text-base font-bold text-gray-900">{education.institution}</h3>
-                <span className="text-sm font-semibold text-gray-600 whitespace-nowrap ml-4">{education.period}</span>
+            {/* ===== HEADER ===== */}
+            <header style={{ marginBottom: '10px' }}>
+              <h1 style={{ fontSize: '26px', fontWeight: 900, color: '#0f172a', letterSpacing: '-0.02em', lineHeight: 1.1, textTransform: 'uppercase', margin: 0 }}>
+                Ferdiansyach
+              </h1>
+              <div style={{ fontSize: '12px', color: '#1d4ed8', fontWeight: 600, marginTop: '3px' }}>
+                Fullstack Developer & Data Analyst
               </div>
-              <div className="text-sm text-gray-800 font-medium mb-1">{t(education.degree)}</div>
-              {education.gpa && (
-                <div className="text-sm text-gray-600 mb-1">
-                  <span className="font-semibold text-gray-800">GPA (IPK):</span> {education.gpa}
-                </div>
-              )}
-              {education.courses && (
-                <div className="text-sm text-gray-700 mt-2">
-                  <span className="font-semibold text-gray-800">{lang === "id" ? "Mata Kuliah Relevan: " : "Relevant Coursework: "}</span>
-                  {education.courses.map(c => t(c)).join(", ")}
-                </div>
-              )}
-            </div>
-          </section>
+              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '4px 8px', fontSize: '9px', color: '#475569', marginTop: '6px', lineHeight: 1.4 }}>
+                <span>Jakarta, Indonesia</span>
+                <span style={{ color: '#cbd5e1' }}>|</span>
+                <a href="mailto:iyanferdiansyach30@gmail.com" style={{ color: '#1d4ed8' }}>iyanferdiansyach30@gmail.com</a>
+                <span style={{ color: '#cbd5e1' }}>|</span>
+                <span>+62 888 6007 599</span>
+                <span style={{ color: '#cbd5e1' }}>|</span>
+                <a href="https://linkedin.com/in/ferdiansyach-845930246" style={{ color: '#1d4ed8' }}>linkedin.com/in/ferdiansyach</a>
+                <span style={{ color: '#cbd5e1' }}>|</span>
+                <a href="https://github.com/ferdiansyach" style={{ color: '#1d4ed8' }}>github.com/ferdiansyach</a>
+                <span style={{ color: '#cbd5e1' }}>|</span>
+                <a href="https://ferdiansyach-portfolio.vercel.app" style={{ color: '#1d4ed8' }}>ferdiansyach-portfolio.vercel.app</a>
+              </div>
+              <div style={{ borderBottom: '2px solid #1e293b', marginTop: '8px' }} />
+            </header>
 
-          {/* Skills */}
-          <section className="mb-6">
-            <h2 className="text-xl font-bold text-gray-800 border-b border-gray-300 mb-3 pb-1 uppercase tracking-wide">
-              {lang === "id" ? "Keahlian" : "Skills"}
-            </h2>
-            <div className="grid grid-cols-2 gap-x-8 gap-y-2">
-              {skillCategories.map((cat, i) => (
-                <div key={i} className="text-sm">
-                  <span className="font-bold text-gray-900 block mb-1">{t(cat.title)}</span>
-                  <span className="text-gray-700">
-                    {cat.skills.map(s => s.name).join(", ")}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </section>
+            {/* ===== PROFILE SUMMARY ===== */}
+            <section style={{ marginBottom: '10px' }}>
+              <h2 className="cv-section-title">
+                {lang === "id" ? "PROFIL" : "PROFILE SUMMARY"}
+              </h2>
+              <p style={{ fontSize: '9.5px', color: '#374151', lineHeight: 1.55, textAlign: 'justify', margin: 0 }}>
+                {lang === "id"
+                  ? "Lulusan S1 Sistem Informasi (IPK 3.77) dengan pengalaman magang di Telkom Indonesia. Terampil membangun aplikasi web full-stack (React, Node.js, Next.js) dan model Machine Learning prediktif (Python, LSTM, XGBoost). Bersertifikasi BNSP Junior Web Developer dan IT Specialist Python. Memiliki pengalaman kepemimpinan organisasi dan kolaborasi tim lintas fungsi. Siap berkontribusi langsung pada pengembangan solusi teknologi di lingkungan profesional."
+                  : "Information Systems graduate (GPA 3.77) with internship experience at Telkom Indonesia. Skilled in building full-stack web applications (React, Node.js, Next.js) and predictive Machine Learning models (Python, LSTM, XGBoost). BNSP-certified Junior Web Developer and Certiport IT Specialist in Python. Experienced in organizational leadership and cross-functional team collaboration. Ready to contribute directly to technology solutions in a professional environment."
+                }
+              </p>
+            </section>
 
-          {/* Projects */}
-          <section className="mb-6">
-            <h2 className="text-xl font-bold text-gray-800 border-b border-gray-300 mb-4 pb-1 uppercase tracking-wide">
-              {lang === "id" ? "Proyek Pilihan" : "Selected Projects"}
-            </h2>
-            <div className="space-y-4">
-              {projects.slice(0, 3).map((proj) => (
-                <div key={proj.slug}>
-                  <div className="flex justify-between items-baseline mb-1">
-                    <h3 className="text-base font-bold text-gray-900">{t(proj.title)}</h3>
+            {/* ===== EXPERIENCE — All 5 ===== */}
+            <section style={{ marginBottom: '10px' }}>
+              <h2 className="cv-section-title">
+                {lang === "id" ? "PENGALAMAN" : "EXPERIENCE"}
+              </h2>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
+                {experiences.map((exp) => (
+                  <div key={exp.id}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                      <h3 style={{ fontSize: '10.5px', fontWeight: 700, color: '#0f172a', margin: 0 }}>{t(exp.role)}</h3>
+                      <span style={{ fontSize: '8.5px', fontWeight: 500, color: '#64748b', whiteSpace: 'nowrap', marginLeft: '12px' }}>{exp.period}</span>
+                    </div>
+                    <div style={{ fontSize: '9px', color: '#1d4ed8', fontWeight: 600 }}>{exp.company}</div>
+                    <ul style={{ margin: '2px 0 0 14px', padding: 0, listStyleType: 'disc' }}>
+                      {exp.bullets.map((bullet, i) => (
+                        <li key={i} style={{ fontSize: '9px', color: '#374151', lineHeight: 1.45, paddingLeft: '2px' }}>
+                          {t(bullet)}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <p className="text-sm text-gray-700 leading-snug mb-1">{t(proj.description)}</p>
-                  <p className="text-xs text-gray-500 font-medium font-mono">
-                    [{proj.technologies.slice(0, 5).join(" • ")}]
-                  </p>
+                ))}
+              </div>
+            </section>
+
+            {/* ===== EDUCATION ===== */}
+            <section style={{ marginBottom: '10px' }}>
+              <h2 className="cv-section-title">
+                {lang === "id" ? "PENDIDIKAN" : "EDUCATION"}
+              </h2>
+              <div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                  <h3 style={{ fontSize: '10.5px', fontWeight: 700, color: '#0f172a', margin: 0 }}>{education.institution}</h3>
+                  <span style={{ fontSize: '8.5px', fontWeight: 500, color: '#64748b', whiteSpace: 'nowrap', marginLeft: '12px' }}>{education.period}</span>
                 </div>
-              ))}
-            </div>
-          </section>
+                <div style={{ fontSize: '9.5px', color: '#1e293b', fontWeight: 600 }}>{t(education.degree)}</div>
+                {education.gpa && (
+                  <div style={{ fontSize: '9px', color: '#475569' }}>
+                    <span style={{ fontWeight: 700, color: '#1e293b' }}>IPK/GPA:</span> {education.gpa}
+                  </div>
+                )}
+                {education.courses && (
+                  <div style={{ fontSize: '9px', color: '#374151', marginTop: '2px' }}>
+                    <span style={{ fontWeight: 700, color: '#1e293b' }}>{lang === "id" ? "Mata Kuliah Relevan: " : "Relevant Coursework: "}</span>
+                    {education.courses.map(c => t(c)).join(", ")}
+                  </div>
+                )}
+              </div>
+            </section>
 
-          {/* Certifications Overview */}
-          <section>
-            <h2 className="text-xl font-bold text-gray-800 border-b border-gray-300 mb-3 pb-1 uppercase tracking-wide">
-              {lang === "id" ? "Sertifikasi Profesional" : "Professional Certifications"}
-            </h2>
-            <ul className="list-disc list-outside ml-4 space-y-1">
-              {certifications.slice(0, 4).map((cert) => (
-                <li key={cert.id} className="text-sm text-gray-700 pl-1">
-                  <span className="font-semibold text-gray-900">{t(cert.name)}</span> — {cert.issuer} ({cert.date})
-                </li>
-              ))}
-            </ul>
-          </section>
+            {/* ===== TECHNICAL SKILLS ===== */}
+            <section style={{ marginBottom: '10px' }}>
+              <h2 className="cv-section-title">
+                {lang === "id" ? "KEAHLIAN TEKNIS" : "TECHNICAL SKILLS"}
+              </h2>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                {skillCategories.map((cat, i) => (
+                  <div key={i} style={{ fontSize: '9.5px', lineHeight: 1.6 }}>
+                    <span style={{ fontWeight: 700, color: '#0f172a' }}>{t(cat.title)}:</span>{" "}
+                    <span style={{ color: '#374151' }}>
+                      {cat.skills.map(s => s.name).join(", ")}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </section>
 
+            {/* ===== SELECTED PROJECTS — 3 projects ===== */}
+            <section style={{ marginBottom: '10px' }}>
+              <h2 className="cv-section-title">
+                {lang === "id" ? "PROYEK PILIHAN" : "SELECTED PROJECTS"}
+              </h2>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                {topProjects.map((proj) => (
+                  <div key={proj.slug}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                      <h3 style={{ fontSize: '10px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
+                        {typeof proj.title === 'string' ? proj.title : t(proj.title)}
+                      </h3>
+                      {proj.githubUrl && (
+                        <a href={proj.githubUrl} style={{ fontSize: '8px', color: '#1d4ed8', fontWeight: 500, whiteSpace: 'nowrap', marginLeft: '8px' }}>
+                          GitHub ↗
+                        </a>
+                      )}
+                    </div>
+                    <p style={{ fontSize: '9px', color: '#374151', lineHeight: 1.45, margin: '1px 0 0 0' }}>
+                      {t(proj.description)}
+                    </p>
+                    <p style={{ fontSize: '8px', color: '#64748b', fontWeight: 500, fontFamily: "'SF Mono', 'Fira Code', monospace", marginTop: '2px' }}>
+                      {proj.technologies.slice(0, 6).join(" · ")}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* ===== CERTIFICATIONS — All 6 ===== */}
+            <section>
+              <h2 className="cv-section-title">
+                {lang === "id" ? "SERTIFIKASI" : "CERTIFICATIONS"}
+              </h2>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2px 24px' }}>
+                {certifications.map((cert) => (
+                  <div key={cert.id} style={{ fontSize: '9px', color: '#374151', lineHeight: 1.55 }}>
+                    <span style={{ fontWeight: 700, color: '#0f172a' }}>{t(cert.name)}</span>
+                    {" — "}{cert.issuer} ({cert.date})
+                  </div>
+                ))}
+              </div>
+            </section>
+
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
