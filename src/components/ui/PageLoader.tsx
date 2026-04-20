@@ -68,7 +68,7 @@ export default function PageLoader() {
                 fill="none"
                 stroke="currentColor"
                 xmlns="http://www.w3.org/2000/svg"
-                className="text-sky-400 absolute z-10"
+                className="text-rose-400 absolute z-10"
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.8, type: "spring", stiffness: 200 }}
@@ -116,7 +116,7 @@ export default function PageLoader() {
             <div className="flex flex-col items-center gap-3">
               {/* Name */}
               <motion.p
-                className="text-xl font-bold tracking-widest uppercase bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent"
+                className="text-xl font-bold tracking-widest uppercase bg-gradient-to-r from-rose-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent"
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.7 }}
@@ -132,7 +132,7 @@ export default function PageLoader() {
                 transition={{ delay: 0.8 }}
               >
                 <motion.div
-                  className="h-full bg-gradient-to-r from-sky-400 via-indigo-500 to-purple-500 rounded-full"
+                  className="h-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-violet-500 rounded-full"
                   initial={{ width: "0%" }}
                   animate={{ width: "100%" }}
                   transition={{ duration: 1.4, delay: 0.8, ease: "easeInOut" }}

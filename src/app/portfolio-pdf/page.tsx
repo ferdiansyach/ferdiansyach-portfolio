@@ -13,7 +13,10 @@ export default function PortfolioPDF() {
   useEffect(() => {
     // Sync language from localStorage if available
     const savedLang = localStorage.getItem("lang") as "id" | "en";
-    if (savedLang) setLang(savedLang);
+    if (savedLang) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setLang(savedLang);
+    }
 
     // Provide a small delay before triggering print so fonts load
     // Commented out automatic print so user can preview before printing
@@ -168,7 +171,7 @@ export default function PortfolioPDF() {
           </section>
 
           {/* Projects */}
-          <section className="mb-6" style={{ pageBreakInside: "avoid" }}>
+          <section className="mb-6">
             <h2 className="text-xl font-bold text-gray-800 border-b border-gray-300 mb-4 pb-1 uppercase tracking-wide">
               {lang === "id" ? "Proyek Pilihan" : "Selected Projects"}
             </h2>
@@ -188,7 +191,7 @@ export default function PortfolioPDF() {
           </section>
 
           {/* Certifications Overview */}
-          <section style={{ pageBreakInside: "avoid" }}>
+          <section>
             <h2 className="text-xl font-bold text-gray-800 border-b border-gray-300 mb-3 pb-1 uppercase tracking-wide">
               {lang === "id" ? "Sertifikasi Profesional" : "Professional Certifications"}
             </h2>

@@ -40,8 +40,8 @@ export default function CertificationsSection() {
             onClick={() => setFilter(btn.key)}
             className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 border ${
               filter === btn.key
-                ? "bg-gradient-to-r from-sky-500 to-indigo-500 text-white border-transparent shadow-lg shadow-sky-500/20"
-                : "border-slate-600 text-slate-400 hover:border-sky-400 hover:text-sky-400"
+                ? "bg-gradient-to-r from-rose-500 to-fuchsia-500 text-white border-transparent shadow-lg shadow-rose-500/20"
+                : "border-slate-600 text-slate-400 hover:border-rose-400 hover:text-rose-400"
             }`}
           >
             {t(btn.label)}
@@ -62,13 +62,13 @@ export default function CertificationsSection() {
               transition={{ duration: 0.3, delay: i * 0.05 }}
             >
               <TiltCard maxTilt={4} className="h-full">
-                <GlassCard delay={0} className="p-8 md:p-10 group h-full hover:border-sky-400/40">
+                <GlassCard delay={0} className="p-8 md:p-10 group h-full hover:border-rose-400/40">
                   <div className="flex items-start gap-5">
-                    <div className="w-14 h-14 shrink-0 rounded-xl bg-gradient-to-br from-sky-500/20 to-indigo-500/20 flex items-center justify-center text-3xl group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                    <div className="w-14 h-14 shrink-0 rounded-xl bg-gradient-to-br from-rose-500/20 to-fuchsia-500/20 flex items-center justify-center text-3xl group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
                       {cert.badge}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-base font-bold text-white leading-tight mb-1 group-hover:text-sky-400 transition-colors">
+                      <h3 className="text-base font-bold text-white leading-tight mb-1 group-hover:text-rose-400 transition-colors">
                         {t(cert.name)}
                       </h3>
                       <p className="text-slate-400 text-sm">{cert.issuer}</p>

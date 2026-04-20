@@ -252,13 +252,13 @@ body {
 }
 
 /* --- Experience timeline in light mode --- */
-.light .border-l-sky-400 {
-  border-left-color: #38bdf8 !important;
+.light .border-l-rose-400 {
+  border-left-color: #fb7185 !important; /* rose-400 */
 }
 
 /* --- Section divider in light mode --- */
 .light .section-divider {
-  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(251, 113, 133, 0.4), transparent);
 }
 
 /* --- Skill bar background in light mode --- */
@@ -379,7 +379,8 @@ body {
     backdrop-filter: none !important;
   }
 
-  header,
+  /* Hide site-wide navbar, scroll button, dividers, footer social, contact form */
+  nav,
   .scroll-to-top,
   .section-divider,
   footer .flex.gap-6,
@@ -387,11 +388,29 @@ body {
     display: none !important;
   }
 
+  /* Ensure the CV header (name + contact) stays visible */
+  .print-content header {
+    display: block !important;
+  }
+
   a {
     color: #0ea5e9 !important;
   }
 
+  /* Allow page breaks inside long sections, but keep individual items together */
   section {
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  /* Keep section headings with the content that follows */
+  section h2 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  /* Keep individual experience/education/project items together */
+  section > div > div {
     break-inside: avoid;
     page-break-inside: avoid;
   }

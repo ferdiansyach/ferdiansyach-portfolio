@@ -12,12 +12,12 @@ const aboutCards = [
     title: translations.about.card1Title,
     desc: translations.about.card1Desc,
     icon: (
-      <svg className="w-7 h-7 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <svg className="w-7 h-7 text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
       </svg>
     ),
-    gradient: "from-sky-500/20 to-indigo-500/20",
-    borderHover: "hover:border-sky-400/40",
+    gradient: "from-rose-500/20 to-fuchsia-500/20",
+    borderHover: "hover:border-rose-400/40",
   },
   {
     title: translations.about.card2Title,
@@ -27,7 +27,7 @@ const aboutCards = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
       </svg>
     ),
-    gradient: "from-indigo-500/20 to-purple-500/20",
+    gradient: "from-fuchsia-500/20 to-violet-500/20",
     borderHover: "hover:border-indigo-400/40",
   },
   {
@@ -38,7 +38,7 @@ const aboutCards = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
       </svg>
     ),
-    gradient: "from-emerald-500/20 to-sky-500/20",
+    gradient: "from-emerald-500/20 to-rose-500/20",
     borderHover: "hover:border-emerald-400/40",
   },
 ];

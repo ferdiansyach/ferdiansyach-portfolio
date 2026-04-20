@@ -18,7 +18,7 @@ export default function GlassCard({ children, className = "", delay = 0, hover =
       ref={ref}
       className={`
         glass-card relative overflow-hidden
-        ${hover ? "hover:-translate-y-1.5 hover:shadow-[0_20px_40px_-12px_rgba(56,189,248,0.15)] hover:border-sky-400/30" : ""}
+        ${hover ? "hover:-translate-y-1.5 hover:shadow-[0_20px_40px_-12px_rgba(56,189,248,0.15)] hover:border-rose-400/30" : ""}
         transition-all duration-500 ease-out
         ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
         ${className}

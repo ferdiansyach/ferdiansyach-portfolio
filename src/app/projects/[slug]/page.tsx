@@ -3,7 +3,7 @@
 import { useState, use, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import { LanguageProvider, useLanguage } from "@/hooks/useLanguage";
 import { ThemeProvider } from "@/hooks/useTheme";
 import { translations } from "@/data/translations";
@@ -31,7 +31,7 @@ function ProjectDetailContent({ slug }: { slug: string }) {
     return (
       <main className="container mx-auto px-6 py-24 text-center">
         <h1 className="text-4xl font-bold text-white mb-4">Project Not Found</h1>
-        <Link href="/" className="text-sky-400 hover:underline">← Back to Portfolio</Link>
+        <Link href="/" className="text-rose-400 hover:underline">← Back to Portfolio</Link>
       </main>
     );
   }
@@ -43,12 +43,12 @@ function ProjectDetailContent({ slug }: { slug: string }) {
       opacity: 1,
       transition: { staggerChildren: 0.15 }
     }
-  } as any;
+  } as Variants;
 
   const fadeUp = {
     hidden: { opacity: 0, y: 30 },
     show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-  } as any;
+  } as Variants;
 
   return (
     <>
@@ -77,7 +77,7 @@ function ProjectDetailContent({ slug }: { slug: string }) {
             <MagneticButton strength={20}>
               <Link
                 href="/#projects"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/80 border border-slate-700 text-sky-400 hover:text-sky-300 hover:border-sky-400/50 shadow-lg backdrop-blur-md transition-all mb-8 group"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/80 border border-slate-700 text-rose-400 hover:text-sky-300 hover:border-rose-400/50 shadow-lg backdrop-blur-md transition-all mb-8 group"
               >
                 <svg className="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -102,14 +102,14 @@ function ProjectDetailContent({ slug }: { slug: string }) {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.4 + (idx * 0.1) }}
-                    className="bg-sky-400/10 text-sky-300 border border-sky-400/30 px-4 py-1.5 rounded-full text-sm font-semibold backdrop-blur-md shadow-[0_0_15px_rgba(56,189,248,0.15)]"
+                    className="bg-rose-400/10 text-sky-300 border border-rose-400/30 px-4 py-1.5 rounded-full text-sm font-semibold backdrop-blur-md shadow-[0_0_15px_rgba(56,189,248,0.15)]"
                   >
                     {tech}
                   </motion.span>
                 ))}
               </div>
               
-              <p className="text-xl md:text-2xl text-slate-300 max-w-3xl font-medium leading-relaxed border-l-4 border-sky-400 pl-4 bg-slate-900/20 py-2">
+              <p className="text-xl md:text-2xl text-slate-300 max-w-3xl font-medium leading-relaxed border-l-4 border-rose-400 pl-4 bg-slate-900/20 py-2">
                 {t(project.description)}
               </p>
             </motion.div>
@@ -128,9 +128,9 @@ function ProjectDetailContent({ slug }: { slug: string }) {
               whileInView="show"
               viewport={{ once: true, margin: "-100px" }}
             >
-              <motion.div variants={fadeUp} className="bg-slate-800/30 border border-slate-700/50 rounded-3xl p-8 md:p-10 hover:border-sky-400/30 transition-colors">
+              <motion.div variants={fadeUp} className="bg-slate-800/30 border border-slate-700/50 rounded-3xl p-8 md:p-10 hover:border-rose-400/30 transition-colors">
                 <div className="flex items-center gap-4 mb-6 border-b border-slate-700/50 pb-4">
-                  <div className="w-12 h-12 rounded-xl bg-sky-500/10 flex items-center justify-center text-sky-400">
+                  <div className="w-12 h-12 rounded-xl bg-rose-500/10 flex items-center justify-center text-rose-400">
                     <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
@@ -144,7 +144,7 @@ function ProjectDetailContent({ slug }: { slug: string }) {
 
               <motion.div variants={fadeUp} className="bg-slate-800/30 border border-slate-700/50 rounded-3xl p-8 md:p-10 hover:border-indigo-400/30 transition-colors">
                 <div className="flex items-center gap-4 mb-6 border-b border-slate-700/50 pb-4">
-                  <div className="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400">
+                  <div className="w-12 h-12 rounded-xl bg-fuchsia-500/10 flex items-center justify-center text-indigo-400">
                     <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
                     </svg>
@@ -172,7 +172,7 @@ function ProjectDetailContent({ slug }: { slug: string }) {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-between w-full p-6 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-3xl font-bold text-white shadow-xl shadow-indigo-500/20 hover:shadow-indigo-500/40 hover:-translate-y-1 transition-all group"
+                        className="flex items-center justify-between w-full p-6 bg-gradient-to-br from-fuchsia-500 to-purple-600 rounded-3xl font-bold text-white shadow-xl shadow-fuchsia-500/20 hover:shadow-fuchsia-500/40 hover:-translate-y-1 transition-all group"
                       >
                         <span className="flex items-center gap-3 text-lg">
                           <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -197,7 +197,7 @@ function ProjectDetailContent({ slug }: { slug: string }) {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                 >
-                  <div className="w-16 h-16 rounded-full bg-slate-700/50 border-2 border-slate-600 flex items-center justify-center text-sky-400">
+                  <div className="w-16 h-16 rounded-full bg-slate-700/50 border-2 border-slate-600 flex items-center justify-center text-rose-400">
                     <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                     </svg>
@@ -223,7 +223,7 @@ function ProjectDetailContent({ slug }: { slug: string }) {
             <div className="text-center mb-10">
               <h2 className="text-3xl font-black text-white inline-block relative">
                 {t(translations.projectDetail.galleryTitle)}
-                <span className="absolute -bottom-3 left-1/4 right-1/4 h-1 bg-gradient-to-r from-sky-400 to-indigo-500 rounded-full" />
+                <span className="absolute -bottom-3 left-1/4 right-1/4 h-1 bg-gradient-to-r from-rose-400 to-fuchsia-500 rounded-full" />
               </h2>
             </div>
             
@@ -232,7 +232,7 @@ function ProjectDetailContent({ slug }: { slug: string }) {
                 <motion.div key={i} variants={fadeUp}>
                   <TiltCard maxTilt={5} glareEnabled={true}>
                     <div
-                      className="group cursor-zoom-in relative overflow-hidden rounded-2xl border border-slate-700/50 bg-slate-800 shadow-lg hover:border-sky-400/50 transition-colors bg-white"
+                      className="group cursor-zoom-in relative overflow-hidden rounded-2xl border border-slate-700/50 bg-slate-800 shadow-lg hover:border-rose-400/50 transition-colors bg-white"
                       onClick={() => setLightboxImg(img.src)}
                     >
                       <div className="relative h-56 w-full overflow-hidden">

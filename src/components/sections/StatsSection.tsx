@@ -16,10 +16,10 @@ function StatItem({ value, suffix, label, icon }: StatItemProps) {
 
   return (
     <AnimatedDiv className="flex flex-col items-center text-center p-6 group">
-      <div className="w-14 h-14 mb-4 rounded-xl bg-slate-800/50 border border-slate-700 flex items-center justify-center text-sky-400 group-hover:scale-110 group-hover:bg-sky-400/10 transition-all duration-300">
+      <div className="w-14 h-14 mb-4 rounded-xl bg-slate-800/50 border border-slate-700 flex items-center justify-center text-rose-400 group-hover:scale-110 group-hover:bg-rose-400/10 transition-all duration-300">
         {icon}
       </div>
-      <div className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-500 mb-2">
+      <div className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-fuchsia-500 mb-2">
         <AnimatedCounter value={value} suffix={suffix} />
       </div>
       <p className="text-slate-400 text-sm font-medium">{t(label)}</p>
