@@ -18,8 +18,8 @@ const proficiencyWidth = {
 
 const proficiencyColor = {
   beginner: "from-amber-400 to-orange-500",
-  intermediate: "from-sky-400 to-indigo-500",
-  advanced: "from-emerald-400 to-sky-500",
+  intermediate: "from-rose-400 to-fuchsia-500",
+  advanced: "from-emerald-400 to-rose-500",
 };
 
 export default function SkillsSection() {
@@ -42,8 +42,8 @@ export default function SkillsSection() {
             whileTap={{ scale: 0.95 }}
             className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 border ${
               activeTab === i
-                ? "bg-gradient-to-r from-sky-500 to-indigo-500 text-white border-transparent shadow-lg shadow-sky-500/20"
-                : "border-slate-600 text-slate-400 hover:border-sky-400 hover:text-sky-400"
+                ? "bg-gradient-to-r from-rose-500 to-fuchsia-500 text-white border-transparent shadow-lg shadow-rose-500/20"
+                : "border-slate-600 text-slate-400 hover:border-rose-400 hover:text-rose-400"
             }`}
           >
             {t(category.title)}
@@ -63,7 +63,7 @@ export default function SkillsSection() {
           >
             <GlassCard delay={0} className="p-6 md:p-8">
               <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-sky-400" />
+                <span className="w-2 h-2 rounded-full bg-rose-400" />
                 {t(skillCategories[activeTab].title)}
               </h3>
               <div className="grid md:grid-cols-2 gap-x-8 gap-y-4">

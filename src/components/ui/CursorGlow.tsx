@@ -43,7 +43,7 @@ export default function CursorGlow() {
   return (
     <div
       ref={glowRef}
-      className="fixed top-0 left-0 z-[1] pointer-events-none w-[400px] h-[400px] rounded-full opacity-[0.04] bg-sky-400 blur-[80px] transition-none"
+      className="fixed top-0 left-0 z-[1] pointer-events-none w-[400px] h-[400px] rounded-full opacity-[0.04] bg-rose-400 blur-[80px] transition-none"
       aria-hidden="true"
     />
   );

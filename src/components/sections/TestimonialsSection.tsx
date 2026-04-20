@@ -87,7 +87,7 @@ export default function TestimonialsSection() {
         >
           {/* Quote icon */}
           <div className="absolute top-6 left-8 text-6xl font-serif leading-none select-none">
-            <span className="bg-gradient-to-r from-sky-400/20 to-indigo-500/20 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-rose-400/20 to-fuchsia-500/20 bg-clip-text text-transparent">
               &ldquo;
             </span>
           </div>
@@ -114,12 +114,12 @@ export default function TestimonialsSection() {
                   ))}
                 </div>
 
-                <p className="text-lg md:text-xl text-slate-300 leading-relaxed italic pl-4 border-l-2 border-sky-400/30">
+                <p className="text-lg md:text-xl text-slate-300 leading-relaxed italic pl-4 border-l-2 border-rose-400/30">
                   {t(current.quote)}
                 </p>
 
                 <div className="mt-8 flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-sky-400 to-indigo-500 flex items-center justify-center text-white font-bold text-lg shrink-0 shadow-lg shadow-sky-500/20">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-rose-400 to-fuchsia-500 flex items-center justify-center text-white font-bold text-lg shrink-0 shadow-lg shadow-rose-500/20">
                     {current.name.charAt(0)}
                   </div>
                   <div>
@@ -143,7 +143,7 @@ export default function TestimonialsSection() {
                   }}
                   className={`h-2.5 rounded-full transition-all duration-300 ${
                     i === currentIndex
-                      ? "bg-sky-400 w-8"
+                      ? "bg-rose-400 w-8"
                       : "bg-slate-600 hover:bg-slate-500 w-2.5"
                   }`}
                   aria-label={`Go to testimonial ${i + 1}`}
@@ -153,7 +153,7 @@ export default function TestimonialsSection() {
             <div className="flex gap-2">
               <button
                 onClick={prevSlide}
-                className="w-9 h-9 rounded-full border border-slate-700 flex items-center justify-center text-slate-400 hover:border-sky-400 hover:text-sky-400 transition-all"
+                className="w-9 h-9 rounded-full border border-slate-700 flex items-center justify-center text-slate-400 hover:border-rose-400 hover:text-rose-400 transition-all"
                 aria-label="Previous testimonial"
               >
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -162,7 +162,7 @@ export default function TestimonialsSection() {
               </button>
               <button
                 onClick={nextSlide}
-                className="w-9 h-9 rounded-full border border-slate-700 flex items-center justify-center text-slate-400 hover:border-sky-400 hover:text-sky-400 transition-all"
+                className="w-9 h-9 rounded-full border border-slate-700 flex items-center justify-center text-slate-400 hover:border-rose-400 hover:text-rose-400 transition-all"
                 aria-label="Next testimonial"
               >
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -175,7 +175,7 @@ export default function TestimonialsSection() {
           {/* Auto-slide progress bar */}
           <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-slate-700/30">
             <motion.div
-              className="h-full bg-gradient-to-r from-sky-400 to-indigo-500"
+              className="h-full bg-gradient-to-r from-rose-400 to-fuchsia-500"
               style={{ width: `${progress}%` }}
             />
           </div>

@@ -44,7 +44,7 @@ export default function ParticleBackground() {
       vy: (Math.random() - 0.5) * 0.4,
       size: Math.random() * 2 + 0.5,
       opacity: Math.random() * 0.4 + 0.1,
-      hue: Math.random() * 60 + 190, // sky-blue to indigo range
+      hue: Math.random() * 50 + 310, // fuchsia to rose range
     }));
 
     const handleMouse = (e: MouseEvent) => {

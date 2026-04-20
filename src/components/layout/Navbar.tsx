@@ -60,14 +60,14 @@ export default function Navbar() {
     >
       {/* Scroll progress bar */}
       <motion.div
-        className="absolute top-0 left-0 h-[2px] bg-gradient-to-r from-sky-400 via-indigo-500 to-purple-500 z-50"
+        className="absolute top-0 left-0 h-[2px] bg-gradient-to-r from-rose-400 via-fuchsia-500 to-violet-500 z-50"
         style={{ width: `${scrollProgress}%` }}
       />
 
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         <Link
           href="/"
-          className="text-xl font-extrabold tracking-tight bg-gradient-to-r from-sky-400 via-indigo-500 to-purple-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
+          className="text-xl font-extrabold tracking-tight bg-gradient-to-r from-rose-400 via-fuchsia-500 to-violet-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
         >
           Ferdiansyach
         </Link>
@@ -88,7 +88,7 @@ export default function Navbar() {
                 href={item.href}
                 onMouseEnter={() => setHoveredSection(sectionId)}
                 className={`relative px-4 py-2 text-sm font-medium transition-colors duration-300 rounded-full z-10 ${
-                  isActive || isHovered ? "text-sky-400" : "text-slate-300"
+                  isActive || isHovered ? "text-rose-400" : "text-slate-300"
                 }`}
               >
                 {t(item.label)}
@@ -96,7 +96,7 @@ export default function Navbar() {
                 {isActive && !isHovered && (
                   <motion.span
                     layoutId="activeNavLine"
-                    className="absolute -bottom-1 left-4 right-4 h-0.5 bg-gradient-to-r from-sky-400 to-indigo-500 rounded-full"
+                    className="absolute -bottom-1 left-4 right-4 h-0.5 bg-gradient-to-r from-rose-400 to-fuchsia-500 rounded-full"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -104,7 +104,7 @@ export default function Navbar() {
                 {isHovered && (
                   <motion.span
                     layoutId="navHoverPill"
-                    className="absolute inset-0 bg-sky-400/10 rounded-full -z-10 border border-sky-400/20"
+                    className="absolute inset-0 bg-rose-400/10 rounded-full -z-10 border border-rose-400/20"
                     transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
                   />
                 )}
@@ -117,7 +117,7 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           <button
             onClick={toggleTheme}
-            className="w-9 h-9 rounded-full flex items-center justify-center border border-slate-700 bg-slate-800/50 backdrop-blur-sm text-slate-300 hover:border-sky-400 hover:bg-sky-400/10 transition-all duration-300"
+            className="w-9 h-9 rounded-full flex items-center justify-center border border-slate-700 bg-slate-800/50 backdrop-blur-sm text-slate-300 hover:border-rose-400 hover:bg-rose-400/10 transition-all duration-300"
             aria-label="Toggle theme"
           >
             {theme === "dark" ? (
@@ -132,7 +132,7 @@ export default function Navbar() {
           </button>
           <button
             onClick={toggleLang}
-            className="w-9 h-9 rounded-full flex items-center justify-center border border-slate-700 bg-slate-800/50 backdrop-blur-sm text-slate-300 hover:border-sky-400 hover:bg-sky-400/10 transition-all duration-300 text-xs font-bold"
+            className="w-9 h-9 rounded-full flex items-center justify-center border border-slate-700 bg-slate-800/50 backdrop-blur-sm text-slate-300 hover:border-rose-400 hover:bg-rose-400/10 transition-all duration-300 text-xs font-bold"
           >
             {lang === "id" ? "EN" : "ID"}
           </button>
@@ -162,7 +162,7 @@ export default function Navbar() {
               key={item.href}
               href={item.href}
               onClick={() => setMenuOpen(false)}
-              className="block py-3 text-slate-300 hover:text-sky-400 transition-colors font-medium"
+              className="block py-3 text-slate-300 hover:text-rose-400 transition-colors font-medium"
               initial={{ opacity: 0, x: -20 }}
               animate={menuOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
               transition={{ delay: i * 0.05 }}

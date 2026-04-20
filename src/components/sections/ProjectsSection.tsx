@@ -41,8 +41,8 @@ export default function ProjectsSection() {
             onClick={() => setFilter(btn.key)}
             className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 border ${
               filter === btn.key
-                ? "bg-gradient-to-r from-sky-500 to-indigo-500 text-white border-transparent shadow-lg shadow-sky-500/20"
-                : "border-slate-600 text-slate-400 hover:border-sky-400 hover:text-sky-400"
+                ? "bg-gradient-to-r from-rose-500 to-fuchsia-500 text-white border-transparent shadow-lg shadow-rose-500/20"
+                : "border-slate-600 text-slate-400 hover:border-rose-400 hover:text-rose-400"
             }`}
           >
             {t(btn.label)}
@@ -64,7 +64,7 @@ export default function ProjectsSection() {
             >
               <Link href={`/projects/${project.slug}`}>
                 <TiltCard maxTilt={4} className="h-full">
-                  <GlassCard delay={0} className="p-5 sm:p-8 overflow-hidden group cursor-pointer h-full border hover:border-sky-400/50 shadow-sm hover:shadow-sky-400/10">
+                  <GlassCard delay={0} className="p-5 sm:p-8 overflow-hidden group cursor-pointer h-full border hover:border-rose-400/50 shadow-sm hover:shadow-rose-400/10">
                     <div className="relative overflow-hidden h-44 sm:h-52 rounded-lg sm:rounded-none mb-4 sm:mb-0">
                       <Image
                         src={project.thumbnail}
@@ -74,17 +74,17 @@ export default function ProjectsSection() {
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-end justify-center pb-4">
-                        <span className="bg-sky-400/20 backdrop-blur-sm text-white font-semibold text-sm px-4 py-2 rounded-full border border-sky-400/30">
+                        <span className="bg-rose-400/20 backdrop-blur-sm text-white font-semibold text-sm px-4 py-2 rounded-full border border-rose-400/30">
                           {t(translations.projects.viewDetails)}
                         </span>
                       </div>
                     </div>
                     <div className="pt-2 sm:p-6">
-                      <h3 className="text-lg font-bold text-white mb-2 group-hover:text-sky-400 transition-colors">{project.title}</h3>
+                      <h3 className="text-lg font-bold text-white mb-2 group-hover:text-rose-400 transition-colors">{project.title}</h3>
                       <p className="text-slate-400 text-sm mb-4 line-clamp-2">{t(project.description)}</p>
                       <div className="flex flex-wrap gap-2">
                         {project.technologies.slice(0, 3).map((tech) => (
-                          <span key={tech} className="bg-sky-400/10 text-sky-400 border border-sky-400/20 px-3 py-1 rounded-full text-xs font-semibold">
+                          <span key={tech} className="bg-rose-400/10 text-rose-400 border border-rose-400/20 px-3 py-1 rounded-full text-xs font-semibold">
                             {tech}
                           </span>
                         ))}

@@ -94,13 +94,13 @@ export default function ContactSection() {
   return (
     <AnimatedSection id="contact" className="py-32 container mx-auto px-6">
       <AnimatedDiv className="max-w-4xl mx-auto">
-        <div className="bg-gradient-to-br from-sky-400/10 via-indigo-500/10 to-purple-500/10 border border-sky-400/15 rounded-[2.5rem] p-10 md:p-16 relative overflow-hidden">
+        <div className="bg-gradient-to-br from-rose-400/10 via-fuchsia-500/10 to-violet-500/10 border border-rose-400/15 rounded-[2.5rem] p-10 md:p-16 relative overflow-hidden">
           {/* Background glow */}
-          <div className="absolute -top-24 -right-24 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl" />
-          <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl" />
+          <div className="absolute -top-24 -right-24 w-64 h-64 bg-rose-500/10 rounded-full blur-3xl" />
+          <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-fuchsia-500/10 rounded-full blur-3xl" />
 
           <div className="text-center mb-12 relative z-10">
-            <p className="text-sky-400 font-semibold text-sm tracking-[0.2em] uppercase mb-3">
+            <p className="text-rose-400 font-semibold text-sm tracking-[0.2em] uppercase mb-3">
               {t(translations.contact.label)}
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -135,7 +135,7 @@ export default function ContactSection() {
                     name="name"
                     type="text"
                     required
-                    className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700/60 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400/30 transition-all duration-300"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700/60 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-rose-400 focus:ring-1 focus:ring-rose-400/30 transition-all duration-300"
                     placeholder={t(translations.contact.formName)}
                   />
                 </div>
@@ -148,7 +148,7 @@ export default function ContactSection() {
                     name="email"
                     type="email"
                     required
-                    className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700/60 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400/30 transition-all duration-300"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700/60 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-rose-400 focus:ring-1 focus:ring-rose-400/30 transition-all duration-300"
                     placeholder={t(translations.contact.formEmail)}
                   />
                 </div>
@@ -162,14 +162,14 @@ export default function ContactSection() {
                   name="message"
                   required
                   rows={4}
-                  className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700/60 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400/30 transition-all duration-300 resize-none"
+                  className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700/60 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-rose-400 focus:ring-1 focus:ring-rose-400/30 transition-all duration-300 resize-none"
                   placeholder={t(translations.contact.formMessage)}
                 />
               </div>
               <motion.button
                 type="submit"
                 disabled={status === "sending"}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-sky-500 to-indigo-500 text-white font-semibold py-3 px-8 rounded-xl hover:shadow-lg hover:shadow-sky-500/25 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-rose-500 to-fuchsia-500 text-white font-semibold py-3 px-8 rounded-xl hover:shadow-lg hover:shadow-rose-500/25 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
                 whileTap={{ scale: 0.97 }}
               >
                 {status === "sending" ? (
