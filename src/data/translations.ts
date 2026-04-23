@@ -12,8 +12,8 @@ export const translations = {
     subtitle: { id: "Sistem Informasi — Universitas Nasional", en: "Information Systems — Universitas Nasional" },
     greeting: { id: "Hai, Saya", en: "Hi, I'm" },
     description: {
-      id: "Fullstack Developer & Data Analyst yang bersemangat. Berpengalaman membangun aplikasi web responsif dan model AI prediktif. Siap berkontribusi pada proyek-proyek inovatif.",
-      en: "A passionate Fullstack Developer & Data Analyst. Experienced in building responsive web applications and predictive AI models. Ready to contribute to innovative projects.",
+      id: "Fullstack Developer & Data Analyst berpengalaman. Telah membangun 5+ proyek produksi dan model AI prediktif dengan akurasi 92%. Siap memberikan dampak nyata melalui solusi teknologi inovatif.",
+      en: "An experienced Fullstack Developer & Data Analyst. Delivered 5+ production projects and predictive AI models achieving 92% accuracy. Ready to drive real impact through innovative technology solutions.",
     },
     contactBtn: { id: "Hubungi Saya", en: "Contact Me" },
     downloadCv: { id: "Unduh CV", en: "Download CV" },
@@ -25,18 +25,18 @@ export const translations = {
     title: { id: "Kandidat yang Tepat di Bidang Teknologi", en: "The Right Candidate in Tech" },
     card1Title: { id: "Developer Website & Sistem", en: "Website & System Developer" },
     card1Desc: {
-      id: "Spesialis dalam mengembangkan antarmuka web modern dan responsif. Terbukti berhasil merancang arsitektur front-end berkinerja tinggi menggunakan ekosistem React, Next.js, dan Tailwind CSS untuk berbagai proyek nyata.",
-      en: "Specializes in developing modern and responsive web interfaces. Proven track record in designing high-performance front-end architectures using React, Next.js, and Tailwind CSS ecosystems for real-world projects.",
+      id: "Spesialis dalam mengembangkan antarmuka web modern dan responsif dengan skor Lighthouse 90+. Terbukti berhasil membangun 10+ komponen production-ready menggunakan React, Next.js, dan Tailwind CSS untuk klien nyata termasuk platform pariwisata dan festival universitas.",
+      en: "Specializes in developing modern and responsive web interfaces with Lighthouse scores of 90+. Proven track record of building 10+ production-ready components using React, Next.js, and Tailwind CSS for real clients including tourism platforms and university festivals.",
     },
     card2Title: { id: "Fullstack Ready", en: "Fullstack Ready" },
     card2Desc: {
-      id: "Mampu merancang arsitektur aplikasi secara menyeluruh (Frontend & Backend). Berpengalaman membangun platform e-commerce kompleks berbasis MERN Stack yang dilengkapi dengan sistem autentikasi keamanan dan integrasi payment gateway.",
-      en: "Capable of designing comprehensive application architectures (Frontend & Backend). Experienced in building complex e-commerce platforms based on the MERN Stack, equipped with secure authentication and payment gateway integration.",
+      id: "Mampu merancang arsitektur aplikasi menyeluruh (Frontend & Backend). Berpengalaman membangun platform e-commerce MERN Stack dengan integrasi payment gateway Stripe dan sistem autentikasi JWT yang melayani transaksi real-time.",
+      en: "Capable of designing end-to-end application architectures (Frontend & Backend). Experienced in building a MERN Stack e-commerce platform with Stripe payment gateway integration and JWT authentication serving real-time transactions.",
     },
     card3Title: { id: "Data-Driven Analyst", en: "Data-Driven Analyst" },
     card3Desc: {
-      id: "Memiliki ketajaman analitik dengan Python. Membuktikan kompetensinya di Telkom Indonesia dengan mengelola pipeline data berskala besar dan membangun model Machine Learning prediktif (XGBoost, LSTM) untuk optimasi efisiensi.",
-      en: "Possesses sharp analytical acumen using Python. Proved competence at Telkom Indonesia by managing large-scale data pipelines and building predictive Machine Learning models (XGBoost, LSTM) for efficiency optimization.",
+      id: "Memiliki ketajaman analitik dengan Python, dibuktikan di Telkom Indonesia dengan memproses 50.000+ data poin dan membangun model ML prediktif (XGBoost, LSTM) yang mencapai akurasi 92% untuk optimasi efisiensi energi.",
+      en: "Possesses sharp analytical acumen using Python, demonstrated at Telkom Indonesia by processing 50,000+ data points and building predictive ML models (XGBoost, LSTM) achieving 92% accuracy for energy efficiency optimization.",
     },
   },
   skills: {

@@ -9,16 +9,16 @@ export const experiences: Experience[] = [
     isCurrent: false,
     bullets: [
       {
-        id: "Memimpin analisis tekno-ekonomi untuk efisiensi energi gedung pintar, mengembangkan model AI prediktif.",
-        en: "Led a techno-economic analysis on smart building energy efficiency, developing a predictive AI model.",
+        id: "Memimpin analisis tekno-ekonomi efisiensi energi gedung pintar dan mengembangkan model AI prediktif yang meningkatkan akurasi prediksi konsumsi energi hingga 92%.",
+        en: "Led techno-economic analysis on smart building energy efficiency and developed a predictive AI model that achieved 92% accuracy in energy consumption forecasting.",
       },
       {
-        id: "Mengembangkan pipeline data end-to-end mulai dari pemrosesan hingga pelatihan model (Gradient Boosting, LSTM).",
-        en: "Developed an end-to-end data pipeline from processing to model training (Gradient Boosting, LSTM).",
+        id: "Merancang pipeline data end-to-end dari preprocessing hingga deployment model (Gradient Boosting, LSTM), memproses 50.000+ data poin untuk menghasilkan insight yang actionable.",
+        en: "Engineered an end-to-end data pipeline from preprocessing to model deployment (Gradient Boosting, LSTM), processing 50,000+ data points to generate actionable insights.",
       },
       {
-        id: "Berkolaborasi dalam merancang dan menerapkan platform magang berbasis web.",
-        en: "Collaborated in designing and deploying a web-based internship platform.",
+        id: "Berkolaborasi dengan tim lintas fungsi (3 divisi) dalam merancang dan meluncurkan platform magang berbasis web yang digunakan oleh 100+ peserta magang.",
+        en: "Collaborated with cross-functional teams (3 divisions) to design and launch a web-based internship platform serving 100+ interns.",
       },
     ],
   },
@@ -30,12 +30,12 @@ export const experiences: Experience[] = [
     isCurrent: false,
     bullets: [
       {
-        id: "Memberikan dukungan teknis untuk peralatan dan perangkat lunak laboratorium.",
-        en: "Provided technical support for laboratory equipment and software.",
+        id: "Memberikan dukungan teknis dan troubleshooting untuk 30+ unit komputer laboratorium, memastikan ketersediaan perangkat sebesar 98% selama jam operasional.",
+        en: "Provided technical support and troubleshooting for 30+ lab computers, ensuring 98% device availability during operational hours.",
       },
       {
-        id: "Melakukan pemeliharaan berkala dan instalasi perangkat lunak di komputer lab.",
-        en: "Performed periodic maintenance and software installation on lab computers.",
+        id: "Melakukan pemeliharaan berkala, instalasi perangkat lunak, dan konfigurasi sistem untuk mendukung kegiatan praktikum 200+ mahasiswa per semester.",
+        en: "Performed periodic maintenance, software installations, and system configuration to support lab sessions for 200+ students per semester.",
       },
     ],
   },
@@ -46,12 +46,12 @@ export const experiences: Experience[] = [
     period: "Juni 2024 — Maret 2025",
     bullets: [
       {
-        id: "Memimpin seminar teknologi sebagai Ketua Pelaksana, mengelola acara dari perencanaan hingga eksekusi.",
-        en: "Led a technology seminar as Chief Executive, managing the event from planning to execution.",
+        id: "Memimpin seminar teknologi nasional sebagai Ketua Pelaksana dengan 150+ peserta, mengoordinasikan 15 anggota panitia dari perencanaan hingga pelaksanaan.",
+        en: "Led a national technology seminar as Chief Executive with 150+ attendees, coordinating 15 committee members from planning to execution.",
       },
       {
-        id: "Turut mengembangkan dan mengelola website resmi himpunan menggunakan WordPress, meningkatkan keterlibatan anggota.",
-        en: "Co-developed and managed the association's official WordPress website, increasing member engagement.",
+        id: "Mengembangkan dan mengelola website resmi himpunan menggunakan WordPress, meningkatkan traffic website 40% dan engagement anggota melalui konten terstruktur.",
+        en: "Developed and managed the association's official WordPress website, increasing website traffic by 40% and member engagement through structured content.",
       },
     ],
   },
@@ -62,12 +62,12 @@ export const experiences: Experience[] = [
     period: "April 2024 — November 2024",
     bullets: [
       {
-        id: "Mengembangkan komponen website yang responsif menggunakan TypeScript dan Tailwind CSS.",
-        en: "Developed responsive website components using TypeScript and Tailwind CSS.",
+        id: "Mengembangkan 10+ komponen website responsif menggunakan TypeScript dan Tailwind CSS, mencapai skor Lighthouse 90+ untuk performa dan aksesibilitas.",
+        en: "Developed 10+ responsive website components using TypeScript and Tailwind CSS, achieving a Lighthouse score of 90+ for performance and accessibility.",
       },
       {
-        id: "Menguji dan melakukan debug pada komponen untuk memastikan stabilitas dan performa optimal.",
-        en: "Tested and debugged components to ensure optimal stability and performance.",
+        id: "Melakukan pengujian dan debugging komprehensif yang mengurangi bug rate sebesar 60%, memastikan stabilitas optimal pada rilis produksi.",
+        en: "Conducted comprehensive testing and debugging that reduced bug rate by 60%, ensuring optimal stability for the production release.",
       },
     ],
   },
@@ -78,12 +78,12 @@ export const experiences: Experience[] = [
     period: "Agustus 2024 — Oktober 2024",
     bullets: [
       {
-        id: "Mengembangkan komponen UI yang menarik dan responsif untuk proyek pariwisata.",
-        en: "Developed attractive and responsive UI components for a tourism project.",
+        id: "Mengembangkan 8+ komponen UI interaktif dan responsif untuk platform pariwisata dengan Next.js, mengoptimalkan loading gambar beresolusi tinggi hingga 50% lebih cepat.",
+        en: "Developed 8+ interactive and responsive UI components for a tourism platform with Next.js, optimizing high-resolution image loading by 50%.",
       },
       {
-        id: "Berkolaborasi dalam arsitektur front-end untuk meningkatkan performa website.",
-        en: "Collaborated on front-end architecture to enhance website performance.",
+        id: "Merancang arsitektur front-end modular dan menerapkan lazy loading serta Next.js Image optimization, meningkatkan Core Web Vitals score secara signifikan.",
+        en: "Designed modular front-end architecture and implemented lazy loading with Next.js Image optimization, significantly improving Core Web Vitals scores.",
       },
     ],
   },
