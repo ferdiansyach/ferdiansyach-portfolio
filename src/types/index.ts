@@ -21,6 +21,8 @@ export interface Experience {
   id: string;
   role: TranslatedText;
   company: string;
+  type?: string; // e.g. "Internship" | "Freelance" | "Student Organization"
+  location?: string; // e.g. "Jakarta, ID"
   period: string;
   isCurrent?: boolean;
   bullets: TranslatedText[];
