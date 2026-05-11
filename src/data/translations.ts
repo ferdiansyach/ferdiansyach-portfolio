@@ -17,6 +17,7 @@ export const translations = {
     },
     contactBtn: { id: "Hubungi Saya", en: "Contact Me" },
     downloadCv: { id: "Unduh CV", en: "Download CV" },
+    viewPortfolio: { id: "Lihat Portofolio PDF", en: "View Portfolio PDF" },
     availableBadge: { id: "Terbuka untuk Kerja", en: "Open to Work" },
     location: { id: "Depok, Jawa Barat", en: "Depok, West Java" },
   },
@@ -25,8 +26,8 @@ export const translations = {
     title: { id: "Kandidat yang Tepat di Bidang Teknologi", en: "The Right Candidate in Tech" },
     card1Title: { id: "Developer Website & Sistem", en: "Website & System Developer" },
     card1Desc: {
-      id: "Spesialis dalam mengembangkan antarmuka web modern dan responsif dengan skor Lighthouse 90+. Terbukti berhasil membangun 10+ komponen production-ready menggunakan React, Next.js, dan Tailwind CSS untuk klien nyata termasuk platform pariwisata dan festival universitas.",
-      en: "Specializes in developing modern and responsive web interfaces with Lighthouse scores of 90+. Proven track record of building 10+ production-ready components using React, Next.js, and Tailwind CSS for real clients including tourism platforms and university festivals.",
+      id: "Spesialis dalam mengembangkan antarmuka web modern dan responsif dengan skor Lighthouse 90+. Terbukti berhasil membangun 10+ komponen production-ready menggunakan React, Next.js, dan Tailwind CSS untuk klien nyata termasuk platform festival universitas dan e-commerce.",
+      en: "Specializes in developing modern and responsive web interfaces with Lighthouse scores of 90+. Proven track record of building 10+ production-ready components using React, Next.js, and Tailwind CSS for real clients including university festival portals and e-commerce platforms.",
     },
     card2Title: { id: "Fullstack Ready", en: "Fullstack Ready" },
     card2Desc: {
@@ -57,6 +58,7 @@ export const translations = {
     filterWebDev: { id: "Web Dev", en: "Web Dev" },
     filterDataScience: { id: "Data Science", en: "Data Science" },
     filterWordPress: { id: "WordPress", en: "WordPress" },
+    viewPortfolioPdf: { id: "Unduh Portofolio PDF", en: "Download Portfolio PDF" },
   },
   experience: {
     label: { id: "Karir", en: "Career" },

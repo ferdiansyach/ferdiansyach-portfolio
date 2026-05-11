@@ -18,7 +18,22 @@ export const projects: Project[] = [
     },
     technologies: ["React", "Node.js", "Express.js", "MongoDB", "REST API", "JWT Auth", "Stripe"],
     category: "webdev",
+    period: "2024",
     thumbnail: "/images/indosaji2.jpeg",
+    pdfBullets: [
+      {
+        id: "Membangun platform e-commerce full-stack end-to-end (MERN) dengan integrasi payment gateway Stripe, memproses transaksi pengguna secara real-time dari sisi klien hingga server.",
+        en: "Built a full-stack MERN e-commerce platform with Stripe payment gateway integration, processing real-time user transactions from client to server.",
+      },
+      {
+        id: "Mengimplementasikan React Context API untuk manajemen state global (autentikasi & keranjang belanja), memastikan konsistensi UX di seluruh halaman aplikasi.",
+        en: "Implemented React Context API for global state management (auth & shopping cart), ensuring consistent UX across all application views.",
+      },
+      {
+        id: "Merancang RESTful API dengan Node.js & Express, didukung skema MongoDB yang terstruktur untuk memisahkan role admin dan pengguna secara aman.",
+        en: "Architected RESTful API with Node.js & Express backed by structured MongoDB schema, enabling secure admin/user role separation.",
+      },
+    ],
     images: [
       { src: "/images/indosaji7.jpeg", caption: { id: "Halaman Utama & Display Produk", en: "Homepage & Product Display" } },
       { src: "/images/indosaji1.jpeg", caption: { id: "Autentikasi Pengguna", en: "User Authentication" } },
@@ -49,7 +64,22 @@ export const projects: Project[] = [
     },
     technologies: ["Python", "Machine Learning", "Data Analysis", "Streamlit", "XGBoost", "LSTM", "Pandas"],
     category: "datascience",
+    period: "2025",
     thumbnail: "/images/intern1.jpeg",
+    pdfBullets: [
+      {
+        id: "Membangun model prediktif LSTM + XGBoost dengan akurasi 92% untuk peramalan konsumsi energi dari 50.000+ data poin smart meter.",
+        en: "Engineered LSTM + XGBoost predictive models achieving 92% accuracy on 50,000+ smart meter data points for energy consumption forecasting.",
+      },
+      {
+        id: "Merancang pipeline data end-to-end (ingest → preprocessing → deployment) dengan deteksi anomali skala besar untuk divisi analisis tekno-ekonomi Telkom Indonesia.",
+        en: "Built an end-to-end data pipeline (ingestion → preprocessing → deployment) with large-scale anomaly detection for Telkom Indonesia's techno-economic analysis division.",
+      },
+      {
+        id: "Mengembangkan dashboard Streamlit real-time untuk visualisasi konsumsi energi dan perbandingan performa model, diadopsi langsung oleh tim internal.",
+        en: "Developed a real-time Streamlit dashboard for energy consumption visualization and model performance comparison, adopted directly by the internal team.",
+      },
+    ],
     images: [
       { src: "/images/intern1.jpeg", caption: { id: "Dashboard Utama", en: "Main Dashboard" } },
       { src: "/images/intern2.jpeg", caption: { id: "Visualisasi Data Konsumsi", en: "Consumption Data Visualization" } },
@@ -60,34 +90,6 @@ export const projects: Project[] = [
       { src: "/images/intern7.jpeg", caption: { id: "Laporan Analisis", en: "Analysis Report" } },
     ],
     githubUrl: "https://github.com/ferdiansyach",
-  },
-  {
-    slug: "anambas",
-    title: "Anambas Tourism Website",
-    description: {
-      id: "Platform pariwisata interaktif yang responsif, dibangun dengan ekosistem Next.js dan Tailwind CSS.",
-      en: "An interactive and responsive tourism platform built with the Next.js and Tailwind CSS ecosystem.",
-    },
-    longDescription: {
-      id: "Proyek pengembangan website pariwisata untuk Kepulauan Anambas menggunakan Next.js dan Tailwind CSS. Bertanggung jawab dalam mengembangkan komponen-komponen UI yang menarik dan responsif, serta berkolaborasi dalam arsitektur front-end untuk meningkatkan performa website secara keseluruhan.",
-      en: "A tourism website development project for the Anambas Islands using Next.js and Tailwind CSS. Responsible for developing attractive and responsive UI components, and collaborating on front-end architecture to improve overall website performance.",
-    },
-    challenges: {
-      id: "Tantangan utama adalah menciptakan pengalaman visual yang immersive untuk menampilkan keindahan Kepulauan Anambas sambil menjaga performa website tetap optimal. Penggunaan Next.js Image component dan lazy loading sangat membantu dalam mengoptimalkan loading gambar dengan resolusi tinggi.",
-      en: "The main challenge was creating an immersive visual experience to showcase the beauty of the Anambas Islands while maintaining optimal website performance. The use of Next.js Image component and lazy loading greatly helped optimize high-resolution image loading.",
-    },
-    technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript"],
-    category: "webdev",
-    thumbnail: "/images/anambas1.jpeg",
-    images: [
-      { src: "/images/anambas1.jpeg", caption: { id: "Halaman Utama", en: "Homepage" } },
-      { src: "/images/anambas2.jpeg", caption: { id: "Galeri Destinasi", en: "Destination Gallery" } },
-      { src: "/images/anambas3.jpeg", caption: { id: "Detail Destinasi", en: "Destination Detail" } },
-      { src: "/images/anambas4.jpeg", caption: { id: "Peta Lokasi", en: "Location Map" } },
-      { src: "/images/anambas5.jpeg", caption: { id: "Informasi Wisata", en: "Tourism Information" } },
-      { src: "/images/anambas6.jpeg", caption: { id: "Komponen UI", en: "UI Components" } },
-      { src: "/images/anambas7.jpeg", caption: { id: "Responsif Mobile", en: "Mobile Responsive" } },
-    ],
   },
   {
     slug: "unasfest",
@@ -106,7 +108,23 @@ export const projects: Project[] = [
     },
     technologies: ["TypeScript", "React", "Tailwind CSS", "Next.js"],
     category: "webdev",
+    period: "2024",
     thumbnail: "/images/unasfest1.jpeg",
+    githubUrl: "https://github.com/ferdiansyach/unasfest-end",
+    pdfBullets: [
+      {
+        id: "Mengembangkan 10+ komponen website responsif dengan TypeScript & Tailwind CSS, mencapai skor Lighthouse 90+ untuk performa dan aksesibilitas pada portal festival resmi.",
+        en: "Developed 10+ responsive components with TypeScript & Tailwind CSS, achieving a Lighthouse score of 90+ for performance and accessibility on the official festival portal.",
+      },
+      {
+        id: "Merancang pipeline testing & debugging komprehensif yang mengurangi bug rate produksi sebesar 60% sebelum rilis publik yang digunakan seluruh civitas universitas.",
+        en: "Engineered a comprehensive testing & debugging pipeline reducing the production bug rate by 60% before a public release used by the entire university community.",
+      },
+      {
+        id: "Berkolaborasi dalam tim multi-developer menggunakan Git branching strategy dan code review untuk menjaga kualitas kode di bawah deadline yang ketat.",
+        en: "Collaborated in a multi-developer team using Git branching strategy and code reviews to maintain code quality under tight deadlines.",
+      },
+    ],
     images: [
       { src: "/images/unasfest1.jpeg", caption: { id: "Halaman Utama Festival", en: "Festival Homepage" } },
       { src: "/images/unasfest2.jpeg", caption: { id: "Lineup Acara", en: "Event Lineup" } },
@@ -134,7 +152,22 @@ export const projects: Project[] = [
     },
     technologies: ["WordPress", "Content Management", "SEO", "Plugin Management"],
     category: "wordpress",
+    period: "2024 – 2025",
     thumbnail: "/images/himasi1.jpeg",
+    pdfBullets: [
+      {
+        id: "Mengembangkan website resmi himpunan mahasiswa menggunakan WordPress, meningkatkan traffic sebesar 40% melalui konten terstruktur yang dioptimalkan SEO.",
+        en: "Developed the official student association website on WordPress, increasing traffic by 40% through structured, SEO-optimized content.",
+      },
+      {
+        id: "Mengelola ekosistem plugin dan arsitektur konten agar dapat dikelola mandiri oleh anggota non-teknis tanpa menurunkan tampilan profesional.",
+        en: "Managed plugin ecosystem and content architecture, enabling non-technical members to self-manage content without compromising professional appearance.",
+      },
+      {
+        id: "Membuat dokumentasi serah terima pengelolaan website yang komprehensif, memastikan transisi mulus ke pengurus himpunan periode selanjutnya.",
+        en: "Created comprehensive website handover documentation, ensuring a smooth management transition to the next student association committee.",
+      },
+    ],
     images: [
       { src: "/images/himasi1.jpeg", caption: { id: "Halaman Utama HIMASI", en: "HIMASI Homepage" } },
       { src: "/images/himasi2.jpeg", caption: { id: "Berita & Artikel", en: "News & Articles" } },

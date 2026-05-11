@@ -334,7 +334,7 @@ export default function PortfolioPDF() {
               </p>
             </section>
 
-            {/* ===== EXPERIENCE — All 5 ===== */}
+            {/* ===== EXPERIENCE — All 4 ===== */}
             <section style={{ marginBottom: '8px' }}>
               <h2 className="cv-section-title">
                 {lang === "id" ? "PENGALAMAN PROFESIONAL" : "PROFESSIONAL EXPERIENCE"}
