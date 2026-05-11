@@ -15,6 +15,8 @@ export interface Project {
   images: { src: string; caption: TranslatedText }[];
   githubUrl?: string;
   liveUrl?: string;
+  period?: string;
+  pdfBullets?: TranslatedText[];
 }
 
 export interface Experience {

@@ -79,24 +79,6 @@ export const experiences: Experience[] = [
       },
     ],
   },
-  {
-    id: "anambas",
-    role: { id: "Front-End Developer", en: "Front-End Developer" },
-    company: "Anambas Tourism Website",
-    type: "Freelance",
-    location: "Jakarta, ID",
-    period: "Aug 2024 – Oct 2024",
-    bullets: [
-      {
-        id: "Mengembangkan 8+ komponen UI interaktif dan responsif untuk platform pariwisata menggunakan Next.js, mengoptimalkan loading gambar beresolusi tinggi sebesar 50% melalui Next.js Image optimization dan lazy loading.",
-        en: "Developed 8+ interactive and responsive UI components for a tourism platform using Next.js, optimizing high-resolution image loading by 50% via Next.js Image optimization and lazy loading.",
-      },
-      {
-        id: "Merancang sistem komponen front-end modular yang secara signifikan meningkatkan skor Core Web Vitals, meningkatkan performa halaman keseluruhan untuk pengalaman pengguna yang lebih baik.",
-        en: "Architected a modular front-end component system that significantly improved Core Web Vitals scores, boosting overall page performance and user experience for the tourism platform.",
-      },
-    ],
-  },
 ];
 
 export const education: Education = {

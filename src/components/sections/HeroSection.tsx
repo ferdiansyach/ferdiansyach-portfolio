@@ -226,6 +226,19 @@ export default function HeroSection() {
                 {t(translations.hero.downloadCv)}
               </a>
             </MagneticButton>
+            <MagneticButton>
+              <a
+                href="/projects-pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-500 to-violet-500 text-white font-semibold py-3 px-8 rounded-xl hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300 hover:-translate-y-0.5 group"
+              >
+                <svg className="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+                {t(translations.hero.viewPortfolio)}
+              </a>
+            </MagneticButton>
             <div className="flex items-center gap-3 md:ml-2">
               <MagneticButton strength={10}>
                 <a
