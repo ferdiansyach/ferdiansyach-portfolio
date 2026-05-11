@@ -11,17 +11,7 @@ export const certifications: Certification[] = [
     date: "Feb 2026",
     category: "technical",
     badge: "🏅",
-  },
-  {
-    id: "google-cloud",
-    name: {
-      id: "Google Cloud Computing Foundations",
-      en: "Google Cloud Computing Foundations",
-    },
-    issuer: "Google Cloud",
-    date: "Dec 2025",
-    category: "cloud",
-    badge: "☁️",
+    image: "/Sertifikat/BNSP-Ferdiansyach_page-0001.jpg",
   },
   {
     id: "certiport-python",
@@ -33,6 +23,7 @@ export const certifications: Certification[] = [
     date: "Oct 2025",
     category: "technical",
     badge: "🐍",
+    image: "/Sertifikat/Certiport Python.jpg",
   },
   {
     id: "scrum",
@@ -44,6 +35,7 @@ export const certifications: Certification[] = [
     date: "Jul 2025",
     category: "methodology",
     badge: "🔄",
+    image: "/Sertifikat/Scrum Master Telkom.jpg",
   },
   {
     id: "iot",
@@ -55,6 +47,7 @@ export const certifications: Certification[] = [
     date: "Apr 2025",
     category: "technical",
     badge: "📡",
+    image: "/Sertifikat/IoT Telkom.jpg",
   },
   {
     id: "dqlab-r",
@@ -66,5 +59,6 @@ export const certifications: Certification[] = [
     date: "Feb 2023",
     category: "data",
     badge: "📊",
+    image: "/Sertifikat/DQ Lab Statistic.jpg",
   },
 ];

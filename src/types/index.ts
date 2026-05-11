@@ -61,6 +61,7 @@ export interface Certification {
   credentialUrl?: string;
   category: "technical" | "cloud" | "methodology" | "data";
   badge?: string;
+  image?: string;
 }
 
 export interface Testimonial {
