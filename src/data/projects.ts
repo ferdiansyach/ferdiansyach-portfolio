@@ -89,7 +89,11 @@ export const projects: Project[] = [
       { src: "/images/intern6.jpeg", caption: { id: "Heatmap Konsumsi Energi", en: "Energy Consumption Heatmap" } },
       { src: "/images/intern7.jpeg", caption: { id: "Laporan Analisis", en: "Analysis Report" } },
     ],
-    githubUrl: "https://github.com/ferdiansyach",
+    githubUrl: "https://github.com/ferdiansyach/smart-meter-analysis",
+    githubNote: {
+      id: "Private repo — tersedia atas permintaan",
+      en: "Private repo — available upon request",
+    },
   },
   {
     slug: "unasfest",
@@ -175,7 +179,11 @@ export const projects: Project[] = [
       { src: "/images/himasi4.jpeg", caption: { id: "Galeri Kegiatan", en: "Activity Gallery" } },
       { src: "/images/himasi5.jpeg", caption: { id: "Informasi Anggota", en: "Member Information" } },
     ],
-    githubUrl: "https://github.com/ferdiansyach",
+    githubUrl: "https://github.com/ferdiansyach/himasi-unas",
+    githubNote: {
+      id: "Private repo — tersedia atas permintaan",
+      en: "Private repo — available upon request",
+    },
   },
 ];
 

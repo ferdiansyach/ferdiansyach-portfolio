@@ -19,7 +19,7 @@ function StatItem({ value, suffix, label, icon }: StatItemProps) {
       <div className="w-14 h-14 mb-4 rounded-xl bg-slate-800/50 border border-slate-700 flex items-center justify-center text-rose-400 group-hover:scale-110 group-hover:bg-rose-400/10 transition-all duration-300">
         {icon}
       </div>
-      <div className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-fuchsia-500 mb-2">
+      <div className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-linear-to-r from-rose-400 to-fuchsia-500 mb-2">
         <AnimatedCounter value={value} suffix={suffix} />
       </div>
       <p className="text-slate-400 text-sm font-medium">{t(label)}</p>
@@ -39,7 +39,7 @@ const stats = [
     ),
   },
   {
-    value: 1,
+    value: 2,
     suffix: "+",
     label: translations.stats.experience,
     icon: (

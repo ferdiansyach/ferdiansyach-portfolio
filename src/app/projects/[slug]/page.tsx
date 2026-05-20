@@ -55,7 +55,7 @@ function ProjectDetailContent({ slug }: { slug: string }) {
       <main className="relative min-h-screen pb-20 overflow-hidden">
         
         {/* === PARALLAX HERO BANNER === */}
-        <div className="relative w-full h-[70vh] min-h-[500px] flex items-end pb-16 pt-24 px-6 mt-16 md:mt-20">
+        <div className="relative w-full h-[70vh] min-h-125 flex items-end pb-16 pt-24 px-6 mt-16 md:mt-20">
           {/* Background Image Parallax */}
           <div 
             className="absolute inset-0 z-0"
@@ -69,7 +69,7 @@ function ProjectDetailContent({ slug }: { slug: string }) {
               priority
             />
             {/* Dark/Blur Gradients */}
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-slate-900/40" />
+            <div className="absolute inset-0 bg-linear-to-t from-slate-900 via-slate-900/60 to-slate-900/40" />
             <div className="absolute inset-0 bg-slate-900/30 backdrop-blur-sm" />
           </div>
 
@@ -172,7 +172,7 @@ function ProjectDetailContent({ slug }: { slug: string }) {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-between w-full p-6 bg-gradient-to-br from-fuchsia-500 to-purple-600 rounded-3xl font-bold text-white shadow-xl shadow-fuchsia-500/20 hover:shadow-fuchsia-500/40 hover:-translate-y-1 transition-all group"
+                        className="flex items-center justify-between w-full p-6 bg-linear-to-br from-fuchsia-500 to-purple-600 rounded-3xl font-bold text-white shadow-xl shadow-fuchsia-500/20 hover:shadow-fuchsia-500/40 hover:-translate-y-1 transition-all group"
                       >
                         <span className="flex items-center gap-3 text-lg">
                           <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -188,6 +188,16 @@ function ProjectDetailContent({ slug }: { slug: string }) {
                       </a>
                     </MagneticButton>
                   </motion.div>
+                )}
+                {project.githubUrl && project.githubNote && (
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    className="text-slate-400 text-sm -mt-4 text-center italic"
+                  >
+                    * {t(project.githubNote)}
+                  </motion.p>
                 )}
                 
                 {/* Visual Category Badge */}
@@ -223,7 +233,7 @@ function ProjectDetailContent({ slug }: { slug: string }) {
             <div className="text-center mb-10">
               <h2 className="text-3xl font-black text-white inline-block relative">
                 {t(translations.projectDetail.galleryTitle)}
-                <span className="absolute -bottom-3 left-1/4 right-1/4 h-1 bg-gradient-to-r from-rose-400 to-fuchsia-500 rounded-full" />
+                <span className="absolute -bottom-3 left-1/4 right-1/4 h-1 bg-linear-to-r from-rose-400 to-fuchsia-500 rounded-full" />
               </h2>
             </div>
             
@@ -232,7 +242,7 @@ function ProjectDetailContent({ slug }: { slug: string }) {
                 <motion.div key={i} variants={fadeUp}>
                   <TiltCard maxTilt={5} glareEnabled={true}>
                     <div
-                      className="group cursor-zoom-in relative overflow-hidden rounded-2xl border border-slate-700/50 bg-slate-800 shadow-lg hover:border-rose-400/50 transition-colors bg-white"
+                      className="group cursor-zoom-in relative overflow-hidden rounded-2xl border border-slate-700/50 bg-slate-800 shadow-lg hover:border-rose-400/50 transition-colors"
                       onClick={() => setLightboxImg(img.src)}
                     >
                       <div className="relative h-56 w-full overflow-hidden">
@@ -251,7 +261,7 @@ function ProjectDetailContent({ slug }: { slug: string }) {
                           </div>
                         </div>
                       </div>
-                      <div className="p-5 absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent">
+                      <div className="p-5 absolute bottom-0 inset-x-0 bg-linear-to-t from-slate-900 via-slate-900/80 to-transparent">
                         <h4 className="font-bold text-white text-base drop-shadow-md">{t(img.caption)}</h4>
                       </div>
                     </div>
@@ -267,7 +277,7 @@ function ProjectDetailContent({ slug }: { slug: string }) {
       <AnimatePresence>
         {lightboxImg && (
           <motion.div
-            className="fixed inset-0 bg-slate-900/95 backdrop-blur-xl z-[100] flex items-center justify-center cursor-zoom-out p-4 md:p-10"
+            className="fixed inset-0 bg-slate-900/95 backdrop-blur-xl z-100 flex items-center justify-center cursor-zoom-out p-4 md:p-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

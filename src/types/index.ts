@@ -14,6 +14,7 @@ export interface Project {
   thumbnail: string;
   images: { src: string; caption: TranslatedText }[];
   githubUrl?: string;
+  githubNote?: TranslatedText;
   liveUrl?: string;
   period?: string;
   pdfBullets?: TranslatedText[];
@@ -36,6 +37,7 @@ export interface Skill {
   color: string;
   proficiency: "beginner" | "intermediate" | "advanced";
   isLearning?: boolean;
+  usageContext?: TranslatedText;
 }
 
 export interface SkillCategory {
