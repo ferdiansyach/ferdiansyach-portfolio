@@ -42,7 +42,7 @@ export default function SkillsSection() {
             whileTap={{ scale: 0.95 }}
             className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 border ${
               activeTab === i
-                ? "bg-gradient-to-r from-rose-500 to-fuchsia-500 text-white border-transparent shadow-lg shadow-rose-500/20"
+                ? "bg-linear-to-r from-rose-500 to-fuchsia-500 text-white border-transparent shadow-lg shadow-rose-500/20"
                 : "border-slate-600 text-slate-400 hover:border-rose-400 hover:text-rose-400"
             }`}
           >
@@ -94,7 +94,14 @@ function SkillRow({ skill, index }: { skill: typeof skillCategories[0]["skills"]
         <div className="w-8 h-8 shrink-0 flex items-center justify-center">
           <SkillIcon icon={skill.icon} color={skill.color} />
         </div>
-        <span className="text-sm font-medium text-white flex-1">{skill.name}</span>
+        <div className="flex-1 flex flex-col min-w-0">
+          <span className="text-sm font-medium text-white">{skill.name}</span>
+          {skill.usageContext && (
+            <span className="text-[10.5px] text-slate-400 font-normal truncate max-w-45 sm:max-w-60 md:max-w-xs group-hover:text-rose-300 transition-colors">
+              {t(skill.usageContext)}
+            </span>
+          )}
+        </div>
         <div className="flex items-center gap-2">
           {skill.isLearning && (
             <span className="bg-amber-500/10 text-amber-400 border border-amber-500/20 text-[10px] font-bold px-2 py-0.5 rounded-full">
@@ -108,7 +115,7 @@ function SkillRow({ skill, index }: { skill: typeof skillCategories[0]["skills"]
       </div>
       <div className="h-1.5 bg-slate-700/50 rounded-full overflow-hidden">
         <motion.div
-          className={`h-full bg-gradient-to-r ${proficiencyColor[skill.proficiency]} rounded-full`}
+          className={`h-full bg-linear-to-r ${proficiencyColor[skill.proficiency]} rounded-full`}
           initial={{ width: "0%" }}
           animate={{ width: proficiencyWidth[skill.proficiency] }}
           transition={{ duration: 1, delay: index * 0.1, ease: "easeOut" }}

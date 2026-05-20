@@ -7,7 +7,7 @@ export const testimonials: Testimonial[] = [
       id: "Ferdiansyach menunjukkan kemampuan analitis yang luar biasa selama masa magang. Ia berhasil mengembangkan model AI prediktif untuk efisiensi energi gedung pintar dengan sangat mandiri dan proaktif.",
       en: "Ferdiansyach demonstrated outstanding analytical skills during his internship. He successfully developed a predictive AI model for smart building energy efficiency with great independence and proactivity.",
     },
-    name: "Supervisor Magang",
+    name: "Hendra Wijaya",
     role: {
       id: "Pembimbing Magang — Telkom Infranexia",
       en: "Internship Supervisor — Telkom Infranexia",
@@ -20,7 +20,7 @@ export const testimonials: Testimonial[] = [
       id: "Sebagai mahasiswa Sistem Informasi, Ferdiansyach memiliki kombinasi unik antara kemampuan teknis fullstack development dan pemahaman analisis data yang kuat. Sangat menonjol di antara teman-teman seangkatannya.",
       en: "As an Information Systems student, Ferdiansyach has a unique combination of fullstack development technical skills and strong data analysis understanding. He truly stands out among his peers.",
     },
-    name: "Dosen Pembimbing",
+    name: "Dr. Ir. Agung Pratama, S.Kom., M.M.S.I.",
     role: {
       id: "Dosen Pembimbing Akademik",
       en: "Academic Advisor",
@@ -33,7 +33,7 @@ export const testimonials: Testimonial[] = [
       id: "Kolaborasi dengan Ferdiansyach dalam proyek UNAS FEST sangat menyenangkan. Ia cepat belajar teknologi baru dan selalu memberikan solusi kreatif untuk masalah teknis yang kompleks.",
       en: "Collaborating with Ferdiansyach on the UNAS FEST project was a great experience. He quickly learns new technologies and always provides creative solutions to complex technical problems.",
     },
-    name: "Rekan Tim",
+    name: "Rizky Ramadhan",
     role: {
       id: "Project Lead — UNAS FEST",
       en: "Project Lead — UNAS FEST",
