@@ -16,7 +16,7 @@ export default function Footer() {
   return (
     <footer className="mt-12 border-t border-slate-800 relative">
       {/* Gradient divider */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-px bg-gradient-to-r from-transparent via-rose-400/40 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-px bg-linear-to-r from-transparent via-rose-400/40 to-transparent" />
 
       <div className="container mx-auto px-6 pt-10 pb-20 sm:pb-10">
         <div className="flex flex-col items-center gap-6">

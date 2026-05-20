@@ -5,7 +5,7 @@ import { translations } from "@/data/translations";
 import SectionHeader from "@/components/ui/SectionHeader";
 import GlassCard from "@/components/ui/GlassCard";
 import TiltCard from "@/components/ui/TiltCard";
-import { AnimatedSection, AnimatedDiv, fadeUp } from "@/components/ui/AnimatedSection";
+import { AnimatedSection, AnimatedDiv } from "@/components/ui/AnimatedSection";
 
 const aboutCards = [
   {
@@ -53,10 +53,10 @@ export default function AboutSection() {
       </AnimatedDiv>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {aboutCards.map((card, i) => (
-          <AnimatedDiv key={i} variants={fadeUp}>
+          <AnimatedDiv key={i}>
             <TiltCard maxTilt={6}>
               <GlassCard delay={0} className={`p-6 sm:p-8 md:p-12 text-left h-full ${card.borderHover} transition-all duration-500 group`}>
-                <div className={`w-14 h-14 sm:w-16 sm:h-16 mb-5 sm:mb-8 rounded-2xl bg-gradient-to-br ${card.gradient} flex items-center justify-center group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 origin-bottom-left`}>
+                <div className={`w-14 h-14 sm:w-16 sm:h-16 mb-5 sm:mb-8 rounded-2xl bg-linear-to-br ${card.gradient} flex items-center justify-center group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 origin-bottom-left`}>
                   {card.icon}
                 </div>
                 <h3 className="text-xl font-bold text-white mb-5">{t(card.title)}</h3>

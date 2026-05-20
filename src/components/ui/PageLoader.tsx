@@ -9,8 +9,10 @@ export default function PageLoader() {
   useEffect(() => {
     // Skip loader for returning visitors (session-based)
     if (sessionStorage.getItem("visited")) {
-      setLoading(false);
-      return;
+      const skipTimer = setTimeout(() => {
+        setLoading(false);
+      }, 0);
+      return () => clearTimeout(skipTimer);
     }
 
     const timer = setTimeout(() => {
@@ -25,7 +27,7 @@ export default function PageLoader() {
       {loading && (
         <motion.div
           key="loader"
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900"
+          className="fixed inset-0 z-100 flex items-center justify-center bg-slate-900"
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
         >
@@ -124,7 +126,7 @@ export default function PageLoader() {
             <div className="flex flex-col items-center gap-3">
               {/* Name */}
               <motion.p
-                className="text-xl font-bold tracking-widest uppercase bg-gradient-to-r from-rose-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent"
+                className="text-xl font-bold tracking-widest uppercase bg-linear-to-r from-rose-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent"
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.7 }}
@@ -140,7 +142,7 @@ export default function PageLoader() {
                 transition={{ delay: 0.8 }}
               >
                 <motion.div
-                  className="h-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-violet-500 rounded-full"
+                  className="h-full bg-linear-to-r from-rose-400 via-fuchsia-500 to-violet-500 rounded-full"
                   initial={{ width: "0%" }}
                   animate={{ width: "100%" }}
                   transition={{ duration: 1.4, delay: 0.8, ease: "easeInOut" }}

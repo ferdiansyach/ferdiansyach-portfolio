@@ -41,7 +41,7 @@ export default function ProjectsSection() {
             onClick={() => setFilter(btn.key)}
             className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 border cursor-pointer ${
               filter === btn.key
-                ? "bg-gradient-to-r from-rose-500 to-fuchsia-500 text-white border-transparent shadow-lg shadow-rose-500/20"
+                ? "bg-linear-to-r from-rose-500 to-fuchsia-500 text-white border-transparent shadow-lg shadow-rose-500/20"
                 : "border-slate-600 text-slate-400 hover:border-rose-400 hover:text-rose-400"
             }`}
           >
@@ -73,7 +73,7 @@ export default function ProjectsSection() {
                         className="object-cover transition-transform duration-500 group-hover:scale-110"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-end justify-center pb-4">
+                      <div className="absolute inset-0 bg-linear-to-t from-slate-900/95 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-end justify-center pb-4">
                         <span className="bg-rose-400/20 backdrop-blur-sm text-white font-semibold text-sm px-4 py-2 rounded-full border border-rose-400/30">
                           {t(translations.projects.viewDetails)}
                         </span>
@@ -104,7 +104,7 @@ export default function ProjectsSection() {
           href="/projects-pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2.5 bg-gradient-to-r from-indigo-500 to-violet-500 text-white font-semibold py-3 px-8 rounded-xl hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300 hover:-translate-y-0.5 group"
+          className="inline-flex items-center gap-2.5 bg-linear-to-r from-indigo-500 to-violet-500 text-white font-semibold py-3 px-8 rounded-xl hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300 hover:-translate-y-0.5 group"
         >
           <svg className="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />

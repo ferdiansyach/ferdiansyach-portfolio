@@ -71,17 +71,18 @@ export default function Navbar() {
     >
       {/* Scroll progress bar */}
       <motion.div
-        className="absolute top-0 left-0 h-[2px] bg-gradient-to-r from-rose-400 via-fuchsia-500 to-violet-500 z-50"
+        className="absolute top-0 left-0 h-0.5 bg-linear-to-r from-rose-400 via-fuchsia-500 to-violet-500 z-50"
         style={{ width: `${scrollProgress}%` }}
       />
 
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         <Link
           href="/"
-          className="text-xl font-extrabold tracking-tight bg-gradient-to-r from-rose-400 via-fuchsia-500 to-violet-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
+          className="text-xl font-extrabold tracking-tight bg-linear-to-r from-rose-400 via-fuchsia-500 to-violet-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
         >
           Ferdiansyach
         </Link>
+
 
         {/* Desktop nav */}
         <nav 
@@ -124,7 +125,7 @@ export default function Navbar() {
                 {isActive && (
                   <motion.span
                     layoutId="activeNavLine"
-                    className="absolute -bottom-1 left-4 right-4 h-0.5 bg-gradient-to-r from-rose-400 to-fuchsia-500 rounded-full"
+                    className="absolute -bottom-1 left-4 right-4 h-0.5 bg-linear-to-r from-rose-400 to-fuchsia-500 rounded-full"
                     transition={{ type: "tween", ease: "easeOut", duration: 0.15 }}
                   />
                 )}

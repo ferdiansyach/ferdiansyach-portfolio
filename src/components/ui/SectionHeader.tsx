@@ -23,7 +23,7 @@ export default function SectionHeader({ label, title }: SectionHeaderProps) {
       <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white dark:text-white light:text-slate-900">
         {t(title)}
       </h2>
-      <div className="mt-4 sm:mt-6 mx-auto w-16 sm:w-20 h-1 bg-gradient-to-r from-rose-400 via-fuchsia-500 to-violet-500 rounded-full" />
+      <div className="mt-4 sm:mt-6 mx-auto w-16 sm:w-20 h-1 bg-linear-to-r from-rose-400 via-fuchsia-500 to-violet-500 rounded-full" />
     </div>
   );
 }
