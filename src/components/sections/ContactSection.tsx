@@ -94,7 +94,7 @@ export default function ContactSection() {
   return (
     <AnimatedSection id="contact" className="py-32 container mx-auto px-6">
       <AnimatedDiv className="max-w-4xl mx-auto">
-        <div className="bg-gradient-to-br from-rose-400/10 via-fuchsia-500/10 to-violet-500/10 border border-rose-400/15 rounded-2xl sm:rounded-[2.5rem] p-6 sm:p-10 md:p-16 relative overflow-hidden">
+        <div className="bg-linear-to-br from-rose-400/10 via-fuchsia-500/10 to-violet-500/10 border border-rose-400/15 rounded-2xl sm:rounded-[2.5rem] p-6 sm:p-10 md:p-16 relative overflow-hidden">
           {/* Background glow */}
           <div className="absolute -top-24 -right-24 w-64 h-64 bg-rose-500/10 rounded-full blur-3xl" />
           <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-fuchsia-500/10 rounded-full blur-3xl" />
@@ -169,7 +169,7 @@ export default function ContactSection() {
               <motion.button
                 type="submit"
                 disabled={status === "sending"}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-rose-500 to-fuchsia-500 text-white font-semibold py-3 px-8 rounded-xl hover:shadow-lg hover:shadow-rose-500/25 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-linear-to-r from-rose-500 to-fuchsia-500 text-white font-semibold py-3 px-8 rounded-xl hover:shadow-lg hover:shadow-rose-500/25 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
                 whileTap={{ scale: 0.97 }}
               >
                 {status === "sending" ? (
@@ -220,11 +220,11 @@ export default function ContactSection() {
 
           {/* Divider */}
           <div className="relative z-10 flex items-center gap-4 max-w-2xl mx-auto mb-10">
-            <div className="flex-1 h-px bg-gradient-to-r from-transparent to-slate-700/60" />
+            <div className="flex-1 h-px bg-linear-to-r from-transparent to-slate-700/60" />
             <span className="text-slate-500 text-sm font-medium whitespace-nowrap">
               {t(translations.contact.orReachOut)}
             </span>
-            <div className="flex-1 h-px bg-gradient-to-l from-transparent to-slate-700/60" />
+            <div className="flex-1 h-px bg-linear-to-l from-transparent to-slate-700/60" />
           </div>
 
           {/* Social Links */}

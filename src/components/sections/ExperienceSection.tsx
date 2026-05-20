@@ -33,7 +33,7 @@ function TimelineItem({ exp, index }: { exp: typeof experiences[0]; index: numbe
       className="relative pl-10 pb-14 group"
     >
       {/* Timeline dot with pulse */}
-      <div className="absolute left-[-7px] top-1.5 w-4 h-4 rounded-full bg-slate-900 border-[3px] border-rose-400 shadow-[0_0_12px_rgba(56,189,248,0.4)] transition-shadow duration-300 group-hover:shadow-[0_0_20px_rgba(56,189,248,0.6)]">
+      <div className="absolute -left-1.75 top-1.5 w-4 h-4 rounded-full bg-slate-900 border-[3px] border-rose-400 shadow-[0_0_12px_rgba(56,189,248,0.4)] transition-shadow duration-300 group-hover:shadow-[0_0_20px_rgba(56,189,248,0.6)]">
         <span className="absolute inset-0 rounded-full bg-rose-400/30 animate-ping" />
       </div>
 
@@ -72,7 +72,7 @@ export default function ExperienceSection() {
         <div className="relative ml-2">
           {/* Animated timeline line */}
           <motion.div
-            className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-rose-400 to-fuchsia-500 rounded-full origin-top"
+            className="absolute left-0 top-0 bottom-0 w-0.75 bg-linear-to-b from-rose-400 to-fuchsia-500 rounded-full origin-top"
             initial={{ scaleY: 0 }}
             whileInView={{ scaleY: 1 }}
             viewport={{ once: true }}

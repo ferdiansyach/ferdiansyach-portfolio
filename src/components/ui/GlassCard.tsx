@@ -28,7 +28,7 @@ export default function GlassCard({ children, className = "", delay = 0, hover =
       {/* Shine sweep effect */}
       {hover && (
         <div className="absolute inset-0 z-0 opacity-0 hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-          <div className="absolute -inset-full top-0 bg-gradient-to-r from-transparent via-white/[0.03] to-transparent skew-x-12 animate-[shine_3s_ease-in-out_infinite]" />
+          <div className="absolute -inset-full top-0 bg-linear-to-r from-transparent via-white/3 to-transparent skew-x-12 animate-[shine_3s_ease-in-out_infinite]" />
         </div>
       )}
       <div className="relative z-10">{children}</div>

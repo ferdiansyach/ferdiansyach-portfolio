@@ -108,8 +108,8 @@ export const translations = {
   },
   footer: {
     copyright: {
-      id: "© 2025 Ferdiansyach. Dibuat dengan semangat dan kode.",
-      en: "© 2025 Ferdiansyach. Built with passion and code.",
+      id: "© 2026 Ferdiansyach. Dibuat dengan semangat dan kode.",
+      en: "© 2026 Ferdiansyach. Built with passion and code.",
     },
     builtWith: {
       id: "Dibangun dengan Next.js, TypeScript & Tailwind CSS",

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/hooks/useLanguage";
 import { translations } from "@/data/translations";
@@ -25,6 +25,8 @@ const slideVariants = {
   }),
 };
 
+const SLIDE_DURATION = 5000;
+
 export default function TestimonialsSection() {
   const { t } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -42,37 +44,14 @@ export default function TestimonialsSection() {
   }, []);
 
   useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(nextSlide, 5000);
+    let interval: NodeJS.Timeout;
+    if (!isPaused) {
+      interval = setInterval(nextSlide, SLIDE_DURATION);
+    }
     return () => clearInterval(interval);
   }, [isPaused, nextSlide]);
 
   const current = testimonials[currentIndex];
-
-  // Auto-slide progress — use ref to avoid synchronous setState in effect
-  const [progress, setProgress] = useState(0);
-  const progressRef = useRef(0);
-  useEffect(() => {
-    if (isPaused) {
-      progressRef.current = 0;
-      requestAnimationFrame(() => setProgress(0));
-      return;
-    }
-    let start: number | null = null;
-    let frame: number;
-    const tick = (ts: number) => {
-      if (start === null) start = ts;
-      const elapsed = ts - start;
-      const p = Math.min((elapsed / 5000) * 100, 100);
-      if (Math.abs(p - progressRef.current) > 1) {
-        progressRef.current = p;
-        setProgress(p);
-      }
-      if (elapsed < 5000) frame = requestAnimationFrame(tick);
-    };
-    frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
-  }, [currentIndex, isPaused]);
 
   return (
     <AnimatedSection className="py-32 container mx-auto px-6">
@@ -87,13 +66,13 @@ export default function TestimonialsSection() {
         >
           {/* Quote icon */}
           <div className="absolute top-6 left-8 text-6xl font-serif leading-none select-none">
-            <span className="bg-gradient-to-r from-rose-400/20 to-fuchsia-500/20 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-rose-400/20 to-fuchsia-500/20 bg-clip-text text-transparent">
               &ldquo;
             </span>
           </div>
 
           {/* Testimonial content with slide animation */}
-          <div className="relative z-10 min-h-[200px]">
+          <div className="relative z-10 min-h-55 flex items-center">
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={currentIndex}
@@ -103,7 +82,7 @@ export default function TestimonialsSection() {
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="flex flex-col justify-center"
+                className="w-full flex flex-col justify-center"
               >
                 {/* Stars */}
                 <div className="flex gap-1 mb-4">
@@ -119,7 +98,7 @@ export default function TestimonialsSection() {
                 </p>
 
                 <div className="mt-8 flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-rose-400 to-fuchsia-500 flex items-center justify-center text-white font-bold text-lg shrink-0 shadow-lg shadow-rose-500/20">
+                  <div className="w-12 h-12 rounded-full bg-linear-to-br from-rose-400 to-fuchsia-500 flex items-center justify-center text-white font-bold text-lg shrink-0 shadow-lg shadow-rose-500/20">
                     {current.name.charAt(0)}
                   </div>
                   <div>
@@ -172,15 +151,34 @@ export default function TestimonialsSection() {
             </div>
           </div>
 
-          {/* Auto-slide progress bar */}
-          <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-slate-700/30">
-            <motion.div
-              className="h-full bg-gradient-to-r from-rose-400 to-fuchsia-500"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
+          <ProgressIndicator isPaused={isPaused} currentIndex={currentIndex} duration={SLIDE_DURATION} />
         </div>
       </AnimatedDiv>
     </AnimatedSection>
+  );
+}
+
+function ProgressIndicator({ 
+  isPaused, 
+  currentIndex, 
+  duration 
+}: { 
+  isPaused: boolean; 
+  currentIndex: number; 
+  duration: number;
+}) {
+  return (
+    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-slate-700/30">
+      <motion.div
+        key={currentIndex}
+        initial={{ width: "0%" }}
+        animate={{ width: isPaused ? "0%" : "100%" }}
+        transition={{ 
+          duration: isPaused ? 0 : duration / 1000, 
+          ease: "linear" 
+        }}
+        className="h-full bg-linear-to-r from-rose-400 to-fuchsia-500"
+      />
+    </div>
   );
 }

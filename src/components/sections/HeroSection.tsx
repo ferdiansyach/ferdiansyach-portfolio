@@ -137,12 +137,12 @@ export default function HeroSection() {
           >
             <span className="text-white">{t(translations.hero.greeting)} </span>
             <span className="relative">
-              <span className="bg-gradient-to-r from-rose-400 via-fuchsia-500 to-violet-500 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-rose-400 via-fuchsia-500 to-violet-500 bg-clip-text text-transparent">
                 Ferdiansyach
               </span>
               {/* Animated shimmer overlay */}
               <motion.span
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent bg-clip-text text-transparent pointer-events-none"
+                className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent bg-clip-text text-transparent pointer-events-none"
                 animate={{ x: ["-100%", "100%"] }}
                 transition={{ duration: 3, repeat: Infinity, repeatDelay: 4, ease: "easeInOut" }}
                 style={{ backgroundSize: "200% 100%" }}
@@ -186,7 +186,7 @@ export default function HeroSection() {
           >
             {statsItems.map((stat, i) => (
               <div key={i} className="flex items-center gap-2">
-                <span className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-fuchsia-500">
+                <span className="text-2xl font-black text-transparent bg-clip-text bg-linear-to-r from-rose-400 to-fuchsia-500">
                   {stat.value}
                 </span>
                 <span className="text-xs text-slate-500 font-medium leading-tight">
@@ -205,7 +205,7 @@ export default function HeroSection() {
             <MagneticButton>
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-500 to-fuchsia-500 text-white font-semibold py-3 px-8 rounded-xl hover:shadow-lg hover:shadow-rose-500/25 transition-all duration-300 hover:-translate-y-0.5 group"
+                className="inline-flex items-center gap-2 bg-linear-to-r from-rose-500 to-fuchsia-500 text-white font-semibold py-3 px-8 rounded-xl hover:shadow-lg hover:shadow-rose-500/25 transition-all duration-300 hover:-translate-y-0.5 group"
               >
                 <svg className="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -218,7 +218,7 @@ export default function HeroSection() {
                 href="/portfolio-pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold py-3 px-8 rounded-xl hover:shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 hover:-translate-y-0.5 group"
+                className="inline-flex items-center gap-2 bg-linear-to-r from-emerald-500 to-teal-500 text-white font-semibold py-3 px-8 rounded-xl hover:shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 hover:-translate-y-0.5 group"
               >
                 <svg className="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -231,7 +231,7 @@ export default function HeroSection() {
                 href="/projects-pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-500 to-violet-500 text-white font-semibold py-3 px-8 rounded-xl hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300 hover:-translate-y-0.5 group"
+                className="inline-flex items-center gap-2 bg-linear-to-r from-indigo-500 to-violet-500 text-white font-semibold py-3 px-8 rounded-xl hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300 hover:-translate-y-0.5 group"
               >
                 <svg className="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
@@ -280,12 +280,12 @@ export default function HeroSection() {
           <div className="relative group">
             {/* Animated ring */}
             <motion.div
-              className="absolute -inset-2 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-violet-500 opacity-75 blur-sm"
+              className="absolute -inset-2 rounded-full bg-linear-to-r from-rose-400 via-fuchsia-500 to-violet-500 opacity-75 blur-sm"
               animate={{ rotate: 360 }}
               transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
             />
             <motion.div
-              className="absolute -inset-1 rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-violet-500"
+              className="absolute -inset-1 rounded-full bg-linear-to-r from-rose-400 via-fuchsia-500 to-violet-500"
               animate={{ rotate: -360 }}
               transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
             />
