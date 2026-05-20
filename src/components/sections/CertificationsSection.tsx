@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/hooks/useLanguage";
 import { translations } from "@/data/translations";
@@ -11,6 +12,35 @@ import TiltCard from "@/components/ui/TiltCard";
 import { AnimatedSection, AnimatedDiv } from "@/components/ui/AnimatedSection";
 
 type CertFilter = "all" | "technical" | "methodology" | "data";
+
+const certIconMap: Record<string, React.ReactNode> = {
+  "bnsp-web": (
+    <svg className="w-6 h-6 text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+    </svg>
+  ),
+  "certiport-python": (
+    <svg className="w-6 h-6 text-green-400" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M9.585 11.692h4.328s2.432.942 2.432-2.35V5.05S16.714 2 12.304 2C7.896 2 7.714 4.664 7.714 4.664l.006 2.76h4.682v.828H6.654S4 7.902 4 12.206c0 4.307 2.315 4.153 2.315 4.153h1.382v-2.896s-.074-2.315 2.278-2.315l.006.002h-.002l.006-.002zM9.4 4.42a.77.77 0 110 1.54.77.77 0 010-1.54z" />
+      <path d="M14.415 12.308h-4.328s-2.432-.942-2.432 2.35v4.292S7.286 22 11.696 22c4.408 0 4.59-2.664 4.59-2.664l-.006-2.76h-4.682v-.828h5.748S20 16.098 20 11.794c0-4.307-2.315-4.153-2.315-4.153h-1.382v2.896s.074 2.315-2.278 2.315l-.006-.002h.002l-.006.002zM14.6 19.58a.77.77 0 110-1.54.77.77 0 010 1.54z" />
+    </svg>
+  ),
+  "scrum": (
+    <svg className="w-6 h-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+    </svg>
+  ),
+  "iot": (
+    <svg className="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.858 15.355-5.858 21.213 0" />
+    </svg>
+  ),
+  "dqlab-r": (
+    <svg className="w-6 h-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+    </svg>
+  ),
+};
 
 const filterButtons: { key: CertFilter; label: { id: string; en: string } }[] = [
   { key: "all", label: translations.certifications.filterAll },
@@ -39,7 +69,7 @@ export default function CertificationsSection() {
             <button
               key={btn.key}
               onClick={() => setFilter(btn.key)}
-              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 border ${
+              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 border cursor-pointer ${
                 filter === btn.key
                   ? "bg-gradient-to-r from-rose-500 to-fuchsia-500 text-white border-transparent shadow-lg shadow-rose-500/20"
                   : "border-slate-600 text-slate-400 hover:border-rose-400 hover:text-rose-400"
@@ -70,10 +100,12 @@ export default function CertificationsSection() {
                         className="relative w-full h-40 overflow-hidden cursor-pointer"
                         onClick={() => setLightbox({ src: cert.image!, title: t(cert.name) })}
                       >
-                        <img
+                        <Image
                           src={cert.image}
                           alt={t(cert.name)}
-                          className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
+                          fill
+                          className="object-cover object-top transition-transform duration-500 group-hover:scale-110"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
                         {/* Hover overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-3">
@@ -90,8 +122,12 @@ export default function CertificationsSection() {
                     {/* Card Content */}
                     <div className="p-5 sm:p-6">
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 shrink-0 rounded-xl bg-gradient-to-br from-rose-500/20 to-fuchsia-500/20 flex items-center justify-center text-2xl group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
-                          {cert.badge}
+                        <div className="w-12 h-12 shrink-0 rounded-xl bg-gradient-to-br from-rose-500/20 to-fuchsia-500/20 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                          {certIconMap[cert.id] || (
+                            <svg className="w-6 h-6 text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                            </svg>
+                          )}
                         </div>
                         <div className="flex-1 min-w-0">
                           <h3 className="text-sm font-bold text-white leading-tight mb-1 group-hover:text-rose-400 transition-colors">
@@ -155,11 +191,15 @@ export default function CertificationsSection() {
               </div>
 
               {/* Image */}
-              <div className="overflow-auto rounded-b-2xl border border-slate-700/50 border-t-0 bg-slate-950">
-                <img
+              <div className="overflow-auto rounded-b-2xl border border-slate-700/50 border-t-0 bg-slate-950 relative" style={{ minHeight: "300px" }}>
+                <Image
                   src={lightbox.src}
                   alt={lightbox.title}
+                  width={1200}
+                  height={800}
                   className="w-full h-auto object-contain"
+                  sizes="(max-width: 1024px) 100vw, 900px"
+                  priority
                 />
               </div>
             </motion.div>

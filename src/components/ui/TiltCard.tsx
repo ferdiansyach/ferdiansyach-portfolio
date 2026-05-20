@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, ReactNode, useCallback } from "react";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 interface TiltCardProps {
   children: ReactNode;
@@ -18,9 +19,11 @@ export default function TiltCard({
   const cardRef = useRef<HTMLDivElement>(null);
   const [transform, setTransform] = useState("perspective(1000px) rotateX(0deg) rotateY(0deg)");
   const [glare, setGlare] = useState({ x: 50, y: 50, opacity: 0 });
+  const reducedMotion = useReducedMotion();
 
   const handleMouseMove = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
+      if (reducedMotion) return;
       const card = cardRef.current;
       if (!card) return;
 
@@ -45,7 +48,7 @@ export default function TiltCard({
         });
       }
     },
-    [maxTilt, glareEnabled]
+    [maxTilt, glareEnabled, reducedMotion]
   );
 
   const handleMouseLeave = useCallback(() => {

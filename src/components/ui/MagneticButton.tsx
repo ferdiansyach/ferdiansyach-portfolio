@@ -2,6 +2,7 @@
 
 import { useRef, useState, ReactNode, MouseEvent } from "react";
 import { motion } from "framer-motion";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 interface MagneticButtonProps {
   children: ReactNode;
@@ -16,8 +17,10 @@ export default function MagneticButton({
 }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const reducedMotion = useReducedMotion();
 
   const handleMouse = (e: MouseEvent<HTMLDivElement>) => {
+    if (reducedMotion) return;
     const { clientX, clientY } = e;
     const { height, width, left, top } = ref.current!.getBoundingClientRect();
     const middleX = clientX - (left + width / 2);

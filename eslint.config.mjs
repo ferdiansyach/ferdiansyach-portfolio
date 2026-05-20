@@ -13,6 +13,14 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  {
+    // projects-pdf uses plain <img> intentionally for print/PDF rendering
+    // where next/image's JS-based optimization is not applicable.
+    files: ["src/app/projects-pdf/**"],
+    rules: {
+      "@next/next/no-img-element": "off",
+    },
+  },
 ]);
 
 export default eslintConfig;
