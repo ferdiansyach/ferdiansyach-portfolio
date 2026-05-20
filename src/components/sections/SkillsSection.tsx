@@ -40,7 +40,7 @@ export default function SkillsSection() {
             onClick={() => setActiveTab(i)}
             whileHover={{ y: -3 }}
             whileTap={{ scale: 0.95 }}
-            className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 border ${
+            className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 border cursor-pointer ${
               activeTab === i
                 ? "bg-linear-to-r from-rose-500 to-fuchsia-500 text-white border-transparent shadow-lg shadow-rose-500/20"
                 : "border-slate-600 text-slate-400 hover:border-rose-400 hover:text-rose-400"

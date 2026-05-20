@@ -15,6 +15,12 @@ export default function CursorGlow() {
       return;
     }
 
+    // Respect prefers-reduced-motion
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      glow.style.display = "none";
+      return;
+    }
+
     let x = 0, y = 0;
     let currentX = 0, currentY = 0;
 

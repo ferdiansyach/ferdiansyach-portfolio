@@ -7,8 +7,16 @@ export default function PageLoader() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Minimum display time for branding + wait for DOM
-    const timer = setTimeout(() => setLoading(false), 2200);
+    // Skip loader for returning visitors (session-based)
+    if (sessionStorage.getItem("visited")) {
+      setLoading(false);
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      setLoading(false);
+      sessionStorage.setItem("visited", "1");
+    }, 1400);
     return () => clearTimeout(timer);
   }, []);
 

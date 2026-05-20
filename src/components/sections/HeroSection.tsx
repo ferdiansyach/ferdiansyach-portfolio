@@ -307,7 +307,8 @@ export default function HeroSection() {
               animate="visible"
               className="hero-badge absolute -top-2 -right-4 z-20 hidden sm:block rounded-lg px-3 py-1.5 text-xs font-semibold text-rose-400 animate-float-slow shadow-lg"
             >
-              ⚛️ React
+              <svg className="w-3.5 h-3.5 inline-block mr-1 -mt-0.5" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="2.05" /><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" opacity="0"/><ellipse cx="12" cy="12" rx="10" ry="4.5" fill="none" stroke="currentColor" strokeWidth="1"/><ellipse cx="12" cy="12" rx="10" ry="4.5" fill="none" stroke="currentColor" strokeWidth="1" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.5" fill="none" stroke="currentColor" strokeWidth="1" transform="rotate(120 12 12)"/></svg>
+              React
             </motion.div>
             <motion.div
               custom={1}
@@ -316,7 +317,8 @@ export default function HeroSection() {
               animate="visible"
               className="hero-badge absolute top-1/2 -left-8 z-20 hidden sm:block rounded-lg px-3 py-1.5 text-xs font-semibold text-green-400 animate-float-medium shadow-lg"
             >
-              🐍 Python
+              <svg className="w-3.5 h-3.5 inline-block mr-1 -mt-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M9.585 11.692h4.328s2.432.942 2.432-2.35V5.05S16.714 2 12.304 2C7.896 2 7.714 4.664 7.714 4.664l.006 2.76h4.682v.828H6.654S4 7.902 4 12.206c0 4.307 2.315 4.153 2.315 4.153h1.382v-2.896s-.074-2.315 2.278-2.315l.006.002h-.002l.006-.002zM9.4 4.42a.77.77 0 110 1.54.77.77 0 010-1.54z"/><path d="M14.415 12.308h-4.328s-2.432-.942-2.432 2.35v4.292S7.286 22 11.696 22c4.408 0 4.59-2.664 4.59-2.664l-.006-2.76h-4.682v-.828h5.748S20 16.098 20 11.794c0-4.307-2.315-4.153-2.315-4.153h-1.382v2.896s.074 2.315-2.278 2.315l-.006-.002h.002l-.006.002zM14.6 19.58a.77.77 0 110-1.54.77.77 0 010 1.54z"/></svg>
+              Python
             </motion.div>
             <motion.div
               custom={2}
@@ -325,7 +327,8 @@ export default function HeroSection() {
               animate="visible"
               className="hero-badge absolute -bottom-2 right-4 z-20 hidden sm:block rounded-lg px-3 py-1.5 text-xs font-semibold text-indigo-400 animate-float-fast shadow-lg"
             >
-              ▲ Next.js
+              <svg className="w-3.5 h-3.5 inline-block mr-1 -mt-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 19.778h8.667L8.667 22h6.666l-2-2.222H24L12 2zm0 3.768L19.394 18.5h-4.725L12 15.185 9.331 18.5H4.606L12 5.768z"/></svg>
+              Next.js
             </motion.div>
           </div>
         </motion.div>

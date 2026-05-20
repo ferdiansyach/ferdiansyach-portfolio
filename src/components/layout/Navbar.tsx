@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/hooks/useLanguage";
@@ -26,6 +26,9 @@ export default function Navbar() {
   const [hoveredSection, setHoveredSection] = useState<string | null>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
 
+  const isClickScrollingRef = useRef(false);
+  const clickScrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -33,6 +36,9 @@ export default function Navbar() {
       // Scroll progress
       const totalHeight = document.body.scrollHeight - window.innerHeight;
       setScrollProgress(totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0);
+
+      // Skip updating active section from scroll if we just clicked a menu item
+      if (isClickScrollingRef.current) return;
 
       // Active section detection
       const sections = document.querySelectorAll("section[id]");
@@ -47,7 +53,12 @@ export default function Navbar() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (clickScrollTimeoutRef.current) {
+        clearTimeout(clickScrollTimeoutRef.current);
+      }
+    };
   }, []);
 
   return (
@@ -82,10 +93,27 @@ export default function Navbar() {
             const isActive = activeSection === sectionId;
             const isHovered = hoveredSection === sectionId;
 
+            const handleClick = () => {
+              // Instantly update active state to clicked item
+              setActiveSection(sectionId);
+              isClickScrollingRef.current = true;
+
+              // Clear any existing timeouts to reset the lock period
+              if (clickScrollTimeoutRef.current) {
+                clearTimeout(clickScrollTimeoutRef.current);
+              }
+
+              // Lock the scroll spy for 800ms while the browser smooth-scrolls
+              clickScrollTimeoutRef.current = setTimeout(() => {
+                isClickScrollingRef.current = false;
+              }, 800);
+            };
+
             return (
               <a
                 key={item.href}
                 href={item.href}
+                onClick={handleClick}
                 onMouseEnter={() => setHoveredSection(sectionId)}
                 className={`relative px-4 py-2 text-sm font-medium transition-colors duration-300 rounded-full z-10 ${
                   isActive || isHovered ? "text-rose-400" : "text-slate-300"
@@ -93,11 +121,11 @@ export default function Navbar() {
               >
                 {t(item.label)}
                 {/* Active Underline */}
-                {isActive && !isHovered && (
+                {isActive && (
                   <motion.span
                     layoutId="activeNavLine"
                     className="absolute -bottom-1 left-4 right-4 h-0.5 bg-gradient-to-r from-rose-400 to-fuchsia-500 rounded-full"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    transition={{ type: "tween", ease: "easeOut", duration: 0.15 }}
                   />
                 )}
                 {/* Hover Pill */}
@@ -105,7 +133,7 @@ export default function Navbar() {
                   <motion.span
                     layoutId="navHoverPill"
                     className="absolute inset-0 bg-rose-400/10 rounded-full -z-10 border border-rose-400/20"
-                    transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
+                    transition={{ type: "tween", ease: "easeOut", duration: 0.12 }}
                   />
                 )}
               </a>
@@ -133,8 +161,9 @@ export default function Navbar() {
           <button
             onClick={toggleLang}
             className="w-9 h-9 rounded-full flex items-center justify-center border border-slate-700 bg-slate-800/50 backdrop-blur-sm text-slate-300 hover:border-rose-400 hover:bg-rose-400/10 transition-all duration-300 text-xs font-bold"
+            aria-label={lang === "id" ? "Bahasa saat ini: Indonesia. Klik untuk ganti ke English" : "Current language: English. Click to switch to Indonesian"}
           >
-            {lang === "id" ? "EN" : "ID"}
+            {lang === "id" ? "ID" : "EN"}
           </button>
 
           {/* Mobile hamburger */}
