@@ -39,10 +39,10 @@ export default function ProjectsSection() {
           <button
             key={btn.key}
             onClick={() => setFilter(btn.key)}
-            className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 border cursor-pointer ${
+            className={`px-5 py-2 text-sm font-medium transition-all duration-300 border cursor-pointer rounded-md ${
               filter === btn.key
-                ? "bg-linear-to-r from-rose-500 to-fuchsia-500 text-white border-transparent shadow-lg shadow-rose-500/20"
-                : "border-slate-600 text-slate-400 hover:border-rose-400 hover:text-rose-400"
+                ? "bg-[var(--color-primary)] text-white border-transparent shadow-md"
+                : "border-[var(--color-hairline)] text-[var(--color-body)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]"
             }`}
           >
             {t(btn.label)}
@@ -50,7 +50,7 @@ export default function ProjectsSection() {
         ))}
       </AnimatedDiv>
 
-      {/* Project grid with layout animation */}
+      {/* Project grid with layout animation - Ferrari precision grid */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
         <AnimatePresence mode="popLayout">
           {filtered.map((project, i) => (
@@ -64,8 +64,8 @@ export default function ProjectsSection() {
             >
               <Link href={`/projects/${project.slug}`}>
                 <TiltCard maxTilt={4} className="h-full">
-                  <GlassCard delay={0} className="p-5 sm:p-8 overflow-hidden group cursor-pointer h-full border hover:border-rose-400/50 shadow-sm hover:shadow-rose-400/10">
-                    <div className="relative overflow-hidden h-44 sm:h-52 rounded-lg sm:rounded-none mb-4 sm:mb-0">
+                  <GlassCard delay={0} className="p-5 sm:p-8 overflow-hidden group cursor-pointer h-full border hover:border-[var(--color-primary)]/50 shadow-sm hover:shadow-[var(--color-primary)]/10 rounded-xl">
+                    <div className="relative overflow-hidden h-44 sm:h-52 mb-4 sm:mb-0 rounded-lg">
                       <Image
                         src={project.thumbnail}
                         alt={project.title}
@@ -73,18 +73,18 @@ export default function ProjectsSection() {
                         className="object-cover transition-transform duration-500 group-hover:scale-110"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
-                      <div className="absolute inset-0 bg-linear-to-t from-slate-900/95 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-end justify-center pb-4">
-                        <span className="bg-rose-400/20 backdrop-blur-sm text-white font-semibold text-sm px-4 py-2 rounded-full border border-rose-400/30">
+                      <div className="absolute inset-0 bg-linear-to-t from-[var(--color-canvas)]/95 via-[var(--color-canvas)]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-end justify-center pb-4">
+                        <span className="bg-[var(--color-primary)]/20 text-[var(--color-primary)] font-semibold text-sm px-4 py-2 border border-[var(--color-primary)]/30 rounded-md">
                           {t(translations.projects.viewDetails)}
                         </span>
                       </div>
                     </div>
                     <div className="pt-2 sm:p-6">
-                      <h3 className="text-lg font-bold text-white mb-2 group-hover:text-rose-400 transition-colors">{project.title}</h3>
-                      <p className="text-slate-400 text-sm mb-4 line-clamp-2">{t(project.description)}</p>
+                      <h3 className="text-lg font-serif font-bold text-[var(--color-ink)] mb-2 group-hover:text-[var(--color-primary)] transition-colors">{project.title}</h3>
+                      <p className="text-[var(--color-body)] text-sm mb-4 line-clamp-2">{t(project.description)}</p>
                       <div className="flex flex-wrap gap-2">
                         {project.technologies.slice(0, 3).map((tech) => (
-                          <span key={tech} className="bg-rose-400/10 text-rose-400 border border-rose-400/20 px-3 py-1 rounded-full text-xs font-semibold">
+                          <span key={tech} className="bg-[var(--color-primary)]/10 text-[var(--color-primary)] border border-[var(--color-primary)]/20 px-3 py-1 text-xs font-medium rounded-md">
                             {tech}
                           </span>
                         ))}
@@ -104,7 +104,7 @@ export default function ProjectsSection() {
           href="/projects-pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2.5 bg-linear-to-r from-indigo-500 to-violet-500 text-white font-semibold py-3 px-8 rounded-xl hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300 hover:-translate-y-0.5 group"
+          className="inline-flex items-center gap-2.5 bg-[var(--color-primary)] text-white font-semibold py-3 px-8 rounded-md hover:bg-[var(--color-primary-hover)] transition-all duration-300 hover:-translate-y-0.5 group shadow-md"
         >
           <svg className="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />

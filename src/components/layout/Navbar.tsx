@@ -65,20 +65,20 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled
-          ? "bg-slate-900/80 backdrop-blur-xl border-b border-slate-700/30 shadow-lg shadow-black/10"
+          ? "bg-[var(--color-canvas)]/80 backdrop-blur-md border-b border-[var(--color-hairline)]"
           : "bg-transparent"
       }`}
     >
-      {/* Scroll progress bar */}
+      {/* Scroll progress bar - Reflect Violet */}
       <motion.div
-        className="absolute top-0 left-0 h-0.5 bg-linear-to-r from-rose-400 via-fuchsia-500 to-violet-500 z-50"
+        className="absolute top-0 left-0 h-1 bg-[var(--color-primary)] z-50"
         style={{ width: `${scrollProgress}%` }}
       />
 
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         <Link
           href="/"
-          className="text-xl font-extrabold tracking-tight bg-linear-to-r from-rose-400 via-fuchsia-500 to-violet-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
+          className="text-xl font-serif font-bold text-[var(--color-primary)] hover:opacity-80 transition-opacity"
         >
           Ferdiansyach
         </Link>
@@ -116,8 +116,8 @@ export default function Navbar() {
                 href={item.href}
                 onClick={handleClick}
                 onMouseEnter={() => setHoveredSection(sectionId)}
-                className={`relative px-4 py-2 text-sm font-medium transition-colors duration-300 rounded-full z-10 ${
-                  isActive || isHovered ? "text-rose-400" : "text-slate-300"
+                className={`relative px-4 py-2 text-sm font-semibold transition-colors duration-300 z-10 ${
+                  isActive || isHovered ? "text-[var(--color-primary)]" : "text-[var(--color-body)]"
                 }`}
               >
                 {t(item.label)}
@@ -125,7 +125,7 @@ export default function Navbar() {
                 {isActive && (
                   <motion.span
                     layoutId="activeNavLine"
-                    className="absolute -bottom-1 left-4 right-4 h-0.5 bg-linear-to-r from-rose-400 to-fuchsia-500 rounded-full"
+                    className="absolute -bottom-1 left-4 right-4 h-1 bg-[var(--color-primary)] rounded-none"
                     transition={{ type: "tween", ease: "easeOut", duration: 0.15 }}
                   />
                 )}
@@ -133,7 +133,7 @@ export default function Navbar() {
                 {isHovered && (
                   <motion.span
                     layoutId="navHoverPill"
-                    className="absolute inset-0 bg-rose-400/10 rounded-full -z-10 border border-rose-400/20"
+                    className="absolute inset-0 bg-[var(--color-primary)]/10 rounded-md -z-10 border border-[var(--color-primary)]/20"
                     transition={{ type: "tween", ease: "easeOut", duration: 0.12 }}
                   />
                 )}
@@ -146,7 +146,7 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           <button
             onClick={toggleTheme}
-            className="w-9 h-9 rounded-full flex items-center justify-center border border-slate-700 bg-slate-800/50 backdrop-blur-sm text-slate-300 hover:border-rose-400 hover:bg-rose-400/10 transition-all duration-300"
+            className="w-9 h-9 flex items-center justify-center border border-[var(--color-hairline)] bg-[var(--color-canvas-elevated)] text-[var(--color-body)] hover:border-[var(--color-primary)] hover:bg-[var(--color-primary)]/10 transition-all duration-300 rounded-md"
             aria-label="Toggle theme"
           >
             {theme === "dark" ? (
@@ -161,7 +161,7 @@ export default function Navbar() {
           </button>
           <button
             onClick={toggleLang}
-            className="w-9 h-9 rounded-full flex items-center justify-center border border-slate-700 bg-slate-800/50 backdrop-blur-sm text-slate-300 hover:border-rose-400 hover:bg-rose-400/10 transition-all duration-300 text-xs font-bold"
+            className="w-9 h-9 flex items-center justify-center border border-[var(--color-hairline)] bg-[var(--color-canvas-elevated)] text-[var(--color-body)] hover:border-[var(--color-primary)] hover:bg-[var(--color-primary)]/10 transition-all duration-300 text-xs font-semibold rounded-md"
             aria-label={lang === "id" ? "Bahasa saat ini: Indonesia. Klik untuk ganti ke English" : "Current language: English. Click to switch to Indonesian"}
           >
             {lang === "id" ? "ID" : "EN"}
@@ -170,7 +170,7 @@ export default function Navbar() {
           {/* Mobile hamburger */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden w-9 h-9 rounded-full flex items-center justify-center border border-slate-700 bg-slate-800/50 text-white"
+            className="lg:hidden w-9 h-9 flex items-center justify-center border border-[var(--color-hairline)] bg-[var(--color-canvas-elevated)] text-[var(--color-ink)] rounded-md"
           >
             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={menuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"} />
@@ -186,13 +186,13 @@ export default function Navbar() {
         animate={{ height: menuOpen ? "auto" : 0 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
       >
-        <div className="px-6 py-4 space-y-1 bg-slate-900/95 backdrop-blur-xl border-t border-slate-700/30">
+        <div className="px-6 py-4 space-y-1 bg-[var(--color-canvas)]/95 backdrop-blur-md border-t border-[var(--color-hairline)]">
           {navItems.map((item, i) => (
             <motion.a
               key={item.href}
               href={item.href}
               onClick={() => setMenuOpen(false)}
-              className="block py-3 text-slate-300 hover:text-rose-400 transition-colors font-medium"
+              className="block py-3 text-[var(--color-body)] hover:text-[var(--color-primary)] transition-colors font-semibold"
               initial={{ opacity: 0, x: -20 }}
               animate={menuOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
               transition={{ delay: i * 0.05 }}

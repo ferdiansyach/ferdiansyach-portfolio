@@ -72,7 +72,7 @@ export default function CertificationsSection() {
               className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 border cursor-pointer ${
                 filter === btn.key
                   ? "bg-linear-to-r from-rose-500 to-fuchsia-500 text-white border-transparent shadow-lg shadow-rose-500/20"
-                  : "border-slate-600 text-slate-400 hover:border-rose-400 hover:text-rose-400"
+                  : "border-[var(--color-hairline)] text-[var(--color-muted)] hover:border-rose-400 hover:text-rose-400"
               }`}
             >
               {t(btn.label)}
@@ -107,11 +107,11 @@ export default function CertificationsSection() {
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header bar */}
-              <div className="flex items-center justify-between px-4 py-3 bg-slate-900/80 backdrop-blur-sm rounded-t-2xl border border-slate-700/50 border-b-0">
-                <h3 className="text-white font-semibold text-sm truncate pr-4">{lightbox.title}</h3>
+              <div className="flex items-center justify-between px-4 py-3 bg-[var(--color-canvas-elevated)] backdrop-blur-sm rounded-t-2xl border border-[var(--color-hairline)] border-b-0">
+                <h3 className="text-[var(--color-ink)] font-semibold text-sm truncate pr-4">{lightbox.title}</h3>
                 <button
                   onClick={() => setLightbox(null)}
-                  className="w-8 h-8 rounded-full bg-slate-800 hover:bg-rose-500/80 flex items-center justify-center text-slate-400 hover:text-white transition-all duration-200 shrink-0"
+                  className="w-8 h-8 rounded-full bg-[var(--color-canvas)] hover:bg-rose-500/80 flex items-center justify-center text-[var(--color-muted)] hover:text-white transition-all duration-200 shrink-0"
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -120,7 +120,7 @@ export default function CertificationsSection() {
               </div>
 
               {/* Image */}
-              <div className="overflow-auto rounded-b-2xl border border-slate-700/50 border-t-0 bg-slate-950 relative" style={{ minHeight: "300px" }}>
+              <div className="overflow-auto rounded-b-2xl border border-[var(--color-hairline)] border-t-0 bg-[var(--color-canvas)] relative" style={{ minHeight: "300px" }}>
                 <Image
                   src={lightbox.src}
                   alt={lightbox.title}
@@ -177,7 +177,7 @@ function CertificationGrid({
                     />
                     {/* Hover overlay */}
                     <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-3">
-                      <span className="text-white text-xs font-semibold flex items-center gap-1.5 bg-white/15 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/20">
+                      <span className="text-[var(--color-ink)] text-xs font-semibold flex items-center gap-1.5 bg-white/15 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/20">
                         <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
                         </svg>
@@ -198,12 +198,12 @@ function CertificationGrid({
                       )}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-sm font-bold text-white leading-tight mb-1 group-hover:text-rose-400 transition-colors">
+                      <h3 className="text-sm font-bold text-[var(--color-ink)] leading-tight mb-1 group-hover:text-rose-400 transition-colors">
                         {t(cert.name)}
                       </h3>
-                      <p className="text-slate-400 text-xs">{cert.issuer}</p>
+                      <p className="text-[var(--color-body)] text-xs">{cert.issuer}</p>
                       <div className="flex items-center gap-2 mt-2.5">
-                        <span className="text-[11px] text-slate-500 font-medium">{cert.date}</span>
+                        <span className="text-[11px] text-[var(--color-muted)] font-medium">{cert.date}</span>
                         <span className="inline-flex items-center gap-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded-full">
                           <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
