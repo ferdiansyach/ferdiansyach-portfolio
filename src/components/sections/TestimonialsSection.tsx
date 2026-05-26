@@ -93,7 +93,7 @@ export default function TestimonialsSection() {
                   ))}
                 </div>
 
-                <p className="text-lg md:text-xl text-slate-300 leading-relaxed italic pl-4 border-l-2 border-rose-400/30">
+                <p className="text-lg md:text-xl text-[var(--color-body-strong)] leading-relaxed italic pl-4 border-l-2 border-rose-400/30">
                   {t(current.quote)}
                 </p>
 
@@ -103,7 +103,7 @@ export default function TestimonialsSection() {
                   </div>
                   <div>
                     <p className="text-white font-semibold">{current.name}</p>
-                    <p className="text-slate-400 text-sm">{t(current.role)}</p>
+                    <p className="text-[var(--color-body)] text-sm">{t(current.role)}</p>
                   </div>
                 </div>
               </motion.div>
@@ -111,7 +111,7 @@ export default function TestimonialsSection() {
           </div>
 
           {/* Navigation */}
-          <div className="flex items-center justify-between mt-8 pt-6 border-t border-slate-700/50">
+          <div className="flex items-center justify-between mt-8 pt-6 border-t border-[var(--color-hairline)]">
             <div className="flex gap-2">
               {testimonials.map((_, i) => (
                 <button
@@ -123,7 +123,7 @@ export default function TestimonialsSection() {
                   className={`h-2.5 rounded-full transition-all duration-300 ${
                     i === currentIndex
                       ? "bg-rose-400 w-8"
-                      : "bg-slate-600 hover:bg-slate-500 w-2.5"
+                      : "bg-[var(--color-hairline)] hover:bg-[var(--color-hairline-on-light)] w-2.5"
                   }`}
                   aria-label={`Go to testimonial ${i + 1}`}
                 />
@@ -132,7 +132,7 @@ export default function TestimonialsSection() {
             <div className="flex gap-2">
               <button
                 onClick={prevSlide}
-                className="w-9 h-9 rounded-full border border-slate-700 flex items-center justify-center text-slate-400 hover:border-rose-400 hover:text-rose-400 transition-all"
+                className="w-9 h-9 rounded-full border border-[var(--color-hairline)] flex items-center justify-center text-[var(--color-muted)] hover:border-rose-400 hover:text-rose-400 transition-all"
                 aria-label="Previous testimonial"
               >
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -141,7 +141,7 @@ export default function TestimonialsSection() {
               </button>
               <button
                 onClick={nextSlide}
-                className="w-9 h-9 rounded-full border border-slate-700 flex items-center justify-center text-slate-400 hover:border-rose-400 hover:text-rose-400 transition-all"
+                className="w-9 h-9 rounded-full border border-[var(--color-hairline)] flex items-center justify-center text-[var(--color-muted)] hover:border-rose-400 hover:text-rose-400 transition-all"
                 aria-label="Next testimonial"
               >
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

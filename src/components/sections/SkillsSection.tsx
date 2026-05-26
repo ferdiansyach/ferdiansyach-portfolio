@@ -17,9 +17,9 @@ const proficiencyWidth = {
 };
 
 const proficiencyColor = {
-  beginner: "from-amber-400 to-orange-500",
-  intermediate: "from-rose-400 to-fuchsia-500",
-  advanced: "from-emerald-400 to-rose-500",
+  beginner: "from-[var(--color-body)] to-[var(--color-body-strong)]",
+  intermediate: "from-[var(--color-primary)] to-[var(--color-primary-hover)]",
+  advanced: "from-emerald-500 to-emerald-400",
 };
 
 export default function SkillsSection() {
@@ -40,10 +40,10 @@ export default function SkillsSection() {
             onClick={() => setActiveTab(i)}
             whileHover={{ y: -3 }}
             whileTap={{ scale: 0.95 }}
-            className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 border cursor-pointer ${
+            className={`px-5 py-2 rounded-md text-sm font-medium transition-colors duration-300 border cursor-pointer ${
               activeTab === i
-                ? "bg-linear-to-r from-rose-500 to-fuchsia-500 text-white border-transparent shadow-lg shadow-rose-500/20"
-                : "border-slate-600 text-slate-400 hover:border-rose-400 hover:text-rose-400"
+                ? "bg-[var(--color-primary)] text-white border-transparent shadow-md"
+                : "border-[var(--color-hairline)] text-[var(--color-body)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]"
             }`}
           >
             {t(category.title)}
@@ -61,9 +61,9 @@ export default function SkillsSection() {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
           >
-            <GlassCard delay={0} className="p-6 md:p-8">
-              <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-rose-400" />
+            <GlassCard delay={0} className="p-6 md:p-8 rounded-xl">
+              <h3 className="text-lg font-serif font-bold text-[var(--color-ink)] mb-6 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[var(--color-primary)]" />
                 {t(skillCategories[activeTab].title)}
               </h3>
               <div className="grid md:grid-cols-2 gap-x-8 gap-y-4">
@@ -95,9 +95,9 @@ function SkillRow({ skill, index }: { skill: typeof skillCategories[0]["skills"]
           <SkillIcon icon={skill.icon} color={skill.color} />
         </div>
         <div className="flex-1 flex flex-col min-w-0">
-          <span className="text-sm font-medium text-white">{skill.name}</span>
+          <span className="text-sm font-medium text-[var(--color-ink)]">{skill.name}</span>
           {skill.usageContext && (
-            <span className="text-[10.5px] text-slate-400 font-normal truncate max-w-45 sm:max-w-60 md:max-w-xs group-hover:text-rose-300 transition-colors">
+            <span className="text-[10.5px] text-[var(--color-body)] font-normal truncate max-w-45 sm:max-w-60 md:max-w-xs group-hover:text-[var(--color-primary)] transition-colors">
               {t(skill.usageContext)}
             </span>
           )}
@@ -108,12 +108,12 @@ function SkillRow({ skill, index }: { skill: typeof skillCategories[0]["skills"]
               {t(translations.skills.currentlyLearning)}
             </span>
           )}
-          <span className="text-xs text-slate-500 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+          <span className="text-xs text-[var(--color-body)] font-medium opacity-0 group-hover:opacity-100 transition-opacity">
             {t(profLabel)}
           </span>
         </div>
       </div>
-      <div className="h-1.5 bg-slate-700/50 rounded-full overflow-hidden">
+      <div className="h-1.5 bg-[var(--color-hairline)] rounded-full overflow-hidden">
         <motion.div
           className={`h-full bg-linear-to-r ${proficiencyColor[skill.proficiency]} rounded-full`}
           initial={{ width: "0%" }}
