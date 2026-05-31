@@ -4,161 +4,204 @@ export const skillCategories: SkillCategory[] = [
   {
     title: { id: "Frontend", en: "Frontend" },
     skills: [
-      { 
-        name: "React", 
-        icon: "react", 
-        color: "#61DAFB", 
+      {
+        name: "React",
+        icon: "react",
+        color: "#61DAFB",
         proficiency: "advanced",
-        usageContext: { id: "Indosaji E-commerce, UNAS FEST", en: "Indosaji E-commerce, UNAS FEST" }
+        usageContext: { id: "Indosaji E-commerce, UNAS FEST", en: "Indosaji E-commerce, UNAS FEST" },
       },
-      { 
-        name: "Next.js", 
-        icon: "nextjs", 
-        color: "#ffffff", 
+      {
+        name: "Next.js",
+        icon: "nextjs",
+        color: "#ffffff",
         proficiency: "intermediate",
-        usageContext: { id: "UNAS FEST, Portofolio ini", en: "UNAS FEST, This portfolio" }
+        usageContext: { id: "UNAS FEST, Portofolio ini", en: "UNAS FEST, This portfolio" },
       },
-      { 
-        name: "TypeScript", 
-        icon: "typescript", 
-        color: "#3178C6", 
+      {
+        name: "TypeScript",
+        icon: "typescript",
+        color: "#3178C6",
         proficiency: "intermediate",
-        usageContext: { id: "UNAS FEST, Portofolio ini", en: "UNAS FEST, This portfolio" }
+        usageContext: { id: "UNAS FEST, Portofolio ini", en: "UNAS FEST, This portfolio" },
       },
-      { 
-        name: "HTML/CSS", 
-        icon: "html", 
-        color: "#E34F26", 
+      {
+        name: "Tailwind CSS",
+        icon: "tailwind",
+        color: "#06B6D4",
         proficiency: "advanced",
-        usageContext: { id: "Semua proyek web", en: "All web projects" }
+        usageContext: { id: "UNAS FEST, Portofolio ini", en: "UNAS FEST, This portfolio" },
       },
-      { 
-        name: "Tailwind CSS", 
-        icon: "tailwind", 
-        color: "#06B6D4", 
+      {
+        name: "HTML / CSS",
+        icon: "html",
+        color: "#E34F26",
         proficiency: "advanced",
-        usageContext: { id: "UNAS FEST, Portofolio ini", en: "UNAS FEST, This portfolio" }
+        usageContext: { id: "Semua proyek web", en: "All web projects" },
       },
     ],
   },
   {
     title: { id: "Backend & DB", en: "Backend & DB" },
     skills: [
-      { 
-        name: "Node.js", 
-        icon: "nodejs", 
-        color: "#339933", 
+      {
+        name: "Node.js",
+        icon: "nodejs",
+        color: "#339933",
         proficiency: "intermediate",
-        usageContext: { id: "Indosaji E-commerce (API)", en: "Indosaji E-commerce (API)" }
+        usageContext: { id: "Indosaji E-commerce (API)", en: "Indosaji E-commerce (API)" },
       },
-      { 
-        name: "Express.js", 
-        icon: "express", 
-        color: "#ffffff", 
+      {
+        name: "Express.js",
+        icon: "express",
+        color: "#ffffff",
         proficiency: "intermediate",
-        usageContext: { id: "Indosaji E-commerce (Router)", en: "Indosaji E-commerce (Router)" }
+        usageContext: { id: "Indosaji E-commerce (Router)", en: "Indosaji E-commerce (Router)" },
       },
-      { 
-        name: "REST API", 
-        icon: "api", 
-        color: "#FF6C37", 
+      {
+        name: "MongoDB",
+        icon: "mongodb",
+        color: "#47A248",
         proficiency: "intermediate",
-        usageContext: { id: "Indosaji E-commerce, Telkom Intern", en: "Indosaji E-commerce, Telkom Intern" }
+        usageContext: { id: "Indosaji E-commerce Database", en: "Indosaji E-commerce Database" },
       },
-      { 
-        name: "MongoDB", 
-        icon: "mongodb", 
-        color: "#47A248", 
+      {
+        name: "MySQL",
+        icon: "mysql",
+        color: "#4479A1",
         proficiency: "intermediate",
-        usageContext: { id: "Indosaji E-commerce Database", en: "Indosaji E-commerce Database" }
+        usageContext: { id: "Database relasional & analisis data", en: "Relational DB & data analysis" },
       },
-      { 
-        name: "SQL", 
-        icon: "sql", 
-        color: "#4479A1", 
+      {
+        name: "Postman",
+        icon: "postman",
+        color: "#FF6C37",
         proficiency: "intermediate",
-        usageContext: { id: "Analisis data & database relasional", en: "Data analysis & relational DB" }
+        usageContext: { id: "Testing & dokumentasi REST API", en: "REST API testing & documentation" },
       },
     ],
   },
   {
-    title: { id: "Data & ML", en: "Data & ML" },
+    title: { id: "Data & Analisis", en: "Data & Analysis" },
     skills: [
-      { 
-        name: "Python", 
-        icon: "python", 
-        color: "#3776AB", 
+      {
+        name: "Python",
+        icon: "python",
+        color: "#3776AB",
         proficiency: "advanced",
-        usageContext: { id: "Smart Meter Analysis Telkom, Capstone Project", en: "Telkom Smart Meter Analysis, Capstone Project" }
+        typeLabel: { id: "Bahasa Pemrograman", en: "Programming Language" },
+        usageContext: { id: "Smart Meter Analysis Telkom, Capstone", en: "Telkom Smart Meter Analysis, Capstone" },
       },
-      { 
-        name: "LSTM", 
-        icon: "ml", 
-        color: "#FF6F00", 
+      {
+        name: "Pandas",
+        icon: "pandas",
+        color: "#150458",
         proficiency: "intermediate",
-        usageContext: { id: "Forecasting Konsumsi Energi Telkom", en: "Telkom Energy Consumption Forecasting" }
+        typeLabel: { id: "Library Data", en: "Data Library" },
+        usageContext: { id: "Preprocessing 50.000+ data Telkom", en: "Telkom 50,000+ data preprocessing" },
       },
-      { 
-        name: "XGBoost", 
-        icon: "ml", 
-        color: "#FF6F00", 
+      {
+        name: "NumPy",
+        icon: "numpy",
+        color: "#4DABCF",
         proficiency: "intermediate",
-        usageContext: { id: "Deteksi Anomali Smart Meter Telkom", en: "Telkom Smart Meter Anomaly Detection" }
+        typeLabel: { id: "Library Komputasi", en: "Computation Library" },
+        usageContext: { id: "Komputasi numerik & array processing", en: "Numerical computing & array processing" },
       },
-      { 
-        name: "Pandas", 
-        icon: "pandas", 
-        color: "#150458", 
+      {
+        name: "Matplotlib",
+        icon: "matplotlib",
+        color: "#11557C",
         proficiency: "intermediate",
-        usageContext: { id: "Preprocessing 50.000+ data Telkom", en: "Telkom 50,000+ data preprocessing" }
+        typeLabel: { id: "Library Visualisasi", en: "Visualization Library" },
+        usageContext: { id: "Visualisasi data Smart Meter Telkom", en: "Telkom Smart Meter data visualization" },
       },
-      { 
-        name: "Streamlit", 
-        icon: "streamlit", 
-        color: "#FF4B4B", 
+      {
+        name: "Streamlit",
+        icon: "streamlit",
+        color: "#FF4B4B",
         proficiency: "intermediate",
-        usageContext: { id: "Dashboard Real-time Smart Meter Telkom", en: "Telkom Smart Meter Real-time Dashboard" }
+        typeLabel: { id: "Framework Dashboard", en: "Dashboard Framework" },
+        usageContext: { id: "Dashboard Real-time Smart Meter Telkom", en: "Telkom Smart Meter Real-time Dashboard" },
+      },
+    ],
+  },
+  {
+    title: { id: "Machine Learning", en: "Machine Learning" },
+    skills: [
+      {
+        name: "Scikit-learn",
+        icon: "scikitlearn",
+        color: "#F7931E",
+        proficiency: "intermediate",
+        typeLabel: { id: "Library ML", en: "ML Library" },
+        usageContext: { id: "Pipeline ML & evaluasi model", en: "ML pipeline & model evaluation" },
+      },
+      {
+        name: "XGBoost",
+        icon: "xgboost",
+        color: "#1192E8",
+        proficiency: "intermediate",
+        typeLabel: { id: "Gradient Boosting", en: "Gradient Boosting" },
+        usageContext: { id: "Deteksi Anomali Smart Meter Telkom", en: "Telkom Smart Meter Anomaly Detection" },
+      },
+      {
+        name: "LSTM / Keras",
+        icon: "keras",
+        color: "#D00000",
+        proficiency: "intermediate",
+        typeLabel: { id: "Deep Learning", en: "Deep Learning" },
+        usageContext: { id: "Forecasting Konsumsi Energi Telkom", en: "Telkom Energy Consumption Forecasting" },
+      },
+      {
+        name: "TensorFlow",
+        icon: "tensorflow",
+        color: "#FF6F00",
+        proficiency: "beginner",
+        isLearning: true,
+        typeLabel: { id: "Framework DL", en: "DL Framework" },
+        usageContext: { id: "Eksplorasi deep learning lanjutan", en: "Advanced deep learning exploration" },
       },
     ],
   },
   {
     title: { id: "DevOps & Tools", en: "DevOps & Tools" },
     skills: [
-      { 
-        name: "Git", 
-        icon: "git", 
-        color: "#F05032", 
+      {
+        name: "Git & GitHub",
+        icon: "git",
+        color: "#F05032",
         proficiency: "intermediate",
-        usageContext: { id: "Version control semua proyek", en: "Version control on all projects" }
+        usageContext: { id: "Version control semua proyek", en: "Version control on all projects" },
       },
-      { 
-        name: "Docker", 
-        icon: "docker", 
-        color: "#2496ED", 
-        proficiency: "beginner", 
+      {
+        name: "Google Cloud",
+        icon: "gcloud",
+        color: "#4285F4",
+        proficiency: "beginner",
+        usageContext: { id: "Hosting & Cloud computing", en: "Hosting & Cloud computing" },
+      },
+      {
+        name: "Docker",
+        icon: "docker",
+        color: "#2496ED",
+        proficiency: "beginner",
         isLearning: true,
-        usageContext: { id: "Eksplorasi kontainerisasi aplikasi", en: "App containerization exploration" }
+        usageContext: { id: "Eksplorasi kontainerisasi aplikasi", en: "App containerization exploration" },
       },
-      { 
-        name: "Google Cloud", 
-        icon: "gcloud", 
-        color: "#4285F4", 
+      {
+        name: "Figma",
+        icon: "figma",
+        color: "#F24E1E",
         proficiency: "beginner",
-        usageContext: { id: "Hosting & Cloud computing", en: "Hosting & Cloud computing" }
+        usageContext: { id: "Desain UI/UX & Wireframing", en: "UI/UX Design & Wireframing" },
       },
-      { 
-        name: "Figma", 
-        icon: "figma", 
-        color: "#F24E1E", 
-        proficiency: "beginner",
-        usageContext: { id: "Desain UI/UX & Wireframing", en: "UI/UX Design & Wireframing" }
-      },
-      { 
-        name: "WordPress", 
-        icon: "wordpress", 
-        color: "#21759B", 
-        proficiency: "advanced",
-        usageContext: { id: "Website Resmi HIMASI UNAS", en: "Official HIMASI UNAS Website" }
+      {
+        name: "Jupyter Notebook",
+        icon: "jupyter",
+        color: "#F37626",
+        proficiency: "intermediate",
+        usageContext: { id: "Eksplorasi & analisis data interaktif", en: "Interactive data exploration & analysis" },
       },
     ],
   },

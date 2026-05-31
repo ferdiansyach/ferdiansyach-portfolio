@@ -44,3 +44,16 @@ next-env.d.ts
 .claude/
 .gemini/
 
+# sensitive personal files
+/public/npwp/
+/public/npwp*
+
+# local helper scripts and temporary backups
+.old_backup/
+reflect_instructions.md
+screenshot_portfolio.py
+portfolio-structure.html
+/light-mode-*.png
+/dark-mode-*.png
+lint_output.txt
+
