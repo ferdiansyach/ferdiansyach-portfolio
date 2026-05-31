@@ -38,6 +38,7 @@ export interface Skill {
   proficiency: "beginner" | "intermediate" | "advanced";
   isLearning?: boolean;
   usageContext?: TranslatedText;
+  typeLabel?: TranslatedText;
 }
 
 export interface SkillCategory {
