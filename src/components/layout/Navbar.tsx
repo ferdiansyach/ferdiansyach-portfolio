@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useTheme } from "@/hooks/useTheme";
@@ -25,6 +26,9 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
   const [hoveredSection, setHoveredSection] = useState<string | null>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const pathname = usePathname();
+
+  const isProjectPage = pathname?.startsWith("/projects/");
 
   const isClickScrollingRef = useRef(false);
   const clickScrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -84,11 +88,12 @@ export default function Navbar() {
         </Link>
 
 
-        {/* Desktop nav */}
-        <nav 
-          className="hidden lg:flex items-center gap-2 relative"
-          onMouseLeave={() => setHoveredSection(null)}
-        >
+        {/* Desktop nav — hidden on project detail pages */}
+        {!isProjectPage && (
+          <nav
+            className="hidden lg:flex items-center gap-2 relative"
+            onMouseLeave={() => setHoveredSection(null)}
+          >
           {navItems.map((item) => {
             const sectionId = item.href.slice(1);
             const isActive = activeSection === sectionId;
@@ -140,10 +145,23 @@ export default function Navbar() {
               </a>
             );
           })}
-        </nav>
+          </nav>
+        )}
 
         {/* Toggle buttons */}
         <div className="flex items-center gap-2">
+          {/* Back to Portfolio — only on project detail pages */}
+          {isProjectPage && (
+            <Link
+              href="/#projects"
+              className="hidden lg:inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--color-hairline)] bg-[var(--color-canvas-elevated)] text-[var(--color-body)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all text-sm font-semibold"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              {t(translations.projectDetail.backBtn)}
+            </Link>
+          )}
           <button
             onClick={toggleTheme}
             className="w-9 h-9 flex items-center justify-center border border-[var(--color-hairline)] bg-[var(--color-canvas-elevated)] text-[var(--color-body)] hover:border-[var(--color-primary)] hover:bg-[var(--color-primary)]/10 transition-all duration-300 rounded-md"
