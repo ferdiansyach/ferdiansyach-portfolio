@@ -96,6 +96,76 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "coastal-water-quality",
+    title: "Coastal Water Quality Monitoring",
+    description: {
+      id: "Monitoring kualitas perairan pesisir Jakarta & Banten via Google Earth Engine (2019–2025) dengan Sentinel-2, Landsat-8, K-Means, dan Mann-Kendall.",
+      en: "Coastal water quality monitoring for Jakarta & Banten via Google Earth Engine (2019–2025) using Sentinel-2, Landsat-8, K-Means, and Mann-Kendall.",
+    },
+    longDescription: {
+      id: "Proyek ini membangun sistem monitoring kualitas perairan pesisir Jakarta dan Banten secara temporal (2019–2025) menggunakan platform Google Earth Engine (GEE). Data satelit Sentinel-2 dan Landsat-8 digunakan untuk mengekstrak parameter optik air seperti turbiditas, klorofil-a, dan Total Suspended Solid (TSS). Analisis spasial dilengkapi dengan clustering K-Means untuk mengidentifikasi zona kualitas air, serta uji tren Mann-Kendall untuk mendeteksi perubahan signifikan secara statistik dari waktu ke waktu. Seluruh hasil analisis divisualisasikan melalui dashboard interaktif berbasis Streamlit.",
+      en: "This project builds a temporal coastal water quality monitoring system for Jakarta and Banten (2019–2025) using the Google Earth Engine (GEE) platform. Sentinel-2 and Landsat-8 satellite data were used to extract water optical parameters such as turbidity, chlorophyll-a, and Total Suspended Solids (TSS). Spatial analysis was enhanced with K-Means clustering to identify water quality zones, and Mann-Kendall trend tests to statistically detect significant changes over time. All results are visualized through an interactive Streamlit dashboard.",
+    },
+    challenges: {
+      id: "Tantangan utama adalah mengelola data time-series dari dua sumber satelit berbeda (Sentinel-2 dan Landsat-8) dengan resolusi dan karakteristik spektral yang berbeda. Diperlukan harmonisasi data antar sensor agar analisis tren jangka panjang tetap konsisten. Selain itu, cloud masking pada citra pesisir menjadi tantangan tersendiri karena wilayah pesisir kerap tertutup awan, sehingga diperlukan strategi kompositing yang cermat untuk memastikan kualitas data.",
+      en: "The main challenge was managing time-series data from two different satellite sources (Sentinel-2 and Landsat-8) with different resolutions and spectral characteristics. Data harmonization across sensors was required to ensure consistent long-term trend analysis. Additionally, cloud masking on coastal imagery was challenging since coastal areas are frequently cloud-covered, requiring careful compositing strategies to ensure data quality.",
+    },
+    technologies: [
+      "Python",
+      "Google Earth Engine",
+      "Sentinel-2",
+      "Landsat-8",
+      "Streamlit",
+      "K-Means",
+      "Mann-Kendall",
+      "Remote Sensing",
+    ],
+    category: "datascience",
+    period: "2025",
+    thumbnail: "/images/coastal1.jpeg",
+    pdfBullets: [
+      {
+        id: "Membangun sistem monitoring temporal kualitas perairan pesisir Jakarta & Banten (2019–2025) menggunakan Google Earth Engine dengan data multi-sensor Sentinel-2 & Landsat-8.",
+        en: "Built a temporal coastal water quality monitoring system for Jakarta & Banten (2019–2025) using Google Earth Engine with multi-sensor Sentinel-2 & Landsat-8 data.",
+      },
+      {
+        id: "Mengimplementasikan K-Means clustering untuk zonasi kualitas air dan uji tren Mann-Kendall untuk deteksi perubahan parameter (turbiditas, klorofil-a, TSS) secara statistik.",
+        en: "Implemented K-Means clustering for water quality zoning and Mann-Kendall trend tests for statistical detection of parameter changes (turbidity, chlorophyll-a, TSS).",
+      },
+      {
+        id: "Mengembangkan Streamlit dashboard interaktif untuk visualisasi spasial & temporal kualitas perairan, memudahkan interpretasi data satelit bagi pemangku kepentingan non-teknis.",
+        en: "Developed an interactive Streamlit dashboard for spatial & temporal water quality visualization, making satellite data interpretation accessible to non-technical stakeholders.",
+      },
+    ],
+    images: [
+      {
+        src: "/images/coastal1.jpeg",
+        caption: { id: "Dashboard Utama Streamlit", en: "Main Streamlit Dashboard" },
+      },
+      {
+        src: "/images/coastal2.jpeg",
+        caption: { id: "Peta Kualitas Air (GEE)", en: "Water Quality Map (GEE)" },
+      },
+      {
+        src: "/images/coastal3.jpeg",
+        caption: { id: "Analisis Temporal 2019–2025", en: "Temporal Analysis 2019–2025" },
+      },
+      {
+        src: "/images/coastal4.jpeg",
+        caption: { id: "K-Means Clustering Zona Air", en: "K-Means Water Zone Clustering" },
+      },
+      {
+        src: "/images/coastal5.jpeg",
+        caption: { id: "Uji Tren Mann-Kendall", en: "Mann-Kendall Trend Test" },
+      },
+      {
+        src: "/images/coastal6.jpeg",
+        caption: { id: "Distribusi Parameter TSS", en: "TSS Parameter Distribution" },
+      },
+    ],
+    githubUrl: "https://github.com/ferdiansyach/coastal-water-quality-gee",
+  },
+  {
     slug: "unasfest",
     title: "Website UNAS FEST",
     description: {
