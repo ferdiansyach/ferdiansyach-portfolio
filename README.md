@@ -1,20 +1,24 @@
 <div align="center">
+  <h1>🚀 Ferdiansyach — Personal Portfolio</h1>
   
-  # 🚀 Ferdiansyach — Personal Portfolio
+  <p><strong>Fullstack Developer (React/Next.js, Node.js) &amp; Machine Learning Enthusiast</strong></p>
   
-  **Fullstack Developer (React/Next.js, Node.js) & Machine Learning Enthusiast**
+  <p><em>Bridging the gap between scalable web engineering and data-driven intelligence.</em></p>
   
-  *Bridging the gap between scalable web engineering and data-driven intelligence.*
-  
-  [View Live Website](https://ferdiansyach-portfolio.vercel.app) • [Download CV (ATS-Friendly)](https://ferdiansyach-portfolio.vercel.app/portfolio-pdf) • [View Project Portfolio](https://ferdiansyach-portfolio.vercel.app/projects-pdf)
+  <p>
+    <a href="https://ferdiansyach-portfolio.vercel.app">View Live Website</a> • 
+    <a href="https://ferdiansyach-portfolio.vercel.app/portfolio-pdf">Download CV (ATS-Friendly)</a> • 
+    <a href="https://ferdiansyach-portfolio.vercel.app/projects-pdf">View Project Portfolio</a>
+  </p>
 
   <br />
 
-  [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
-  [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-  [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-  [![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion/)
-
+  <p>
+    <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js" /></a>
+    <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" /></a>
+    <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" /></a>
+    <a href="https://www.framer.com/motion/"><img src="https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white" alt="Framer Motion" /></a>
+  </p>
 </div>
 
 ---
