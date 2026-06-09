@@ -494,7 +494,7 @@ export default function ProjectsPDF() {
                     <span style={{ fontSize: "8px", color: "#64748b", fontWeight: 600, backgroundColor: "#f1f5f9", padding: "1px 6px", borderRadius: "3px" }}>{education.period}</span>
                   </div>
                   <div style={{ fontSize: "8.5px", color: "#374151", fontWeight: 500, marginTop: "2px" }}>
-                    {t(education.degree)} <span style={{ color: "#cbd5e1", margin: "0 4px" }}>|</span> <span style={{ fontWeight: 700, color: "#4f46e5" }}>IPK: {education.gpa}</span>
+                    {t(education.degree)} <span style={{ color: "#cbd5e1", margin: "0 4px" }}>|</span> <span style={{ fontWeight: 700, color: "#4f46e5" }}>{lang === "id" ? "IPK:" : "GPA:"} {education.gpa}</span>
                   </div>
                 </section>
               </div>

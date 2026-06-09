@@ -22,6 +22,15 @@ export default function PortfolioPDF() {
     return textObj[lang];
   };
 
+  const typeMap: Record<string, { id: string; en: string }> = {
+    "Internship":         { id: "Magang", en: "Internship" },
+    "Student Organization": { id: "Organisasi Mahasiswa", en: "Student Organization" },
+    "Freelance":          { id: "Lepas", en: "Freelance" },
+    "Full-time":          { id: "Penuh Waktu", en: "Full-time" },
+    "Part-time":          { id: "Paruh Waktu", en: "Part-time" },
+  };
+  const tType = (type: string) => typeMap[type]?.[lang] ?? type;
+
   // Show all experiences, top 3 projects, all certifications
   const topProjects = projects.slice(0, 3);
 
@@ -35,14 +44,14 @@ export default function PortfolioPDF() {
         }
 
         .cv-section-title {
-          font-size: 10.5px;
+          font-size: 11px;
           font-weight: 800;
           color: #1e293b;
           text-transform: uppercase;
           letter-spacing: 0.1em;
           border-bottom: 1.5px solid #334155;
           padding-bottom: 2px;
-          margin-bottom: 5px;
+          margin-bottom: 4px;
         }
 
         @media print {
@@ -76,7 +85,7 @@ export default function PortfolioPDF() {
           }
 
           .cv-inner {
-            padding: 10mm 15mm !important;
+            padding: 8mm 12mm !important;
           }
 
           a {
@@ -141,9 +150,9 @@ export default function PortfolioPDF() {
           flex-wrap: wrap;
           align-items: center;
           gap: 4px 8px;
-          font-size: 9px;
+          font-size: 9.5px;
           color: #475569;
-          margin-top: 6px;
+          margin-top: 4px;
           line-height: 1.4;
         }
 
@@ -295,14 +304,14 @@ export default function PortfolioPDF() {
 
         {/* ===== A4 CV CONTENT ===== */}
         <div className="cv-page bg-white text-black antialiased">
-          <div className="cv-inner" style={{ padding: '10mm 15mm' }}>
+          <div className="cv-inner" style={{ padding: '8mm 12mm' }}>
 
             {/* ===== HEADER ===== */}
-            <header style={{ marginBottom: '6px' }}>
-              <h1 style={{ fontSize: '24px', fontWeight: 900, color: '#0f172a', letterSpacing: '-0.02em', lineHeight: 1.1, textTransform: 'uppercase', margin: 0 }}>
+            <header style={{ marginBottom: '5px' }}>
+              <h1 style={{ fontSize: '26px', fontWeight: 900, color: '#0f172a', letterSpacing: '-0.02em', lineHeight: 1.1, textTransform: 'uppercase', margin: 0 }}>
                 Ferdiansyach
               </h1>
-              <div style={{ fontSize: '10px', color: '#1d4ed8', fontWeight: 600, marginTop: '3px', lineHeight: 1.3 }}>
+              <div style={{ fontSize: '11px', color: '#1d4ed8', fontWeight: 600, marginTop: '2px', lineHeight: 1.3 }}>
                 Full-Stack Developer (React/Next.js, Node.js) | ML for Energy Forecasting
               </div>
               <div className="contact-row">
@@ -318,15 +327,15 @@ export default function PortfolioPDF() {
                 <span className="contact-separator" style={{ color: '#cbd5e1' }}>|</span>
                 <a href="https://ferdiansyach-portfolio.vercel.app" style={{ color: '#1d4ed8' }}>ferdiansyach-portfolio.vercel.app</a>
               </div>
-              <div style={{ borderBottom: '2px solid #1e293b', marginTop: '6px' }} />
+              <div style={{ borderBottom: '2px solid #1e293b', marginTop: '4px' }} />
             </header>
 
             {/* ===== PROFILE SUMMARY ===== */}
-            <section style={{ marginBottom: '8px' }}>
+            <section style={{ marginBottom: '6px' }}>
               <h2 className="cv-section-title">
                 {lang === "id" ? "PROFIL PROFESIONAL" : "PROFESSIONAL SUMMARY"}
               </h2>
-              <p style={{ fontSize: '9px', color: '#374151', lineHeight: 1.5, textAlign: 'justify', margin: 0 }}>
+              <p style={{ fontSize: '9.5px', color: '#374151', lineHeight: 1.45, textAlign: 'justify', margin: 0 }}>
                 {lang === "id"
                   ? "Full-Stack Developer yang mengkhususkan diri dalam aplikasi berbasis data. Merancang dan meluncurkan 5+ aplikasi web produksi (React, Next.js, Node.js) dengan skor Lighthouse 90+. Merancang pipeline data end-to-end dan model ML prediktif (LSTM, XGBoost) mencapai akurasi 92% pada 50.000+ data poin di Telkom Indonesia. Menggabungkan keahlian web development dan data engineering untuk membangun produk perangkat lunak yang intelligent dan scalable."
                   : "Full-Stack Developer specializing in data-informed applications. Architected and shipped 5+ production web applications (React, Next.js, Node.js) with Lighthouse 90+ performance. Engineered end-to-end data pipelines and predictive ML models (LSTM, XGBoost) achieving 92% accuracy on 50,000+ data points at Telkom Indonesia. Leverages both web development and data engineering expertise to build intelligent, scalable software products."
@@ -335,25 +344,25 @@ export default function PortfolioPDF() {
             </section>
 
             {/* ===== EXPERIENCE — All 4 ===== */}
-            <section style={{ marginBottom: '8px' }}>
+            <section style={{ marginBottom: '6px' }}>
               <h2 className="cv-section-title">
                 {lang === "id" ? "PENGALAMAN PROFESIONAL" : "PROFESSIONAL EXPERIENCE"}
               </h2>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
                 {experiences.map((exp) => (
                   <div key={exp.id}>
                     {/* Role + Period */}
                     <div className="exp-header">
-                      <h3 style={{ fontSize: '10px', fontWeight: 700, color: '#0f172a', margin: 0 }}>{t(exp.role)}</h3>
-                      <span style={{ fontSize: '8.5px', fontWeight: 500, color: '#64748b', whiteSpace: 'nowrap', marginLeft: '12px' }}>{exp.period}</span>
+                      <h3 style={{ fontSize: '10.5px', fontWeight: 700, color: '#0f172a', margin: 0 }}>{t(exp.role)}</h3>
+                      <span style={{ fontSize: '9px', fontWeight: 500, color: '#64748b', whiteSpace: 'nowrap', marginLeft: '12px' }}>{exp.period}</span>
                     </div>
                     {/* Company | Type | Location */}
-                    <div style={{ fontSize: '8.5px', color: '#1d4ed8', fontWeight: 600, display: 'flex', flexWrap: 'wrap', gap: '0 4px', alignItems: 'center' }}>
+                    <div style={{ fontSize: '9px', color: '#1d4ed8', fontWeight: 600, display: 'flex', flexWrap: 'wrap', gap: '0 4px', alignItems: 'center' }}>
                       <span>{exp.company}</span>
                       {exp.type && (
                         <>
                           <span style={{ color: '#cbd5e1', fontWeight: 400 }}>|</span>
-                          <span style={{ color: '#475569', fontWeight: 500 }}>{exp.type}</span>
+                          <span style={{ color: '#475569', fontWeight: 500 }}>{tType(exp.type)}</span>
                         </>
                       )}
                       {exp.location && (
@@ -363,9 +372,9 @@ export default function PortfolioPDF() {
                         </>
                       )}
                     </div>
-                    <ul style={{ margin: '2px 0 0 14px', padding: 0, listStyleType: 'disc' }}>
+                    <ul style={{ margin: '1px 0 0 12px', padding: 0, listStyleType: 'disc' }}>
                       {exp.bullets.map((bullet, i) => (
-                        <li key={i} style={{ fontSize: '8.5px', color: '#374151', lineHeight: 1.35, paddingLeft: '2px' }}>
+                        <li key={i} style={{ fontSize: '9px', color: '#374151', lineHeight: 1.3, paddingLeft: '2px' }}>
                           {t(bullet)}
                         </li>
                       ))}
@@ -376,30 +385,30 @@ export default function PortfolioPDF() {
             </section>
 
             {/* ===== EDUCATION ===== */}
-            <section style={{ marginBottom: '8px' }}>
+            <section style={{ marginBottom: '6px' }}>
               <h2 className="cv-section-title">
                 {lang === "id" ? "PENDIDIKAN" : "EDUCATION"}
               </h2>
               <div>
                 <div className="exp-header">
-                  <h3 style={{ fontSize: '10px', fontWeight: 700, color: '#0f172a', margin: 0 }}>{education.institution}</h3>
-                  <span style={{ fontSize: '8.5px', fontWeight: 500, color: '#64748b', whiteSpace: 'nowrap', marginLeft: '12px' }}>{education.period}</span>
+                  <h3 style={{ fontSize: '10.5px', fontWeight: 700, color: '#0f172a', margin: 0 }}>{education.institution}</h3>
+                  <span style={{ fontSize: '9px', fontWeight: 500, color: '#64748b', whiteSpace: 'nowrap', marginLeft: '12px' }}>{education.period}</span>
                 </div>
-                <div style={{ fontSize: '9px', color: '#1e293b', fontWeight: 600 }}>{t(education.degree)}</div>
+                <div style={{ fontSize: '9.5px', color: '#1e293b', fontWeight: 600 }}>{t(education.degree)}</div>
                 {education.gpa && (
-                  <div style={{ fontSize: '8.5px', color: '#475569' }}>
+                  <div style={{ fontSize: '9px', color: '#475569' }}>
                     <span style={{ fontWeight: 700, color: '#1e293b' }}>{lang === "id" ? "IPK:" : "GPA:"}</span> {education.gpa}
                   </div>
                 )}
-                <div style={{ fontSize: '8.5px', color: '#374151', marginTop: '2px' }}>
-                  <span style={{ fontWeight: 700, color: '#1e293b' }}>{lang === "id" ? "Capstone Project: " : "Capstone Project: "}</span>
+                <div style={{ fontSize: '9px', color: '#374151', marginTop: '1px' }}>
+                  <span style={{ fontWeight: 700, color: '#1e293b' }}>{lang === "id" ? "Proyek Capstone: " : "Capstone Project: "}</span>
                   {lang === "id"
                     ? "Cloud-Based Coastal Water Quality Monitoring: Analisis Tren Spatiotemporal dan Unsupervised Spectral Clustering via Web-GIS"
                     : "Cloud-Based Coastal Water Quality Monitoring: Spatiotemporal Trend Analysis and Unsupervised Spectral Clustering via Web-GIS"
                   }
                 </div>
                 {education.courses && (
-                  <div style={{ fontSize: '8.5px', color: '#374151', marginTop: '2px' }}>
+                  <div style={{ fontSize: '9px', color: '#374151', marginTop: '1px' }}>
                     <span style={{ fontWeight: 700, color: '#1e293b' }}>{lang === "id" ? "Mata Kuliah Relevan: " : "Relevant Coursework: "}</span>
                     {education.courses.map(c => t(c)).join(", ")}
                   </div>
@@ -408,13 +417,13 @@ export default function PortfolioPDF() {
             </section>
 
             {/* ===== TECHNICAL SKILLS ===== */}
-            <section style={{ marginBottom: '8px' }}>
+            <section style={{ marginBottom: '6px' }}>
               <h2 className="cv-section-title">
                 {lang === "id" ? "KOMPETENSI TEKNIS" : "TECHNICAL SKILLS"}
               </h2>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1px' }}>
                 {skillCategories.map((cat, i) => (
-                  <div key={i} style={{ fontSize: '9px', lineHeight: 1.4 }}>
+                  <div key={i} style={{ fontSize: '9.5px', lineHeight: 1.35 }}>
                     <span style={{ fontWeight: 700, color: '#0f172a' }}>{t(cat.title)}:</span>{" "}
                     <span style={{ color: '#374151' }}>
                       {cat.skills.map(s => s.name).join(", ")}
@@ -425,7 +434,7 @@ export default function PortfolioPDF() {
             </section>
 
             {/* ===== SELECTED PROJECTS — 3 projects ===== */}
-            <section style={{ marginBottom: '8px' }}>
+            <section style={{ marginBottom: '6px' }}>
               <h2 className="cv-section-title">
                 {lang === "id" ? "PROYEK UNGGULAN" : "SELECTED PROJECTS"}
               </h2>
@@ -433,19 +442,19 @@ export default function PortfolioPDF() {
                 {topProjects.map((proj) => (
                   <div key={proj.slug}>
                     <div className="exp-header">
-                      <h3 style={{ fontSize: '9.5px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
+                      <h3 style={{ fontSize: '10px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
                         {typeof proj.title === 'string' ? proj.title : t(proj.title)}
                       </h3>
                       {proj.githubUrl && (
-                        <a href={proj.githubUrl} style={{ fontSize: '8px', color: '#1d4ed8', fontWeight: 500, whiteSpace: 'nowrap', marginLeft: '8px' }}>
+                        <a href={proj.githubUrl} style={{ fontSize: '8.5px', color: '#1d4ed8', fontWeight: 500, whiteSpace: 'nowrap', marginLeft: '8px' }}>
                           GitHub ↗
                         </a>
                       )}
                     </div>
-                    <p style={{ fontSize: '8.5px', color: '#374151', lineHeight: 1.35, margin: '1px 0 0 0' }}>
+                    <p style={{ fontSize: '9.5px', color: '#374151', lineHeight: 1.35, margin: '1px 0 0 0' }}>
                       {t(proj.description)}
                     </p>
-                    <p style={{ fontSize: '8px', color: '#64748b', fontWeight: 500, fontFamily: "'SF Mono', 'Fira Code', monospace", marginTop: '2px' }}>
+                    <p style={{ fontSize: '8.5px', color: '#64748b', fontWeight: 500, fontFamily: "'SF Mono', 'Fira Code', monospace", margin: '1px 0 0 0' }}>
                       {proj.technologies.slice(0, 6).join(" · ")}
                     </p>
                   </div>
@@ -460,7 +469,7 @@ export default function PortfolioPDF() {
               </h2>
               <div className="cert-grid">
                 {certifications.map((cert) => (
-                  <div key={cert.id} style={{ fontSize: '8.5px', color: '#374151', lineHeight: 1.4 }}>
+                  <div key={cert.id} style={{ fontSize: '9.5px', color: '#374151', lineHeight: 1.35 }}>
                     <span style={{ fontWeight: 700, color: '#0f172a' }}>{t(cert.name)}</span>
                     {" — "}{cert.issuer} ({cert.date})
                   </div>
