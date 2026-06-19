@@ -45,6 +45,20 @@ export const skillCategories: SkillCategory[] = [
     title: { id: "Backend & DB", en: "Backend & DB" },
     skills: [
       {
+        name: "Prisma",
+        icon: "prisma",
+        color: "#2D3748",
+        proficiency: "intermediate",
+        usageContext: { id: "ORM untuk Next.js & Node", en: "ORM for Next.js & Node" },
+      },
+      {
+        name: "Redis",
+        icon: "redis",
+        color: "#DC382D",
+        proficiency: "beginner",
+        usageContext: { id: "Caching & Session Management", en: "Caching & Session Management" },
+      },
+      {
         name: "Node.js",
         icon: "nodejs",
         color: "#339933",
@@ -167,6 +181,20 @@ export const skillCategories: SkillCategory[] = [
   {
     title: { id: "DevOps & Tools", en: "DevOps & Tools" },
     skills: [
+      {
+        name: "Jest & RTL",
+        icon: "jest",
+        color: "#C21325",
+        proficiency: "intermediate",
+        usageContext: { id: "Unit & Component Testing", en: "Unit & Component Testing" },
+      },
+      {
+        name: "GitHub Actions",
+        icon: "githubactions",
+        color: "#2088FF",
+        proficiency: "intermediate",
+        usageContext: { id: "CI/CD & Deployments", en: "CI/CD & Deployments" },
+      },
       {
         name: "Git & GitHub",
         icon: "git",

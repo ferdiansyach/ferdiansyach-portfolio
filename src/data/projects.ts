@@ -191,8 +191,8 @@ export const projects: Project[] = [
         en: "Developed 10+ responsive components with TypeScript & Tailwind CSS, achieving a Lighthouse score of 90+ for performance and accessibility on the official festival portal.",
       },
       {
-        id: "Merancang pipeline testing & debugging komprehensif yang mengurangi bug rate produksi sebesar 60% sebelum rilis publik yang digunakan seluruh civitas universitas.",
-        en: "Engineered a comprehensive testing & debugging pipeline reducing the production bug rate by 60% before a public release used by the entire university community.",
+        id: "Merancang pipeline testing komprehensif (Jest, RTL) yang memangkas bug rate produksi sebesar 60% sebelum rilis publik yang digunakan seluruh civitas universitas.",
+        en: "Engineered a comprehensive testing pipeline (Jest, RTL) reducing the production bug rate by 60% before a public release used by the entire university community.",
       },
       {
         id: "Berkolaborasi dalam tim multi-developer menggunakan Git branching strategy dan code review untuk menjaga kualitas kode di bawah deadline yang ketat.",

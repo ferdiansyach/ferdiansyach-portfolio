@@ -74,8 +74,8 @@ export const experiences: Experience[] = [
         en: "Developed 10+ responsive website components using TypeScript and Tailwind CSS, achieving a Lighthouse score of 90+ for performance and accessibility on the official festival portal.",
       },
       {
-        id: "Membangun API Routes Next.js untuk integrasi registrasi peserta dan database, serta merancang pipeline pengujian yang mengurangi bug rate produksi sebesar 60%.",
-        en: "Built Next.js API Routes for attendee registration and database integration, and engineered a testing pipeline that reduced production bug rate by 60%.",
+        id: "Membangun API Routes Next.js untuk integrasi registrasi peserta dan database, serta merancang pipeline pengujian dengan Jest dan React Testing Library yang memangkas bug rate produksi sebesar 60%.",
+        en: "Built Next.js API Routes for attendee registration and database integration, and engineered a testing pipeline with Jest and React Testing Library that slashed production bug rate by 60%.",
       },
     ],
   },
