@@ -80,7 +80,7 @@ export const skillCategories: SkillCategory[] = [
         usageContext: { id: "Indosaji E-commerce Database", en: "Indosaji E-commerce Database" },
       },
       {
-        name: "MySQL",
+        name: "MySQL / SQL",
         icon: "mysql",
         color: "#4479A1",
         proficiency: "intermediate",
@@ -129,6 +129,14 @@ export const skillCategories: SkillCategory[] = [
         proficiency: "intermediate",
         typeLabel: { id: "Library Visualisasi", en: "Visualization Library" },
         usageContext: { id: "Visualisasi data Smart Meter Telkom", en: "Telkom Smart Meter data visualization" },
+      },
+      {
+        name: "Tableau",
+        icon: "tableau",
+        color: "#E97627",
+        proficiency: "intermediate",
+        typeLabel: { id: "Visualisasi Data & BI", en: "Data Visualization & BI" },
+        usageContext: { id: "Dashboard interaktif & visualisasi data bisnis", en: "Interactive dashboards & business data visualization" },
       },
       {
         name: "Streamlit",
