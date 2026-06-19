@@ -8,14 +8,32 @@ import { certifications } from "@/data/certifications";
 
 export default function PortfolioPDF() {
   const [lang, setLang] = useState<"id" | "en">("id");
+  const [role, setRole] = useState<"fullstack" | "data">("fullstack");
 
   useEffect(() => {
     const savedLang = localStorage.getItem("lang") as "id" | "en";
     if (savedLang) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setLang(savedLang);
+      setTimeout(() => {
+        setLang(savedLang);
+      }, 0);
+    }
+    const savedRole = localStorage.getItem("cvRole") as "fullstack" | "data";
+    if (savedRole) {
+      setTimeout(() => {
+        setRole(savedRole);
+      }, 0);
     }
   }, []);
+
+  const handleLangChange = (newLang: "id" | "en") => {
+    setLang(newLang);
+    localStorage.setItem("lang", newLang);
+  };
+
+  const handleRoleChange = (newRole: "fullstack" | "data") => {
+    setRole(newRole);
+    localStorage.setItem("cvRole", newRole);
+  };
 
   const t = (textObj: { id: string; en: string } | string) => {
     if (typeof textObj === "string") return textObj;
@@ -31,8 +49,28 @@ export default function PortfolioPDF() {
   };
   const tType = (type: string) => typeMap[type]?.[lang] ?? type;
 
-  // Show all experiences, top 3 projects, all certifications
-  const topProjects = projects.slice(0, 3);
+  // Show all experiences, all certifications
+  // Sort and select top 3 projects based on role
+  const getSortedProjects = () => {
+    const sortedProjects = [...projects];
+    if (role === "data") {
+      // Prioritize datascience projects
+      sortedProjects.sort((a, b) => {
+        if (a.category === "datascience" && b.category !== "datascience") return -1;
+        if (a.category !== "datascience" && b.category === "datascience") return 1;
+        return 0;
+      });
+    } else {
+      // Prioritize webdev projects
+      sortedProjects.sort((a, b) => {
+        if (a.category === "webdev" && b.category !== "webdev") return -1;
+        if (a.category !== "webdev" && b.category === "webdev") return 1;
+        return 0;
+      });
+    }
+    return sortedProjects.slice(0, 3);
+  };
+  const topProjects = getSortedProjects();
 
   return (
     <>
@@ -277,8 +315,16 @@ export default function PortfolioPDF() {
             </div>
             <div className="toolbar-actions flex gap-2 items-center">
               <select
+                value={role}
+                onChange={(e) => handleRoleChange(e.target.value as "fullstack" | "data")}
+                className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm bg-white text-gray-700 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              >
+                <option value="fullstack">💻 Full-Stack</option>
+                <option value="data">📊 Data Analyst</option>
+              </select>
+              <select
                 value={lang}
-                onChange={(e) => setLang(e.target.value as "id" | "en")}
+                onChange={(e) => handleLangChange(e.target.value as "id" | "en")}
                 className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm bg-white text-gray-700 focus:ring-2 focus:ring-blue-500 focus:outline-none"
               >
                 <option value="id">🇮🇩 Indonesia</option>
@@ -312,7 +358,10 @@ export default function PortfolioPDF() {
                 Ferdiansyach
               </h1>
               <div style={{ fontSize: '11px', color: '#1d4ed8', fontWeight: 600, marginTop: '2px', lineHeight: 1.3 }}>
-                Full-Stack Developer (React/Next.js, Node.js) | ML for Energy Forecasting
+                {role === "fullstack"
+                  ? "Full-Stack Developer (React/Next.js, Node.js) | ML for Energy Forecasting"
+                  : "Data Analyst & ML Developer (Python, SQL) | Web-GIS & Predictive Modeling"
+                }
               </div>
               <div className="contact-row">
                 <span>Depok, Indonesia</span>
@@ -336,9 +385,13 @@ export default function PortfolioPDF() {
                 {lang === "id" ? "PROFIL PROFESIONAL" : "PROFESSIONAL SUMMARY"}
               </h2>
               <p style={{ fontSize: '9.5px', color: '#374151', lineHeight: 1.45, textAlign: 'justify', margin: 0 }}>
-                {lang === "id"
-                  ? "Full-Stack Developer yang mengkhususkan diri dalam aplikasi berbasis data. Merancang dan meluncurkan 5+ aplikasi web produksi (React, Next.js, Node.js) dengan skor Lighthouse 90+. Merancang pipeline data end-to-end dan model ML prediktif (LSTM, XGBoost) mencapai akurasi 92% pada 50.000+ data poin di Telkom Indonesia. Menggabungkan keahlian web development dan data engineering untuk membangun produk perangkat lunak yang intelligent dan scalable."
-                  : "Full-Stack Developer specializing in data-informed applications. Architected and shipped 5+ production web applications (React, Next.js, Node.js) with Lighthouse 90+ performance. Engineered end-to-end data pipelines and predictive ML models (LSTM, XGBoost) achieving 92% accuracy on 50,000+ data points at Telkom Indonesia. Leverages both web development and data engineering expertise to build intelligent, scalable software products."
+                {role === "fullstack"
+                  ? lang === "id"
+                    ? "Full-Stack Developer yang mengkhususkan diri dalam aplikasi berbasis data. Merancang dan meluncurkan 5+ aplikasi web produksi (React, Next.js, Node.js) dengan skor Lighthouse 90+. Merancang pipeline data end-to-end dan model ML prediktif (LSTM, XGBoost) mencapai akurasi 92% pada 50.000+ data poin di Telkom Indonesia. Menggabungkan keahlian web development dan data engineering untuk membangun produk perangkat lunak yang intelligent dan scalable."
+                    : "Full-Stack Developer specializing in data-informed applications. Architected and shipped 5+ production web applications (React, Next.js, Node.js) with Lighthouse 90+ performance. Engineered end-to-end data pipelines and predictive ML models (LSTM, XGBoost) achieving 92% accuracy on 50,000+ data points at Telkom Indonesia. Leverages both web development and data engineering expertise to build intelligent, scalable software products."
+                  : lang === "id"
+                    ? "Data Analyst & Machine Learning Developer dengan keahlian kuat dalam Python, SQL, dan analisis geospasial. Merancang pipeline data end-to-end dan model ML prediktif (LSTM, XGBoost) mencapai akurasi 92% pada 50.000+ data poin di Telkom Indonesia. Berpengalaman membangun sistem monitoring kualitas air pesisir menggunakan Google Earth Engine dengan uji statistik Mann-Kendall. Ahli dalam mengubah dataset mentah dan time-series menjadi insight bisnis yang actionable melalui dashboard interaktif (Streamlit)."
+                    : "Data Analyst & Machine Learning Developer with strong expertise in Python, SQL, and geospatial analysis. Engineered end-to-end data pipelines and predictive ML models (LSTM, XGBoost) achieving 92% accuracy on 50,000+ data points at Telkom Indonesia. Experienced in building coastal water quality monitoring systems using Google Earth Engine with Mann-Kendall statistical tests. Adept at transforming raw, time-series datasets into actionable business insights through interactive dashboards (Streamlit)."
                 }
               </p>
             </section>

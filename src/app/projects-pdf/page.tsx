@@ -17,8 +17,11 @@ export default function ProjectsPDF() {
 
   useEffect(() => {
     const savedLang = localStorage.getItem("lang") as "id" | "en";
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    if (savedLang) setLang(savedLang);
+    if (savedLang) {
+      setTimeout(() => {
+        setLang(savedLang);
+      }, 0);
+    }
   }, []);
 
   const t = (textObj: { id: string; en: string } | string) => {
