@@ -1,36 +1,43 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { experiences, education } from "@/data/experience";
 import { skillCategories } from "@/data/skills";
 import { projects } from "@/data/projects";
 import { certifications } from "@/data/certifications";
 
 export default function PortfolioPDF() {
+  const router = useRouter();
   const [lang, setLang] = useState<"id" | "en">("id");
-  const [role, setRole] = useState<"fullstack" | "data">("fullstack");
+  const [role, setRole] = useState<"fullstack" | "data" | "general">("general");
 
   useEffect(() => {
+    // Redirect to home if accessed in production
+    if (process.env.NODE_ENV === "production") {
+      router.replace("/");
+      return;
+    }
     const savedLang = localStorage.getItem("lang") as "id" | "en";
     if (savedLang) {
       setTimeout(() => {
         setLang(savedLang);
       }, 0);
     }
-    const savedRole = localStorage.getItem("cvRole") as "fullstack" | "data";
+    const savedRole = localStorage.getItem("cvRole") as "fullstack" | "data" | "general";
     if (savedRole) {
       setTimeout(() => {
         setRole(savedRole);
       }, 0);
     }
-  }, []);
+  }, [router]);
 
   const handleLangChange = (newLang: "id" | "en") => {
     setLang(newLang);
     localStorage.setItem("lang", newLang);
   };
 
-  const handleRoleChange = (newRole: "fullstack" | "data") => {
+  const handleRoleChange = (newRole: "fullstack" | "data" | "general") => {
     setRole(newRole);
     localStorage.setItem("cvRole", newRole);
   };
@@ -53,7 +60,15 @@ export default function PortfolioPDF() {
   // Sort and select top 3 projects based on role
   const getSortedProjects = () => {
     const sortedProjects = [...projects];
-    if (role === "data") {
+    if (role === "general") {
+      // Prioritize: unasfest (testing/QA), indosaji (full-stack web), smart-meter (data & modeling)
+      sortedProjects.sort((a, b) => {
+        const order = { "unasfest": 1, "indosaji": 2, "smart-meter": 3 };
+        const aOrder = order[a.slug as keyof typeof order] || 99;
+        const bOrder = order[b.slug as keyof typeof order] || 99;
+        return aOrder - bOrder;
+      });
+    } else if (role === "data") {
       // Prioritize datascience projects
       sortedProjects.sort((a, b) => {
         if (a.category === "datascience" && b.category !== "datascience") return -1;
@@ -71,6 +86,24 @@ export default function PortfolioPDF() {
     return sortedProjects.slice(0, 3);
   };
   const topProjects = getSortedProjects();
+
+  const getGeneralSkills = () => {
+    if (lang === "id") {
+      return [
+        { title: "Pengujian & QA (Testing)", skills: "Manual Testing, API Testing (Postman), Unit & Component Testing (Jest & RTL), Web Developer Tools" },
+        { title: "Bahasa & Framework", skills: "HTML/CSS, TypeScript, Python, React, Next.js, Node.js, Express.js" },
+        { title: "Basis Data & Tools", skills: "MySQL / SQL, MongoDB, Git & GitHub, GitHub Actions, Agile Scrum" },
+        { title: "IT Support & Troubleshooting", skills: "Pemeliharaan Lab Komputer, Konfigurasi Sistem, Troubleshooting Hardware & OS" }
+      ];
+    } else {
+      return [
+        { title: "Software Testing & QA", skills: "Manual Testing, API Testing (Postman), Unit & Component Testing (Jest & RTL), Web Developer Tools" },
+        { title: "Languages & Frameworks", skills: "HTML/CSS, TypeScript, Python, React, Next.js, Node.js, Express.js" },
+        { title: "Database & Tools", skills: "MySQL / SQL, MongoDB, Git & GitHub, GitHub Actions, Agile Scrum" },
+        { title: "IT Support & Troubleshooting", skills: "Lab Maintenance, System Configuration, Hardware & OS Troubleshooting" }
+      ];
+    }
+  };
 
   return (
     <>
@@ -316,9 +349,10 @@ export default function PortfolioPDF() {
             <div className="toolbar-actions flex gap-2 items-center">
               <select
                 value={role}
-                onChange={(e) => handleRoleChange(e.target.value as "fullstack" | "data")}
+                onChange={(e) => handleRoleChange(e.target.value as "fullstack" | "data" | "general")}
                 className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm bg-white text-gray-700 focus:ring-2 focus:ring-blue-500 focus:outline-none"
               >
+                <option value="general">⚙️ General / QA & Testing</option>
                 <option value="fullstack">💻 Full-Stack</option>
                 <option value="data">📊 Data Analyst</option>
               </select>
@@ -358,7 +392,9 @@ export default function PortfolioPDF() {
                 Ferdiansyach
               </h1>
               <div style={{ fontSize: '11px', color: '#1d4ed8', fontWeight: 600, marginTop: '2px', lineHeight: 1.3 }}>
-                {role === "fullstack"
+                {role === "general"
+                  ? "IT Specialist | Quality Assurance & Manual Testing | Software Developer"
+                  : role === "fullstack"
                   ? "Full-Stack Developer (React/Next.js, Node.js) | ML for Energy Forecasting"
                   : "Data Analyst & ML Developer (Python, SQL) | Web-GIS & Predictive Modeling"
                 }
@@ -385,7 +421,11 @@ export default function PortfolioPDF() {
                 {lang === "id" ? "PROFIL PROFESIONAL" : "PROFESSIONAL SUMMARY"}
               </h2>
               <p style={{ fontSize: '9.5px', color: '#374151', lineHeight: 1.45, textAlign: 'justify', margin: 0 }}>
-                {role === "fullstack"
+                {role === "general"
+                  ? lang === "id"
+                    ? "Lulusan Sistem Informasi dengan kompetensi luas di bidang Quality Assurance (QA/Testing), rekayasa perangkat lunak, dan IT support. Terbukti memiliki ketelitian tinggi dalam mendeteksi bug dan mengoptimalkan performa sistem, termasuk merancang pipeline pengujian (Jest/RTL) yang memangkas bug rate sebesar 60% dan mempertahankan ketersediaan unit lab komputer sebesar 98%. Menguasai metodologi SDLC (Agile/Scrum), pengujian manual (API/Web), serta analisis data. Siap berkontribusi secara fleksibel di berbagai peran teknologi."
+                    : "Information Systems graduate with broad competencies in Quality Assurance (QA/Testing), software engineering, and IT support. Proven track record of high attention to detail in bug detection and system optimization, including engineering a testing pipeline (Jest/RTL) that slashed production bug rate by 60% and maintaining 98% device availability in computer labs. Well-versed in SDLC (Agile/Scrum) methodologies, manual testing (API/Web), and data analysis. Ready to contribute flexibly across diverse IT roles."
+                  : role === "fullstack"
                   ? lang === "id"
                     ? "Full-Stack Developer yang mengkhususkan diri dalam aplikasi berbasis data. Merancang dan meluncurkan 5+ aplikasi web produksi (React, Next.js, Node.js) dengan skor Lighthouse 90+. Merancang pipeline data end-to-end dan model ML prediktif (LSTM, XGBoost) mencapai akurasi 92% pada 50.000+ data poin di Telkom Indonesia. Menggabungkan keahlian web development dan data engineering untuk membangun produk perangkat lunak yang intelligent dan scalable."
                     : "Full-Stack Developer specializing in data-informed applications. Architected and shipped 5+ production web applications (React, Next.js, Node.js) with Lighthouse 90+ performance. Engineered end-to-end data pipelines and predictive ML models (LSTM, XGBoost) achieving 92% accuracy on 50,000+ data points at Telkom Indonesia. Leverages both web development and data engineering expertise to build intelligent, scalable software products."
@@ -475,14 +515,22 @@ export default function PortfolioPDF() {
                 {lang === "id" ? "KOMPETENSI TEKNIS" : "TECHNICAL SKILLS"}
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1px' }}>
-                {skillCategories.map((cat, i) => (
-                  <div key={i} style={{ fontSize: '9.5px', lineHeight: 1.35 }}>
-                    <span style={{ fontWeight: 700, color: '#0f172a' }}>{t(cat.title)}:</span>{" "}
-                    <span style={{ color: '#374151' }}>
-                      {cat.skills.map(s => s.name).join(", ")}
-                    </span>
-                  </div>
-                ))}
+                {role === "general"
+                  ? getGeneralSkills().map((cat, i) => (
+                      <div key={i} style={{ fontSize: '9.5px', lineHeight: 1.35 }}>
+                        <span style={{ fontWeight: 700, color: '#0f172a' }}>{cat.title}:</span>{" "}
+                        <span style={{ color: '#374151' }}>{cat.skills}</span>
+                      </div>
+                    ))
+                  : skillCategories.map((cat, i) => (
+                      <div key={i} style={{ fontSize: '9.5px', lineHeight: 1.35 }}>
+                        <span style={{ fontWeight: 700, color: '#0f172a' }}>{t(cat.title)}:</span>{" "}
+                        <span style={{ color: '#374151' }}>
+                          {cat.skills.map(s => s.name).join(", ")}
+                        </span>
+                      </div>
+                    ))
+                }
               </div>
             </section>
 
