@@ -4,7 +4,7 @@ export const experiences: Experience[] = [
   {
     id: "telkom",
     role: { id: "Business Intelligence & ML Intern", en: "Business Intelligence & ML Intern" },
-    company: "Telkom Indonesia — Infranexia",
+    company: "Telkom Indonesia | Infranexia",
     type: "Internship",
     location: "Jakarta, ID",
     period: "Apr 2025 – Sep 2025",
@@ -27,7 +27,7 @@ export const experiences: Experience[] = [
   {
     id: "labassist",
     role: { id: "Asisten Laboratorium Komputer", en: "Computer Laboratory Assistant" },
-    company: "Lab Data Monetize — Universitas Nasional",
+    company: "Lab Data Monetize | Universitas Nasional",
     type: "Student Organization",
     location: "Jakarta, ID",
     period: "Sep 2024 – Sep 2025",
@@ -46,7 +46,7 @@ export const experiences: Experience[] = [
   {
     id: "himasi",
     role: { id: "Asisten Riset & Pengembangan", en: "Research & Development Assistant" },
-    company: "HIMASI — Universitas Nasional",
+    company: "HIMASI | Universitas Nasional",
     type: "Student Organization",
     location: "Jakarta, ID",
     period: "Jun 2024 – Mar 2025",
@@ -64,7 +64,7 @@ export const experiences: Experience[] = [
   {
     id: "unasfest",
     role: { id: "Fullstack Developer", en: "Fullstack Developer" },
-    company: "UNAS FEST — Universitas Nasional Festival",
+    company: "UNAS FEST | Universitas Nasional Festival",
     type: "Student Organization",
     location: "Jakarta, ID",
     period: "Apr 2024 – Nov 2024",
@@ -84,8 +84,8 @@ export const experiences: Experience[] = [
 export const education: Education = {
   institution: "Universitas Nasional",
   degree: {
-    id: "Sarjana Komputer (S.Kom) — Sistem Informasi",
-    en: "Bachelor of Computer Science (S.Kom) — Information Systems",
+    id: "Sarjana Komputer (S.Kom) | Sistem Informasi",
+    en: "Bachelor of Computer Science (S.Kom) | Information Systems",
   },
   period: "2022 – 2026",
   gpa: "3.77",
