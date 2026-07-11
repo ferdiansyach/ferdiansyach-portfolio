@@ -10,7 +10,7 @@ import { certifications } from "@/data/certifications";
 export default function PortfolioPDF() {
   const router = useRouter();
   const [lang, setLang] = useState<"id" | "en">("id");
-  const [role, setRole] = useState<"fullstack" | "data" | "general">("general");
+  const [role, setRole] = useState<"fullstack" | "data" | "general" | "generalist">("general");
 
   useEffect(() => {
     // Redirect to home if accessed in production
@@ -24,7 +24,7 @@ export default function PortfolioPDF() {
         setLang(savedLang);
       }, 0);
     }
-    const savedRole = localStorage.getItem("cvRole") as "fullstack" | "data" | "general";
+    const savedRole = localStorage.getItem("cvRole") as "fullstack" | "data" | "general" | "generalist";
     if (savedRole) {
       setTimeout(() => {
         setRole(savedRole);
@@ -37,7 +37,7 @@ export default function PortfolioPDF() {
     localStorage.setItem("lang", newLang);
   };
 
-  const handleRoleChange = (newRole: "fullstack" | "data" | "general") => {
+  const handleRoleChange = (newRole: "fullstack" | "data" | "general" | "generalist") => {
     setRole(newRole);
     localStorage.setItem("cvRole", newRole);
   };
@@ -48,11 +48,11 @@ export default function PortfolioPDF() {
   };
 
   const typeMap: Record<string, { id: string; en: string }> = {
-    "Internship":         { id: "Magang", en: "Internship" },
+    "Internship": { id: "Magang", en: "Internship" },
     "Student Organization": { id: "Organisasi Mahasiswa", en: "Student Organization" },
-    "Freelance":          { id: "Lepas", en: "Freelance" },
-    "Full-time":          { id: "Penuh Waktu", en: "Full-time" },
-    "Part-time":          { id: "Paruh Waktu", en: "Part-time" },
+    "Freelance": { id: "Lepas", en: "Freelance" },
+    "Full-time": { id: "Penuh Waktu", en: "Full-time" },
+    "Part-time": { id: "Paruh Waktu", en: "Part-time" },
   };
   const tType = (type: string) => typeMap[type]?.[lang] ?? type;
 
@@ -60,7 +60,15 @@ export default function PortfolioPDF() {
   // Sort and select top 3 projects based on role
   const getSortedProjects = () => {
     const sortedProjects = [...projects];
-    if (role === "general") {
+    if (role === "generalist") {
+      // Broad diversity: indosaji (web), smart-meter (data/ML), himasi (CMS/org)
+      sortedProjects.sort((a, b) => {
+        const order = { "indosaji": 1, "smart-meter": 2, "himasi": 3 };
+        const aOrder = order[a.slug as keyof typeof order] || 99;
+        const bOrder = order[b.slug as keyof typeof order] || 99;
+        return aOrder - bOrder;
+      });
+    } else if (role === "general") {
       // Prioritize: unasfest (testing/QA), indosaji (full-stack web), smart-meter (data & modeling)
       sortedProjects.sort((a, b) => {
         const order = { "unasfest": 1, "indosaji": 2, "smart-meter": 3 };
@@ -101,6 +109,26 @@ export default function PortfolioPDF() {
         { title: "Languages & Frameworks", skills: "HTML/CSS, TypeScript, Python, React, Next.js, Node.js, Express.js" },
         { title: "Database & Tools", skills: "MySQL / SQL, MongoDB, Git & GitHub, GitHub Actions, Agile Scrum" },
         { title: "IT Support & Troubleshooting", skills: "Lab Maintenance, System Configuration, Hardware & OS Troubleshooting" }
+      ];
+    }
+  };
+
+  const getGeneralistSkills = () => {
+    if (lang === "id") {
+      return [
+        { title: "Pengembangan Web", skills: "HTML/CSS, JavaScript, TypeScript, Tailwind CSS, React, Next.js, Node.js, Express.js, REST API, GraphQL, Prisma, WordPress" },
+        { title: "Analisis Data & ML", skills: "Python, NumPy, Pandas, Matplotlib, Scikit-learn, TensorFlow, NLTK, Jupyter Notebook, Streamlit, Tableau, Google Earth Engine" },
+        { title: "Basis Data & DevOps", skills: "MySQL / SQL, PostgreSQL, MongoDB, Docker, GCP, Git & GitHub, GitHub Actions, CI/CD" },
+        { title: "Metodologi & Soft Skills", skills: "Agile Scrum, SDLC, Jira, Manual & API Testing, Postman, Dokumentasi Teknis, Kerja Tim Lintas Fungsi" },
+        { title: "IT Support & Administrasi", skills: "Pemeliharaan Lab, Konfigurasi Sistem, Administrasi Windows & Linux, Troubleshooting Hardware/OS, Dasar Jaringan, Microsoft Office" }
+      ];
+    } else {
+      return [
+        { title: "Web Development", skills: "HTML/CSS, JavaScript, TypeScript, Tailwind CSS, React, Next.js, Node.js, Express.js, REST API, GraphQL, Prisma, WordPress" },
+        { title: "Data Analysis & ML", skills: "Python, NumPy, Pandas, Matplotlib, Scikit-learn, TensorFlow, NLTK, Jupyter Notebook, Streamlit, Tableau, Google Earth Engine" },
+        { title: "Database & DevOps", skills: "MySQL / SQL, PostgreSQL, MongoDB, Docker, GCP, Git & GitHub, GitHub Actions, CI/CD" },
+        { title: "Methodology & Soft Skills", skills: "Agile Scrum, SDLC, Jira, Manual & API Testing, Postman, Technical Documentation, Cross-functional Teamwork" },
+        { title: "IT Support & Administration", skills: "Lab Maintenance, System Configuration, Windows & Linux Administration, Hardware/OS Troubleshooting, Networking Basics, Microsoft Office" }
       ];
     }
   };
@@ -349,12 +377,13 @@ export default function PortfolioPDF() {
             <div className="toolbar-actions flex gap-2 items-center">
               <select
                 value={role}
-                onChange={(e) => handleRoleChange(e.target.value as "fullstack" | "data" | "general")}
+                onChange={(e) => handleRoleChange(e.target.value as "fullstack" | "data" | "general" | "generalist")}
                 className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm bg-white text-gray-700 focus:ring-2 focus:ring-blue-500 focus:outline-none"
               >
                 <option value="general">⚙️ General / QA & Testing</option>
                 <option value="fullstack">💻 Full-Stack</option>
                 <option value="data">📊 Data Analyst</option>
+                <option value="generalist">🌐 Generalist (Umum)</option>
               </select>
               <select
                 value={lang}
@@ -368,7 +397,7 @@ export default function PortfolioPDF() {
                 onClick={() => window.print()}
                 className="bg-blue-600 text-white px-4 py-1.5 rounded-lg font-semibold hover:bg-blue-700 transition text-sm shadow-sm flex items-center gap-1.5"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
                 <span className="hidden sm:inline">Download PDF</span>
                 <span className="sm:hidden">PDF</span>
               </button>
@@ -392,11 +421,13 @@ export default function PortfolioPDF() {
                 Ferdiansyach
               </h1>
               <div style={{ fontSize: '11px', color: '#1d4ed8', fontWeight: 600, marginTop: '2px', lineHeight: 1.3 }}>
-                {role === "general"
-                  ? "IT Specialist | Quality Assurance & Manual Testing | Software Developer"
-                  : role === "fullstack"
-                  ? "Full-Stack Developer (React/Next.js, Node.js) | ML for Energy Forecasting"
-                  : "Data Analyst & ML Developer (Python, SQL) | Web-GIS & Predictive Modeling"
+                {role === "generalist"
+                  ? "Information Systems Graduate | Versatile IT Professional | Web, Data & IT Support"
+                  : role === "general"
+                    ? "IT Specialist | Quality Assurance & Manual Testing | Software Developer"
+                    : role === "fullstack"
+                      ? "Full-Stack Developer (React/Next.js, Node.js) | ML for Energy Forecasting"
+                      : "Data Analyst & ML Developer (Python, SQL) | Web-GIS & Predictive Modeling"
                 }
               </div>
               <div className="contact-row">
@@ -421,17 +452,21 @@ export default function PortfolioPDF() {
                 {lang === "id" ? "PROFIL PROFESIONAL" : "PROFESSIONAL SUMMARY"}
               </h2>
               <p style={{ fontSize: '9.5px', color: '#374151', lineHeight: 1.45, textAlign: 'justify', margin: 0 }}>
-                {role === "general"
+                {role === "generalist"
                   ? lang === "id"
-                    ? "Lulusan Sistem Informasi dengan kompetensi luas di bidang Quality Assurance (QA/Testing), rekayasa perangkat lunak, dan IT support. Terbukti memiliki ketelitian tinggi dalam mendeteksi bug dan mengoptimalkan performa sistem, termasuk merancang pipeline pengujian (Jest/RTL) yang memangkas bug rate sebesar 60% dan mempertahankan ketersediaan unit lab komputer sebesar 98%. Menguasai metodologi SDLC (Agile/Scrum), pengujian manual (API/Web), serta analisis data. Siap berkontribusi secara fleksibel di berbagai peran teknologi."
-                    : "Information Systems graduate with broad competencies in Quality Assurance (QA/Testing), software engineering, and IT support. Proven track record of high attention to detail in bug detection and system optimization, including engineering a testing pipeline (Jest/RTL) that slashed production bug rate by 60% and maintaining 98% device availability in computer labs. Well-versed in SDLC (Agile/Scrum) methodologies, manual testing (API/Web), and data analysis. Ready to contribute flexibly across diverse IT roles."
-                  : role === "fullstack"
-                  ? lang === "id"
-                    ? "Full-Stack Developer yang mengkhususkan diri dalam aplikasi berbasis data. Merancang dan meluncurkan 5+ aplikasi web produksi (React, Next.js, Node.js) dengan skor Lighthouse 90+. Merancang pipeline data end-to-end dan model ML prediktif (LSTM, XGBoost) mencapai akurasi 92% pada 50.000+ data poin di Telkom Indonesia. Menggabungkan keahlian web development dan data engineering untuk membangun produk perangkat lunak yang intelligent dan scalable."
-                    : "Full-Stack Developer specializing in data-informed applications. Architected and shipped 5+ production web applications (React, Next.js, Node.js) with Lighthouse 90+ performance. Engineered end-to-end data pipelines and predictive ML models (LSTM, XGBoost) achieving 92% accuracy on 50,000+ data points at Telkom Indonesia. Leverages both web development and data engineering expertise to build intelligent, scalable software products."
-                  : lang === "id"
-                    ? "Data Analyst & Machine Learning Developer dengan keahlian kuat dalam Python, SQL, dan analisis geospasial. Merancang pipeline data end-to-end dan model ML prediktif (LSTM, XGBoost) mencapai akurasi 92% pada 50.000+ data poin di Telkom Indonesia. Berpengalaman membangun sistem monitoring kualitas air pesisir menggunakan Google Earth Engine dengan uji statistik Mann-Kendall. Ahli dalam mengubah dataset mentah dan time-series menjadi insight bisnis yang actionable melalui dashboard interaktif (Streamlit)."
-                    : "Data Analyst & Machine Learning Developer with strong expertise in Python, SQL, and geospatial analysis. Engineered end-to-end data pipelines and predictive ML models (LSTM, XGBoost) achieving 92% accuracy on 50,000+ data points at Telkom Indonesia. Experienced in building coastal water quality monitoring systems using Google Earth Engine with Mann-Kendall statistical tests. Adept at transforming raw, time-series datasets into actionable business insights through interactive dashboards (Streamlit)."
+                    ? "Lulusan Sistem Informasi (IPK 3.77) dengan pengalaman langsung di pengembangan web, analisis data, dan IT support. Membangun 5+ aplikasi web produksi (React, Next.js, Node.js) sekaligus merancang model prediktif ML (LSTM, XGBoost) dengan akurasi 92% di Telkom Indonesia. Terampil mengelola infrastruktur IT laboratorium dengan tingkat ketersediaan 98%, serta berpengalaman dalam metodologi Agile/Scrum. Mampu beradaptasi cepat di berbagai peran teknologi dan siap memberikan kontribusi lintas fungsi di lingkungan kerja yang dinamis."
+                    : "Information Systems graduate (GPA 3.77) with hands-on experience spanning web development, data analysis, and IT support. Built 5+ production web applications (React, Next.js, Node.js) while engineering predictive ML models (LSTM, XGBoost) achieving 92% accuracy at Telkom Indonesia. Skilled in managing IT lab infrastructure with 98% device availability, and well-practiced in Agile/Scrum methodologies. A fast-adapting professional ready to contribute across diverse technology roles in dynamic work environments."
+                  : role === "general"
+                    ? lang === "id"
+                      ? "Lulusan Sistem Informasi dengan kompetensi luas di bidang Quality Assurance (QA/Testing), rekayasa perangkat lunak, dan IT support. Terbukti memiliki ketelitian tinggi dalam mendeteksi bug dan mengoptimalkan performa sistem, termasuk merancang pipeline pengujian (Jest/RTL) yang memangkas bug rate sebesar 60% dan mempertahankan ketersediaan unit lab komputer sebesar 98%. Menguasai metodologi SDLC (Agile/Scrum), pengujian manual (API/Web), serta analisis data. Siap berkontribusi secara fleksibel di berbagai peran teknologi."
+                      : "Information Systems graduate with broad competencies in Quality Assurance (QA/Testing), software engineering, and IT support. Proven track record of high attention to detail in bug detection and system optimization, including engineering a testing pipeline (Jest/RTL) that slashed production bug rate by 60% and maintaining 98% device availability in computer labs. Well-versed in SDLC (Agile/Scrum) methodologies, manual testing (API/Web), and data analysis. Ready to contribute flexibly across diverse IT roles."
+                    : role === "fullstack"
+                      ? lang === "id"
+                        ? "Full-Stack Developer yang mengkhususkan diri dalam aplikasi berbasis data. Merancang dan meluncurkan 5+ aplikasi web produksi (React, Next.js, Node.js) dengan skor Lighthouse 90+. Merancang pipeline data end-to-end dan model ML prediktif (LSTM, XGBoost) mencapai akurasi 92% pada 50.000+ data poin di Telkom Indonesia. Menggabungkan keahlian web development dan data engineering untuk membangun produk perangkat lunak yang intelligent dan scalable."
+                        : "Full-Stack Developer specializing in data-informed applications. Architected and shipped 5+ production web applications (React, Next.js, Node.js) with Lighthouse 90+ performance. Engineered end-to-end data pipelines and predictive ML models (LSTM, XGBoost) achieving 92% accuracy on 50,000+ data points at Telkom Indonesia. Leverages both web development and data engineering expertise to build intelligent, scalable software products."
+                      : lang === "id"
+                        ? "Data Analyst & Machine Learning Developer dengan keahlian kuat dalam Python, SQL, dan analisis geospasial. Merancang pipeline data end-to-end dan model ML prediktif (LSTM, XGBoost) mencapai akurasi 92% pada 50.000+ data poin di Telkom Indonesia. Berpengalaman membangun sistem monitoring kualitas air pesisir menggunakan Google Earth Engine dengan uji statistik Mann-Kendall. Ahli dalam mengubah dataset mentah dan time-series menjadi insight bisnis yang actionable melalui dashboard interaktif (Streamlit)."
+                        : "Data Analyst & Machine Learning Developer with strong expertise in Python, SQL, and geospatial analysis. Engineered end-to-end data pipelines and predictive ML models (LSTM, XGBoost) achieving 92% accuracy on 50,000+ data points at Telkom Indonesia. Experienced in building coastal water quality monitoring systems using Google Earth Engine with Mann-Kendall statistical tests. Adept at transforming raw, time-series datasets into actionable business insights through interactive dashboards (Streamlit)."
                 }
               </p>
             </section>
@@ -515,21 +550,21 @@ export default function PortfolioPDF() {
                 {lang === "id" ? "KOMPETENSI TEKNIS" : "TECHNICAL SKILLS"}
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1px' }}>
-                {role === "general"
-                  ? getGeneralSkills().map((cat, i) => (
-                      <div key={i} style={{ fontSize: '9.5px', lineHeight: 1.35 }}>
-                        <span style={{ fontWeight: 700, color: '#0f172a' }}>{cat.title}:</span>{" "}
-                        <span style={{ color: '#374151' }}>{cat.skills}</span>
-                      </div>
-                    ))
+                {(role === "general" || role === "generalist")
+                  ? (role === "generalist" ? getGeneralistSkills() : getGeneralSkills()).map((cat, i) => (
+                    <div key={i} style={{ fontSize: '9.5px', lineHeight: 1.35 }}>
+                      <span style={{ fontWeight: 700, color: '#0f172a' }}>{cat.title}:</span>{" "}
+                      <span style={{ color: '#374151' }}>{cat.skills}</span>
+                    </div>
+                  ))
                   : skillCategories.map((cat, i) => (
-                      <div key={i} style={{ fontSize: '9.5px', lineHeight: 1.35 }}>
-                        <span style={{ fontWeight: 700, color: '#0f172a' }}>{t(cat.title)}:</span>{" "}
-                        <span style={{ color: '#374151' }}>
-                          {cat.skills.map(s => s.name).join(", ")}
-                        </span>
-                      </div>
-                    ))
+                    <div key={i} style={{ fontSize: '9.5px', lineHeight: 1.35 }}>
+                      <span style={{ fontWeight: 700, color: '#0f172a' }}>{t(cat.title)}:</span>{" "}
+                      <span style={{ color: '#374151' }}>
+                        {cat.skills.map(s => s.name).join(", ")}
+                      </span>
+                    </div>
+                  ))
                 }
               </div>
             </section>
