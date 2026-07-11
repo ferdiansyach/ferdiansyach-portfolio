@@ -24,7 +24,7 @@ export default function TracingBeam({
     if (!contentRef.current) return;
 
     const resizeObserver = new ResizeObserver((entries) => {
-      for (let entry of entries) {
+      for (const entry of entries) {
         setSvgHeight(entry.target.clientHeight);
       }
     });
