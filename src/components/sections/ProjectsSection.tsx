@@ -2,15 +2,16 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/hooks/useLanguage";
 import { translations } from "@/data/translations";
 import { projects } from "@/data/projects";
 import SectionHeader from "@/components/ui/SectionHeader";
-import GlassCard from "@/components/ui/GlassCard";
 import TiltCard from "@/components/ui/TiltCard";
 import { AnimatedSection, AnimatedDiv } from "@/components/ui/AnimatedSection";
+import SpotlightCard from "@/components/ui/SpotlightCard";
+import ProjectDialog from "@/components/ui/ProjectDialog";
+import { Project } from "@/types";
 
 type Filter = "all" | "webdev" | "datascience" | "wordpress";
 
@@ -24,6 +25,8 @@ const filterButtons: { key: Filter; label: { id: string; en: string } }[] = [
 export default function ProjectsSection() {
   const { t } = useLanguage();
   const [filter, setFilter] = useState<Filter>("all");
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const filtered = filter === "all" ? projects : projects.filter((p) => p.category === filter);
 
@@ -62,10 +65,16 @@ export default function ProjectsSection() {
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.3, delay: i * 0.05 }}
             >
-              <Link href={`/projects/${project.slug}`}>
+              <div 
+                onClick={() => {
+                  setSelectedProject(project);
+                  setIsDialogOpen(true);
+                }}
+                className="cursor-pointer h-full"
+              >
                 <TiltCard maxTilt={4} className="h-full">
-                  <GlassCard delay={0} className="p-5 sm:p-8 overflow-hidden group cursor-pointer h-full border hover:border-[var(--color-primary)]/50 shadow-sm hover:shadow-[var(--color-primary)]/10 rounded-xl">
-                    <div className="relative overflow-hidden h-44 sm:h-52 mb-4 sm:mb-0 rounded-lg">
+                  <SpotlightCard className="p-0 overflow-hidden group h-full border border-[var(--color-hairline)] hover:border-[var(--color-primary)]/50 shadow-sm hover:shadow-[var(--color-primary)]/10 rounded-xl bg-[var(--color-canvas-elevated)]">
+                    <div className="relative overflow-hidden h-44 sm:h-52 mb-4 sm:mb-0 rounded-t-lg">
                       <Image
                         src={project.thumbnail}
                         alt={project.title}
@@ -79,7 +88,7 @@ export default function ProjectsSection() {
                         </span>
                       </div>
                     </div>
-                    <div className="pt-2 sm:p-6">
+                    <div className="p-5 sm:p-8 pt-2 sm:pt-6">
                       <h3 className="text-lg font-serif font-bold text-[var(--color-ink)] mb-2 group-hover:text-[var(--color-primary)] transition-colors">{project.title}</h3>
                       <p className="text-[var(--color-body)] text-sm mb-4 line-clamp-2">{t(project.description)}</p>
                       <div className="flex flex-wrap gap-2">
@@ -90,9 +99,9 @@ export default function ProjectsSection() {
                         ))}
                       </div>
                     </div>
-                  </GlassCard>
+                  </SpotlightCard>
                 </TiltCard>
-              </Link>
+              </div>
             </motion.div>
           ))}
         </AnimatePresence>
@@ -114,6 +123,13 @@ export default function ProjectsSection() {
           </a>
         </AnimatedDiv>
       )}
+
+      {/* Project Details Modal */}
+      <ProjectDialog
+        project={selectedProject}
+        isOpen={isDialogOpen}
+        onClose={() => setIsDialogOpen(false)}
+      />
     </AnimatedSection>
   );
 }
