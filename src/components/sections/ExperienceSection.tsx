@@ -6,9 +6,10 @@ import { translations } from "@/data/translations";
 import { experiences } from "@/data/experience";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { AnimatedSection, AnimatedDiv } from "@/components/ui/AnimatedSection";
+import TracingBeam from "@/components/ui/TracingBeam";
 
 const timelineItemVariants: Variants = {
-  hidden: { opacity: 0, x: -40 },
+  hidden: { opacity: 0, x: -20 },
   visible: (i: number) => ({
     opacity: 1,
     x: 0,
@@ -30,10 +31,10 @@ function TimelineItem({ exp, index }: { exp: typeof experiences[0]; index: numbe
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-50px" }}
-      className="relative pl-10 pb-14 group"
+      className="relative pb-14 group"
     >
-      {/* Timeline dot with pulse */}
-      <div className="absolute -left-1.75 top-1.5 w-4 h-4 rounded-full bg-[var(--color-canvas-elevated)] border-[3px] border-[var(--color-primary)] shadow-[0_0_12px_rgba(124,58,237,0.4)] transition-shadow duration-300 group-hover:shadow-[0_0_20px_rgba(124,58,237,0.6)]">
+      {/* Timeline dot aligned with TracingBeam */}
+      <div className="absolute -left-[33px] top-1.5 w-4 h-4 rounded-full bg-[var(--color-canvas-elevated)] border-[3px] border-[var(--color-primary)] shadow-[0_0_12px_rgba(124,58,237,0.4)] transition-shadow duration-300 group-hover:shadow-[0_0_20px_rgba(124,58,237,0.6)] z-10">
         <span className="absolute inset-0 rounded-full bg-[var(--color-primary)]/30 animate-ping" />
       </div>
 
@@ -70,17 +71,11 @@ export default function ExperienceSection() {
       </AnimatedDiv>
       <div className="max-w-3xl mx-auto">
         <div className="relative ml-2">
-          {/* Animated timeline line */}
-          <motion.div
-            className="absolute left-0 top-0 bottom-0 w-0.75 bg-[var(--color-primary)] rounded-full origin-top"
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-          />
-          {experiences.map((exp, i) => (
-            <TimelineItem key={exp.id} exp={exp} index={i} />
-          ))}
+          <TracingBeam>
+            {experiences.map((exp, i) => (
+              <TimelineItem key={exp.id} exp={exp} index={i} />
+            ))}
+          </TracingBeam>
         </div>
       </div>
     </AnimatedSection>

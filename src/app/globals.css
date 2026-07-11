@@ -1,11 +1,26 @@
 @import "tailwindcss";
 
-/* ===== Theme Inline ===== */
 @theme inline {
   --color-background: var(--color-canvas);
   --color-foreground: var(--color-ink);
   --font-sans: var(--font-inter);
   --font-serif: var(--font-lora);
+  
+  --animate-meteor: meteor 5s linear infinite;
+
+  @keyframes meteor {
+    0% {
+      transform: rotate(215deg) translateX(0);
+      opacity: 1;
+    }
+    70% {
+      opacity: 1;
+    }
+    100% {
+      transform: rotate(215deg) translateX(450px);
+      opacity: 0;
+    }
+  }
 }
 
 /* ===== CSS Variables (Reflect.app Design System) ===== */
