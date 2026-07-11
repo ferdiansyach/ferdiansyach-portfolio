@@ -1,7 +1,13 @@
 "use client";
 
 import { cn } from "@/hooks/cn";
-import React, { useEffect, useState } from "react";
+import React from "react";
+
+// A simple deterministic pseudo-random function to ensure render purity and prevent hydration mismatch
+function pseudoRandom(seed: number): number {
+  const x = Math.sin(seed) * 10000;
+  return x - Math.floor(x);
+}
 
 export default function Meteors({
   number = 10,
@@ -10,21 +16,19 @@ export default function Meteors({
   number?: number;
   className?: string;
 }) {
-  const [mounted, setMounted] = useState(false);
+  // Generate styles deterministically based on index to satisfy ESLint purity rules
+  const meteorStyles = Array.from({ length: number }).map((_, idx) => {
+    const leftVal = Math.floor(pseudoRandom(idx * 3 + 1) * 120) - 20;
+    const delayVal = (pseudoRandom(idx * 3 + 2) * 2).toFixed(2);
+    const durationVal = (pseudoRandom(idx * 3 + 3) * 4 + 2).toFixed(2);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
-
-  // Generate styles safely on the client side to prevent hydration mismatches
-  const meteorStyles = Array.from({ length: number }).map(() => ({
-    top: "-10px",
-    left: Math.floor(Math.random() * 120) - 20 + "%",
-    animationDelay: (Math.random() * 2).toFixed(2) + "s",
-    animationDuration: (Math.random() * 4 + 2).toFixed(2) + "s",
-  }));
+    return {
+      top: "-10px",
+      left: `${leftVal}%`,
+      animationDelay: `${delayVal}s`,
+      animationDuration: `${durationVal}s`,
+    };
+  });
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
