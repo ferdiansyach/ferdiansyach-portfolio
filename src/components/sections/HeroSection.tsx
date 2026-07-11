@@ -517,13 +517,6 @@ export default function HeroSection() {
                   {/* SVG Nodes Visualizer */}
                   <div className="flex-1 w-full relative flex items-center justify-center min-h-[280px]">
                     <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 400 280" preserveAspectRatio="none">
-                      <defs>
-                        <linearGradient id="graphEdgeFade" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor="var(--color-primary)" stopOpacity="0.15" />
-                          <stop offset="100%" stopColor="var(--color-primary)" stopOpacity="0.6" />
-                        </linearGradient>
-                      </defs>
-
                       {/* Connecting lines — drawn in, then a looping dash-flow */}
                       {[
                         { d: "M200,140 L100,70", delay: 0 },
@@ -536,7 +529,8 @@ export default function HeroSection() {
                           key={i}
                           d={line.d}
                           fill="none"
-                          stroke="url(#graphEdgeFade)"
+                          stroke="var(--color-primary)"
+                          strokeOpacity={0.3}
                           strokeWidth="1.5"
                           strokeLinecap="round"
                           initial={{ pathLength: 0, opacity: 0 }}
