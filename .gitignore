@@ -47,6 +47,9 @@ next-env.d.ts
 # sensitive personal files
 /public/npwp/
 /public/npwp*
+/public/*.pdf
+/public/Sertifikat/
+/public/IjazahS1_Ferdiansyach.pdf
 
 # local helper scripts and temporary backups
 .old_backup/

@@ -245,33 +245,37 @@ export default function HeroSection() {
               </a>
             </MagneticButton>
 
-            <MagneticButton>
-              <a
-                href="/portfolio-pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border border-[var(--color-hairline)] bg-[var(--color-canvas-elevated)] text-[var(--color-ink)] font-medium py-2.5 px-6 rounded-md hover:border-[var(--color-primary)] hover:bg-[var(--color-primary)]/5 transition-all duration-300 text-sm"
-              >
-                <svg className="w-4 h-4 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                {t(translations.hero.downloadCv)}
-              </a>
-            </MagneticButton>
+            {process.env.NODE_ENV === "development" && (
+              <MagneticButton>
+                <a
+                  href="/portfolio-pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 border border-[var(--color-hairline)] bg-[var(--color-canvas-elevated)] text-[var(--color-ink)] font-medium py-2.5 px-6 rounded-md hover:border-[var(--color-primary)] hover:bg-[var(--color-primary)]/5 transition-all duration-300 text-sm"
+                >
+                  <svg className="w-4 h-4 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  {t(translations.hero.downloadCv)}
+                </a>
+              </MagneticButton>
+            )}
 
-            <MagneticButton>
-              <a
-                href="/projects-pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border border-[var(--color-hairline)] bg-[var(--color-canvas-elevated)] text-[var(--color-ink)] font-medium py-2.5 px-6 rounded-md hover:border-[var(--color-primary)] hover:bg-[var(--color-primary)]/5 transition-all duration-300 text-sm"
-              >
-                <svg className="w-4 h-4 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                </svg>
-                {t(translations.hero.viewPortfolio)}
-              </a>
-            </MagneticButton>
+            {process.env.NODE_ENV === "development" && (
+              <MagneticButton>
+                <a
+                  href="/projects-pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 border border-[var(--color-hairline)] bg-[var(--color-canvas-elevated)] text-[var(--color-ink)] font-medium py-2.5 px-6 rounded-md hover:border-[var(--color-primary)] hover:bg-[var(--color-primary)]/5 transition-all duration-300 text-sm"
+                >
+                  <svg className="w-4 h-4 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                  </svg>
+                  {t(translations.hero.viewPortfolio)}
+                </a>
+              </MagneticButton>
+            )}
 
             <div className="flex items-center gap-3">
               <MagneticButton strength={10}>

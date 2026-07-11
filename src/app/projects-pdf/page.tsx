@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { projects } from "@/data/projects";
 import { skillCategories } from "@/data/skills";
 import { experiences, education } from "@/data/experience";
@@ -13,16 +14,22 @@ const categoryMeta: Record<string, { label: { id: string; en: string }; icon: st
 };
 
 export default function ProjectsPDF() {
+  const router = useRouter();
   const [lang, setLang] = useState<"id" | "en">("id");
 
   useEffect(() => {
+    // Redirect to home if accessed in production
+    if (process.env.NODE_ENV === "production") {
+      router.replace("/");
+      return;
+    }
     const savedLang = localStorage.getItem("lang") as "id" | "en";
     if (savedLang) {
       setTimeout(() => {
         setLang(savedLang);
       }, 0);
     }
-  }, []);
+  }, [router]);
 
   const t = (textObj: { id: string; en: string } | string) => {
     if (typeof textObj === "string") return textObj;
