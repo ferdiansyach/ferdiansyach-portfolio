@@ -11,7 +11,7 @@ export const certifications: Certification[] = [
     date: "Feb 2026",
     category: "technical",
     badge: "🏅",
-    image: "/Sertifikat/BNSP-Ferdiansyach_page-0001.jpg",
+    image: "/images/certifications/bnsp-web-developer.jpg",
   },
   {
     id: "certiport-python",
@@ -23,7 +23,7 @@ export const certifications: Certification[] = [
     date: "Oct 2025",
     category: "technical",
     badge: "🐍",
-    image: "/Sertifikat/Certiport Python.jpg",
+    image: "/images/certifications/certiport-python.jpg",
   },
   {
     id: "scrum",
@@ -35,7 +35,7 @@ export const certifications: Certification[] = [
     date: "Jul 2025",
     category: "methodology",
     badge: "🔄",
-    image: "/Sertifikat/Scrum Master Telkom.jpg",
+    image: "/images/certifications/scrum-mastery.jpg",
   },
   {
     id: "iot",
@@ -47,7 +47,7 @@ export const certifications: Certification[] = [
     date: "Apr 2025",
     category: "technical",
     badge: "📡",
-    image: "/Sertifikat/IoT Telkom.jpg",
+    image: "/images/certifications/iot-fundamental.jpg",
   },
   {
     id: "dqlab-r",
@@ -59,6 +59,6 @@ export const certifications: Certification[] = [
     date: "Feb 2023",
     category: "data",
     badge: "📊",
-    image: "/Sertifikat/DQ Lab Statistic.jpg",
+    image: "/images/certifications/dqlab-statistics.jpg",
   },
 ];
