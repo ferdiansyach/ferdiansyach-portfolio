@@ -8,6 +8,7 @@ import { skillCategories } from "@/data/skills";
 import SectionHeader from "@/components/ui/SectionHeader";
 import SkillIcon from "@/components/ui/SkillIcon";
 import { AnimatedSection, AnimatedDiv } from "@/components/ui/AnimatedSection";
+import Meteors from "@/components/ui/Meteors";
 
 const categoryIcons: Record<string, string> = {
   Frontend: "⚡",
@@ -150,6 +151,9 @@ export default function SkillsSection() {
                         background: `radial-gradient(ellipse at 10% 10%, ${skill.color}0d 0%, transparent 70%)`,
                       }}
                     />
+
+                    {/* Meteor effect on hover */}
+                    {isHovered && <Meteors number={6} />}
 
                     {/* Top Row: Icon + Name + Badges */}
                     <div className="relative z-10 flex items-start gap-3 mb-4">
