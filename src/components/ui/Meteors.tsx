@@ -10,18 +10,21 @@ export default function Meteors({
   number?: number;
   className?: string;
 }) {
-  const [meteorStyles, setMeteorStyles] = useState<React.CSSProperties[]>([]);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Generate styles on client only to avoid hydration mismatch
-    const styles = Array.from({ length: number }).map(() => ({
-      top: "-10px",
-      left: Math.floor(Math.random() * 120) - 20 + "%",
-      animationDelay: (Math.random() * 2).toFixed(2) + "s",
-      animationDuration: (Math.random() * 4 + 2).toFixed(2) + "s",
-    }));
-    setMeteorStyles(styles);
-  }, [number]);
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
+  // Generate styles safely on the client side to prevent hydration mismatches
+  const meteorStyles = Array.from({ length: number }).map(() => ({
+    top: "-10px",
+    left: Math.floor(Math.random() * 120) - 20 + "%",
+    animationDelay: (Math.random() * 2).toFixed(2) + "s",
+    animationDuration: (Math.random() * 4 + 2).toFixed(2) + "s",
+  }));
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
