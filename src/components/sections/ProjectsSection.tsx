@@ -82,9 +82,9 @@ export default function ProjectsSection() {
                         className="object-cover transition-transform duration-500 group-hover:scale-110"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
-                      <div className="absolute inset-0 bg-linear-to-t from-[var(--color-canvas)]/95 via-[var(--color-canvas)]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-end justify-center pb-4">
-                        <span className="bg-[var(--color-primary)]/20 text-[var(--color-primary)] font-semibold text-sm px-4 py-2 border border-[var(--color-primary)]/30 rounded-md">
-                          {t(translations.projects.viewDetails)}
+                      <div className="absolute inset-0 bg-[var(--color-canvas)]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span className="bg-[var(--color-primary)] text-white font-semibold text-sm px-5 py-2.5 rounded-md shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                          {t(translations.projects.viewDetails)} →
                         </span>
                       </div>
                     </div>
@@ -93,7 +93,7 @@ export default function ProjectsSection() {
                       <p className="text-[var(--color-body)] text-sm mb-4 line-clamp-2">{t(project.description)}</p>
                       <div className="flex flex-wrap gap-2">
                         {project.technologies.slice(0, 3).map((tech) => (
-                          <span key={tech} className="bg-[var(--color-primary)]/10 text-[var(--color-primary)] border border-[var(--color-primary)]/20 px-3 py-1 text-xs font-medium rounded-md">
+                          <span key={tech} className="bg-[var(--color-hairline)] text-[var(--color-body-strong)] border border-[var(--color-hairline)] px-3 py-1 text-xs font-semibold rounded-md group-hover:border-[var(--color-primary)]/30 transition-all duration-300">
                             {tech}
                           </span>
                         ))}
