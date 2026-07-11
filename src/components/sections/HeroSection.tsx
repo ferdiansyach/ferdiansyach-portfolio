@@ -6,7 +6,6 @@ import { motion, Variants, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/hooks/useLanguage";
 import { translations } from "@/data/translations";
 import GridBackground from "@/components/ui/GridBackground";
-import DecryptedText from "@/components/ui/DecryptedText";
 import StatusBadge from "@/components/ui/StatusBadge";
 import MagneticButton from "@/components/ui/MagneticButton";
 
@@ -197,7 +196,7 @@ export default function HeroSection() {
           >
             {t(translations.hero.greeting)}{" "}
             <span className="text-[var(--color-primary)] relative">
-              <DecryptedText text="Ferdiansyach" />
+              Ferdiansyach
             </span>
           </motion.h1>
 
