@@ -5,7 +5,8 @@ import Image from "next/image";
 import { motion, Variants, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/hooks/useLanguage";
 import { translations } from "@/data/translations";
-import ParticleBackground from "@/components/ui/ParticleBackground";
+import GridBackground from "@/components/ui/GridBackground";
+import DecryptedText from "@/components/ui/DecryptedText";
 import StatusBadge from "@/components/ui/StatusBadge";
 import MagneticButton from "@/components/ui/MagneticButton";
 
@@ -160,8 +161,8 @@ export default function HeroSection() {
 
   return (
     <section id="home" className="relative min-h-screen flex flex-col items-center justify-start pt-28 pb-16 overflow-hidden">
-      {/* Particle canvas */}
-      <ParticleBackground />
+      {/* Grid background */}
+      <GridBackground />
 
       {/* Animated soft gradient */}
       <div className="absolute inset-0 z-0">
@@ -196,7 +197,7 @@ export default function HeroSection() {
           >
             {t(translations.hero.greeting)}{" "}
             <span className="text-[var(--color-primary)] relative">
-              Ferdiansyach
+              <DecryptedText text="Ferdiansyach" />
             </span>
           </motion.h1>
 
