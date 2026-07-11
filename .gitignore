@@ -60,3 +60,10 @@ portfolio-structure.html
 /dark-mode-*.png
 lint_output.txt
 
+# python compile/cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+

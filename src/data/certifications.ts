@@ -16,8 +16,8 @@ export const certifications: Certification[] = [
   {
     id: "certiport-python",
     name: {
-      id: "IT Specialist — Python",
-      en: "IT Specialist — Python",
+      id: "IT Specialist | Python",
+      en: "IT Specialist | Python",
     },
     issuer: "Certiport (Pearson VUE)",
     date: "Oct 2025",

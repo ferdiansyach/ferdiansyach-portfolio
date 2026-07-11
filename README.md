@@ -68,7 +68,7 @@ Here are the featured projects that define my technical capabilities:
 
 - **🌐 Bilingual (i18n):** Instant translation toggle between Indonesian (ID) and English (EN) using client-side state.
 - **🌙 Theme Toggle:** Full Dark Mode and Light Mode capability using Tailwind variables.
-- **📄 ATS-friendly CV Export:** Specialized `/portfolio-pdf` and `/projects-pdf` routes built with precise CSS media query rules `@media print` to render as clean, professional A4 printouts.
+- **📄 ATS-friendly CV Export:** Specialized `/portfolio-pdf` route supporting **4 tailored roles** (Generalist, Full-Stack, Data Analyst, QA & Manual Testing) in both **English and Indonesian**. Features precise CSS media query rules (`@media print`) for clean A4 printing and integrates direct Microsoft Word (`.docx`) downloads.
 - **⚡ Performance First:** Achieves **Lighthouse scores of 90+** via static generation, component optimization, and lightweight animations.
 - **📱 Fully Responsive:** Adaptive layouts supporting all devices from 320px mobile viewports to ultra-wide monitors.
 

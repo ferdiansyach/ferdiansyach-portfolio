@@ -91,8 +91,8 @@ export const projects: Project[] = [
     ],
     githubUrl: "https://github.com/ferdiansyach/smart-meter-analysis",
     githubNote: {
-      id: "Private repo — tersedia atas permintaan",
-      en: "Private repo — available upon request",
+      id: "Private repo - tersedia atas permintaan",
+      en: "Private repo - available upon request",
     },
   },
   {
@@ -251,8 +251,8 @@ export const projects: Project[] = [
     ],
     githubUrl: "https://github.com/ferdiansyach/himasi-unas",
     githubNote: {
-      id: "Private repo — tersedia atas permintaan",
-      en: "Private repo — available upon request",
+      id: "Private repo - tersedia atas permintaan",
+      en: "Private repo - available upon request",
     },
   },
 ];

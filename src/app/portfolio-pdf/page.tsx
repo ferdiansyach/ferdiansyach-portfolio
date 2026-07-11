@@ -95,18 +95,107 @@ export default function PortfolioPDF() {
   };
   const topProjects = getSortedProjects();
 
+  // Role-based experience ordering + bullet modifications
+  // Mirrors the logic in generate_docx.py ordered_experiences
+  const getOrderedExperiences = () => {
+    const exps = experiences.map(exp => ({
+      ...exp,
+      bullets: exp.bullets.map(b => ({ ...b })),
+    }));
+    // exps order: [0]=telkom, [1]=labassist, [2]=himasi, [3]=unasfest
+
+    let ordered = [...exps];
+
+    if (role === "fullstack" || role === "data") {
+      // Telkom → UNAS FEST → HIMASI → Lab Assistant
+      ordered = [exps[0], exps[3], exps[2], exps[1]];
+    } else if (role === "general") {
+      // Telkom → UNAS FEST → Lab Assistant → HIMASI
+      ordered = [exps[0], exps[3], exps[1], exps[2]];
+    }
+    // generalist: keep default chronological order
+
+    // Fullstack only: reorder Telkom bullets (web platform first)
+    if (role === "fullstack" && ordered[0].bullets.length === 3) {
+      ordered[0] = {
+        ...ordered[0],
+        bullets: [ordered[0].bullets[2], ordered[0].bullets[0], ordered[0].bullets[1]],
+      };
+    }
+
+    // General (Manual Testing) only: split UNAS FEST bullet + reframe Lab bullets
+    if (role === "general") {
+      ordered = ordered.map(exp => {
+        if (exp.company === "UNAS FEST | Universitas Nasional Festival") {
+          return {
+            ...exp,
+            bullets: [
+              exp.bullets[0], // bullet 1 tetap
+              {
+                id: "Membangun API Routes Next.js untuk integrasi registrasi peserta dan database pada portal festival resmi.",
+                en: "Built Next.js API Routes for attendee registration and database integration on the official festival portal.",
+              },
+              {
+                id: "Merancang dan mengeksekusi pipeline pengujian unit/komponen menggunakan Jest dan React Testing Library, menulis test case pada alur registrasi kritikal yang mengidentifikasi dan mencegah bug berulang — memangkas bug rate produksi sebesar 60% sebelum festival diluncurkan.",
+                en: "Designed and executed a component/unit testing pipeline using Jest and React Testing Library, writing test cases across critical registration flows that identified and prevented recurring bugs — slashing production bug rate by 60% prior to festival launch.",
+              },
+            ],
+          };
+        }
+        if (exp.company === "Lab Data Monetize | Universitas Nasional") {
+          return {
+            ...exp,
+            bullets: [
+              {
+                id: "Mendiagnosis dan menyelesaikan masalah hardware/software berulang pada 30+ unit lab melalui troubleshooting sistematis dan verifikasi pasca-perbaikan, mempertahankan ketersediaan perangkat 98% dan meminimalkan downtime sesi untuk 200+ mahasiswa per semester.",
+                en: "Diagnosed and resolved recurring hardware/software issues across 30+ lab units through systematic troubleshooting and post-fix verification, sustaining 98% device availability and minimizing session downtime for 200+ students per semester.",
+              },
+              {
+                id: "Mendokumentasikan dan menstandarisasi prosedur instalasi/konfigurasi software menjadi checklist pemeliharaan yang dapat diulang, mengurangi kesalahan konfigurasi berulang pada sesi lab untuk 200+ mahasiswa per semester.",
+                en: "Documented and standardized software installation/configuration procedures into repeatable maintenance checklists, reducing recurring configuration errors across lab sessions for 200+ students per semester.",
+              },
+            ],
+          };
+        }
+        return exp;
+      });
+    }
+
+    return ordered;
+  };
+  const orderedExperiences = getOrderedExperiences();
+
+  // Role-based skills for fullstack/data: filter Redis & Figma, reorder for data
+  const getFilteredSkills = () => {
+    const EXCLUDE = ["Redis", "Figma"];
+    const filtered = skillCategories.map(cat => ({
+      ...cat,
+      skills: cat.skills.filter(s => !EXCLUDE.includes(s.name)),
+    }));
+    if (role === "data") {
+      // Reorder: Data & Analysis, Machine Learning, Backend & DB, Frontend, DevOps & Tools
+      const order = ["Data & Analysis", "Machine Learning", "Backend & DB", "Frontend", "DevOps & Tools"];
+      filtered.sort((a, b) => {
+        const aIdx = order.indexOf(a.title.en);
+        const bIdx = order.indexOf(b.title.en);
+        return (aIdx === -1 ? 99 : aIdx) - (bIdx === -1 ? 99 : bIdx);
+      });
+    }
+    return filtered;
+  };
+
   const getGeneralSkills = () => {
     if (lang === "id") {
       return [
         { title: "Pengujian & QA (Testing)", skills: "Manual Testing, API Testing (Postman), Unit & Component Testing (Jest & RTL), Web Developer Tools" },
-        { title: "Bahasa & Framework", skills: "HTML/CSS, TypeScript, Python, React, Next.js, Node.js, Express.js" },
+        { title: "Bahasa & Framework", skills: "HTML/CSS, TypeScript, Python, React, Next.js, Node.js, Express.js, GIS, spatial analysis, clustering, unsupervised learning" },
         { title: "Basis Data & Tools", skills: "MySQL / SQL, MongoDB, Git & GitHub, GitHub Actions, Agile Scrum" },
         { title: "IT Support & Troubleshooting", skills: "Pemeliharaan Lab Komputer, Konfigurasi Sistem, Troubleshooting Hardware & OS" }
       ];
     } else {
       return [
         { title: "Software Testing & QA", skills: "Manual Testing, API Testing (Postman), Unit & Component Testing (Jest & RTL), Web Developer Tools" },
-        { title: "Languages & Frameworks", skills: "HTML/CSS, TypeScript, Python, React, Next.js, Node.js, Express.js" },
+        { title: "Languages & Frameworks", skills: "HTML/CSS, TypeScript, Python, React, Next.js, Node.js, Express.js, GIS, spatial analysis, clustering, unsupervised learning" },
         { title: "Database & Tools", skills: "MySQL / SQL, MongoDB, Git & GitHub, GitHub Actions, Agile Scrum" },
         { title: "IT Support & Troubleshooting", skills: "Lab Maintenance, System Configuration, Hardware & OS Troubleshooting" }
       ];
@@ -117,7 +206,7 @@ export default function PortfolioPDF() {
     if (lang === "id") {
       return [
         { title: "Pengembangan Web", skills: "HTML/CSS, JavaScript, TypeScript, Tailwind CSS, React, Next.js, Node.js, Express.js, REST API, GraphQL, Prisma, WordPress" },
-        { title: "Analisis Data & ML", skills: "Python, NumPy, Pandas, Matplotlib, Scikit-learn, TensorFlow, NLTK, Jupyter Notebook, Streamlit, Tableau, Google Earth Engine" },
+        { title: "Analisis Data & ML", skills: "Python, NumPy, Pandas, Matplotlib, Scikit-learn, TensorFlow, NLTK, Jupyter Notebook, Streamlit, Tableau, Google Earth Engine, GIS, spatial analysis, clustering, unsupervised learning" },
         { title: "Basis Data & DevOps", skills: "MySQL / SQL, PostgreSQL, MongoDB, Docker, GCP, Git & GitHub, GitHub Actions, CI/CD" },
         { title: "Metodologi & Soft Skills", skills: "Agile Scrum, SDLC, Jira, Manual & API Testing, Postman, Dokumentasi Teknis, Kerja Tim Lintas Fungsi" },
         { title: "IT Support & Administrasi", skills: "Pemeliharaan Lab, Konfigurasi Sistem, Administrasi Windows & Linux, Troubleshooting Hardware/OS, Dasar Jaringan, Microsoft Office" }
@@ -125,7 +214,7 @@ export default function PortfolioPDF() {
     } else {
       return [
         { title: "Web Development", skills: "HTML/CSS, JavaScript, TypeScript, Tailwind CSS, React, Next.js, Node.js, Express.js, REST API, GraphQL, Prisma, WordPress" },
-        { title: "Data Analysis & ML", skills: "Python, NumPy, Pandas, Matplotlib, Scikit-learn, TensorFlow, NLTK, Jupyter Notebook, Streamlit, Tableau, Google Earth Engine" },
+        { title: "Data Analysis & ML", skills: "Python, NumPy, Pandas, Matplotlib, Scikit-learn, TensorFlow, NLTK, Jupyter Notebook, Streamlit, Tableau, Google Earth Engine, GIS, spatial analysis, clustering, unsupervised learning" },
         { title: "Database & DevOps", skills: "MySQL / SQL, PostgreSQL, MongoDB, Docker, GCP, Git & GitHub, GitHub Actions, CI/CD" },
         { title: "Methodology & Soft Skills", skills: "Agile Scrum, SDLC, Jira, Manual & API Testing, Postman, Technical Documentation, Cross-functional Teamwork" },
         { title: "IT Support & Administration", skills: "Lab Maintenance, System Configuration, Windows & Linux Administration, Hardware/OS Troubleshooting, Networking Basics, Microsoft Office" }
@@ -199,7 +288,7 @@ export default function PortfolioPDF() {
           }
 
           .cert-grid {
-            grid-template-columns: 1fr 1fr !important;
+            grid-template-columns: 1fr !important;
           }
         }
 
@@ -275,7 +364,7 @@ export default function PortfolioPDF() {
         /* ===== RESPONSIVE: Certifications grid ===== */
         .cert-grid {
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: 1fr;
           gap: 2px 24px;
         }
 
@@ -367,7 +456,7 @@ export default function PortfolioPDF() {
               </div>
               <div>
                 <h1 className="toolbar-title-main" style={{ fontSize: '14px', fontWeight: 700, color: '#1e293b' }}>
-                  {lang === "id" ? "Pratinjau Resume — 1 Halaman" : "Resume Preview — 1 Page"}
+                  {lang === "id" ? "Pratinjau Resume - 1 Halaman" : "Resume Preview - 1 Page"}
                 </h1>
                 <p className="toolbar-title-sub" style={{ fontSize: '12px', color: '#64748b' }}>
                   {lang === "id" ? "Dioptimalkan untuk lamaran kerja korporat" : "Optimized for corporate job applications"}
@@ -401,6 +490,20 @@ export default function PortfolioPDF() {
                 <span className="hidden sm:inline">Download PDF</span>
                 <span className="sm:hidden">PDF</span>
               </button>
+              <a
+                href={`/cv/Ferdiansyach_CV_${{
+                  generalist: "Generalist",
+                  general: "Manual_Testing",
+                  fullstack: "Fullstack",
+                  data: "Data",
+                }[role]}_${lang.toUpperCase()}.docx`}
+                download
+                className="bg-emerald-600 text-white px-4 py-1.5 rounded-lg font-semibold hover:bg-emerald-700 transition text-sm shadow-sm flex items-center gap-1.5 no-underline"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
+                <span className="hidden sm:inline">Download DOCX</span>
+                <span className="sm:hidden">DOCX</span>
+              </a>
               <button
                 onClick={() => window.history.back()}
                 className="bg-gray-100 text-gray-600 px-3 py-1.5 rounded-lg font-medium hover:bg-gray-200 transition text-sm border border-gray-200"
@@ -454,16 +557,16 @@ export default function PortfolioPDF() {
               <p style={{ fontSize: '9.5px', color: '#374151', lineHeight: 1.45, textAlign: 'justify', margin: 0 }}>
                 {role === "generalist"
                   ? lang === "id"
-                    ? "Lulusan Sistem Informasi (IPK 3.77) dengan pengalaman langsung di pengembangan web, analisis data, dan IT support. Membangun 5+ aplikasi web produksi (React, Next.js, Node.js) sekaligus merancang model prediktif ML (LSTM, XGBoost) dengan akurasi 92% di Telkom Indonesia. Terampil mengelola infrastruktur IT laboratorium dengan tingkat ketersediaan 98%, serta berpengalaman dalam metodologi Agile/Scrum. Mampu beradaptasi cepat di berbagai peran teknologi dan siap memberikan kontribusi lintas fungsi di lingkungan kerja yang dinamis."
-                    : "Information Systems graduate (GPA 3.77) with hands-on experience spanning web development, data analysis, and IT support. Built 5+ production web applications (React, Next.js, Node.js) while engineering predictive ML models (LSTM, XGBoost) achieving 92% accuracy at Telkom Indonesia. Skilled in managing IT lab infrastructure with 98% device availability, and well-practiced in Agile/Scrum methodologies. A fast-adapting professional ready to contribute across diverse technology roles in dynamic work environments."
+                    ? "Lulusan Sistem Informasi (IPK 3.77) dengan pengalaman langsung di pengembangan web, analisis data, dan IT support. Membangun 3+ aplikasi web produksi (React, Next.js, Node.js) sekaligus merancang model prediktif ML (LSTM, XGBoost) dengan akurasi 92% di Telkom Indonesia. Terampil mengelola infrastruktur IT laboratorium dengan tingkat ketersediaan 98%, serta berpengalaman dalam metodologi Agile/Scrum. Mampu beradaptasi cepat di berbagai peran teknologi dan siap memberikan kontribusi lintas fungsi di lingkungan kerja yang dinamis."
+                    : "Information Systems graduate (GPA 3.77) with hands-on experience spanning web development, data analysis, and IT support. Built 3+ production web applications (React, Next.js, Node.js) while engineering predictive ML models (LSTM, XGBoost) achieving 92% accuracy at Telkom Indonesia. Skilled in managing IT lab infrastructure with 98% device availability, and well-practiced in Agile/Scrum methodologies. A fast-adapting professional ready to contribute across diverse technology roles in dynamic work environments."
                   : role === "general"
                     ? lang === "id"
                       ? "Lulusan Sistem Informasi dengan kompetensi luas di bidang Quality Assurance (QA/Testing), rekayasa perangkat lunak, dan IT support. Terbukti memiliki ketelitian tinggi dalam mendeteksi bug dan mengoptimalkan performa sistem, termasuk merancang pipeline pengujian (Jest/RTL) yang memangkas bug rate sebesar 60% dan mempertahankan ketersediaan unit lab komputer sebesar 98%. Menguasai metodologi SDLC (Agile/Scrum), pengujian manual (API/Web), serta analisis data. Siap berkontribusi secara fleksibel di berbagai peran teknologi."
                       : "Information Systems graduate with broad competencies in Quality Assurance (QA/Testing), software engineering, and IT support. Proven track record of high attention to detail in bug detection and system optimization, including engineering a testing pipeline (Jest/RTL) that slashed production bug rate by 60% and maintaining 98% device availability in computer labs. Well-versed in SDLC (Agile/Scrum) methodologies, manual testing (API/Web), and data analysis. Ready to contribute flexibly across diverse IT roles."
                     : role === "fullstack"
                       ? lang === "id"
-                        ? "Full-Stack Developer yang mengkhususkan diri dalam aplikasi berbasis data. Merancang dan meluncurkan 5+ aplikasi web produksi (React, Next.js, Node.js) dengan skor Lighthouse 90+. Merancang pipeline data end-to-end dan model ML prediktif (LSTM, XGBoost) mencapai akurasi 92% pada 50.000+ data poin di Telkom Indonesia. Menggabungkan keahlian web development dan data engineering untuk membangun produk perangkat lunak yang intelligent dan scalable."
-                        : "Full-Stack Developer specializing in data-informed applications. Architected and shipped 5+ production web applications (React, Next.js, Node.js) with Lighthouse 90+ performance. Engineered end-to-end data pipelines and predictive ML models (LSTM, XGBoost) achieving 92% accuracy on 50,000+ data points at Telkom Indonesia. Leverages both web development and data engineering expertise to build intelligent, scalable software products."
+                        ? "Full-Stack Developer yang mengkhususkan diri dalam aplikasi berbasis data. Merancang dan meluncurkan 3+ aplikasi web produksi (React, Next.js, Node.js) dengan skor Lighthouse 90+. Merancang pipeline data end-to-end dan model ML prediktif (LSTM, XGBoost) mencapai akurasi 92% pada 50.000+ data poin di Telkom Indonesia. Menggabungkan keahlian web development dan data engineering untuk membangun produk perangkat lunak yang intelligent dan scalable."
+                        : "Full-Stack Developer specializing in data-informed applications. Architected and shipped 3+ production web applications (React, Next.js, Node.js) with Lighthouse 90+ performance. Engineered end-to-end data pipelines and predictive ML models (LSTM, XGBoost) achieving 92% accuracy on 50,000+ data points at Telkom Indonesia. Leverages both web development and data engineering expertise to build intelligent, scalable software products."
                       : lang === "id"
                         ? "Data Analyst & Machine Learning Developer dengan keahlian kuat dalam Python, SQL, dan analisis geospasial. Merancang pipeline data end-to-end dan model ML prediktif (LSTM, XGBoost) mencapai akurasi 92% pada 50.000+ data poin di Telkom Indonesia. Berpengalaman membangun sistem monitoring kualitas air pesisir menggunakan Google Earth Engine dengan uji statistik Mann-Kendall. Ahli dalam mengubah dataset mentah dan time-series menjadi insight bisnis yang actionable melalui dashboard interaktif (Streamlit)."
                         : "Data Analyst & Machine Learning Developer with strong expertise in Python, SQL, and geospatial analysis. Engineered end-to-end data pipelines and predictive ML models (LSTM, XGBoost) achieving 92% accuracy on 50,000+ data points at Telkom Indonesia. Experienced in building coastal water quality monitoring systems using Google Earth Engine with Mann-Kendall statistical tests. Adept at transforming raw, time-series datasets into actionable business insights through interactive dashboards (Streamlit)."
@@ -477,7 +580,7 @@ export default function PortfolioPDF() {
                 {lang === "id" ? "PENGALAMAN PROFESIONAL" : "PROFESSIONAL EXPERIENCE"}
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
-                {experiences.map((exp) => (
+                {orderedExperiences.map((exp) => (
                   <div key={exp.id}>
                     {/* Role + Period */}
                     <div className="exp-header">
@@ -557,7 +660,7 @@ export default function PortfolioPDF() {
                       <span style={{ color: '#374151' }}>{cat.skills}</span>
                     </div>
                   ))
-                  : skillCategories.map((cat, i) => (
+                  : getFilteredSkills().map((cat, i) => (
                     <div key={i} style={{ fontSize: '9.5px', lineHeight: 1.35 }}>
                       <span style={{ fontWeight: 700, color: '#0f172a' }}>{t(cat.title)}:</span>{" "}
                       <span style={{ color: '#374151' }}>
@@ -580,18 +683,18 @@ export default function PortfolioPDF() {
                     <div className="exp-header">
                       <h3 style={{ fontSize: '10px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
                         {typeof proj.title === 'string' ? proj.title : t(proj.title)}
+                        {proj.githubUrl && (
+                          <a href={proj.githubUrl} style={{ fontSize: '8.5px', color: '#1d4ed8', fontWeight: 500, marginLeft: '4px', textDecoration: 'none' }}>
+                            (GitHub)
+                          </a>
+                        )}
                       </h3>
-                      {proj.githubUrl && (
-                        <a href={proj.githubUrl} style={{ fontSize: '8.5px', color: '#1d4ed8', fontWeight: 500, whiteSpace: 'nowrap', marginLeft: '8px' }}>
-                          GitHub ↗
-                        </a>
-                      )}
                     </div>
                     <p style={{ fontSize: '9.5px', color: '#374151', lineHeight: 1.35, margin: '1px 0 0 0' }}>
                       {t(proj.description)}
                     </p>
                     <p style={{ fontSize: '8.5px', color: '#64748b', fontWeight: 500, fontFamily: "'SF Mono', 'Fira Code', monospace", margin: '1px 0 0 0' }}>
-                      {proj.technologies.slice(0, 6).join(" · ")}
+                      {proj.technologies.slice(0, 6).join(", ")}
                     </p>
                   </div>
                 ))}
@@ -607,7 +710,7 @@ export default function PortfolioPDF() {
                 {certifications.map((cert) => (
                   <div key={cert.id} style={{ fontSize: '9.5px', color: '#374151', lineHeight: 1.35 }}>
                     <span style={{ fontWeight: 700, color: '#0f172a' }}>{t(cert.name)}</span>
-                    {" — "}{cert.issuer} ({cert.date})
+                    {" | "}{cert.issuer} ({cert.date})
                   </div>
                 ))}
               </div>
