@@ -47,8 +47,8 @@ const mockupTexts = {
     id: "Stack Utama",
   },
   bullet1Desc: {
-    en: "Specialized in building fast Next.js applications and Python analytics.",
-    id: "Spesialis dalam membangun aplikasi Next.js cepat dan analisis Python.",
+    en: "Specialized in building fast Next.js/React applications, WordPress sites, and Python-based analytics.",
+    id: "Spesialis dalam membangun aplikasi Next.js/React yang cepat, situs WordPress, dan analitik berbasis Python.",
   },
   bullet2Title: {
     en: "Data & ML",
@@ -63,16 +63,16 @@ const mockupTexts = {
     id: "Pendekatan",
   },
   bullet3Desc: {
-    en: "Combining clean, responsive UI/UX with rigorous technical architecture.",
-    id: "Menggabungkan UI/UX bersih & responsif dengan arsitektur teknis yang kokoh.",
+    en: "Combining clean, responsive UI/UX with rigorous technical architecture and reliable system operations.",
+    id: "Menggabungkan UI/UX bersih & responsif dengan arsitektur teknis yang kokoh dan operasional sistem yang andal.",
   },
   aiQuestion: {
     en: "Why hire Ferdiansyach?",
     id: "Mengapa merekrut Ferdiansyach?",
   },
   aiAnswer: {
-    en: "He is a hybrid Fullstack Developer & Data Analyst. He writes clean React/Next.js code and uses Python to extract actionable insights from data.",
-    id: "Dia adalah gabungan Fullstack Developer & Analis Data. Dia menulis kode React/Next.js yang bersih dan menggunakan Python untuk mengekstrak wawasan penting dari data.",
+    en: "He is a versatile Fullstack Developer, Data Analyst, DevOps Engineer, IT Support Specialist, and WordPress Developer. He writes clean React/Next.js code, uses Python to extract actionable insights from data, manages cloud infrastructure and deployment pipelines, and keeps systems running smoothly end to end.",
+    id: "Dia adalah profesional serbaguna: Fullstack Developer, Analis Data, DevOps Engineer, IT Support Specialist, dan WordPress Developer. Dia menulis kode React/Next.js yang bersih, menggunakan Python untuk mengekstrak wawasan penting dari data, mengelola infrastruktur cloud dan pipeline deployment, serta menjaga sistem berjalan lancar dari ujung ke ujung.",
   }
 };
 
@@ -415,7 +415,7 @@ export default function HeroSection() {
                         {mockupTexts.tagRole[lang]}: <span className="font-semibold text-[var(--color-primary)]">Fullstack & Data</span>
                       </p>
                       <p className="text-xs text-[var(--color-muted)] mt-0.5">
-                        {mockupTexts.tagLocation[lang]}: Jakarta, ID
+                        {mockupTexts.tagLocation[lang]}: Depok, ID
                       </p>
                     </div>
                   </div>
@@ -516,41 +516,99 @@ export default function HeroSection() {
 
                   {/* SVG Nodes Visualizer */}
                   <div className="flex-1 w-full relative flex items-center justify-center min-h-[280px]">
-                    <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-40">
-                      {/* Connecting lines */}
-                      <line x1="50%" y1="50%" x2="25%" y2="25%" stroke="var(--color-primary)" strokeWidth="1.5" />
-                      <line x1="50%" y1="50%" x2="75%" y2="25%" stroke="var(--color-primary)" strokeWidth="1.5" />
-                      <line x1="50%" y1="50%" x2="15%" y2="60%" stroke="var(--color-primary)" strokeWidth="1.5" />
-                      <line x1="50%" y1="50%" x2="85%" y2="60%" stroke="var(--color-primary)" strokeWidth="1.5" />
-                      <line x1="50%" y1="50%" x2="50%" y2="85%" stroke="var(--color-primary)" strokeWidth="1.5" />
+                    <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 400 280" preserveAspectRatio="none">
+                      <defs>
+                        <linearGradient id="graphEdgeFade" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stopColor="var(--color-primary)" stopOpacity="0.15" />
+                          <stop offset="100%" stopColor="var(--color-primary)" stopOpacity="0.6" />
+                        </linearGradient>
+                      </defs>
+
+                      {/* Connecting lines — drawn in, then a looping dash-flow */}
+                      {[
+                        { d: "M200,140 L100,70", delay: 0 },
+                        { d: "M200,140 L300,70", delay: 0.1 },
+                        { d: "M200,140 L60,168", delay: 0.2 },
+                        { d: "M200,140 L340,168", delay: 0.3 },
+                        { d: "M200,140 L200,238", delay: 0.4 },
+                      ].map((line, i) => (
+                        <motion.path
+                          key={i}
+                          d={line.d}
+                          fill="none"
+                          stroke="url(#graphEdgeFade)"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          initial={{ pathLength: 0, opacity: 0 }}
+                          animate={{ pathLength: 1, opacity: 1 }}
+                          transition={{ duration: 0.7, delay: line.delay, ease: "easeOut" }}
+                        />
+                      ))}
+                      {[
+                        { d: "M200,140 L100,70", delay: 0.9 },
+                        { d: "M200,140 L300,70", delay: 1.0 },
+                        { d: "M200,140 L60,168", delay: 1.1 },
+                        { d: "M200,140 L340,168", delay: 1.2 },
+                        { d: "M200,140 L200,238", delay: 1.3 },
+                      ].map((line, i) => (
+                        <motion.path
+                          key={`pulse-${i}`}
+                          d={line.d}
+                          fill="none"
+                          stroke="var(--color-primary)"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeDasharray="6 30"
+                          initial={{ opacity: 0 }}
+                          animate={{
+                            opacity: [0, 0.9, 0],
+                            strokeDashoffset: [36, -36],
+                          }}
+                          transition={{
+                            duration: 1.8,
+                            repeat: Infinity,
+                            ease: "linear",
+                            delay: line.delay,
+                            repeatDelay: 1.2,
+                          }}
+                        />
+                      ))}
                     </svg>
 
                     {/* Nodes */}
                     {/* Center Node */}
                     <motion.div
-                      animate={{ scale: [1, 1.05, 1] }}
-                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                      className="absolute z-10 bg-[var(--color-primary)] text-white text-xs font-bold px-3 py-2 rounded-full shadow-lg"
+                      initial={{ opacity: 0, scale: 0.6 }}
+                      animate={{ opacity: 1, scale: [1, 1.05, 1] }}
+                      transition={{
+                        opacity: { duration: 0.4 },
+                        scale: { duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 },
+                      }}
+                      whileHover={{ scale: 1.1 }}
+                      className="absolute z-10 bg-[var(--color-primary)] text-white text-xs font-bold px-4 py-2.5 rounded-full shadow-lg shadow-[var(--color-primary)]/30 cursor-pointer"
                     >
                       Ferdiansyach
                     </motion.div>
 
                     {/* Surrounding Nodes */}
-                    <div className="absolute top-[20%] left-[15%] bg-[var(--color-canvas-elevated)] border border-[var(--color-hairline)] text-[var(--color-ink)] text-[10px] px-2 py-1 rounded-md shadow-md">
-                      React / Next.js
-                    </div>
-                    <div className="absolute top-[20%] right-[15%] bg-[var(--color-canvas-elevated)] border border-[var(--color-hairline)] text-[var(--color-ink)] text-[10px] px-2 py-1 rounded-md shadow-md">
-                      Python / ML
-                    </div>
-                    <div className="absolute top-[55%] left-[5%] bg-[var(--color-canvas-elevated)] border border-[var(--color-hairline)] text-[var(--color-ink)] text-[10px] px-2 py-1 rounded-md shadow-md">
-                      Web Apps
-                    </div>
-                    <div className="absolute top-[55%] right-[5%] bg-[var(--color-canvas-elevated)] border border-[var(--color-hairline)] text-[var(--color-ink)] text-[10px] px-2 py-1 rounded-md shadow-md">
-                      Data Analyst
-                    </div>
-                    <div className="absolute bottom-[10%] left-[43%] bg-[var(--color-canvas-elevated)] border border-[var(--color-hairline)] text-[var(--color-ink)] text-[10px] px-2 py-1 rounded-md shadow-md">
-                      SQL / databases
-                    </div>
+                    {[
+                      { style: "top-[20%] left-[15%]", label: "React / Next.js", delay: 0.15 },
+                      { style: "top-[20%] right-[15%]", label: "Python / ML", delay: 0.3 },
+                      { style: "top-[55%] left-[5%]", label: "Web Apps", delay: 0.45 },
+                      { style: "top-[55%] right-[5%]", label: "Data Analyst", delay: 0.6 },
+                      { style: "bottom-[10%] left-[43%]", label: "SQL / databases", delay: 0.75 },
+                    ].map((node, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: node.delay, duration: 0.4, ease: "easeOut" }}
+                        whileHover={{ scale: 1.08, borderColor: "var(--color-primary)" }}
+                        className={`absolute ${node.style} bg-[var(--color-canvas-elevated)] border border-[var(--color-hairline)] text-[var(--color-ink)] text-[10px] px-2 py-1 rounded-md shadow-md cursor-pointer transition-colors`}
+                      >
+                        {node.label}
+                      </motion.div>
+                    ))}
                   </div>
                 </motion.div>
               )}
