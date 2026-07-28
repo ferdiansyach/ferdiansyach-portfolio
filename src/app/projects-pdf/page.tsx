@@ -675,7 +675,7 @@ export default function ProjectsPDF() {
                 <section className="section-block">
                   <div className="section-header">
                     <div className="section-header-bar" style={{ backgroundColor: "#dc2626" }} />
-                    <h2>{lang === "id" ? "Sertifikasi" : "Certifications"}</h2>
+                    <h2>{lang === "id" ? "Sertifikasi & Publikasi" : "Certifications & Publications"}</h2>
                   </div>
                   <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
                     {certifications.map((cert) => (

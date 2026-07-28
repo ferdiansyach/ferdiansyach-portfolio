@@ -63,7 +63,7 @@ export interface Certification {
   issuerLogo?: string;
   date: string;
   credentialUrl?: string;
-  category: "technical" | "cloud" | "methodology" | "data";
+  category: "technical" | "cloud" | "methodology" | "data" | "publication";
   badge?: string;
   image?: string;
 }
