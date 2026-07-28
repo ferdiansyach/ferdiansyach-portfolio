@@ -1,9 +1,9 @@
 <div align="center">
   <h1>🚀 Ferdiansyach — Personal Portfolio</h1>
   
-  <p><strong>Fullstack Developer · Data Analyst · AI Engineer</strong></p>
+  <p><strong>Fullstack Developer (React/Next.js, Node.js) &amp; Machine Learning Enthusiast</strong></p>
   
-  <p><em>Bridging the gap between scalable web engineering, data analytics, and intelligent AI models.</em></p>
+  <p><em>Bridging the gap between scalable web engineering and data-driven intelligence.</em></p>
   
   <p>
     <a href="https://ferdiansyach-portfolio.vercel.app">View Live Website</a> • 
@@ -18,7 +18,6 @@
     <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" /></a>
     <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" /></a>
     <a href="https://www.framer.com/motion/"><img src="https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white" alt="Framer Motion" /></a>
-    <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" /></a>
   </p>
 </div>
 
@@ -28,7 +27,7 @@
 
 This repository contains the source code for my personal portfolio website. Built from scratch using modern web technologies, it serves as a central hub to showcase my professional path, technical skills, and selected projects. 
 
-The application is engineered with a focus on **high performance**, **seamless user experience (UX)**, and **ATS-optimized print layouts** so that recruiters can download a perfectly-formatted CV directly from the site.
+The application is engineered with a focus on **high performance**, **seamless user experience (UX)**, and **ATS-optimized print layouts** so that recruiters can download a perfectly-formatted 1-page CV directly from the site.
 
 ---
 
@@ -54,25 +53,8 @@ Here are the featured projects that define my technical capabilities:
   * Structured end-to-end data pipeline processing **50,000+ data points**.
   * Developed a real-time Streamlit dashboard adopted by the techno-economic analysis team.
 
-### ♻️ Waste Classification AI (PKM)
-*Computer Vision & Deep Learning automated waste classification model for the Student Creativity Program (PKM).*
-* **Visual:**
-  <img src="public/images/intern3.jpeg" width="600" alt="Waste Classification Preview" style="border-radius: 8px; border: 1px solid #e2e8f0;"/>
-* **Key Achievements:**
-  * Developed a Convolutional Neural Network (CNN) model for real-time automated waste classification (organic vs recyclable).
-  * Built image augmentation and OpenCV preprocessing pipelines to improve object detection precision across varied lighting conditions.
-  * Repository: [github.com/ferdiansyach/waste-classification](https://github.com/ferdiansyach/waste-classification)
-
-### 🌿 Urban Green Space Monitoring (U-Net & Sentinel-2)
-*Deep learning & satellite remote sensing for tracking Jakarta's Urban Green Space transformation (2019 vs 2023).*
-* **Visual:**
-  <img src="public/images/coastal1.jpeg" width="600" alt="RTH Monitoring Preview" style="border-radius: 8px; border: 1px solid #e2e8f0;"/>
-* **Key Achievements:**
-  * Trained a U-Net semantic segmentation neural network on Sentinel-2 satellite imagery.
-  * Built an interactive Streamlit dashboard mapping spatial vegetation change and land cover statistics.
-
 ### 🌊 Coastal Water Quality Monitoring (Web-GIS)
-*Temporal coastal water quality monitoring via Google Earth Engine (2019-2026).*
+*Temporal coastal water quality monitoring via Google Earth Engine (2019-2025).*
 * **Visual:**
   <img src="public/images/coastal1.jpeg" width="600" alt="Coastal Water Quality Preview" style="border-radius: 8px; border: 1px solid #e2e8f0;"/>
 * **Key Achievements:**
