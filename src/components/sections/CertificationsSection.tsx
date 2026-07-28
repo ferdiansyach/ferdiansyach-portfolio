@@ -11,9 +11,14 @@ import GlassCard from "@/components/ui/GlassCard";
 import TiltCard from "@/components/ui/TiltCard";
 import { AnimatedSection, AnimatedDiv } from "@/components/ui/AnimatedSection";
 
-type CertFilter = "all" | "technical" | "methodology" | "data";
+type CertFilter = "all" | "technical" | "methodology" | "data" | "publication";
 
 const certIconMap: Record<string, React.ReactNode> = {
+  "ieee-icetisi-2025": (
+    <svg className="w-6 h-6 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+    </svg>
+  ),
   "bnsp-web": (
     <svg className="w-6 h-6 text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
@@ -44,6 +49,7 @@ const certIconMap: Record<string, React.ReactNode> = {
 
 const filterButtons: { key: CertFilter; label: { id: string; en: string } }[] = [
   { key: "all", label: translations.certifications.filterAll },
+  { key: "publication", label: { id: "Publikasi IEEE", en: "IEEE Publications" } },
   { key: "technical", label: translations.certifications.filterTechnical },
   { key: "methodology", label: translations.certifications.filterMethodology },
   { key: "data", label: translations.certifications.filterData },
@@ -202,14 +208,29 @@ function CertificationGrid({
                         {t(cert.name)}
                       </h3>
                       <p className="text-[var(--color-body)] text-xs">{cert.issuer}</p>
-                      <div className="flex items-center gap-2 mt-2.5">
-                        <span className="text-[11px] text-[var(--color-muted)] font-medium">{cert.date}</span>
-                        <span className="inline-flex items-center gap-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded-full">
-                          <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                          </svg>
-                          {t(translations.certifications.verified)}
-                        </span>
+                      <div className="flex items-center justify-between gap-2 mt-2.5 flex-wrap">
+                        <div className="flex items-center gap-2">
+                          <span className="text-[11px] text-[var(--color-muted)] font-medium">{cert.date}</span>
+                          <span className="inline-flex items-center gap-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded-full">
+                            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                            </svg>
+                            {t(translations.certifications.verified)}
+                          </span>
+                        </div>
+                        {cert.credentialUrl && (
+                          <a
+                            href={cert.credentialUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-[11px] font-semibold text-rose-400 hover:text-rose-300 transition-colors bg-rose-500/10 hover:bg-rose-500/20 px-2.5 py-1 rounded-lg border border-rose-500/20 cursor-pointer"
+                          >
+                            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            {cert.credentialUrl.endsWith(".pdf") ? "PDF Paper ↗" : "Verify ↗"}
+                          </a>
+                        )}
                       </div>
                     </div>
                   </div>
