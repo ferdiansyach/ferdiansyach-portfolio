@@ -84,7 +84,7 @@ export default function ProjectsSection() {
                       />
                       <div className="absolute inset-0 bg-[var(--color-canvas)]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <span className="bg-[var(--color-primary)] text-white font-semibold text-sm px-5 py-2.5 rounded-md shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                          {t(translations.projects.viewDetails)} →
+                          {t(translations.projects.viewDetails)}
                         </span>
                       </div>
                     </div>
