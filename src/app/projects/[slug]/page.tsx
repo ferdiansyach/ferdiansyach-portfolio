@@ -158,7 +158,7 @@ function ProjectDetailContent({ slug }: { slug: string }) {
                   >
                     <MagneticButton strength={15} className="w-full">
                       <a
-                        href={project.githubUrl}
+                        href={project.githubNote ? "https://github.com/ferdiansyach" : project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center justify-between w-full p-6 bg-linear-to-br from-fuchsia-500 to-purple-600 rounded-3xl font-bold text-white shadow-xl shadow-fuchsia-500/20 hover:shadow-fuchsia-500/40 hover:-translate-y-1 transition-all group"

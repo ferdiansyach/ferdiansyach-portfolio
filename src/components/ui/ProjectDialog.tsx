@@ -143,28 +143,35 @@ export default function ProjectDialog({ project, isOpen, onClose }: ProjectDialo
                 </div>
 
                 {/* Footer Link Buttons */}
-                <div className="flex gap-4 pt-4 border-t border-[var(--color-hairline)]">
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 inline-flex items-center justify-center gap-2 border border-[var(--color-hairline)] bg-[var(--color-canvas)] text-[var(--color-ink)] font-semibold py-2.5 px-4 rounded-md hover:border-[var(--color-primary)] hover:bg-[var(--color-primary)]/5 transition-all text-sm cursor-pointer"
-                    >
-                      <FaGithub className="w-4 h-4" />
-                      GitHub Code
-                    </a>
-                  )}
-                  {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 inline-flex items-center justify-center gap-2 bg-[var(--color-primary)] text-white font-semibold py-2.5 px-4 rounded-md hover:bg-[var(--color-primary-hover)] transition-all text-sm cursor-pointer"
-                    >
-                      <FiExternalLink className="w-4 h-4" />
-                      Live Demo
-                    </a>
+                <div className="space-y-2 pt-4 border-t border-[var(--color-hairline)]">
+                  <div className="flex gap-4">
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubNote ? "https://github.com/ferdiansyach" : project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 inline-flex items-center justify-center gap-2 border border-[var(--color-hairline)] bg-[var(--color-canvas)] text-[var(--color-ink)] font-semibold py-2.5 px-4 rounded-md hover:border-[var(--color-primary)] hover:bg-[var(--color-primary)]/5 transition-all text-sm cursor-pointer"
+                      >
+                        <FaGithub className="w-4 h-4" />
+                        GitHub Code
+                      </a>
+                    )}
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 inline-flex items-center justify-center gap-2 bg-[var(--color-primary)] text-white font-semibold py-2.5 px-4 rounded-md hover:bg-[var(--color-primary-hover)] transition-all text-sm cursor-pointer"
+                      >
+                        <FiExternalLink className="w-4 h-4" />
+                        Live Demo
+                      </a>
+                    )}
+                  </div>
+                  {project.githubUrl && project.githubNote && (
+                    <p className="text-[var(--color-muted)] text-xs text-center italic">
+                      * {t(project.githubNote)}
+                    </p>
                   )}
                 </div>
               </div>

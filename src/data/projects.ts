@@ -46,6 +46,11 @@ export const projects: Project[] = [
       { src: "/images/indosaji9.jpeg", caption: { id: "Admin: Manajemen Pesanan", en: "Admin: Order Management" } },
     ],
     githubUrl: "https://github.com/ferdiansyach/indosaji",
+    githubNote: {
+      id: "Private repo - tersedia atas permintaan",
+      en: "Private repo - available upon request",
+    },
+    role: { id: "Fullstack Developer", en: "Fullstack Developer" },
   },
   {
     slug: "smart-meter",
@@ -89,11 +94,8 @@ export const projects: Project[] = [
       { src: "/images/intern6.jpeg", caption: { id: "Heatmap Konsumsi Energi", en: "Energy Consumption Heatmap" } },
       { src: "/images/intern7.jpeg", caption: { id: "Laporan Analisis", en: "Analysis Report" } },
     ],
-    githubUrl: "https://github.com/ferdiansyach/smart-meter-analysis",
-    githubNote: {
-      id: "Private repo - tersedia atas permintaan",
-      en: "Private repo - available upon request",
-    },
+    githubUrl: "https://github.com/ferdiansyach/Energy_Effeciency",
+    role: { id: "Data Analyst & ML Engineer", en: "Data Analyst & ML Engineer" },
   },
   {
     slug: "coastal-water-quality",
@@ -121,7 +123,7 @@ export const projects: Project[] = [
       "Remote Sensing",
     ],
     category: "datascience",
-    period: "2025",
+    period: "2026",
     thumbnail: "/images/coastal1.jpeg",
     pdfBullets: [
       {
@@ -164,6 +166,11 @@ export const projects: Project[] = [
       },
     ],
     githubUrl: "https://github.com/ferdiansyach/coastal-water-quality-gee",
+    githubNote: {
+      id: "Private repo - tersedia atas permintaan",
+      en: "Private repo - available upon request",
+    },
+    role: { id: "Data Analyst & Spesialis GIS", en: "Data Analyst & GIS Specialist" },
   },
   {
     slug: "unasfest",
@@ -208,6 +215,11 @@ export const projects: Project[] = [
       { src: "/images/unasfest6.jpeg", caption: { id: "Responsif Design", en: "Responsive Design" } },
       { src: "/images/unasfest7.jpeg", caption: { id: "Dokumentasi Acara", en: "Event Documentation" } },
     ],
+    githubNote: {
+      id: "Private repo - tersedia atas permintaan",
+      en: "Private repo - available upon request",
+    },
+    role: { id: "Frontend Developer & QA Engineer", en: "Frontend Developer & QA Engineer" },
   },
   {
     slug: "himasi",
@@ -251,9 +263,115 @@ export const projects: Project[] = [
     ],
     githubUrl: "https://github.com/ferdiansyach/himasi-unas",
     githubNote: {
-      id: "Private repo - tersedia atas permintaan",
-      en: "Private repo - available upon request",
+      id: "Dikembangkan via WordPress CMS (Tanpa repo kode publik)",
+      en: "Developed via WordPress CMS (No public code repository)",
     },
+    role: { id: "WordPress Developer & Pengelola Konten", en: "WordPress Developer & Content Manager" },
+  },
+  {
+    slug: "monitoring-rth-unet",
+    title: "RTH Monitoring (U-Net & Sentinel-2)",
+    description: {
+      id: "Dashboard Streamlit interaktif untuk monitoring revolusi Ruang Terbuka Hijau (RTH) DKI Jakarta (2019 vs 2023) berbasis U-Net & Sentinel-2.",
+      en: "Interactive Streamlit dashboard monitoring Urban Green Space (RTH) transformation in DKI Jakarta (2019 vs 2023) using U-Net & Sentinel-2.",
+    },
+    longDescription: {
+      id: "Proyek penelitian deep learning dan penginderaan jauh untuk memetakan perubahan Ruang Terbuka Hijau (RTH) di DKI Jakarta antara tahun 2019 dan 2023. Menggunakan arsitektur jaringan saraf konvolusional U-Net untuk segmentasi semantik citra satelit Sentinel-2. Seluruh hasil segmentasi spasial dan statistik perubahan luasan vegetasi divisualisasikan dalam dashboard Streamlit yang interaktif.",
+      en: "A deep learning and remote sensing research project mapping Urban Green Space (RTH) changes in DKI Jakarta between 2019 and 2023. Utilizes the U-Net convolutional neural network architecture for semantic segmentation of Sentinel-2 satellite imagery. All spatial segmentation results and vegetation area statistics are visualized in an interactive Streamlit dashboard.",
+    },
+    challenges: {
+      id: "Tantangan utama adalah annotasi dataset citra satelit multi-spektra dan pelatihan model U-Net agar presisi membedakan vegetasi padat, area pemukiman, dan badan air. Melakukan preprocessing pencocokan pita spektral dan augmentasi data citra untuk meningkatkan skor IoU (Intersection over Union).",
+      en: "The main challenge was annotating multi-spectral satellite imagery dataset and training the U-Net model to accurately segment dense vegetation, urban settlement, and water bodies. Performed spectral band matching preprocessing and image augmentation to boost the IoU (Intersection over Union) score.",
+    },
+    technologies: ["Python", "PyTorch", "U-Net", "Sentinel-2", "Streamlit", "Deep Learning", "Remote Sensing"],
+    category: "datascience",
+    period: "2024",
+    thumbnail: "/images/coastal1.jpeg",
+    pdfBullets: [
+      {
+        id: "Merancang model segmentasi citra U-Net untuk pemetaan perubahan Ruang Terbuka Hijau (RTH) DKI Jakarta dari data citra satelit Sentinel-2.",
+        en: "Engineered a U-Net image segmentation model for mapping Urban Green Space (RTH) changes in DKI Jakarta from Sentinel-2 satellite imagery.",
+      },
+      {
+        id: "Membangun dashboard Streamlit interaktif untuk visualisasi peta segmentasi spasial dan perbandingan statistik luasan RTH periode 2019 vs 2023.",
+        en: "Built an interactive Streamlit dashboard for spatial segmentation map visualization and RTH area statistical comparison (2019 vs 2023).",
+      },
+    ],
+    images: [
+      { src: "/images/coastal1.jpeg", caption: { id: "Dashboard Utama Streamlit", en: "Main Streamlit Dashboard" } },
+    ],
+    githubUrl: "https://github.com/ferdiansyach/monitoring-revolusi-urban-unet",
+    role: { id: "AI & Remote Sensing Engineer", en: "AI & Remote Sensing Engineer" },
+  },
+  {
+    slug: "sentiment-analysis-dashboard",
+    title: "Sentiment Analysis Dashboard",
+    description: {
+      id: "Streamlit Dashboard interaktif untuk analisis sentimen teks menggunakan Natural Language Processing (NLP) dan Machine Learning.",
+      en: "Interactive Streamlit dashboard for text sentiment analysis using Natural Language Processing (NLP) and Machine Learning.",
+    },
+    longDescription: {
+      id: "Aplikasi web interaktif berbasis Streamlit untuk menganalisis sentimen dari dataset teks publik. Melibatkan pembersihan teks (text preprocessing, stopword removal, stemming/lemmatization), ekstraksi fitur TF-IDF, serta klasifikasi sentimen positif, netral, dan negatif menggunakan algoritma Machine Learning. Dilengkapi visualisasi distribusi kata (wordcloud) dan grafik sentimen.",
+      en: "An interactive web application built with Streamlit to analyze sentiment from public text datasets. Involves text preprocessing (cleaning, stopword removal, stemming/lemmatization), TF-IDF feature extraction, and classification of positive, neutral, and negative sentiments using Machine Learning algorithms. Features wordcloud visualizations and sentiment distribution charts.",
+    },
+    challenges: {
+      id: "Mengoptimalkan pipeline preprocessing teks bahasa Indonesia/Inggris dan menangani ketidakseimbangan kelas (class imbalance) pada dataset sentimen untuk mempertahankan akurasi klasifikasi.",
+      en: "Optimizing text preprocessing pipeline for Indonesian/English text and handling class imbalance in sentiment datasets to maintain classification accuracy.",
+    },
+    technologies: ["Python", "Streamlit", "NLP", "NLTK", "Scikit-learn", "Pandas", "Text Processing"],
+    category: "datascience",
+    period: "2024",
+    thumbnail: "/images/intern2.jpeg",
+    pdfBullets: [
+      {
+        id: "Mengembangkan dashboard interaktif Streamlit untuk klasifikasi sentimen teks real-time dengan ekstraksi fitur TF-IDF dan visualisasi WordCloud.",
+        en: "Developed an interactive Streamlit dashboard for real-time text sentiment classification using TF-IDF feature extraction and WordCloud visualization.",
+      },
+      {
+        id: "Merancang pipeline NLP (preprocessing, stopword removal, lemmatization) untuk meningkatkan performa klasifikasi model Machine Learning.",
+        en: "Architected an NLP pipeline (preprocessing, stopword removal, lemmatization) to enhance Machine Learning model classification performance.",
+      },
+    ],
+    images: [
+      { src: "/images/intern2.jpeg", caption: { id: "Visualisasi Sentimen", en: "Sentiment Visualization" } },
+    ],
+    githubUrl: "https://github.com/ferdiansyach/Sentiment-Analysis-Dashboard",
+    role: { id: "Data Analyst & NLP Developer", en: "Data Analyst & NLP Developer" },
+  },
+  {
+    slug: "waste-classification-pkm",
+    title: "Waste Classification AI (PKM)",
+    description: {
+      id: "Model AI klasifikasi jenis sampah berbasis Computer Vision / Deep Learning untuk Program Kreativitas Mahasiswa (PKM).",
+      en: "Deep Learning / Computer Vision automated waste classification AI model for the Student Creativity Program (PKM).",
+    },
+    longDescription: {
+      id: "Proyek kolaborasi Program Kreativitas Mahasiswa (PKM) bidang teknologi untuk mengembangkan sistem klasifikasi jenis sampah otomatis (organik vs anorganik / daur ulang) berbasis Computer Vision. Menggunakan arsitektur Convolutional Neural Network (CNN) untuk mengklasifikasikan citra objek sampah secara real-time.",
+      en: "A Student Creativity Program (PKM) collaborative technology project developing an automated waste classification system (organic vs inorganic / recyclable) powered by Computer Vision. Utilizes Convolutional Neural Network (CNN) architecture to classify waste object images in real-time.",
+    },
+    challenges: {
+      id: "Mengumpulkan dan melakukan augmentasi dataset gambar sampah dengan variasi pencahayaan dan latar belakang yang beragam untuk melatih model CNN yang robust terhadap kondisi nyata.",
+      en: "Collecting and augmenting image datasets of waste under varied lighting and background conditions to train a robust CNN model resilient to real-world environments.",
+    },
+    technologies: ["Python", "TensorFlow", "Computer Vision", "CNN", "Deep Learning", "OpenCV"],
+    category: "datascience",
+    period: "2025",
+    thumbnail: "/images/intern3.jpeg",
+    pdfBullets: [
+      {
+        id: "Mengembangkan model Convolutional Neural Network (CNN) untuk klasifikasi jenis sampah otomatis dalam proyek Program Kreativitas Mahasiswa (PKM).",
+        en: "Developed a Convolutional Neural Network (CNN) model for automated waste classification in the Student Creativity Program (PKM) project.",
+      },
+      {
+        id: "Mengolah pipeline augmentasi citra dan preprocessing OpenCV untuk meningkatkan presisi deteksi objek pada beragam latar belakang.",
+        en: "Engineered image augmentation and OpenCV preprocessing pipelines to improve object detection precision across varied backgrounds.",
+      },
+    ],
+    images: [
+      { src: "/images/intern3.jpeg", caption: { id: "Klasifikasi Sampah AI", en: "AI Waste Classification" } },
+    ],
+    githubUrl: "https://github.com/ferdiansyach/waste-classification",
+    role: { id: "Computer Vision & ML Developer", en: "Computer Vision & ML Developer" },
   },
 ];
 

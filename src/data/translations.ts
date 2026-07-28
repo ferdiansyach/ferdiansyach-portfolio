@@ -12,8 +12,8 @@ export const translations = {
     subtitle: { id: "Sistem Informasi — Universitas Nasional", en: "Information Systems — Universitas Nasional" },
     greeting: { id: "Hai, Saya", en: "Hi, I'm" },
     description: {
-      id: "Fullstack Developer & Data Analyst berpengalaman. Telah membangun 5+ proyek produksi dan model AI prediktif dengan akurasi 92%. Siap memberikan dampak nyata melalui solusi teknologi inovatif.",
-      en: "An experienced Fullstack Developer & Data Analyst. Delivered 5+ production projects and predictive AI models achieving 92% accuracy. Ready to drive real impact through innovative technology solutions.",
+      id: "Fullstack Developer, Data Analyst & AI Engineer berpengalaman. Telah membangun 5+ proyek produksi dan model AI prediktif dengan akurasi 92%. Siap memberikan dampak nyata melalui solusi teknologi inovatif.",
+      en: "An experienced Fullstack Developer, Data Analyst & AI Engineer. Delivered 5+ production projects and predictive AI models achieving 92% accuracy. Ready to drive real impact through innovative technology solutions.",
     },
     contactBtn: { id: "Hubungi Saya", en: "Contact Me" },
     downloadCv: { id: "Unduh CV", en: "Download CV" },

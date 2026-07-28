@@ -18,6 +18,7 @@ export interface Project {
   liveUrl?: string;
   period?: string;
   pdfBullets?: TranslatedText[];
+  role?: TranslatedText;
 }
 
 export interface Experience {

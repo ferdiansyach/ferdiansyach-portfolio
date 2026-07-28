@@ -15,13 +15,14 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  title: "Ferdiansyach | Fullstack Developer & Data Analyst",
+  title: "Ferdiansyach | Fullstack Developer · Data Analyst · AI Engineer",
   description:
-    "Portfolio profesional Ferdiansyach — Fresh Graduate Sistem Informasi, Universitas Nasional. Fullstack Developer & Data Analyst dengan keahlian dalam React, Next.js, Python, dan Machine Learning.",
+    "Portfolio profesional Ferdiansyach — Fresh Graduate Sistem Informasi, Universitas Nasional. Fullstack Developer, Data Analyst & AI Engineer dengan keahlian dalam React, Next.js, Python, dan Machine Learning.",
   keywords: [
     "Ferdiansyach",
     "Fullstack Developer",
     "Data Analyst",
+    "AI Engineer",
     "React",
     "Next.js",
     "Python",
@@ -35,18 +36,18 @@ export const metadata: Metadata = {
   authors: [{ name: "Ferdiansyach" }],
   creator: "Ferdiansyach",
   openGraph: {
-    title: "Ferdiansyach — Fullstack Developer & Data Analyst",
+    title: "Ferdiansyach — Fullstack Developer · Data Analyst · AI Engineer",
     description:
-      "Fresh Graduate Sistem Informasi dengan fokus pada web development dan data analysis. Siap berkontribusi pada proyek inovatif.",
+      "Fresh Graduate Sistem Informasi dengan fokus pada web development, data analysis, dan AI/ML. Siap berkontribusi pada proyek inovatif.",
     type: "website",
     locale: "id_ID",
     siteName: "Ferdiansyach Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ferdiansyach — Fullstack Developer & Data Analyst",
+    title: "Ferdiansyach — Fullstack Developer · Data Analyst · AI Engineer",
     description:
-      "Fresh Graduate Sistem Informasi. React, Next.js, Python, Machine Learning.",
+      "Fresh Graduate Sistem Informasi. React, Next.js, Python, Machine Learning, AI Engineering.",
   },
   robots: "index, follow",
 };
@@ -56,7 +57,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Ferdiansyach",
-  jobTitle: "Fullstack Developer & Data Analyst",
+  jobTitle: "Fullstack Developer · Data Analyst · AI Engineer",
   url: "https://ferdiansyach-portfolio.vercel.app",
   alumniOf: {
     "@type": "CollegeOrUniversity",
@@ -69,6 +70,7 @@ const jsonLd = {
     "Python",
     "Machine Learning",
     "Data Analysis",
+    "AI Engineering",
     "Node.js",
     "MongoDB",
   ],

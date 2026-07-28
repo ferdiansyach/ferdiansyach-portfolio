@@ -12,6 +12,7 @@ import MagneticButton from "@/components/ui/MagneticButton";
 const typingRoles = [
   { en: "Fullstack Developer", id: "Fullstack Developer" },
   { en: "Data Analyst", id: "Analis Data" },
+  { en: "AI Engineer", id: "AI Engineer" },
   { en: "DevOps Engineer", id: "DevOps Engineer" },
   { en: "IT Support Specialist", id: "IT Support Specialist" },
   { en: "WordPress Developer", id: "WordPress Developer" },
