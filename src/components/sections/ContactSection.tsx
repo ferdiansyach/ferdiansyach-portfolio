@@ -63,6 +63,46 @@ type FormStatus = "idle" | "sending" | "success" | "error";
 export default function ContactSection() {
   const { t } = useLanguage();
   const [status, setStatus] = useState<FormStatus>("idle");
+  const [copiedLabel, setCopiedLabel] = useState<string | null>(null);
+
+  const handleCopy = (e: React.MouseEvent, text: string, label: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const triggerSuccess = () => {
+      setCopiedLabel(label);
+      setTimeout(() => setCopiedLabel(null), 2500);
+    };
+
+    const fallbackCopy = (value: string) => {
+      try {
+        const textArea = document.createElement("textarea");
+        textArea.value = value;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-9999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+      } catch {
+        // Fallback catch
+      }
+    };
+
+    if (navigator?.clipboard?.writeText) {
+      navigator.clipboard
+        .writeText(text)
+        .then(triggerSuccess)
+        .catch(() => {
+          fallbackCopy(text);
+          triggerSuccess();
+        });
+    } else {
+      fallbackCopy(text);
+      triggerSuccess();
+    }
+  };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -135,7 +175,7 @@ export default function ContactSection() {
                     name="name"
                     type="text"
                     required
-                    className="w-full px-4 py-3 rounded-md bg-[var(--color-canvas)] border border-[var(--color-hairline)] text-[var(--color-ink)] placeholder-[var(--color-body)] text-sm focus:outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)]/20 transition-all duration-300"
+                    className="w-full px-4 py-3 rounded-md bg-[var(--color-canvas)] border border-[var(--color-hairline)] text-[var(--color-ink)] placeholder-[var(--color-body)] text-[16px] md:text-sm focus:outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)]/40 focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] transition-all duration-300"
                     placeholder={t(translations.contact.formName)}
                   />
                 </div>
@@ -148,7 +188,7 @@ export default function ContactSection() {
                     name="email"
                     type="email"
                     required
-                    className="w-full px-4 py-3 rounded-md bg-[var(--color-canvas)] border border-[var(--color-hairline)] text-[var(--color-ink)] placeholder-[var(--color-body)] text-sm focus:outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)]/20 transition-all duration-300"
+                    className="w-full px-4 py-3 rounded-md bg-[var(--color-canvas)] border border-[var(--color-hairline)] text-[var(--color-ink)] placeholder-[var(--color-body)] text-[16px] md:text-sm focus:outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)]/40 focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] transition-all duration-300"
                     placeholder={t(translations.contact.formEmail)}
                   />
                 </div>
@@ -162,14 +202,14 @@ export default function ContactSection() {
                   name="message"
                   required
                   rows={4}
-                  className="w-full px-4 py-3 rounded-md bg-[var(--color-canvas)] border border-[var(--color-hairline)] text-[var(--color-ink)] placeholder-[var(--color-body)] text-sm focus:outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)]/20 transition-all duration-300 resize-none"
+                  className="w-full px-4 py-3 rounded-md bg-[var(--color-canvas)] border border-[var(--color-hairline)] text-[var(--color-ink)] placeholder-[var(--color-body)] text-[16px] md:text-sm focus:outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)]/40 focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] transition-all duration-300 resize-none"
                   placeholder={t(translations.contact.formMessage)}
                 />
               </div>
               <motion.button
                 type="submit"
                 disabled={status === "sending"}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[var(--color-primary)] text-white font-semibold py-3 px-8 rounded-md hover:bg-[var(--color-primary-hover)] hover:shadow-md hover:shadow-[var(--color-primary)]/25 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[var(--color-primary)] text-white font-semibold py-3 px-8 min-h-[44px] rounded-md hover:bg-[var(--color-primary-hover)] hover:shadow-md hover:shadow-[var(--color-primary)]/25 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0 cursor-pointer active:scale-98"
                 whileTap={{ scale: 0.97 }}
               >
                 {status === "sending" ? (
@@ -204,16 +244,25 @@ export default function ContactSection() {
                 </motion.p>
               )}
               {status === "error" && (
-                <motion.p
+                <motion.div
                   initial={{ opacity: 0, y: 5 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-red-400 text-sm font-medium flex items-center gap-2"
+                  className="flex items-center justify-between p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm font-medium"
                 >
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  {t(translations.contact.formError)}
-                </motion.p>
+                  <div className="flex items-center gap-2">
+                    <svg className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>{t(translations.contact.formError)}</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setStatus("idle")}
+                    className="px-3 py-1 rounded-md bg-red-500/20 hover:bg-red-500/30 text-red-300 text-xs font-semibold transition-all cursor-pointer"
+                  >
+                    {t(translations.contact.formRetry)}
+                  </button>
+                </motion.div>
               )}
             </form>
           </div>
@@ -230,26 +279,56 @@ export default function ContactSection() {
           {/* Social Links */}
           <div className="relative z-10">
             <div className="grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`flex items-center gap-4 px-6 py-5 rounded-xl font-medium transition-all duration-300 bg-[var(--color-canvas)] border border-[var(--color-hairline)] text-[var(--color-ink)] hover:-translate-y-1 hover:shadow-md group ${link.color}`}
-                >
-                  <div className={`p-3 rounded-lg bg-[var(--color-canvas-elevated)] border border-[var(--color-hairline)] group-hover:scale-110 transition-transform shadow-sm ${link.iconColor}`}>
-                    {link.icon}
+              {socialLinks.map((link) => {
+                const isCopied = copiedLabel === link.label;
+                const copyText = link.desc.startsWith("@") ? link.desc : link.desc;
+                return (
+                  <div
+                    key={link.label}
+                    className={`relative flex items-center gap-4 px-6 py-5 rounded-xl font-medium transition-all duration-300 bg-[var(--color-canvas)] border border-[var(--color-hairline)] text-[var(--color-ink)] hover:-translate-y-1 hover:shadow-md group ${link.color}`}
+                  >
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-4 flex-1 min-w-0"
+                    >
+                      <div className={`p-3 rounded-lg bg-[var(--color-canvas-elevated)] border border-[var(--color-hairline)] group-hover:scale-110 transition-transform shadow-sm shrink-0 ${link.iconColor}`}>
+                        {link.icon}
+                      </div>
+                      <div className="flex flex-col text-left truncate">
+                        <span className="text-sm font-bold text-[var(--color-ink)] tracking-wide">{link.label}</span>
+                        <span className="text-xs text-[var(--color-body)] group-hover:text-[var(--color-primary)] transition-colors mt-0.5 truncate">{link.desc}</span>
+                      </div>
+                    </a>
+
+                    {/* Copy button */}
+                    <motion.button
+                      type="button"
+                      whileTap={{ scale: 0.9 }}
+                      whileHover={{ scale: 1.05 }}
+                      onClick={(e) => handleCopy(e, copyText, link.label)}
+                      title={t({ id: "Salin ke papan klip", en: "Copy to clipboard" })}
+                      className="p-2 rounded-lg bg-[var(--color-canvas-elevated)] border border-[var(--color-hairline)] text-[var(--color-body)] hover:text-[var(--color-primary)] hover:border-[var(--color-primary)]/40 transition-colors cursor-pointer shrink-0"
+                      aria-label={`Copy ${link.label}`}
+                    >
+                      {isCopied ? (
+                        <motion.span
+                          initial={{ scale: 0.7, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          className="text-[10px] font-bold text-emerald-400 px-1 flex items-center gap-1"
+                        >
+                          ✓ {t({ id: "Tersalin!", en: "Copied!" })}
+                        </motion.span>
+                      ) : (
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                        </svg>
+                      )}
+                    </motion.button>
                   </div>
-                  <div className="flex flex-col text-left">
-                    <span className="text-sm font-bold text-[var(--color-ink)] tracking-wide">{link.label}</span>
-                    <span className="text-xs text-[var(--color-body)] group-hover:text-[var(--color-primary)] transition-colors mt-0.5">{link.desc}</span>
-                  </div>
-                  <svg className="w-5 h-5 ml-auto text-[var(--color-body)] group-hover:text-[var(--color-primary)] group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </a>
-              ))}
+                );
+              })}
             </div>
 
             {/* Response time */}

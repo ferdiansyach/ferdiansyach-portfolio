@@ -15,9 +15,10 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ferdiansyach-portfolio.vercel.app"),
   title: "Ferdiansyach | Fullstack Developer · Data Analyst · AI Engineer",
   description:
-    "Portfolio profesional Ferdiansyach — Fresh Graduate Sistem Informasi, Universitas Nasional. Fullstack Developer, Data Analyst & AI Engineer dengan keahlian dalam React, Next.js, Python, dan Machine Learning.",
+    "Portfolio profesional Ferdiansyach, Fresh Graduate Sistem Informasi, Universitas Nasional. Fullstack Developer, Data Analyst & AI Engineer dengan keahlian dalam React, Next.js, Python, dan Machine Learning.",
   keywords: [
     "Ferdiansyach",
     "Fullstack Developer",
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Ferdiansyach" }],
   creator: "Ferdiansyach",
   openGraph: {
-    title: "Ferdiansyach — Fullstack Developer · Data Analyst · AI Engineer",
+    title: "Ferdiansyach | Fullstack Developer · Data Analyst · AI Engineer",
     description:
       "Fresh Graduate Sistem Informasi dengan fokus pada web development, data analysis, dan AI/ML. Siap berkontribusi pada proyek inovatif.",
     type: "website",
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ferdiansyach — Fullstack Developer · Data Analyst · AI Engineer",
+    title: "Ferdiansyach | Fullstack Developer · Data Analyst · AI Engineer",
     description:
       "Fresh Graduate Sistem Informasi. React, Next.js, Python, Machine Learning, AI Engineering.",
   },

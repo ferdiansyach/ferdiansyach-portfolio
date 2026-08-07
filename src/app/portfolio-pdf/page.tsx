@@ -13,11 +13,6 @@ export default function PortfolioPDF() {
   const [role, setRole] = useState<"fullstack" | "data" | "general" | "generalist">("general");
 
   useEffect(() => {
-    // Redirect to home if accessed in production
-    if (process.env.NODE_ENV === "production") {
-      router.replace("/");
-      return;
-    }
     const savedLang = localStorage.getItem("lang") as "id" | "en";
     if (savedLang) {
       setTimeout(() => {
@@ -53,6 +48,7 @@ export default function PortfolioPDF() {
     "Freelance": { id: "Lepas", en: "Freelance" },
     "Full-time": { id: "Penuh Waktu", en: "Full-time" },
     "Part-time": { id: "Paruh Waktu", en: "Part-time" },
+    "Volunteering": { id: "Kegiatan Sosial", en: "Volunteering" },
   };
   const tType = (type: string) => typeMap[type]?.[lang] ?? type;
 
@@ -69,26 +65,41 @@ export default function PortfolioPDF() {
         return aOrder - bOrder;
       });
     } else if (role === "general") {
-      // Prioritize: unasfest (testing/QA), indosaji (full-stack web), smart-meter (data & modeling)
+      // Prioritize QA & Testing projects: unasfest (testing/QA), magangtracking (API/Auth), indosaji (Payment/E-commerce)
       sortedProjects.sort((a, b) => {
-        const order = { "unasfest": 1, "indosaji": 2, "smart-meter": 3 };
-        const aOrder = order[a.slug as keyof typeof order] || 99;
-        const bOrder = order[b.slug as keyof typeof order] || 99;
+        const order: Record<string, number> = {
+          "unasfest": 1,
+          "magangtracking": 2,
+          "indosaji": 3,
+        };
+        const aOrder = order[a.slug] ?? 99;
+        const bOrder = order[b.slug] ?? 99;
         return aOrder - bOrder;
       });
     } else if (role === "data") {
-      // Prioritize datascience projects
+      // Prioritize top Data Science & ML projects: coastal-water-quality, smart-meter, waste-classification-pkm
       sortedProjects.sort((a, b) => {
-        if (a.category === "datascience" && b.category !== "datascience") return -1;
-        if (a.category !== "datascience" && b.category === "datascience") return 1;
-        return 0;
+        const order: Record<string, number> = {
+          "coastal-water-quality": 1,
+          "smart-meter": 2,
+          "waste-classification-pkm": 3,
+        };
+        const aOrder = order[a.slug] ?? 99;
+        const bOrder = order[b.slug] ?? 99;
+        return aOrder - bOrder;
       });
     } else {
-      // Prioritize webdev projects
+      // Fullstack: explicitly prioritize the best fullstack showcase projects
       sortedProjects.sort((a, b) => {
-        if (a.category === "webdev" && b.category !== "webdev") return -1;
-        if (a.category !== "webdev" && b.category === "webdev") return 1;
-        return 0;
+        const order: Record<string, number> = {
+          "waste-classification-app": 1,
+          "magangtracking": 2,
+          "indosaji": 3,
+          "unasfest": 4,
+        };
+        const aOrder = order[a.slug] ?? 99;
+        const bOrder = order[b.slug] ?? 99;
+        return aOrder - bOrder;
       });
     }
     return sortedProjects.slice(0, 3);
@@ -102,24 +113,31 @@ export default function PortfolioPDF() {
       ...exp,
       bullets: exp.bullets.map(b => ({ ...b })),
     }));
-    // exps order: [0]=telkom, [1]=labassist, [2]=himasi, [3]=unasfest
+    // exps order: [0]=telkom, [1]=labassist, [2]=unasfest, [3]=pkm, [4]=himasi
 
     let ordered = [...exps];
 
-    if (role === "fullstack" || role === "data") {
-      // Telkom → UNAS FEST → HIMASI → Lab Assistant
-      ordered = [exps[0], exps[3], exps[2], exps[1]];
+    if (role === "fullstack") {
+      // Kronologis tahun murni: Telkom → Lab Assist → UNAS FEST → PKM → HIMASI
+      ordered = [exps[0], exps[1], exps[2], exps[3], exps[4]];
+    } else if (role === "data") {
+      // Kronologis tahun murni: Telkom → Lab Assist → UNAS FEST → PKM → HIMASI
+      ordered = [exps[0], exps[1], exps[2], exps[3], exps[4]];
     } else if (role === "general") {
-      // Telkom → UNAS FEST → Lab Assistant → HIMASI
-      ordered = [exps[0], exps[3], exps[1], exps[2]];
+      // Kronologis tahun murni: Telkom → Lab Assist → UNAS FEST → PKM → HIMASI
+      ordered = [exps[0], exps[1], exps[2], exps[3], exps[4]];
     }
     // generalist: keep default chronological order
 
-    // Fullstack only: reorder Telkom bullets (web platform first)
-    if (role === "fullstack" && ordered[0].bullets.length === 3) {
+    // Fullstack only: enrich Telkom web platform bullet with tech stack
+    if (role === "fullstack" && ordered[0].id === "telkom" && ordered[0].bullets.length === 3) {
+      const enrichedWebBullet = {
+        id: "Mengembangkan platform manajemen magang berbasis web fullstack (Next.js frontend, Node.js/Express API, MySQL database) bekerja sama dengan 3 divisi lintas fungsi, melayani 100+ peserta aktif dan mengurangi overhead koordinasi onboarding sebesar 30%.",
+        en: "Developed a fullstack internship management web platform (Next.js frontend, Node.js/Express API, MySQL database) in collaboration with 3 cross-functional divisions, serving 100+ active interns and reducing onboarding coordination overhead by 30%.",
+      };
       ordered[0] = {
         ...ordered[0],
-        bullets: [ordered[0].bullets[2], ordered[0].bullets[0], ordered[0].bullets[1]],
+        bullets: [enrichedWebBullet, ordered[0].bullets[0], ordered[0].bullets[1]],
       };
     }
 
@@ -225,10 +243,8 @@ export default function PortfolioPDF() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-
         .cv-page * {
-          font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+          font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
         }
 
         .cv-section-title {
@@ -253,7 +269,7 @@ export default function PortfolioPDF() {
 
           @page {
             size: A4 portrait;
-            margin: 0;
+            margin: 8mm 10mm;
           }
 
           .no-print {
@@ -261,19 +277,22 @@ export default function PortfolioPDF() {
           }
 
           .cv-page {
-            width: 210mm !important;
-            height: 297mm !important;
-            max-height: 297mm !important;
-            overflow: hidden !important;
-            margin: 0 !important;
+            width: 100% !important;
+            max-width: 210mm !important;
+            height: auto !important;
+            min-height: auto !important;
+            max-height: none !important;
+            overflow: visible !important;
+            margin: 0 auto !important;
             padding: 0 !important;
             box-shadow: none !important;
             border-radius: 0 !important;
+            border: none !important;
             transform: none !important;
           }
 
           .cv-inner {
-            padding: 8mm 12mm !important;
+            padding: 0 !important;
           }
 
           a {
@@ -282,9 +301,26 @@ export default function PortfolioPDF() {
           }
 
           .cv-page {
-            page-break-after: avoid;
-            page-break-inside: avoid;
-            break-inside: avoid;
+            page-break-after: auto;
+            page-break-inside: auto;
+            break-inside: auto;
+          }
+
+          /* Prevent break inside individual content blocks */
+          .cv-section,
+          .exp-item,
+          .project-card,
+          .cert-item,
+          .skills-block {
+            break-inside: avoid !important;
+            page-break-inside: avoid !important;
+          }
+
+          .cv-section-title,
+          .section-header,
+          h1, h2, h3 {
+            break-after: avoid !important;
+            page-break-after: avoid !important;
           }
 
           .cert-grid {
@@ -529,7 +565,7 @@ export default function PortfolioPDF() {
                   : role === "general"
                     ? "IT Specialist | Quality Assurance & Manual Testing | Software Developer"
                     : role === "fullstack"
-                      ? "Full-Stack Developer (React/Next.js, Node.js) | ML for Energy Forecasting"
+                      ? "Full-Stack Developer (React/Next.js · Node.js · Go · PostgreSQL) | AI-Integrated Web Apps"
                       : "Data Analyst & ML Developer (Python, SQL) | Web-GIS & Predictive Modeling"
                 }
               </div>
@@ -561,15 +597,15 @@ export default function PortfolioPDF() {
                     : "Information Systems graduate (GPA 3.77) with hands-on experience spanning web development, data analysis, and IT support. Built 3+ production web applications (React, Next.js, Node.js) while engineering predictive ML models (LSTM, XGBoost) achieving 92% accuracy at Telkom Indonesia. Skilled in managing IT lab infrastructure with 98% device availability, and well-practiced in Agile/Scrum methodologies. A fast-adapting professional ready to contribute across diverse technology roles in dynamic work environments."
                   : role === "general"
                     ? lang === "id"
-                      ? "Lulusan Sistem Informasi dengan kompetensi luas di bidang Quality Assurance (QA/Testing), rekayasa perangkat lunak, dan IT support. Terbukti memiliki ketelitian tinggi dalam mendeteksi bug dan mengoptimalkan performa sistem, termasuk merancang pipeline pengujian (Jest/RTL) yang memangkas bug rate sebesar 60% dan mempertahankan ketersediaan unit lab komputer sebesar 98%. Menguasai metodologi SDLC (Agile/Scrum), pengujian manual (API/Web), serta analisis data. Siap berkontribusi secara fleksibel di berbagai peran teknologi."
-                      : "Information Systems graduate with broad competencies in Quality Assurance (QA/Testing), software engineering, and IT support. Proven track record of high attention to detail in bug detection and system optimization, including engineering a testing pipeline (Jest/RTL) that slashed production bug rate by 60% and maintaining 98% device availability in computer labs. Well-versed in SDLC (Agile/Scrum) methodologies, manual testing (API/Web), and data analysis. Ready to contribute flexibly across diverse IT roles."
+                      ? "Software Quality Assurance (QA) & Test Engineer yang berfokus pada pengujian perangkat lunak (Manual & Automated Testing), penjaminan kualitas API, serta pemeliharaan sistem. Terbukti memiliki ketelitian tinggi dalam identifikasi bug, termasuk merancang pipeline pengujian (Jest & React Testing Library) yang memangkas bug rate produksi sebesar 60% pada portal web festival skala besar, serta mempertahankan 98% ketersediaan perangkat lab komputer melalui troubleshooting sistematis. Menguasai SDLC (Agile/Scrum), pengujian API (Postman), dokumentasi test case, dan analisis sistem."
+                      : "Software Quality Assurance (QA) & Test Engineer specialized in manual & automated software testing, API validation, and system quality assurance. Proven track record of high attention to detail in bug detection, including engineering a component testing pipeline (Jest & React Testing Library) that slashed production bug rate by 60% on a large-scale festival portal, while sustaining 98% device availability across 30+ lab units. Well-versed in SDLC (Agile/Scrum), API testing (Postman), test case documentation, and systematic debugging."
                     : role === "fullstack"
                       ? lang === "id"
-                        ? "Full-Stack Developer yang mengkhususkan diri dalam aplikasi berbasis data. Merancang dan meluncurkan 3+ aplikasi web produksi (React, Next.js, Node.js) dengan skor Lighthouse 90+. Merancang pipeline data end-to-end dan model ML prediktif (LSTM, XGBoost) mencapai akurasi 92% pada 50.000+ data poin di Telkom Indonesia. Menggabungkan keahlian web development dan data engineering untuk membangun produk perangkat lunak yang intelligent dan scalable."
-                        : "Full-Stack Developer specializing in data-informed applications. Architected and shipped 3+ production web applications (React, Next.js, Node.js) with Lighthouse 90+ performance. Engineered end-to-end data pipelines and predictive ML models (LSTM, XGBoost) achieving 92% accuracy on 50,000+ data points at Telkom Indonesia. Leverages both web development and data engineering expertise to build intelligent, scalable software products."
+                        ? "Full-Stack Developer yang menguasai sisi frontend (React, Next.js, TypeScript, skor Lighthouse 90+) dan backend engineering (Node.js/Express, Go/Gin, REST API + JWT Auth) dengan database PostgreSQL dan MongoDB. Meluncurkan 3+ aplikasi produksi live termasuk platform klasifikasi sampah terintegrasi AI (Next.js + Gemini Vision API) dan e-commerce F&B dengan pembayaran Stripe (MERN stack). Membawa ketelitian riset IEEE (ICETISI 2025) ke engineering — menghubungkan kecerdasan ML dengan pengiriman produk web yang solid."
+                        : "Full-Stack Developer proficient in both frontend (React, Next.js, TypeScript, Lighthouse 90+) and backend engineering (Node.js/Express, Go/Gin, REST API + JWT Auth) with PostgreSQL and MongoDB databases. Shipped 3+ production applications including a live AI waste classification platform (Next.js + Gemini Vision API) and an F&B e-commerce with Stripe payment processing (MERN stack). Brings IEEE-published research rigor (ICETISI 2025) to engineering — bridging ML intelligence with solid web product delivery."
                       : lang === "id"
-                        ? "Data Analyst & Machine Learning Developer dengan keahlian kuat dalam Python, SQL, dan analisis geospasial. Merancang pipeline data end-to-end dan model ML prediktif (LSTM, XGBoost) mencapai akurasi 92% pada 50.000+ data poin di Telkom Indonesia. Berpengalaman membangun sistem monitoring kualitas air pesisir menggunakan Google Earth Engine dengan uji statistik Mann-Kendall. Ahli dalam mengubah dataset mentah dan time-series menjadi insight bisnis yang actionable melalui dashboard interaktif (Streamlit)."
-                        : "Data Analyst & Machine Learning Developer with strong expertise in Python, SQL, and geospatial analysis. Engineered end-to-end data pipelines and predictive ML models (LSTM, XGBoost) achieving 92% accuracy on 50,000+ data points at Telkom Indonesia. Experienced in building coastal water quality monitoring systems using Google Earth Engine with Mann-Kendall statistical tests. Adept at transforming raw, time-series datasets into actionable business insights through interactive dashboards (Streamlit)."
+                        ? "Data Analyst & Machine Learning Developer yang berfokus pada pemodelan prediktif, analisis geospasial, dan pipeline data end-to-end. Merancang model prediktif (LSTM, XGBoost) dengan akurasi 92% pada 50.000+ data poin di Telkom Indonesia, serta membangun sistem monitoring kualitas air pesisir 7 tahun berbasis Google Earth Engine dan uji statistik Mann-Kendall. Penulis utama & presenter riset di IEEE ICETISI 2025, berpengalaman mengubah dataset terstruktur dan time-series menjadi insight bisnis yang actionable melalui dashboard interaktif (Streamlit, Tableau)."
+                        : "Data Analyst & Machine Learning Developer specialized in end-to-end data pipelines, predictive modeling (LSTM, XGBoost), and geospatial analytics. Engineered predictive energy models achieving 92% accuracy on 50,000+ data points at Telkom Indonesia, and architected a 7-year spatiotemporal coastal water monitoring framework using Google Earth Engine and Mann-Kendall statistical testing. First-author presenter at IEEE ICETISI 2025, skilled at transforming complex time-series and spatial datasets into actionable business dashboards (Streamlit, Tableau) and decision support systems."
                 }
               </p>
             </section>
@@ -581,7 +617,7 @@ export default function PortfolioPDF() {
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
                 {orderedExperiences.map((exp) => (
-                  <div key={exp.id}>
+                  <div key={exp.id} className="exp-item">
                     {/* Role + Period */}
                     <div className="exp-header">
                       <h3 style={{ fontSize: '10.5px', fontWeight: 700, color: '#0f172a', margin: 0 }}>{t(exp.role)}</h3>
@@ -679,7 +715,7 @@ export default function PortfolioPDF() {
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                 {topProjects.map((proj) => (
-                  <div key={proj.slug}>
+                  <div key={proj.slug} className="project-item">
                     <div className="exp-header">
                       <h3 style={{ fontSize: '10px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
                         {typeof proj.title === 'string' ? proj.title : t(proj.title)}
@@ -708,7 +744,7 @@ export default function PortfolioPDF() {
               </h2>
               <div className="cert-grid">
                 {certifications.map((cert) => (
-                  <div key={cert.id} style={{ fontSize: '9.5px', color: '#374151', lineHeight: 1.35 }}>
+                  <div key={cert.id} className="cert-item" style={{ fontSize: '9.5px', color: '#374151', lineHeight: 1.35 }}>
                     <span style={{ fontWeight: 700, color: '#0f172a' }}>{t(cert.name)}</span>
                     {" | "}{cert.issuer} ({cert.date})
                   </div>

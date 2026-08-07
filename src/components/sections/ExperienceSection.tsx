@@ -34,9 +34,7 @@ function TimelineItem({ exp, index }: { exp: typeof experiences[0]; index: numbe
       className="relative pb-14 group"
     >
       {/* Timeline dot aligned with TracingBeam */}
-      <div className="absolute -left-[33px] top-1.5 w-4 h-4 rounded-full bg-[var(--color-canvas-elevated)] border-[3px] border-[var(--color-primary)] shadow-[0_0_12px_rgba(124,58,237,0.4)] transition-shadow duration-300 group-hover:shadow-[0_0_20px_rgba(124,58,237,0.6)] z-10">
-        <span className="absolute inset-0 rounded-full bg-[var(--color-primary)]/30 animate-ping" />
-      </div>
+      <div className="absolute -left-[33px] top-1.5 w-4 h-4 rounded-full bg-[var(--color-canvas-elevated)] border-[3px] border-[var(--color-primary)] shadow-[0_0_12px_rgba(124,58,237,0.4)] transition-shadow duration-300 group-hover:shadow-[0_0_20px_rgba(124,58,237,0.6)] z-10" />
 
       {/* Card */}
       <div className="glass-card p-6 sm:p-8 md:p-12 border-l-[3px] border-l-[var(--color-primary)] hover:translate-x-1 transition-all duration-300 rounded-lg">
@@ -65,7 +63,7 @@ function TimelineItem({ exp, index }: { exp: typeof experiences[0]; index: numbe
 
 export default function ExperienceSection() {
   return (
-    <AnimatedSection id="experience" className="py-32 container mx-auto px-6">
+    <AnimatedSection id="experience" className="py-16 sm:py-24 md:py-32 container mx-auto px-4 sm:px-6">
       <AnimatedDiv>
         <SectionHeader label={translations.experience.label} title={translations.experience.title} />
       </AnimatedDiv>

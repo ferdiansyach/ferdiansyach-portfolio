@@ -53,6 +53,87 @@ export const projects: Project[] = [
     role: { id: "Fullstack Developer", en: "Fullstack Developer" },
   },
   {
+    slug: "waste-classification-app",
+    title: "Waste Classification AI App",
+    description: {
+      id: "Aplikasi web fullstack klasifikasi sampah berbasis AI — upload foto, dapat kategori & rekomendasi penanganan secara instan. Dibangun dengan Next.js 15, Gemini Vision API, PostgreSQL, dan Drizzle ORM.",
+      en: "AI-powered fullstack waste classification web app — upload a photo, get instant category & handling recommendations. Built with Next.js 15, Gemini Vision API, PostgreSQL, and Drizzle ORM.",
+    },
+    longDescription: {
+      id: "Aplikasi web fullstack yang memanfaatkan Gemini Vision API (Google AI) untuk klasifikasi jenis sampah secara otomatis berdasarkan foto yang diunggah pengguna. Dibangun dengan arsitektur fullstack modern: Next.js 15 App Router sebagai frontend dan server-side API, PostgreSQL dengan Drizzle ORM sebagai database, dan Tailwind CSS untuk antarmuka responsif. Pengguna cukup mengunggah foto sampah dan sistem akan mengidentifikasi kategori (organik, anorganik, B3) beserta rekomendasi penanganan yang tepat secara real-time.",
+      en: "A fullstack web application leveraging the Gemini Vision API (Google AI) for automatic waste classification from user-uploaded photos. Built with modern fullstack architecture: Next.js 15 App Router for both frontend and server-side API handling, PostgreSQL with Drizzle ORM as the database layer, and Tailwind CSS for a responsive UI. Users simply upload a waste photo and the system identifies the category (organic, inorganic, hazardous) along with proper handling recommendations in real-time.",
+    },
+    challenges: {
+      id: "Tantangan utama adalah mengintegrasikan Gemini Vision API secara efisien dalam Next.js API Routes sambil mengelola state upload gambar dan menampilkan hasil klasifikasi secara real-time. Diperlukan optimasi prompt engineering untuk mendapatkan output terstruktur dari model AI, serta perancangan skema database PostgreSQL yang fleksibel untuk menyimpan riwayat klasifikasi pengguna.",
+      en: "The main challenge was integrating the Gemini Vision API efficiently within Next.js API Routes while managing image upload state and displaying classification results in real-time. Required prompt engineering optimization to get structured output from the AI model, and PostgreSQL schema design to flexibly store user classification history.",
+    },
+    technologies: ["Next.js 15", "TypeScript", "Gemini Vision API", "PostgreSQL", "Drizzle ORM", "Tailwind CSS", "Google AI"],
+    category: "webdev",
+    period: "2025",
+    thumbnail: "/images/intern3.jpeg",
+    pdfBullets: [
+      {
+        id: "Membangun aplikasi web fullstack klasifikasi sampah berbasis AI dengan Next.js 15 App Router dan Gemini Vision API, memproses klasifikasi foto secara real-time dan menyimpan riwayat ke PostgreSQL via Drizzle ORM.",
+        en: "Built a fullstack AI waste classification web app with Next.js 15 App Router and Gemini Vision API, processing real-time photo classification and persisting history to PostgreSQL via Drizzle ORM.",
+      },
+      {
+        id: "Merancang skema PostgreSQL dan REST API layer dengan Drizzle ORM untuk penyimpanan data klasifikasi pengguna yang terstruktur, dideploy secara penuh di Vercel.",
+        en: "Designed PostgreSQL schema and REST API layer with Drizzle ORM for structured user classification data storage, fully deployed on Vercel.",
+      },
+      {
+        id: "Mengimplementasikan prompt engineering pada Gemini Vision API untuk menghasilkan output terstruktur (kategori sampah + rekomendasi penanganan) dari input foto pengguna.",
+        en: "Implemented prompt engineering on Gemini Vision API to produce structured output (waste category + handling recommendations) from user photo inputs.",
+      },
+    ],
+    images: [
+      { src: "/images/intern3.jpeg", caption: { id: "Klasifikasi Sampah AI", en: "AI Waste Classification" } },
+    ],
+    githubUrl: "https://github.com/ferdiansyach/waste-classification",
+    liveUrl: "https://waste-classification-rust.vercel.app",
+    role: { id: "Fullstack Developer", en: "Fullstack Developer" },
+  },
+  {
+    slug: "magangtracking",
+    title: "MagangTracking Platform",
+    description: {
+      id: "Platform fullstack pelacak dan analitik program magang untuk MagangHub Kemnaker — dibangun dengan Go (Gin) sebagai backend, Next.js 16 sebagai frontend, dan Supabase PostgreSQL sebagai database.",
+      en: "Fullstack internship tracker & analytics platform for MagangHub Kemnaker — built with Go (Gin) as backend, Next.js 16 as frontend, and Supabase PostgreSQL as the database.",
+    },
+    longDescription: {
+      id: "Platform manajemen dan analitik program magang terintegrasi untuk MagangHub Kemnaker. Arsitektur fullstack terpisah antara backend (Go dengan framework Gin untuk RESTful API yang performan) dan frontend (Next.js 16 dengan Tailwind CSS v4). Database menggunakan Supabase PostgreSQL sebagai managed cloud database. Sistem mendukung tracking peserta magang, manajemen program, dan dashboard analitik untuk memonitoring perkembangan program magang secara real-time.",
+      en: "An integrated internship program management and analytics platform for MagangHub Kemnaker. The fullstack architecture separates concerns between a Go (Gin framework) backend for performant RESTful APIs and a Next.js 16 frontend with Tailwind CSS v4. Database powered by Supabase PostgreSQL as managed cloud storage. Supports intern tracking, program management, and an analytics dashboard for monitoring internship program progress in real-time.",
+    },
+    challenges: {
+      id: "Tantangan utama adalah merancang arsitektur REST API yang efisien dengan Go (Gin) yang dapat melayani request dari Next.js frontend secara aman menggunakan CORS dan autentikasi berbasis token. Manajemen koneksi Supabase PostgreSQL dan query optimasi untuk dashboard analitik real-time juga memerlukan perhatian khusus.",
+      en: "The main challenge was designing an efficient REST API architecture with Go (Gin) that can securely serve requests from the Next.js frontend using CORS and token-based authentication. Supabase PostgreSQL connection management and query optimization for real-time analytics dashboards also required careful attention.",
+    },
+    technologies: ["Go", "Gin", "Next.js 16", "TypeScript", "PostgreSQL", "Supabase", "Tailwind CSS v4", "REST API"],
+    category: "webdev",
+    period: "2026",
+    thumbnail: "/images/magangtracking1.png",
+    pdfBullets: [
+      {
+        id: "Membangun backend RESTful API dengan Go (Gin framework) yang melayani data magang dari Supabase PostgreSQL ke frontend Next.js 16 secara aman dengan autentikasi berbasis token.",
+        en: "Built a RESTful API backend with Go (Gin framework) serving internship data from Supabase PostgreSQL to a Next.js 16 frontend with token-based authentication.",
+      },
+      {
+        id: "Merancang arsitektur fullstack terpisah (Go API + Next.js SPA) dengan Supabase PostgreSQL sebagai managed cloud database, dideploy di Vercel dengan integrasi CI/CD.",
+        en: "Architected a decoupled fullstack system (Go API + Next.js SPA) with Supabase PostgreSQL as managed cloud database, deployed on Vercel with CI/CD integration.",
+      },
+      {
+        id: "Mengimplementasikan dashboard analitik real-time untuk monitoring program magang MagangHub Kemnaker dengan visualisasi data peserta dan progress tracking.",
+        en: "Implemented a real-time analytics dashboard for monitoring MagangHub Kemnaker internship programs with participant data visualization and progress tracking.",
+      },
+    ],
+    images: [
+      { src: "/images/magangtracking1.png", caption: { id: "Dashboard Statistik MagangHub", en: "MagangHub Analytics Dashboard" } },
+      { src: "/images/magangtracking2.png", caption: { id: "Katalog Lowongan Magang", en: "Internship Vacancies Catalog" } },
+    ],
+    githubUrl: "https://github.com/ferdiansyach/magangtracking",
+    liveUrl: "https://magangtracking.vercel.app",
+    role: { id: "Fullstack Developer (Go + Next.js)", en: "Fullstack Developer (Go + Next.js)" },
+  },
+  {
     slug: "smart-meter",
     title: "Smart Meter Analysis",
     description: {
@@ -340,35 +421,35 @@ export const projects: Project[] = [
   },
   {
     slug: "waste-classification-pkm",
-    title: "Waste Classification AI (PKM)",
+    title: "AI Waste Detection System (PKM × DLHK Depok)",
     description: {
-      id: "Model AI klasifikasi jenis sampah berbasis Computer Vision / Deep Learning untuk Program Kreativitas Mahasiswa (PKM).",
-      en: "Deep Learning / Computer Vision automated waste classification AI model for the Student Creativity Program (PKM).",
+      id: "Model deteksi sampah real-time berbasis YOLOv11 dengan mAP (IoU 0.5) 97.5% — kolaborasi PKM Pengabdian Masyarakat dengan DLHK Kota Depok untuk pengelolaan sampah berbasis AI.",
+      en: "Real-time YOLOv11 waste detection model achieving mAP (IoU 0.5) 97.5% — PKM community service collaboration with Depok City Environmental Agency (DLHK) for AI-powered waste management.",
     },
     longDescription: {
-      id: "Proyek kolaborasi Program Kreativitas Mahasiswa (PKM) bidang teknologi untuk mengembangkan sistem klasifikasi jenis sampah otomatis (organik vs anorganik / daur ulang) berbasis Computer Vision. Menggunakan arsitektur Convolutional Neural Network (CNN) untuk mengklasifikasikan citra objek sampah secara real-time.",
-      en: "A Student Creativity Program (PKM) collaborative technology project developing an automated waste classification system (organic vs inorganic / recyclable) powered by Computer Vision. Utilizes Convolutional Neural Network (CNN) architecture to classify waste object images in real-time.",
+      id: "Proyek PKM Pengabdian Masyarakat yang mengembangkan sistem deteksi dan klasifikasi sampah real-time menggunakan arsitektur YOLOv11 deep learning, berkolaborasi dengan Dinas Lingkungan Hidup dan Kebersihan (DLHK) Kota Depok. Model dilatih pada 10.000+ citra sampah teranotasi lintas 6 kategori (kardus, kaca, logam, kertas, plastik, sampah umum), mencapai mAP (IoU 0.5) sebesar 97.5%, Precision 96.2%, dan Recall 95.8%. Dilengkapi platform web klasifikasi sampah dengan dashboard admin untuk monitoring real-time, serta pelaksanaan pelatihan transfer teknologi kepada komunitas pengelola sampah di Beji dan Mekarjaya, Depok.",
+      en: "A PKM (Student Creativity Program) community service project developing a real-time waste detection and classification system using YOLOv11 deep learning architecture, in collaboration with the Depok City Environmental and Sanitation Agency (DLHK). The model was trained on 10,000+ annotated images across 6 waste categories (cardboard, glass, metal, paper, plastic, trash), achieving mAP (IoU 0.5) of 97.5%, Precision of 96.2%, and Recall of 95.8%. The project also includes a web-based waste classification platform with an admin dashboard for real-time monitoring, and field deployment with technology transfer training for waste management communities in Beji and Mekarjaya, Depok.",
     },
     challenges: {
-      id: "Mengumpulkan dan melakukan augmentasi dataset gambar sampah dengan variasi pencahayaan dan latar belakang yang beragam untuk melatih model CNN yang robust terhadap kondisi nyata.",
-      en: "Collecting and augmenting image datasets of waste under varied lighting and background conditions to train a robust CNN model resilient to real-world environments.",
+      id: "Tantangan utama adalah membangun dataset citra sampah berkualitas tinggi pada berbagai kondisi pencahayaan dan latar belakang nyata, serta melakukan fine-tuning YOLOv11 agar robust terhadap variasi visual 6 kategori sampah. Integrasi model ke platform web untuk real-time inference juga memerlukan optimasi performa agar dapat berjalan pada hardware terbatas.",
+      en: "Key challenges included building a high-quality waste image dataset under varied real-world lighting and background conditions, and fine-tuning YOLOv11 to be robust across 6 waste category visual variations. Integrating the model into a web platform for real-time inference also required performance optimization for constrained hardware environments.",
     },
-    technologies: ["Python", "TensorFlow", "Computer Vision", "CNN", "Deep Learning", "OpenCV"],
+    technologies: ["Python", "YOLOv11", "Computer Vision", "Deep Learning", "PyTorch", "OpenCV", "Next.js", "Streamlit"],
     category: "datascience",
-    period: "2025",
+    period: "2024 – 2025",
     thumbnail: "/images/intern3.jpeg",
     pdfBullets: [
       {
-        id: "Mengembangkan model Convolutional Neural Network (CNN) untuk klasifikasi jenis sampah otomatis dalam proyek Program Kreativitas Mahasiswa (PKM).",
-        en: "Developed a Convolutional Neural Network (CNN) model for automated waste classification in the Student Creativity Program (PKM) project.",
+        id: "Merancang dan melatih model deteksi objek YOLOv11 pada 10.000+ citra sampah teranotasi lintas 6 kategori, mencapai mAP (IoU 0.5) 97.5%, Precision 96.2%, dan Recall 95.8% dalam kolaborasi dengan DLHK Kota Depok.",
+        en: "Engineered and trained a YOLOv11 object detection model on 10,000+ annotated waste images across 6 categories, achieving mAP (IoU 0.5) of 97.5%, Precision 96.2%, and Recall 95.8%, in collaboration with Depok City Environmental Agency (DLHK).",
       },
       {
-        id: "Mengolah pipeline augmentasi citra dan preprocessing OpenCV untuk meningkatkan presisi deteksi objek pada beragam latar belakang.",
-        en: "Engineered image augmentation and OpenCV preprocessing pipelines to improve object detection precision across varied backgrounds.",
+        id: "Mengembangkan platform web klasifikasi sampah berbasis AI dengan dashboard admin real-time, serta melaksanakan pelatihan transfer teknologi kepada komunitas pengelola sampah di Beji dan Mekarjaya, Depok.",
+        en: "Developed an AI-powered waste classification web platform with a real-time admin dashboard, and conducted technology transfer training for waste management communities in Beji and Mekarjaya, Depok.",
       },
     ],
     images: [
-      { src: "/images/intern3.jpeg", caption: { id: "Klasifikasi Sampah AI", en: "AI Waste Classification" } },
+      { src: "/images/intern3.jpeg", caption: { id: "Deteksi Sampah YOLOv11", en: "YOLOv11 Waste Detection" } },
     ],
     githubUrl: "https://github.com/ferdiansyach/waste-classification",
     role: { id: "Computer Vision & ML Developer", en: "Computer Vision & ML Developer" },
@@ -381,4 +462,17 @@ export function getProjectBySlug(slug: string): Project | undefined {
 
 export function getProjectSlugs(): string[] {
   return projects.map((p) => p.slug);
+}
+
+export function getAdjacentProjects(slug: string): { prevProject: Project | undefined; nextProject: Project | undefined } {
+  const currentIndex = projects.findIndex((p) => p.slug === slug);
+  if (currentIndex === -1) return { prevProject: undefined, nextProject: undefined };
+
+  const prevIndex = (currentIndex - 1 + projects.length) % projects.length;
+  const nextIndex = (currentIndex + 1) % projects.length;
+
+  return {
+    prevProject: projects[prevIndex],
+    nextProject: projects[nextIndex],
+  };
 }

@@ -1,6 +1,10 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# ==============================================================================
+# .gitignore - Personal Portfolio (Ferdiansyach)
+# ==============================================================================
 
-# dependencies
+# ------------------------------------------------------------------------------
+# 1. Dependencies & Package Managers
+# ------------------------------------------------------------------------------
 /node_modules
 /.pnp
 .pnp.*
@@ -10,60 +14,87 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
-/coverage
-
-# next.js
+# ------------------------------------------------------------------------------
+# 2. Next.js & Build Outputs
+# ------------------------------------------------------------------------------
 /.next/
 /out/
-
-# production
 /build
+/.turbo/
+/.vercel
+*.tsbuildinfo
+next-env.d.ts
 
-# misc
-.DS_Store
+# ------------------------------------------------------------------------------
+# 3. Environment & Secret Credentials
+# ------------------------------------------------------------------------------
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env*.local
 *.pem
+*.key
+*.crt
 
-# debug
+# ------------------------------------------------------------------------------
+# 4. Sensitive Personal Documents & Files (Do NOT push to public repo)
+# ------------------------------------------------------------------------------
+/public/npwp/
+/public/npwp*
+/public/Sertifikat/
+/public/IjazahS1_Ferdiansyach.pdf
+/public/*.pdf
+/public/cv/*.pdf
+/public/cv/*.docx
+*.pdf
+*.docx
+
+# ------------------------------------------------------------------------------
+# 5. IDE, AI Agent, & Workspace Config Directories
+# ------------------------------------------------------------------------------
+.vscode/
+.idea/
+.zed/
+.claude/
+.gemini/
+.impeccable/
+C:*
+tasks/
+
+# ------------------------------------------------------------------------------
+# 6. Temporary Files, Screenshots & Logs
+# ------------------------------------------------------------------------------
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
-
-# env files (can opt-in for committing if needed)
-.env*
-
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
-
-# local IDE config directories
-.claude/
-.gemini/
-
-# sensitive personal files
-/public/npwp/
-/public/npwp*
-/public/*.pdf
-/public/Sertifikat/
-/public/IjazahS1_Ferdiansyach.pdf
-
-# local helper scripts and temporary backups
-.old_backup/
-reflect_instructions.md
-screenshot_portfolio.py
-portfolio-structure.html
-/light-mode-*.png
-/dark-mode-*.png
 lint_output.txt
+portfolio-structure.html
+screenshot_portfolio.py
+reflect_instructions.md
+.old_backup/
+light-mode-*.png
+dark-mode-*.png
 
-# python compile/cache files
+# ------------------------------------------------------------------------------
+# 7. Python Cache & Virtual Environments (from helper scripts)
+# ------------------------------------------------------------------------------
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 .pytest_cache/
+.venv/
+venv/
+env/
 
+# ------------------------------------------------------------------------------
+# 8. Operating System Junk
+# ------------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+*.swp

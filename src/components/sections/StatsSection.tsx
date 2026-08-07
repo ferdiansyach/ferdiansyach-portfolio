@@ -29,7 +29,7 @@ function StatItem({ value, suffix, label, icon }: StatItemProps) {
 
 const stats = [
   {
-    value: 5,
+    value: 10,
     suffix: "+",
     label: translations.stats.projects,
     icon: (

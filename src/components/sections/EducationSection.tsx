@@ -11,7 +11,7 @@ export default function EducationSection() {
   const { t } = useLanguage();
 
   return (
-    <AnimatedSection id="education" className="py-32 container mx-auto px-6">
+    <AnimatedSection id="education" className="py-16 sm:py-24 md:py-32 container mx-auto px-4 sm:px-6">
       <AnimatedDiv>
         <SectionHeader label={translations.education.label} title={translations.education.title} />
       </AnimatedDiv>

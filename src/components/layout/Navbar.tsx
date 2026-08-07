@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/hooks/useLanguage";
-import { useTheme } from "@/hooks/useTheme";
 import { translations } from "@/data/translations";
 
 const navItems = [
@@ -20,7 +19,6 @@ const navItems = [
 
 export default function Navbar() {
   const { t, lang, toggleLang } = useLanguage();
-  const { theme, toggleTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -44,18 +42,23 @@ export default function Navbar() {
       // Skip updating active section from scroll if we just clicked a menu item
       if (isClickScrollingRef.current) return;
 
-      // Active section detection
-      const sections = document.querySelectorAll("section[id]");
-      let current = "home";
-      sections.forEach((section) => {
-        const el = section as HTMLElement;
-        if (window.pageYOffset >= el.offsetTop - 150) {
-          current = el.id;
-        }
-      });
-      setActiveSection(current);
+      // Active section detection (only on homepage)
+      if (pathname === "/") {
+        const sections = document.querySelectorAll("section[id]");
+        let current = "home";
+        sections.forEach((section) => {
+          const el = section as HTMLElement;
+          if (window.pageYOffset >= el.offsetTop - 150) {
+            current = el.id;
+          }
+        });
+        setActiveSection(current);
+      } else {
+        setActiveSection("");
+      }
     };
 
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -63,7 +66,7 @@ export default function Navbar() {
         clearTimeout(clickScrollTimeoutRef.current);
       }
     };
-  }, []);
+  }, [pathname]);
 
   return (
     <header
@@ -98,27 +101,27 @@ export default function Navbar() {
             const sectionId = item.href.slice(1);
             const isActive = activeSection === sectionId;
             const isHovered = hoveredSection === sectionId;
+            const targetHref = pathname === "/" ? item.href : `/${item.href}`;
 
             const handleClick = () => {
-              // Instantly update active state to clicked item
-              setActiveSection(sectionId);
-              isClickScrollingRef.current = true;
+              if (pathname === "/") {
+                setActiveSection(sectionId);
+                isClickScrollingRef.current = true;
 
-              // Clear any existing timeouts to reset the lock period
-              if (clickScrollTimeoutRef.current) {
-                clearTimeout(clickScrollTimeoutRef.current);
+                if (clickScrollTimeoutRef.current) {
+                  clearTimeout(clickScrollTimeoutRef.current);
+                }
+
+                clickScrollTimeoutRef.current = setTimeout(() => {
+                  isClickScrollingRef.current = false;
+                }, 800);
               }
-
-              // Lock the scroll spy for 800ms while the browser smooth-scrolls
-              clickScrollTimeoutRef.current = setTimeout(() => {
-                isClickScrollingRef.current = false;
-              }, 800);
             };
 
             return (
               <a
                 key={item.href}
-                href={item.href}
+                href={targetHref}
                 onClick={handleClick}
                 onMouseEnter={() => setHoveredSection(sectionId)}
                 className={`relative px-4 py-2 text-sm font-semibold transition-colors duration-300 z-10 ${
@@ -163,23 +166,8 @@ export default function Navbar() {
             </Link>
           )}
           <button
-            onClick={toggleTheme}
-            className="w-9 h-9 flex items-center justify-center border border-[var(--color-hairline)] bg-[var(--color-canvas-elevated)] text-[var(--color-body)] hover:border-[var(--color-primary)] hover:bg-[var(--color-primary)]/10 transition-all duration-300 rounded-md"
-            aria-label="Toggle theme"
-          >
-            {theme === "dark" ? (
-              <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" />
-              </svg>
-            ) : (
-              <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-              </svg>
-            )}
-          </button>
-          <button
             onClick={toggleLang}
-            className="w-9 h-9 flex items-center justify-center border border-[var(--color-hairline)] bg-[var(--color-canvas-elevated)] text-[var(--color-body)] hover:border-[var(--color-primary)] hover:bg-[var(--color-primary)]/10 transition-all duration-300 text-xs font-semibold rounded-md"
+            className="w-11 h-11 flex items-center justify-center border border-[var(--color-hairline)] bg-[var(--color-canvas-elevated)] text-[var(--color-body)] hover:border-[var(--color-primary)] hover:bg-[var(--color-primary)]/10 transition-all duration-300 text-xs font-semibold rounded-md cursor-pointer active:scale-95"
             aria-label={lang === "id" ? "Bahasa saat ini: Indonesia. Klik untuk ganti ke English" : "Current language: English. Click to switch to Indonesian"}
           >
             {lang === "id" ? "ID" : "EN"}
@@ -188,7 +176,10 @@ export default function Navbar() {
           {/* Mobile hamburger */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden w-9 h-9 flex items-center justify-center border border-[var(--color-hairline)] bg-[var(--color-canvas-elevated)] text-[var(--color-ink)] rounded-md"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            className="lg:hidden w-11 h-11 flex items-center justify-center border border-[var(--color-hairline)] bg-[var(--color-canvas-elevated)] text-[var(--color-ink)] rounded-md cursor-pointer active:scale-95"
           >
             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={menuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"} />
@@ -199,18 +190,19 @@ export default function Navbar() {
 
       {/* Mobile menu with slide animation */}
       <motion.div
+        id="mobile-menu"
         className="lg:hidden overflow-hidden"
         initial={false}
         animate={{ height: menuOpen ? "auto" : 0 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
       >
-        <div className="px-6 py-4 space-y-1 bg-[var(--color-canvas)]/95 backdrop-blur-md border-t border-[var(--color-hairline)]">
+        <div className="px-5 py-4 space-y-1.5 bg-[var(--color-canvas)]/95 backdrop-blur-xl border-t border-[var(--color-hairline)] pb-6">
           {navItems.map((item, i) => (
             <motion.a
               key={item.href}
-              href={item.href}
+              href={pathname === "/" ? item.href : `/${item.href}`}
               onClick={() => setMenuOpen(false)}
-              className="block py-3 text-[var(--color-body)] hover:text-[var(--color-primary)] transition-colors font-semibold"
+              className="flex items-center min-h-[44px] px-4 py-2.5 rounded-xl text-[var(--color-body)] hover:text-[var(--color-primary)] hover:bg-[var(--color-primary)]/10 active:bg-[var(--color-primary)]/20 active:text-[var(--color-primary)] transition-all font-semibold text-base touch-manipulation"
               initial={{ opacity: 0, x: -20 }}
               animate={menuOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
               transition={{ delay: i * 0.05 }}

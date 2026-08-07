@@ -45,6 +45,20 @@ export const skillCategories: SkillCategory[] = [
     title: { id: "Backend & DB", en: "Backend & DB" },
     skills: [
       {
+        name: "Go / Golang",
+        icon: "golang",
+        color: "#00ADD8",
+        proficiency: "intermediate",
+        usageContext: { id: "MagangTracking (Gin API), Fullstack Menu Tree", en: "MagangTracking (Gin API), Fullstack Menu Tree" },
+      },
+      {
+        name: "PostgreSQL",
+        icon: "postgresql",
+        color: "#336791",
+        proficiency: "intermediate",
+        usageContext: { id: "MagangTracking (Supabase), Waste Classification, Fullstack Menu Tree", en: "MagangTracking (Supabase), Waste Classification, Fullstack Menu Tree" },
+      },
+      {
         name: "Prisma",
         icon: "prisma",
         color: "#2D3748",

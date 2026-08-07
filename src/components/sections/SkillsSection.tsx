@@ -8,7 +8,6 @@ import { skillCategories } from "@/data/skills";
 import SectionHeader from "@/components/ui/SectionHeader";
 import SkillIcon from "@/components/ui/SkillIcon";
 import { AnimatedSection, AnimatedDiv } from "@/components/ui/AnimatedSection";
-import Meteors from "@/components/ui/Meteors";
 
 const categoryIcons: Record<string, string> = {
   Frontend: "⚡",
@@ -23,9 +22,9 @@ const proficiencyConfig = {
   beginner: {
     label: { id: "Pemula", en: "Beginner" },
     dots: 1,
-    color: "bg-[var(--color-body-strong)]",
-    textColor: "text-[var(--color-body)]",
-    badge: "bg-slate-500/10 text-slate-400 border-slate-500/20",
+    color: "bg-slate-400",
+    textColor: "text-slate-300",
+    badge: "bg-slate-500/10 text-slate-300 border-slate-500/20",
   },
   intermediate: {
     label: { id: "Menengah", en: "Intermediate" },
@@ -58,32 +57,40 @@ export default function SkillsSection() {
       </AnimatedDiv>
 
       {/* Category Tabs */}
-      <AnimatedDiv className="flex flex-wrap justify-center gap-2 mb-14">
+      <AnimatedDiv className="flex max-w-full overflow-x-auto no-scrollbar pb-2 sm:pb-0 flex-nowrap md:flex-wrap justify-start md:justify-center gap-2 mb-14">
         {skillCategories.map((category, i) => {
           const iconKey = category.title.en;
           const emoji = categoryIcons[iconKey] ?? "💡";
+          const isActive = activeTab === i;
           return (
             <motion.button
               key={i}
               onClick={() => setActiveTab(i)}
-              whileHover={{ y: -2, scale: 1.03 }}
+              whileHover={{ y: -2, scale: 1.02 }}
               whileTap={{ scale: 0.96 }}
               className={`
-                relative px-5 py-2.5 rounded-xl text-sm font-semibold
-                transition-all duration-300 border cursor-pointer flex items-center gap-2
+                relative px-5 py-2.5 min-h-[44px] rounded-xl text-sm font-semibold
+                transition-colors duration-300 border cursor-pointer flex items-center gap-2 touch-manipulation
                 ${
-                  activeTab === i
-                    ? "bg-[var(--color-primary)] text-white border-transparent shadow-lg shadow-[var(--color-primary)]/30"
+                  isActive
+                    ? "text-white border-transparent shadow-lg shadow-[var(--color-primary)]/30"
                     : "border-[var(--color-hairline)] text-[var(--color-body)] hover:border-[var(--color-primary)]/60 hover:text-[var(--color-ink)] bg-[var(--color-surface)]"
                 }
               `}
             >
-              <span className="text-base">{emoji}</span>
-              <span>{t(category.title)}</span>
+              {isActive && (
+                <motion.div
+                  layoutId="activeSkillCategoryPill"
+                  className="absolute inset-0 rounded-xl bg-[var(--color-primary)]"
+                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                />
+              )}
+              <span className="relative z-10 text-base">{emoji}</span>
+              <span className="relative z-10">{t(category.title)}</span>
               <span
                 className={`
-                  text-xs px-1.5 py-0.5 rounded-full font-bold ml-0.5
-                  ${activeTab === i ? "bg-white/20 text-white" : "bg-[var(--color-hairline)] text-[var(--color-body)]"}
+                  relative z-10 text-xs px-1.5 py-0.5 rounded-full font-bold ml-0.5
+                  ${isActive ? "bg-white/20 text-white" : "bg-[var(--color-hairline)] text-[var(--color-body)]"}
                 `}
               >
                 {category.skills.length}
@@ -152,9 +159,6 @@ export default function SkillsSection() {
                       }}
                     />
 
-                    {/* Meteor effect on hover */}
-                    {isHovered && <Meteors number={6} />}
-
                     {/* Top Row: Icon + Name + Badges */}
                     <div className="relative z-10 flex items-start gap-3 mb-4">
                       {/* Icon container */}
@@ -184,13 +188,13 @@ export default function SkillsSection() {
                             {skill.name}
                           </span>
                           {skill.isLearning && (
-                            <span className="bg-amber-500/10 text-amber-400 border border-amber-500/20 text-[9px] font-bold px-1.5 py-0.5 rounded-full uppercase tracking-wide">
+                            <span className="bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-bold px-1.5 py-0.5 rounded-full uppercase tracking-wide">
                               {t(translations.skills.currentlyLearning)}
                             </span>
                           )}
                         </div>
                         {skill.typeLabel && (
-                          <span className="text-[10px] font-medium tracking-wide text-[var(--color-body)] bg-[var(--color-surface)] border border-[var(--color-hairline)] px-1.5 py-0.5 rounded-md">
+                          <span className="text-xs font-medium tracking-wide text-[var(--color-body)] bg-[var(--color-surface)] border border-[var(--color-hairline)] px-1.5 py-0.5 rounded-md">
                             {t(skill.typeLabel)}
                           </span>
                         )}
@@ -200,7 +204,7 @@ export default function SkillsSection() {
                     {/* Usage context */}
                     {skill.usageContext && (
                       <div className="relative z-10 mb-4">
-                        <p className="text-[11px] text-[var(--color-body)] leading-relaxed line-clamp-2 group-hover:text-[var(--color-body-strong)] transition-colors">
+                        <p className="text-xs text-[var(--color-body)] leading-relaxed line-clamp-2 group-hover:text-[var(--color-body-strong)] transition-colors">
                           {t(skill.usageContext)}
                         </p>
                       </div>
@@ -294,7 +298,7 @@ export default function SkillsSection() {
                 </div>
               ))}
               <div className="flex items-center gap-2">
-                <span className="bg-amber-500/10 text-amber-400 border border-amber-500/20 text-[9px] font-bold px-1.5 py-0.5 rounded-full uppercase tracking-wide">
+                <span className="bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-bold px-1.5 py-0.5 rounded-full uppercase tracking-wide">
                   {t(translations.skills.currentlyLearning)}
                 </span>
               </div>

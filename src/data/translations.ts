@@ -12,8 +12,8 @@ export const translations = {
     subtitle: { id: "Sistem Informasi — Universitas Nasional", en: "Information Systems — Universitas Nasional" },
     greeting: { id: "Hai, Saya", en: "Hi, I'm" },
     description: {
-      id: "Fullstack Developer, Data Analyst & AI Engineer berpengalaman. Telah membangun 5+ proyek produksi dan model AI prediktif dengan akurasi 92%. Siap memberikan dampak nyata melalui solusi teknologi inovatif.",
-      en: "An experienced Fullstack Developer, Data Analyst & AI Engineer. Delivered 5+ production projects and predictive AI models achieving 92% accuracy. Ready to drive real impact through innovative technology solutions.",
+      id: "Fullstack Developer, Data Analyst & AI Engineer berpengalaman. Telah membangun 10+ proyek produksi dan model AI prediktif dengan akurasi 92%. Siap memberikan dampak nyata melalui solusi teknologi inovatif.",
+      en: "An experienced Fullstack Developer, Data Analyst & AI Engineer. Delivered 10+ production projects and predictive AI models achieving 92% accuracy. Ready to drive real impact through innovative technology solutions.",
     },
     contactBtn: { id: "Hubungi Saya", en: "Contact Me" },
     downloadCv: { id: "Unduh CV", en: "Download CV" },
@@ -59,6 +59,9 @@ export const translations = {
     filterDataScience: { id: "Data Science", en: "Data Science" },
     filterWordPress: { id: "WordPress", en: "WordPress" },
     viewPortfolioPdf: { id: "Unduh Portofolio PDF", en: "Download Portfolio PDF" },
+    noProjectsFound: { id: "Tidak ada proyek dalam kategori ini.", en: "No projects found in this category." },
+    resetFilter: { id: "Tampilkan Semua Proyek", en: "Show All Projects" },
+    privateProjectNote: { id: "Kode & demo publik terbatas untuk proyek privat enterprise ini.", en: "Public code & demo link not available for this private enterprise project." },
   },
   experience: {
     label: { id: "Karir", en: "Career" },
@@ -79,6 +82,7 @@ export const translations = {
     filterCloud: { id: "Cloud", en: "Cloud" },
     filterMethodology: { id: "Metodologi", en: "Methodology" },
     filterData: { id: "Data", en: "Data" },
+    noCertsFound: { id: "Tidak ada sertifikasi dalam kategori ini.", en: "No certifications found in this category." },
   },
   testimonials: {
     label: { id: "Rekomendasi", en: "Recommendations" },
@@ -86,7 +90,7 @@ export const translations = {
   },
   stats: {
     projects: { id: "Proyek", en: "Projects" },
-    experience: { id: "Tahun Pengalaman", en: "Years Experience" },
+    experience: { id: "Pengalaman Praktis", en: "Practical Exp." },
     technologies: { id: "Teknologi", en: "Technologies" },
     certifications: { id: "Sertifikasi", en: "Certifications" },
   },
@@ -104,6 +108,7 @@ export const translations = {
     formSending: { id: "Mengirim...", en: "Sending..." },
     formSuccess: { id: "Pesan berhasil dikirim! Terima kasih.", en: "Message sent successfully! Thank you." },
     formError: { id: "Gagal mengirim pesan. Silakan coba lagi.", en: "Failed to send message. Please try again." },
+    formRetry: { id: "Coba Lagi", en: "Try Again" },
     orReachOut: { id: "Atau hubungi langsung", en: "Or reach out directly" },
   },
   footer: {

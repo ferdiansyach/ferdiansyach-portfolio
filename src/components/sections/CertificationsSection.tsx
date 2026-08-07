@@ -70,20 +70,32 @@ export default function CertificationsSection() {
         </AnimatedDiv>
 
         {/* Filter tabs */}
-        <AnimatedDiv className="flex flex-wrap justify-center gap-3 mb-12">
-          {filterButtons.map((btn) => (
-            <button
-              key={btn.key}
-              onClick={() => setFilter(btn.key)}
-              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 border cursor-pointer ${
-                filter === btn.key
-                  ? "bg-linear-to-r from-rose-500 to-fuchsia-500 text-white border-transparent shadow-lg shadow-rose-500/20"
-                  : "border-[var(--color-hairline)] text-[var(--color-muted)] hover:border-rose-400 hover:text-rose-400"
-              }`}
-            >
-              {t(btn.label)}
-            </button>
-          ))}
+        <AnimatedDiv className="flex max-w-full overflow-x-auto no-scrollbar pb-2 sm:pb-0 sm:flex-wrap justify-start sm:justify-center gap-3 mb-12">
+          {filterButtons.map((btn) => {
+            const isActive = filter === btn.key;
+            return (
+              <motion.button
+                key={btn.key}
+                onClick={() => setFilter(btn.key)}
+                whileTap={{ scale: 0.96 }}
+                whileHover={{ y: -1 }}
+                className={`relative px-5 py-2.5 min-h-[44px] rounded-full text-sm font-semibold transition-colors duration-300 border cursor-pointer shrink-0 touch-manipulation flex items-center justify-center ${
+                  isActive
+                    ? "text-white border-transparent shadow-lg shadow-rose-500/20"
+                    : "border-[var(--color-hairline)] text-[var(--color-muted)] hover:border-rose-400 hover:text-rose-400"
+                }`}
+              >
+                {isActive && (
+                  <motion.div
+                    layoutId="activeCertFilterPill"
+                    className="absolute inset-0 rounded-full bg-linear-to-r from-rose-500 to-fuchsia-500"
+                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">{t(btn.label)}</span>
+              </motion.button>
+            );
+          })}
         </AnimatedDiv>
 
         <CertificationGrid filtered={filtered} setLightbox={setLightbox} t={t} />
@@ -117,7 +129,8 @@ export default function CertificationsSection() {
                 <h3 className="text-[var(--color-ink)] font-semibold text-sm truncate pr-4">{lightbox.title}</h3>
                 <button
                   onClick={() => setLightbox(null)}
-                  className="w-8 h-8 rounded-full bg-[var(--color-canvas)] hover:bg-rose-500/80 flex items-center justify-center text-[var(--color-muted)] hover:text-white transition-all duration-200 shrink-0"
+                  className="w-11 h-11 rounded-full bg-[var(--color-canvas)] hover:bg-rose-500/80 flex items-center justify-center text-[var(--color-muted)] hover:text-white transition-all duration-200 shrink-0 cursor-pointer active:scale-95"
+                  aria-label="Close certificate lightbox"
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -154,6 +167,21 @@ function CertificationGrid({
   setLightbox: (val: { src: string; title: string }) => void;
   t: (val: { id: string; en: string }) => string;
 }) {
+  if (filtered.length === 0) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="p-12 text-center max-w-md mx-auto rounded-2xl bg-[var(--color-canvas-elevated)] border border-[var(--color-hairline)] space-y-4"
+      >
+        <div className="text-4xl">📜</div>
+        <p className="text-[var(--color-ink)] font-semibold text-base">
+          {t(translations.certifications.noCertsFound)}
+        </p>
+      </motion.div>
+    );
+  }
+
   return (
     <div className="max-w-5xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       <AnimatePresence mode="popLayout">
@@ -210,8 +238,8 @@ function CertificationGrid({
                       <p className="text-[var(--color-body)] text-xs">{cert.issuer}</p>
                       <div className="flex items-center justify-between gap-2 mt-2.5 flex-wrap">
                         <div className="flex items-center gap-2">
-                          <span className="text-[11px] text-[var(--color-muted)] font-medium">{cert.date}</span>
-                          <span className="inline-flex items-center gap-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded-full">
+                          <span className="text-xs text-[var(--color-muted)] font-medium">{cert.date}</span>
+                          <span className="inline-flex items-center gap-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold px-2 py-0.5 rounded-full">
                             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                             </svg>
@@ -223,7 +251,7 @@ function CertificationGrid({
                             href={cert.credentialUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-[11px] font-semibold text-rose-400 hover:text-rose-300 transition-colors bg-rose-500/10 hover:bg-rose-500/20 px-2.5 py-1 rounded-lg border border-rose-500/20 cursor-pointer"
+                            className="inline-flex items-center gap-1 text-xs font-semibold text-rose-400 hover:text-rose-300 transition-colors bg-rose-500/10 hover:bg-rose-500/20 px-2.5 py-1.5 rounded-lg border border-rose-500/20 cursor-pointer min-h-[36px]"
                           >
                             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />

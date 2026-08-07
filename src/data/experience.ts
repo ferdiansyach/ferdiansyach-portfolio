@@ -28,7 +28,7 @@ export const experiences: Experience[] = [
     id: "labassist",
     role: { id: "Asisten Laboratorium Komputer", en: "Computer Laboratory Assistant" },
     company: "Lab Data Monetize | Universitas Nasional",
-    type: "Student Organization",
+    type: "Part-time",
     location: "Jakarta, ID",
     period: "Sep 2024 – Sep 2025",
     isCurrent: false,
@@ -40,6 +40,42 @@ export const experiences: Experience[] = [
       {
         id: "Mengoptimalkan alur instalasi perangkat lunak dan konfigurasi sistem, mendukung kegiatan praktikum 200+ mahasiswa per semester melalui prosedur pemeliharaan terstandarisasi.",
         en: "Optimized software installation and system configuration workflows, supporting lab sessions for 200+ students per semester through standardized maintenance procedures.",
+      },
+    ],
+  },
+  {
+    id: "unasfest",
+    role: { id: "Fullstack Developer", en: "Fullstack Developer" },
+    company: "UNAS FEST | Universitas Nasional Festival",
+    type: "Internship",
+    location: "Jakarta, ID",
+    period: "Apr 2024 – Mar 2025",
+    bullets: [
+      {
+        id: "Mengembangkan 10+ komponen website responsif menggunakan TypeScript dan Tailwind CSS, mencapai skor Lighthouse 90+ untuk performa dan aksesibilitas pada portal festival resmi.",
+        en: "Developed 10+ responsive website components using TypeScript and Tailwind CSS, achieving a Lighthouse score of 90+ for performance and accessibility on the official festival portal.",
+      },
+      {
+        id: "Membangun API Routes Next.js untuk integrasi registrasi peserta dan database, serta merancang pipeline pengujian dengan Jest dan React Testing Library yang memangkas bug rate produksi sebesar 60%.",
+        en: "Built Next.js API Routes for attendee registration and database integration, and engineered a testing pipeline with Jest and React Testing Library that slashed production bug rate by 60%.",
+      },
+    ],
+  },
+  {
+    id: "pkm",
+    role: { id: "Anggota Riset & Pengembangan (PKM)", en: "Research & Development Member (PKM)" },
+    company: "PKM Pengabdian Masyarakat | Universitas Nasional",
+    type: "Volunteering",
+    location: "Depok, ID",
+    period: "Jun 2024 – Mar 2025",
+    bullets: [
+      {
+        id: "Merancang dan melatih model deteksi objek YOLOv11 pada 10.000+ citra sampah teranotasi lintas 6 kategori, mencapai mAP (IoU 0.5) sebesar 97.5%, Precision 96.2%, dan Recall 95.8% dalam kolaborasi dengan DLHK Kota Depok.",
+        en: "Engineered and trained a YOLOv11 object detection model on 10,000+ annotated waste images across 6 categories, achieving mAP (IoU 0.5) of 97.5%, Precision 96.2%, and Recall 95.8%, in collaboration with the Depok City Environmental and Sanitation Agency (DLHK).",
+      },
+      {
+        id: "Mengembangkan platform web klasifikasi sampah berbasis AI dengan dashboard admin untuk monitoring real-time, serta melaksanakan pelatihan transfer teknologi kepada komunitas pengelola sampah di Beji dan Mekarjaya, Depok.",
+        en: "Developed an AI-powered web-based waste classification platform with an admin dashboard for real-time monitoring, and conducted field deployment and technology transfer training for waste management communities in Beji and Mekarjaya, Depok.",
       },
     ],
   },
@@ -58,24 +94,6 @@ export const experiences: Experience[] = [
       {
         id: "Mengembangkan dan mengelola website resmi himpunan menggunakan WordPress, meningkatkan traffic website sebesar 40% dan mendorong keterlibatan anggota melalui konten terstruktur yang dioptimalkan SEO.",
         en: "Developed and managed the association's official WordPress website, increasing website traffic by 40% and driving member engagement through structured, SEO-optimized content.",
-      },
-    ],
-  },
-  {
-    id: "unasfest",
-    role: { id: "Fullstack Developer", en: "Fullstack Developer" },
-    company: "UNAS FEST | Universitas Nasional Festival",
-    type: "Student Organization",
-    location: "Jakarta, ID",
-    period: "Apr 2024 – Nov 2024",
-    bullets: [
-      {
-        id: "Mengembangkan 10+ komponen website responsif menggunakan TypeScript dan Tailwind CSS, mencapai skor Lighthouse 90+ untuk performa dan aksesibilitas pada portal festival resmi.",
-        en: "Developed 10+ responsive website components using TypeScript and Tailwind CSS, achieving a Lighthouse score of 90+ for performance and accessibility on the official festival portal.",
-      },
-      {
-        id: "Membangun API Routes Next.js untuk integrasi registrasi peserta dan database, serta merancang pipeline pengujian dengan Jest dan React Testing Library yang memangkas bug rate produksi sebesar 60%.",
-        en: "Built Next.js API Routes for attendee registration and database integration, and engineered a testing pipeline with Jest and React Testing Library that slashed production bug rate by 60%.",
       },
     ],
   },

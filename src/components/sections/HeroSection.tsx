@@ -1,635 +1,408 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion, Variants, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/hooks/useLanguage";
-import { translations } from "@/data/translations";
-import GridBackground from "@/components/ui/GridBackground";
-import StatusBadge from "@/components/ui/StatusBadge";
-import MagneticButton from "@/components/ui/MagneticButton";
+import {
+  MapPin,
+  Sparkles,
+  FileCode,
+  Network,
+  Cpu,
+  CheckCircle2,
+  Layers,
+  ChevronDown,
+} from "lucide-react";
+import { ShaderAnimation } from "@/components/ui/shader-animation";
+import { HeroSocialConnect } from "@/components/ui/connect-with-us";
 
-const typingRoles = [
-  { en: "Fullstack Developer", id: "Fullstack Developer" },
-  { en: "Data Analyst", id: "Analis Data" },
-  { en: "AI Engineer", id: "AI Engineer" },
-  { en: "DevOps Engineer", id: "DevOps Engineer" },
-  { en: "IT Support Specialist", id: "IT Support Specialist" },
-  { en: "WordPress Developer", id: "WordPress Developer" },
+const roles = [
+  { id: "Fullstack Developer", en: "Fullstack Developer" },
+  { id: "Analis Data", en: "Data Analyst" },
+  { id: "AI Engineer", en: "AI Engineer" },
 ];
-
-const mockupTexts = {
-  dailyNotes: {
-    en: "Daily Notes",
-    id: "Catatan Harian",
-  },
-  graphView: {
-    en: "Graph View",
-    id: "Visual Graf",
-  },
-  aiAssistant: {
-    en: "Reflect AI",
-    id: "Reflect AI",
-  },
-  journalTitle: {
-    en: "Ferdiansyach — Professional Profile",
-    id: "Ferdiansyach — Profil Profesional",
-  },
-  tagRole: {
-    en: "Role",
-    id: "Peran",
-  },
-  tagLocation: {
-    en: "Location",
-    id: "Lokasi",
-  },
-  bullet1Title: {
-    en: "Core Stack",
-    id: "Stack Utama",
-  },
-  bullet1Desc: {
-    en: "Specialized in building fast Next.js/React applications, WordPress sites, and Python-based analytics.",
-    id: "Spesialis dalam membangun aplikasi Next.js/React yang cepat, situs WordPress, dan analitik berbasis Python.",
-  },
-  bullet2Title: {
-    en: "Data & ML",
-    id: "Data & ML",
-  },
-  bullet2Desc: {
-    en: "Experienced in machine learning models, statistical analysis, and data viz.",
-    id: "Berpengalaman dalam model machine learning, analisis statistik, dan visualisasi data.",
-  },
-  bullet3Title: {
-    en: "Approach",
-    id: "Pendekatan",
-  },
-  bullet3Desc: {
-    en: "Combining clean, responsive UI/UX with rigorous technical architecture and reliable system operations.",
-    id: "Menggabungkan UI/UX bersih & responsif dengan arsitektur teknis yang kokoh dan operasional sistem yang andal.",
-  },
-  aiQuestion: {
-    en: "Why hire Ferdiansyach?",
-    id: "Mengapa merekrut Ferdiansyach?",
-  },
-  aiAnswer: {
-    en: "He is a versatile Fullstack Developer, Data Analyst, DevOps Engineer, IT Support Specialist, and WordPress Developer. He writes clean React/Next.js code, uses Python to extract actionable insights from data, manages cloud infrastructure and deployment pipelines, and keeps systems running smoothly end to end.",
-    id: "Dia adalah profesional serbaguna: Fullstack Developer, Analis Data, DevOps Engineer, IT Support Specialist, dan WordPress Developer. Dia menulis kode React/Next.js yang bersih, menggunakan Python untuk mengekstrak wawasan penting dari data, mengelola infrastruktur cloud dan pipeline deployment, serta menjaga sistem berjalan lancar dari ujung ke ujung.",
-  }
-};
-
-/* ───── Animation variants ───── */
-const containerVariants: Variants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
-const mockupVariants: Variants = {
-  hidden: { opacity: 0, y: 40, scale: 0.98 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.6 },
-  },
-};
-
-const statsItems = [
-  { value: "5+", labelKey: "projects" as const },
-  { value: "6", labelKey: "certifications" as const },
-  { value: "12+", labelKey: "technologies" as const },
-];
-
-type ActiveTab = "daily" | "graph" | "ai";
 
 export default function HeroSection() {
-  const { t, lang } = useLanguage();
-  const [displayText, setDisplayText] = useState("");
+  const { t } = useLanguage();
+
+  // Typewriter effect state
   const [roleIndex, setRoleIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
-  const [activeTab, setActiveTab] = useState<ActiveTab>("daily");
 
-  const [prevLang, setPrevLang] = useState(lang);
-  if (prevLang !== lang) {
-    setPrevLang(lang);
-    setDisplayText("");
-    setIsDeleting(false);
-  }
+  // Reflect Profile Window active tab
+  const [activeTab, setActiveTab] = useState<"notes" | "ai" | "graph">("notes");
 
-  const getCurrentText = useCallback(() => {
-    return typingRoles[roleIndex][lang];
-  }, [roleIndex, lang]);
-
+  // Typewriter effect logic
   useEffect(() => {
-    const fullText = getCurrentText();
-    const timeout = setTimeout(
-      () => {
-        if (!isDeleting) {
-          setDisplayText(fullText.substring(0, displayText.length + 1));
-          if (displayText.length + 1 === fullText.length) {
-            setTimeout(() => setIsDeleting(true), 2000);
-          }
-        } else {
-          setDisplayText(fullText.substring(0, displayText.length - 1));
-          if (displayText.length === 0) {
-            setIsDeleting(false);
-            setRoleIndex((prev) => (prev + 1) % typingRoles.length);
-          }
+    const currentRole = t(roles[roleIndex]);
+    const typingSpeed = isDeleting ? 40 : 80;
+
+    const timer = setTimeout(() => {
+      if (!isDeleting) {
+        setDisplayedText(currentRole.substring(0, displayedText.length + 1));
+        if (displayedText.length + 1 === currentRole.length) {
+          setTimeout(() => setIsDeleting(true), 1800);
         }
-      },
-      isDeleting ? 50 : 80
-    );
+      } else {
+        setDisplayedText(currentRole.substring(0, displayedText.length - 1));
+        if (displayedText.length === 0) {
+          setIsDeleting(false);
+          setRoleIndex((prev) => (prev + 1) % roles.length);
+        }
+      }
+    }, typingSpeed);
 
-    return () => clearTimeout(timeout);
-  }, [displayText, isDeleting, getCurrentText]);
+    return () => clearTimeout(timer);
+  }, [displayedText, isDeleting, roleIndex, t]);
 
-  // Dynamic date for the daily notes mockup
-  const getFormattedDate = () => {
-    const options: Intl.DateTimeFormatOptions = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
-    return new Date().toLocaleDateString(lang === "id" ? "id-ID" : "en-US", options);
+  const scrollToAbout = () => {
+    const el = document.getElementById("about");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex flex-col items-center justify-start pt-28 pb-16 overflow-hidden">
-      {/* Grid background */}
-      <GridBackground />
+    <section id="home" className="relative min-h-screen pt-28 pb-16 px-4 sm:px-6 container mx-auto flex flex-col justify-between items-center overflow-hidden">
+      {/* Three.js Fluid Shader & Ambient Color Background */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        {/* Three.js WebGL Fluid Shader */}
+        <div className="absolute inset-0 opacity-30 mix-blend-screen pointer-events-none">
+          <ShaderAnimation className="w-full h-full" />
+        </div>
 
-      {/* Animated soft gradient */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(124,58,237,0.06),transparent_60%)] animate-mesh" />
+        {/* Ambient Radial Color Orbs */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-purple-600/20 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-indigo-600/15 rounded-full blur-[120px] pointer-events-none" />
+
+        {/* Grid Dot Overlay */}
+        <div className="absolute inset-0 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:32px_32px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_40%,#000_70%,transparent_100%)] opacity-20 pointer-events-none" />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-10 flex flex-col items-center text-center">
-        {/* Header content */}
+      <div className="w-full max-w-4xl mx-auto text-center flex flex-col items-center">
+        {/* Status Badge */}
         <motion.div
-          className="max-w-3xl flex flex-col items-center"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold tracking-wide mb-6 shadow-sm backdrop-blur-xs"
         >
-          {/* Status badge */}
-          <motion.div variants={itemVariants} className="mb-4">
-            <StatusBadge />
-          </motion.div>
-
-          {/* Subtitle */}
-          <motion.p
-            variants={itemVariants}
-            className="text-[var(--color-primary)] font-semibold text-xs sm:text-sm tracking-wider uppercase leading-snug mb-2 font-sans"
-          >
-            {t(translations.hero.subtitle)}
-          </motion.p>
-
-          {/* Name & Title */}
-          <motion.h1
-            variants={itemVariants}
-            className="text-4xl sm:text-5xl md:text-7xl font-serif font-bold text-[var(--color-ink)] leading-tight tracking-tight whitespace-normal"
-          >
-            {t(translations.hero.greeting)}{" "}
-            <span className="text-[var(--color-primary)] relative">
-              Ferdiansyach
-            </span>
-          </motion.h1>
-
-          {/* Typing effect */}
-          <motion.p
-            variants={itemVariants}
-            className="mt-3 text-base sm:text-xl md:text-2xl text-[var(--color-body)] font-medium h-8"
-          >
-            <span>{displayText}</span>
-            <span className="border-r-[2.5px] border-[var(--color-primary)] animate-blink ml-0.5">&nbsp;</span>
-          </motion.p>
-
-          {/* Description */}
-          <motion.p
-            variants={itemVariants}
-            className="mt-6 text-sm sm:text-base md:text-lg text-[var(--color-body)] max-w-2xl leading-relaxed"
-          >
-            {t(translations.hero.description)}
-          </motion.p>
-
-          {/* Location */}
-          <motion.div
-            variants={itemVariants}
-            className="mt-3 flex items-center gap-2 text-[var(--color-muted)] text-xs sm:text-sm"
-          >
-            <svg className="w-4 h-4 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-            <span>{t(translations.hero.location)}</span>
-          </motion.div>
-
-          {/* CTA Buttons */}
-          <motion.div
-            variants={itemVariants}
-            className="mt-8 flex flex-wrap items-center justify-center gap-4"
-          >
-            <MagneticButton>
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 bg-[var(--color-primary)] text-white font-medium py-2.5 px-6 rounded-md hover:bg-[var(--color-primary-hover)] transition-all duration-300 shadow-md shadow-violet-600/15 text-sm"
-              >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                {t(translations.hero.contactBtn)}
-              </a>
-            </MagneticButton>
-
-            {process.env.NODE_ENV === "development" && (
-              <MagneticButton>
-                <a
-                  href="/portfolio-pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 border border-[var(--color-hairline)] bg-[var(--color-canvas-elevated)] text-[var(--color-ink)] font-medium py-2.5 px-6 rounded-md hover:border-[var(--color-primary)] hover:bg-[var(--color-primary)]/5 transition-all duration-300 text-sm"
-                >
-                  <svg className="w-4 h-4 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                  {t(translations.hero.downloadCv)}
-                </a>
-              </MagneticButton>
-            )}
-
-            {process.env.NODE_ENV === "development" && (
-              <MagneticButton>
-                <a
-                  href="/projects-pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 border border-[var(--color-hairline)] bg-[var(--color-canvas-elevated)] text-[var(--color-ink)] font-medium py-2.5 px-6 rounded-md hover:border-[var(--color-primary)] hover:bg-[var(--color-primary)]/5 transition-all duration-300 text-sm"
-                >
-                  <svg className="w-4 h-4 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                  </svg>
-                  {t(translations.hero.viewPortfolio)}
-                </a>
-              </MagneticButton>
-            )}
-
-            <div className="flex items-center gap-3">
-              <MagneticButton strength={10}>
-                <a
-                  href="https://github.com/ferdiansyach"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub"
-                  className="inline-flex items-center justify-center p-2.5 rounded-full border border-[var(--color-hairline)] text-[var(--color-body)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] hover:bg-[var(--color-primary)]/5 transition-all duration-300"
-                >
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                  </svg>
-                </a>
-              </MagneticButton>
-              <MagneticButton strength={10}>
-                <a
-                  href="https://www.linkedin.com/in/ferdiansyach-845930246/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                  className="inline-flex items-center justify-center p-2.5 rounded-full border border-[var(--color-hairline)] text-[var(--color-body)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] hover:bg-[var(--color-primary)]/5 transition-all duration-300"
-                >
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                  </svg>
-                </a>
-              </MagneticButton>
-            </div>
-          </motion.div>
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span>{t({ id: "🟢 Tersedia untuk Kerja", en: "🟢 Open to Work" })}</span>
         </motion.div>
 
-        {/* Reflect-style Interactive Notebook Mockup */}
-        <motion.div
-          className="mt-16 w-full max-w-4xl rounded-xl border border-[var(--color-hairline)] bg-[var(--color-canvas-elevated)] shadow-2xl text-left overflow-hidden relative flex flex-col md:flex-row h-[520px] sm:h-[480px]"
-          variants={mockupVariants}
-          initial="hidden"
-          animate="visible"
+        {/* Institution Sub-header */}
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-xs font-mono uppercase tracking-[0.25em] text-[var(--color-primary)] font-bold mb-3"
         >
-          {/* Sidebar Panel (Left) */}
-          <div className="w-full md:w-1/4 border-r border-[var(--color-hairline)] p-4 flex md:flex-col gap-2 md:gap-1.5 overflow-x-auto md:overflow-x-visible shrink-0 bg-[var(--color-canvas)]/40">
-            {/* Mock Mac Circles */}
-            <div className="hidden md:flex gap-1.5 mb-6">
-              <span className="w-3 h-3 rounded-full bg-rose-500 opacity-80" />
-              <span className="w-3 h-3 rounded-full bg-amber-500 opacity-80" />
-              <span className="w-3 h-3 rounded-full bg-emerald-500 opacity-80" />
+          {t({ id: "SISTEM INFORMASI — UNIVERSITAS NASIONAL", en: "INFORMATION SYSTEMS — UNIVERSITAS NASIONAL" })}
+        </motion.p>
+
+        {/* Main Heading */}
+        <motion.h1
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="text-4xl sm:text-6xl md:text-7xl font-serif font-black tracking-tight text-white mb-4 leading-tight"
+        >
+          {t({ id: "Halo, Saya ", en: "Hi, I'm " })}
+          <span className="bg-gradient-to-r from-violet-400 via-[var(--color-primary)] to-indigo-300 bg-clip-text text-transparent drop-shadow-sm">
+            Ferdiansyach
+          </span>
+        </motion.h1>
+
+        {/* Typewriter Subtitle */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="h-10 flex items-center justify-center text-xl sm:text-2xl font-mono text-slate-300 font-semibold mb-6"
+        >
+          <span>{displayedText}</span>
+          <span className="w-0.5 h-6 bg-[var(--color-primary)] ml-1 animate-pulse" />
+        </motion.div>
+
+        {/* Bio Paragraph */}
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.25 }}
+          className="max-w-2xl text-slate-300 text-sm sm:text-base leading-relaxed mb-4"
+        >
+          {t({
+            id: "Seorang Fullstack Developer, Analis Data & AI Engineer berpengalaman. Menyelesaikan 10+ proyek produksi dan model AI prediktif dengan akurasi 92%. Siap memberikan dampak nyata melalui solusi teknologi inovatif.",
+            en: "An experienced Fullstack Developer, Data Analyst & AI Engineer. Delivered 10+ production projects and predictive AI models achieving 92% accuracy. Ready to drive real impact through innovative technology solutions.",
+          })}
+        </motion.p>
+
+        {/* Location Badge */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          className="flex items-center justify-center gap-1.5 text-xs text-slate-400 font-mono mb-8"
+        >
+          <MapPin className="w-3.5 h-3.5 text-[var(--color-primary)]" />
+          <span>Depok, West Java</span>
+        </motion.div>
+
+        {/* 3D Glowing Social Connect Action Row */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.35 }}
+          className="w-full mb-10"
+        >
+          <HeroSocialConnect />
+        </motion.div>
+
+        {/* ===== INTERACTIVE REFLECT AI PROFILE WINDOW ===== */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+          className="w-full max-w-4xl rounded-2xl border border-[var(--color-hairline)] bg-[var(--color-canvas-elevated)]/90 backdrop-blur-xl shadow-2xl overflow-hidden text-left"
+        >
+          {/* macOS Chrome Titlebar */}
+          <div className="flex items-center justify-between px-4 py-3 bg-[var(--color-canvas)]/80 border-b border-[var(--color-hairline)]">
+            <div className="flex items-center gap-2">
+              <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block" />
+              <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
+              <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
             </div>
 
-            {/* Menu Tabs */}
-            <button
-              onClick={() => setActiveTab("daily")}
-              className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold w-full transition-all duration-200 ${activeTab === "daily"
-                ? "bg-[var(--color-primary)]/10 text-[var(--color-primary)] font-bold"
-                : "text-[var(--color-body)] hover:bg-[var(--color-canvas-elevated)]"
-                }`}
-            >
-              <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-              <span className="whitespace-nowrap">{mockupTexts.dailyNotes[lang]}</span>
-            </button>
+            <div className="text-xs font-mono text-slate-300 tracking-wider font-semibold">
+              reflect-workspace // ferdiansyach-profile
+            </div>
 
-            <button
-              onClick={() => setActiveTab("ai")}
-              className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold w-full transition-all duration-200 ${activeTab === "ai"
-                ? "bg-[var(--color-primary)]/10 text-[var(--color-primary)] font-bold"
-                : "text-[var(--color-body)] hover:bg-[var(--color-canvas-elevated)]"
-                }`}
-            >
-              <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-              </svg>
-              <span className="whitespace-nowrap">{mockupTexts.aiAssistant[lang]}</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab("graph")}
-              className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold w-full transition-all duration-200 ${activeTab === "graph"
-                ? "bg-[var(--color-primary)]/10 text-[var(--color-primary)] font-bold"
-                : "text-[var(--color-body)] hover:bg-[var(--color-canvas-elevated)]"
-                }`}
-            >
-              <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 3.055A9.003 9.003 0 1020.945 13H11V3.055z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
-              </svg>
-              <span className="whitespace-nowrap">{mockupTexts.graphView[lang]}</span>
-            </button>
+            <div className="w-12" />
           </div>
 
-          {/* Main Editor Canvas (Right) */}
-          <div className="flex-1 p-6 sm:p-8 overflow-y-auto bg-[var(--color-canvas-elevated)] relative">
-            <AnimatePresence mode="wait">
-              {/* Tab 1: Daily Notes (Journal page style) */}
-              {activeTab === "daily" && (
-                <motion.div
-                  key="daily"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.25 }}
-                  className="flex flex-col gap-6"
-                >
-                  {/* Journal Date Header */}
-                  <div className="border-b border-[var(--color-hairline)] pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                    <span className="text-[var(--color-primary)] text-xs font-semibold tracking-wider uppercase font-mono">
-                      {getFormattedDate()}
-                    </span>
-                    <div className="flex flex-wrap gap-1.5">
-                      <span className="text-[10px] px-2 py-0.5 rounded-full font-medium bg-indigo-500/10 text-indigo-400 border border-indigo-500/10">#fullstack</span>
-                      <span className="text-[10px] px-2 py-0.5 rounded-full font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/10">#data-analyst</span>
-                    </div>
-                  </div>
-
-                  {/* Journal Title */}
-                  <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[var(--color-ink)]">
-                    {mockupTexts.journalTitle[lang]}
-                  </h2>
-
-                  {/* Inline Profile Card widget */}
-                  <div className="flex items-center gap-4 p-4 rounded-lg bg-[var(--color-canvas)]/30 border border-[var(--color-hairline)]">
-                    <div className="relative w-16 h-16 sm:w-20 sm:h-20 shrink-0">
-                      <Image
-                        src="/images/fotoprofil.jpeg"
-                        alt="Ferdiansyach"
-                        fill
-                        className="rounded-full object-cover border border-[var(--color-hairline)]"
-                        sizes="(max-width: 640px) 64px, 80px"
-                      />
-                    </div>
-                    <div>
-                      <h4 className="font-serif text-base sm:text-lg font-bold text-[var(--color-ink)] leading-snug">
-                        Ferdiansyach
-                      </h4>
-                      <p className="text-xs sm:text-sm text-[var(--color-body)] mt-0.5">
-                        {mockupTexts.tagRole[lang]}: <span className="font-semibold text-[var(--color-primary)]">Fullstack & Data</span>
-                      </p>
-                      <p className="text-xs text-[var(--color-muted)] mt-0.5">
-                        {mockupTexts.tagLocation[lang]}: Depok, ID
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Document Body */}
-                  <ul className="flex flex-col gap-3 text-sm text-[var(--color-body)] pl-4 list-disc marker:text-[var(--color-primary)]">
-                    <li>
-                      <strong>{mockupTexts.bullet1Title[lang]}:</strong> {mockupTexts.bullet1Desc[lang]}
-                    </li>
-                    <li>
-                      <strong>{mockupTexts.bullet2Title[lang]}:</strong> {mockupTexts.bullet2Desc[lang]}
-                    </li>
-                    <li>
-                      <strong>{mockupTexts.bullet3Title[lang]}:</strong> {mockupTexts.bullet3Desc[lang]}
-                    </li>
-                  </ul>
-
-                  {/* Stats Summary tags */}
-                  <div className="grid grid-cols-3 gap-3 border-t border-[var(--color-hairline)] pt-4 mt-2">
-                    {statsItems.map((stat, i) => (
-                      <div key={i} className="flex flex-col">
-                        <span className="text-lg font-bold text-[var(--color-primary)]">{stat.value}</span>
-                        <span className="text-[10px] text-[var(--color-muted)] font-medium leading-tight">
-                          {t(translations.stats[stat.labelKey])}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-
-              {/* Tab 2: Reflect AI Chat */}
-              {activeTab === "ai" && (
-                <motion.div
-                  key="ai"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.25 }}
-                  className="flex flex-col h-full gap-4 justify-between"
-                >
-                  <div className="flex flex-col gap-4 overflow-y-auto pr-1">
-                    {/* Header */}
-                    <div className="border-b border-[var(--color-hairline)] pb-3">
-                      <span className="text-[var(--color-primary)] text-xs font-semibold tracking-wider uppercase font-mono">
-                        Reflect AI Assistant
-                      </span>
-                    </div>
-
-                    {/* Chat Bubble 1 (User) */}
-                    <div className="flex flex-col gap-1 items-end">
-                      <span className="text-[10px] text-[var(--color-muted)] font-mono">User</span>
-                      <div className="bg-[var(--color-canvas)]/60 text-[var(--color-ink)] px-3 py-2 rounded-lg rounded-tr-none text-xs sm:text-sm max-w-[85%] border border-[var(--color-hairline)]">
-                        {mockupTexts.aiQuestion[lang]}
-                      </div>
-                    </div>
-
-                    {/* Chat Bubble 2 (AI Response) */}
-                    <div className="flex flex-col gap-1 items-start">
-                      <span className="text-[10px] text-[var(--color-primary)] font-mono">Reflect AI</span>
-                      <div className="bg-[var(--color-primary)]/10 text-[var(--color-ink)] px-3.5 py-2.5 rounded-lg rounded-tl-none text-xs sm:text-sm max-w-[85%] border border-[var(--color-primary)]/20 leading-relaxed shadow-sm">
-                        {mockupTexts.aiAnswer[lang]}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Mock Input Bar */}
-                  <div className="border-t border-[var(--color-hairline)] pt-3 mt-4 flex gap-2">
-                    <input
-                      disabled
-                      placeholder="Ask Reflect AI..."
-                      type="text"
-                      className="flex-1 bg-[var(--color-canvas)]/30 border border-[var(--color-hairline)] rounded-md px-3 py-1.5 text-xs text-[var(--color-body)] opacity-50"
-                    />
-                    <button disabled className="bg-[var(--color-primary)] opacity-50 text-white rounded-md px-3 py-1.5 text-xs font-semibold">
-                      Send
-                    </button>
-                  </div>
-                </motion.div>
-              )}
-
-              {/* Tab 3: Graph View (Animated Network Nodes) */}
-              {activeTab === "graph" && (
-                <motion.div
-                  key="graph"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.25 }}
-                  className="flex flex-col h-full gap-4"
-                >
-                  {/* Header */}
-                  <div className="border-b border-[var(--color-hairline)] pb-3">
-                    <span className="text-[var(--color-primary)] text-xs font-semibold tracking-wider uppercase font-mono">
-                      Knowledge Graph
-                    </span>
-                  </div>
-
-                  {/* SVG Nodes Visualizer */}
-                  <div className="flex-1 w-full relative flex items-center justify-center min-h-[280px]">
-                    <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 400 280" preserveAspectRatio="none">
-                      {/* Connecting lines — drawn in, then a looping dash-flow */}
-                      {[
-                        { d: "M200,140 L100,70", delay: 0 },
-                        { d: "M200,140 L300,70", delay: 0.1 },
-                        { d: "M200,140 L60,168", delay: 0.2 },
-                        { d: "M200,140 L340,168", delay: 0.3 },
-                        { d: "M200,140 L200,238", delay: 0.4 },
-                      ].map((line, i) => (
-                        <motion.path
-                          key={i}
-                          d={line.d}
-                          fill="none"
-                          stroke="var(--color-primary)"
-                          strokeOpacity={0.3}
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          initial={{ pathLength: 0, opacity: 0 }}
-                          animate={{ pathLength: 1, opacity: 1 }}
-                          transition={{ duration: 0.7, delay: line.delay, ease: "easeOut" }}
-                        />
-                      ))}
-                      {[
-                        { d: "M200,140 L100,70", delay: 0.9 },
-                        { d: "M200,140 L300,70", delay: 1.0 },
-                        { d: "M200,140 L60,168", delay: 1.1 },
-                        { d: "M200,140 L340,168", delay: 1.2 },
-                        { d: "M200,140 L200,238", delay: 1.3 },
-                      ].map((line, i) => (
-                        <motion.path
-                          key={`pulse-${i}`}
-                          d={line.d}
-                          fill="none"
-                          stroke="var(--color-primary)"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeDasharray="6 30"
-                          initial={{ opacity: 0 }}
-                          animate={{
-                            opacity: [0, 0.9, 0],
-                            strokeDashoffset: [36, -36],
-                          }}
-                          transition={{
-                            duration: 1.8,
-                            repeat: Infinity,
-                            ease: "linear",
-                            delay: line.delay,
-                            repeatDelay: 1.2,
-                          }}
-                        />
-                      ))}
-                    </svg>
-
-                    {/* Nodes */}
-                    {/* Center Node */}
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.6 }}
-                      animate={{ opacity: 1, scale: [1, 1.05, 1] }}
-                      transition={{
-                        opacity: { duration: 0.4 },
-                        scale: { duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 },
-                      }}
-                      whileHover={{ scale: 1.1 }}
-                      className="absolute z-10 bg-[var(--color-primary)] text-white text-xs font-bold px-4 py-2.5 rounded-full shadow-lg shadow-[var(--color-primary)]/30 cursor-pointer"
-                    >
-                      Ferdiansyach
-                    </motion.div>
-
-                    {/* Surrounding Nodes */}
-                    {[
-                      { style: "top-[20%] left-[15%]", label: "React / Next.js", delay: 0.15 },
-                      { style: "top-[20%] right-[15%]", label: "Python / ML", delay: 0.3 },
-                      { style: "top-[55%] left-[5%]", label: "Web Apps", delay: 0.45 },
-                      { style: "top-[55%] right-[5%]", label: "Data Analyst", delay: 0.6 },
-                      { style: "bottom-[10%] left-[43%]", label: "SQL / databases", delay: 0.75 },
-                    ].map((node, i) => (
+          {/* Window Grid: Left Navigation Sidebar + Editor Panel */}
+          <div className="grid md:grid-cols-12 min-h-[380px]">
+            {/* Sidebar Tabs */}
+            <div className="md:col-span-3 border-r border-[var(--color-hairline)] bg-[var(--color-canvas)]/50 p-3 space-y-1.5">
+              {[
+                { key: "notes", label: "Daily Notes", icon: <FileCode className="w-4 h-4 text-[var(--color-primary)]" /> },
+                { key: "ai", label: "Reflect AI", icon: <Sparkles className="w-4 h-4 text-emerald-400" /> },
+                { key: "graph", label: "Graph View", icon: <Network className="w-4 h-4 text-sky-400" /> },
+              ].map((tab) => {
+                const isActive = activeTab === tab.key;
+                return (
+                  <motion.button
+                    key={tab.key}
+                    onClick={() => setActiveTab(tab.key as "notes" | "ai" | "graph")}
+                    whileTap={{ scale: 0.97 }}
+                    className={`relative w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
+                      isActive
+                        ? "text-[var(--color-primary)] font-semibold"
+                        : "text-slate-300 hover:text-white hover:bg-white/5"
+                    }`}
+                  >
+                    {isActive && (
                       <motion.div
-                        key={i}
-                        initial={{ opacity: 0, scale: 0.5 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: node.delay, duration: 0.4, ease: "easeOut" }}
-                        whileHover={{ scale: 1.08, borderColor: "var(--color-primary)" }}
-                        className={`absolute ${node.style} bg-[var(--color-canvas-elevated)] border border-[var(--color-hairline)] text-[var(--color-ink)] text-[10px] px-2 py-1 rounded-md shadow-md cursor-pointer transition-colors`}
-                      >
-                        {node.label}
-                      </motion.div>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+                        layoutId="activeHeroTerminalTab"
+                        className="absolute inset-0 rounded-xl bg-[var(--color-primary)]/20 border border-[var(--color-primary)]/30"
+                        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                      />
+                    )}
+                    <span className="relative z-10 flex items-center gap-2.5">
+                      {tab.icon}
+                      <span>{tab.label}</span>
+                    </span>
+                  </motion.button>
+                );
+              })}
+            </div>
+
+            {/* Main Content Area */}
+            <div className="md:col-span-9 p-5 sm:p-7 flex flex-col justify-between">
+              <AnimatePresence mode="wait">
+                {activeTab === "notes" && (
+                  <motion.div
+                    key="notes"
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.25 }}
+                    className="space-y-6"
+                  >
+                    {/* Header Timestamp & Full Resume Hashtags */}
+                    <div className="flex flex-wrap items-center justify-between gap-3 text-xs font-mono border-b border-[var(--color-hairline)] pb-3">
+                      <span className="text-violet-400 font-bold tracking-wider uppercase">
+                        FRIDAY, AUGUST 7, 2026
+                      </span>
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        {["#fullstack", "#data-analyst", "#ai-engineer", "#python", "#web-gis"].map((tag) => (
+                          <span
+                            key={tag}
+                            className="px-2 py-0.5 rounded-md bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 text-[11px] font-mono hover:bg-indigo-500/20 transition-all cursor-default"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Window Main Title */}
+                    <h2 className="text-xl sm:text-2xl font-serif font-bold text-white tracking-tight">
+                      Ferdiansyach — Professional Profile
+                    </h2>
+
+                    {/* Profile Header Box */}
+                    <div className="p-4 rounded-xl bg-[var(--color-canvas)] border border-[var(--color-hairline)] flex items-center gap-4">
+                      <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[var(--color-primary)]/50 shrink-0">
+                        <Image
+                          src="/images/fotoprofil.jpeg"
+                          alt="Ferdiansyach Profile"
+                          fill
+                          className="object-cover"
+                          sizes="48px"
+                          priority
+                        />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <h3 className="font-bold text-white text-base">Ferdiansyach</h3>
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-[var(--color-primary)]/20 text-[var(--color-primary)] border border-[var(--color-primary)]/30">
+                            Fullstack & Data
+                          </span>
+                        </div>
+                        <p className="text-xs text-slate-400 mt-0.5">Location: Depok, ID</p>
+                      </div>
+                    </div>
+
+                    {/* Technical Bullets */}
+                    <ul className="space-y-3 text-xs sm:text-sm text-slate-300">
+                      <li className="flex items-start gap-2.5">
+                        <span className="text-[var(--color-primary)] font-bold mt-0.5">▪</span>
+                        <span>
+                          <strong className="text-white">Core Stack:</strong> Specialized in building fast Next.js/React applications, Node.js/Express & Go APIs, and Python-based analytics.
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <span className="text-emerald-400 font-bold mt-0.5">▪</span>
+                        <span>
+                          <strong className="text-white">Data & ML:</strong> Engineered predictive energy models (LSTM, XGBoost) with 92% accuracy and 7-year Google Earth Engine spatiotemporal analysis.
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <span className="text-sky-400 font-bold mt-0.5">▪</span>
+                        <span>
+                          <strong className="text-white">IEEE Research & QA:</strong> 1st-author presenter at IEEE ICETISI 2025; designed Jest/RTL unit testing pipelines reducing production bug rates by 60%.
+                        </span>
+                      </li>
+                    </ul>
+                  </motion.div>
+                )}
+
+                {activeTab === "ai" && (
+                  <motion.div
+                    key="ai"
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.25 }}
+                    className="space-y-5"
+                  >
+                    <div className="flex items-center gap-2 text-xs font-mono text-violet-400 border-b border-[var(--color-hairline)] pb-3">
+                      <Cpu className="w-4 h-4" />
+                      <span>REFLECT AI ENGINE // MODEL METRICS</span>
+                    </div>
+
+                    <h2 className="text-lg font-serif font-bold text-white">
+                      Predictive AI & Analytics Model Performance
+                    </h2>
+
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      <div className="p-4 rounded-xl bg-[var(--color-canvas)] border border-[var(--color-hairline)]">
+                        <span className="text-xs text-slate-400 block mb-1">Model Accuracy</span>
+                        <span className="text-2xl font-mono font-bold text-emerald-400">92.4%</span>
+                        <p className="text-[11px] text-slate-400 mt-1">Cross-validated classification score</p>
+                      </div>
+
+                      <div className="p-4 rounded-xl bg-[var(--color-canvas)] border border-[var(--color-hairline)]">
+                        <span className="text-xs text-slate-400 block mb-1">Production Delivery</span>
+                        <span className="text-2xl font-mono font-bold text-violet-400">10+ Apps</span>
+                        <p className="text-[11px] text-slate-400 mt-1">Fullstack ML & Web deployments</p>
+                      </div>
+                    </div>
+
+                    <div className="p-4 rounded-xl bg-[var(--color-canvas)] border border-[var(--color-hairline)] text-xs text-slate-300 leading-relaxed">
+                      <p className="font-semibold text-white mb-1 flex items-center gap-1.5">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                        AI Engineering & Pipeline Capabilities
+                      </p>
+                      Automated feature processing, scikit-learn models, Python data processing, and seamless API integration into Next.js applications.
+                    </div>
+                  </motion.div>
+                )}
+
+                {activeTab === "graph" && (
+                  <motion.div
+                    key="graph"
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.25 }}
+                    className="space-y-5"
+                  >
+                    <div className="flex items-center gap-2 text-xs font-mono text-violet-400 border-b border-[var(--color-hairline)] pb-3">
+                      <Layers className="w-4 h-4" />
+                      <span>GRAPH VIEW // TECH ARCHITECTURE NODES</span>
+                    </div>
+
+                    <h2 className="text-lg font-serif font-bold text-white">
+                      Fullstack & Data Systems Interconnections
+                    </h2>
+
+                    <div className="p-5 rounded-xl bg-[var(--color-canvas)] border border-[var(--color-hairline)] flex flex-wrap gap-2.5">
+                      {[
+                        "Next.js 16 (App Router)",
+                        "React 19",
+                        "TypeScript",
+                        "Tailwind CSS 4",
+                        "Python Analytics",
+                        "scikit-learn",
+                        "PostgreSQL / MySQL",
+                        "WordPress / CMS",
+                        "REST APIs",
+                        "Vercel Deployment",
+                      ].map((node, idx) => (
+                        <span
+                          key={idx}
+                          className="px-3 py-1.5 rounded-lg bg-[var(--color-primary)]/10 border border-[var(--color-primary)]/30 text-violet-300 text-xs font-mono hover:bg-[var(--color-primary)]/20 transition-all cursor-default"
+                        >
+                          ● {node}
+                        </span>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:block z-10"
+      {/* Scroll Down Cue */}
+      <motion.button
+        onClick={scrollToAbout}
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2.2, duration: 1 }}
+        animate={{ opacity: 1, y: [0, 6, 0] }}
+        transition={{
+          opacity: { delay: 0.6 },
+          y: { repeat: Number.POSITIVE_INFINITY, duration: 1.8, ease: "easeInOut" },
+        }}
+        className="mt-12 flex flex-col items-center gap-1.5 text-xs font-mono text-slate-400 hover:text-[var(--color-primary)] transition-colors cursor-pointer"
+        aria-label="Scroll down to About section"
       >
-        <motion.div
-          className="flex flex-col items-center gap-1.5"
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <span className="text-[var(--color-muted)] text-[10px] tracking-widest uppercase font-mono">Scroll</span>
-          <svg className="w-4 h-4 text-[var(--color-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </motion.div>
-      </motion.div>
+        <span>SCROLL</span>
+        <ChevronDown className="w-4 h-4" />
+      </motion.button>
     </section>
   );
 }

@@ -19,11 +19,6 @@ export default function ProjectsPDF() {
   const [role, setRole] = useState<"fullstack" | "data" | "general" | "generalist">("general");
 
   useEffect(() => {
-    // Redirect to home if accessed in production
-    if (process.env.NODE_ENV === "production") {
-      router.replace("/");
-      return;
-    }
     const savedLang = localStorage.getItem("lang") as "id" | "en";
     if (savedLang) {
       setTimeout(() => {
@@ -151,10 +146,8 @@ export default function ProjectsPDF() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-
         .pdf-page * {
-          font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+          font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
           box-sizing: border-box;
         }
 
@@ -164,44 +157,110 @@ export default function ProjectsPDF() {
             margin: 0 !important;
             padding: 0 !important;
             background: white !important;
-            -webkit-print-color-adjust: exact;
-            print-color-adjust: exact;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
           }
           @page {
             size: A4 portrait;
-            margin: 6mm 0 8mm 0;
-            @bottom-center {
-              content: counter(page) " / " counter(pages);
-              font-family: 'Inter', sans-serif;
-              font-size: 8px;
-              color: #94a3b8;
-            }
+            margin: 10mm 14mm;
           }
           .no-print { display: none !important; }
+
+          /* Flatten the wrapper — all pages flow as one document */
+          .pdf-wrapper { display: block !important; }
+
+          /* Each .pdf-page is transparent in print — just a block container */
           .pdf-page {
-            width: 210mm !important;
-            min-height: auto !important;
+            width: 100% !important;
+            min-height: 0 !important;
+            height: auto !important;
+            overflow: visible !important;
             margin: 0 !important;
             padding: 0 !important;
             box-shadow: none !important;
             border-radius: 0 !important;
             border: none !important;
+            display: block !important;
           }
-          .pdf-inner { padding: 5mm 13mm 6mm !important; }
+          /* Page 2 (experience/skills) ALWAYS starts on a new physical page */
+          .pdf-page-break {
+            break-before: page !important;
+            page-break-before: always !important;
+          }
+          .pdf-inner { padding: 0 !important; }
           a { color: #1d4ed8 !important; text-decoration: none !important; }
-          .project-card { page-break-inside: avoid; break-inside: avoid; }
-          .section-block { page-break-inside: avoid; break-inside: avoid; }
+
+          /* === Compact sizes for print to maximise content per page === */
+          .project-card {
+            padding: 5px 8px !important;
+            margin-bottom: 4px !important;
+            display: flex !important;
+            flex-direction: row !important;
+          }
+          .project-image {
+            width: 110px !important;
+            height: 66px !important;
+          }
+          .bullet-list li {
+            font-size: 8.5px !important;
+            line-height: 1.35 !important;
+            margin-bottom: 1px !important;
+          }
+          .highlight-card {
+            padding: 4px 8px !important;
+          }
+          .highlight-number { font-size: 14px !important; }
+
+          /* Never cut these elements across a page boundary */
+          .project-card,
+          .exp-item,
+          .highlight-card,
+          .cert-item {
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+          }
+
+          /* Section headings stay attached to the content below */
+          .section-header,
+          h1, h2, h3, h4 {
+            page-break-after: avoid !important;
+            break-after: avoid !important;
+          }
+
           .pdf-footer-screen { display: none !important; }
           .pdf-footer-print { display: block !important; }
+
+          /* Fix contact row overflow */
+          .contact-row {
+            font-size: 8px !important;
+            gap: 2px 6px !important;
+          }
+
+          /* Tighten section margin in print */
+          section { margin-bottom: 6px !important; }
+
+          /* Ensure two-col layout doesn't wrap in print */
+          .two-col-layout {
+            display: flex !important;
+            flex-wrap: nowrap !important;
+            gap: 14px !important;
+          }
         }
 
         /* ===== SCREEN ===== */
         @media screen {
+          .pdf-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 32px;
+            padding: 24px 0 64px;
+          }
           .pdf-page {
             width: 210mm;
             min-height: 297mm;
             box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 32px -4px rgba(0,0,0,0.12);
-            margin: 24px auto 64px;
+            margin: 0;
             border-radius: 6px;
             border: 1px solid #e2e8f0;
             background: white;
@@ -210,10 +269,14 @@ export default function ProjectsPDF() {
         }
 
         @media screen and (max-width: 860px) {
+          .pdf-wrapper {
+            gap: 16px;
+            padding: 0 0 32px;
+          }
           .pdf-page {
             width: 100% !important;
             min-height: auto !important;
-            margin: 0 auto 32px !important;
+            margin: 0 !important;
             border-radius: 0 !important;
             border-left: none !important;
             border-right: none !important;
@@ -240,9 +303,9 @@ export default function ProjectsPDF() {
         .project-card {
           display: flex;
           gap: 10px;
-          padding: 8px 12px;
+          padding: 6px 10px;
           border-radius: 6px;
-          margin-bottom: 6px;
+          margin-bottom: 5px;
           border: 1px solid #e8ecf1;
           background: #ffffff;
           transition: box-shadow 0.15s;
@@ -252,8 +315,8 @@ export default function ProjectsPDF() {
         }
 
         .project-image {
-          width: 140px;
-          height: 85px;
+          width: 128px;
+          height: 78px;
           object-fit: cover;
           border-radius: 5px;
           border: 1px solid #e2e8f0;
@@ -422,7 +485,10 @@ export default function ProjectsPDF() {
           </div>
         </div>
 
-        {/* ===== A4 CONTENT ===== */}
+        {/* ===== A4 PAGES WRAPPER ===== */}
+        <div className="pdf-wrapper">
+
+        {/* ===== PAGE 1: Header + Projects ===== */}
         <div className="pdf-page text-black antialiased">
           <div className="pdf-inner">
 
@@ -591,6 +657,13 @@ export default function ProjectsPDF() {
               })}
             </section>
 
+          </div>{/* end pdf-inner page 1 */}
+        </div>{/* end page 1 */}
+
+        {/* ===== PAGE 2: Experience + Skills + Certs ===== */}
+        <div className="pdf-page pdf-page-break text-black antialiased">
+          <div className="pdf-inner">
+
             {/* ===== TWO-COLUMN: EXPERIENCE + SKILLS ===== */}
             <div className="two-col-layout" style={{ display: "flex", gap: "18px" }}>
 
@@ -603,7 +676,7 @@ export default function ProjectsPDF() {
                     <h2>{lang === "id" ? "Pengalaman Kerja" : "Work Experience"}</h2>
                   </div>
                   {experiences.map((exp) => (
-                    <div key={exp.id} style={{ marginBottom: "5px" }}>
+                    <div key={exp.id} className="exp-item" style={{ marginBottom: "6px" }}>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
                         <h3 style={{ fontSize: "10.5px", fontWeight: 800, color: "#0f172a", margin: "0" }}>
                           {t(exp.role)} <span style={{ fontWeight: 500, color: "#64748b", fontSize: "9.5px" }}>— {exp.company}</span>
@@ -703,9 +776,11 @@ export default function ProjectsPDF() {
               Ferdiansyach · {lang === "id" ? "Portofolio Proyek" : "Project Portfolio"} · ferdiansyach-portfolio.vercel.app
             </div>
 
-          </div>
-        </div>
-      </div>
+          </div>{/* end pdf-inner page 2 */}
+        </div>{/* end page 2 */}
+
+        </div>{/* end pdf-wrapper */}
+      </div>{/* end bg-gray-100 */}
     </>
   );
 }
