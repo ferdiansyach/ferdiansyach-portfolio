@@ -37,8 +37,6 @@ The site is engineered for **high performance**, **seamless bilingual UX** (Indo
 |---|---|
 | 🌐 **Bilingual (i18n)** | Instant toggle between Indonesian (ID) and English (EN) via client-side state — no page reload |
 | 🌙 **Dark / Light Mode** | Full theme toggle using CSS variables and `useSyncExternalStore` backed by `localStorage` |
-| 📄 **Multi-Role CV Export** | `/portfolio-pdf` supports **4 tailored roles** (Generalist, Full-Stack, Data Analyst, QA & Manual Testing) in both languages with print-perfect `@media print` CSS |
-| 📁 **Project Portfolio PDF** | `/projects-pdf` renders a visual project showcase for PDF printing |
 | ⚡ **Performance First** | Lighthouse 90+ via static generation, Turbopack dev server, and optimized component tree |
 | 📱 **Fully Responsive** | Adaptive layouts from 320px mobile to ultra-wide monitors |
 | 🎨 **Premium UI & Animations** | CursorGlow, PageLoader, Shader background animations (GLSL via `@paper-design/shaders-react`), TiltCard, SpotlightCard, MagneticButton, VerticalCutReveal, TracingBeam |
@@ -50,47 +48,9 @@ The site is engineered for **high performance**, **seamless bilingual UX** (Indo
 
 ## 📸 Projects Showcase
 
-The portfolio features **10 real-world projects** across full-stack web, data science, machine learning, and AI/computer vision:
+The portfolio features **10 real-world projects** ordered from newest to oldest across full-stack web, data science, machine learning, and AI/computer vision:
 
-### 🛍️ Indosaji E-commerce
-*Full-stack MERN (MongoDB, Express, React, Node.js) web application with Stripe payment gateway.*
-- Integrated **Stripe API** for secure, real-time transaction processing.
-- Implemented React Context API for global state management (auth & shopping cart).
-- Designed robust RESTful APIs with secure admin/user role separation via JWT.
-
-<img src="public/images/indosaji2.jpeg" width="600" alt="Indosaji E-commerce Preview" style="border-radius: 8px; border: 1px solid #e2e8f0;"/>
-
----
-
-### 🤖 Smart Meter Anomaly Detection & Forecasting *(Telkom Indonesia Internship)*
-*Predictive AI (LSTM & XGBoost) and interactive analytics dashboard.*
-- Built LSTM + XGBoost predictive models achieving **92% accuracy** in energy forecasting.
-- Designed an end-to-end data pipeline processing **50,000+ data points**.
-- Developed a real-time Streamlit dashboard adopted by the techno-economic analysis team.
-
-<img src="public/images/intern1.jpeg" width="600" alt="Smart Meter Dashboard Preview" style="border-radius: 8px; border: 1px solid #e2e8f0;"/>
-
----
-
-### 🌊 Coastal Water Quality Monitoring (Web-GIS)
-*Temporal coastal water quality monitoring via Google Earth Engine (2019–2025), Jakarta & Banten.*
-- Automated cloud masking and multi-sensor processing (Sentinel-2 & Landsat-8).
-- Implemented **K-Means clustering** for spatial zoning & **Mann-Kendall** tests for trend analysis.
-- Designed an interactive Streamlit dashboard mapping spatial water quality distribution.
-
-<img src="public/images/coastal1.jpeg" width="600" alt="Coastal Water Quality Preview" style="border-radius: 8px; border: 1px solid #e2e8f0;"/>
-
----
-
-### ♻️ Waste Classification AI App
-*AI-powered fullstack web app — upload a photo, get instant waste category & handling recommendations.*
-- Built with **Next.js 15 App Router**, **Gemini Vision API**, **PostgreSQL**, and **Drizzle ORM**.
-- Implemented prompt engineering for structured AI output (category + handling recommendations).
-- Fully deployed on Vercel: [waste-classification-rust.vercel.app](https://waste-classification-rust.vercel.app)
-
----
-
-### 📊 MagangTracking Platform
+### 📊 MagangTracking Platform *(2026)*
 *Internship tracker & analytics platform for MagangHub Kemnaker.*
 - Decoupled fullstack architecture: **Go (Gin)** backend + **Next.js 16** frontend + **Supabase PostgreSQL**.
 - Token-based authentication (CORS) and real-time analytics dashboard for 100+ interns.
@@ -100,14 +60,35 @@ The portfolio features **10 real-world projects** across full-stack web, data sc
 
 ---
 
-### 🌿 RTH Monitoring (U-Net & Sentinel-2)
-*Deep learning urban green space change detection in DKI Jakarta (2019 vs 2023).*
-- U-Net semantic segmentation of Sentinel-2 multi-spectral satellite imagery.
-- Interactive Streamlit dashboard for spatial segmentation maps and vegetation area statistics.
+### 🌊 Coastal Water Quality Monitoring (Web-GIS) *(2026)*
+*Temporal coastal water quality monitoring via Google Earth Engine (2019–2025), Jakarta & Banten.*
+- Automated cloud masking and multi-sensor processing (Sentinel-2 & Landsat-8).
+- Implemented **K-Means clustering** for spatial zoning & **Mann-Kendall** tests for trend analysis.
+- Designed an interactive Streamlit dashboard mapping spatial water quality distribution.
+
+<img src="public/images/coastal1.jpeg" width="600" alt="Coastal Water Quality Preview" style="border-radius: 8px; border: 1px solid #e2e8f0;"/>
 
 ---
 
-### 🗑️ AI Waste Detection System (PKM × DLHK Depok)
+### ♻️ Waste Classification AI App *(2025)*
+*AI-powered fullstack web app — upload a photo, get instant waste category & handling recommendations.*
+- Built with **Next.js 15 App Router**, **Gemini Vision API**, **PostgreSQL**, and **Drizzle ORM**.
+- Implemented prompt engineering for structured AI output (category + handling recommendations).
+- Fully deployed on Vercel: [waste-classification-rust.vercel.app](https://waste-classification-rust.vercel.app)
+
+---
+
+### 🤖 Smart Meter Anomaly Detection & Forecasting *(2025 — Telkom Indonesia Internship)*
+*Predictive AI (LSTM & XGBoost) and interactive analytics dashboard.*
+- Built LSTM + XGBoost predictive models achieving **92% accuracy** in energy forecasting.
+- Designed an end-to-end data pipeline processing **50,000+ data points**.
+- Developed a real-time Streamlit dashboard adopted by the techno-economic analysis team.
+
+<img src="public/images/intern1.jpeg" width="600" alt="Smart Meter Dashboard Preview" style="border-radius: 8px; border: 1px solid #e2e8f0;"/>
+
+---
+
+### 🗑️ AI Waste Detection System *(2024–2025 — PKM × DLHK Depok)*
 *Real-time YOLOv11 object detection — community service collaboration with DLHK Kota Depok.*
 - Trained on **10,000+ annotated images** across 6 waste categories.
 - Achieved **mAP 97.5% (IoU 0.5)**, Precision 96.2%, Recall 95.8%.
@@ -115,23 +96,40 @@ The portfolio features **10 real-world projects** across full-stack web, data sc
 
 ---
 
-### 🌐 Website UNAS FEST
+### 🏛️ HIMASI UNAS Website *(2024–2025)*
+*Official WordPress CMS site for the student association.*
+- Increased website traffic by 40% via structured, SEO-optimized content.
+
+---
+
+### 🛍️ Indosaji E-commerce *(2024)*
+*Full-stack MERN (MongoDB, Express, React, Node.js) web application with Stripe payment gateway.*
+- Integrated **Stripe API** for secure, real-time transaction processing.
+- Implemented React Context API for global state management (auth & shopping cart).
+- Designed robust RESTful APIs with secure admin/user role separation via JWT.
+
+<img src="public/images/indosaji2.jpeg" width="600" alt="Indosaji E-commerce Preview" style="border-radius: 8px; border: 1px solid #e2e8f0;"/>
+
+---
+
+### 🌐 Website UNAS FEST *(2024)*
 *Official large-scale portal for the annual Universitas Nasional festival.*
 - Built 10+ responsive components with TypeScript & Tailwind CSS (Lighthouse 90+).
 - Engineered Jest + RTL testing pipeline, reducing production bug rate by 60%.
 
 ---
 
-### 📈 Sentiment Analysis Dashboard
-*Interactive NLP dashboard for text sentiment classification.*
-- TF-IDF feature extraction, stopword removal, stemming/lemmatization pipeline.
-- Visualization: WordCloud, sentiment distribution charts.
+### 🌿 RTH Monitoring (U-Net & Sentinel-2) *(2024)*
+*Deep learning urban green space change detection in DKI Jakarta (2019 vs 2023).*
+- U-Net semantic segmentation of Sentinel-2 multi-spectral satellite imagery.
+- Interactive Streamlit dashboard for spatial segmentation maps and vegetation area statistics.
 
 ---
 
-### 🏛️ HIMASI UNAS Website
-*Official WordPress CMS site for the student association.*
-- Increased website traffic by 40% via structured, SEO-optimized content.
+### 📈 Sentiment Analysis Dashboard *(2024)*
+*Interactive NLP dashboard for text sentiment classification.*
+- TF-IDF feature extraction, stopword removal, stemming/lemmatization pipeline.
+- Visualization: WordCloud, sentiment distribution charts.
 
 ---
 

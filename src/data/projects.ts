@@ -2,97 +2,6 @@ import { Project } from "@/types";
 
 export const projects: Project[] = [
   {
-    slug: "indosaji",
-    title: "Indosaji E-commerce",
-    description: {
-      id: "Platform e-commerce full-stack end-to-end berbasis MERN dengan integrasi payment gateway.",
-      en: "An end-to-end full-stack e-commerce platform based on MERN with payment gateway integration.",
-    },
-    longDescription: {
-      id: "Indosaji adalah aplikasi web e-commerce yang dirancang khusus untuk industri makanan dan minuman. Proyek ini dikembangkan secara end-to-end, mencakup sisi klien (pengguna) dan sisi server (admin), untuk memberikan pengalaman belanja online yang mulus dan manajemen yang efisien. Sebagai Fullstack Developer, bertanggung jawab penuh atas arsitektur aplikasi, mulai dari perancangan skema database di MongoDB, pembuatan RESTful API menggunakan Node.js & Express, hingga pengembangan antarmuka pengguna (UI) yang dinamis dan interaktif dengan React. Proyek ini juga mengintegrasikan payment gateway Stripe untuk proses transaksi yang aman.",
-      en: "Indosaji is an e-commerce web application designed specifically for the food and beverage industry. This project was developed end-to-end, covering both the client side (user) and server side (admin), to provide a seamless online shopping experience and efficient management. As a Fullstack Developer, fully responsible for the application architecture, from designing the database schema in MongoDB, creating RESTful APIs using Node.js & Express, to developing a dynamic and interactive user interface (UI) with React. This project also integrates the Stripe payment gateway for secure transactions.",
-    },
-    challenges: {
-      id: "Salah satu tantangan utama adalah mengelola state aplikasi secara global dan efisien, terutama untuk fitur krusial seperti autentikasi pengguna dan keranjang belanja. Untuk mengatasinya, diimplementasikan React Context API agar data dapat diakses secara konsisten. Selain itu, tantangan lainnya adalah mengintegrasikan sistem pembayaran yang aman. Berhasil mengimplementasikan Stripe API di sisi backend untuk memproses transaksi dan memverifikasi pembayaran sebelum pesanan dikonfirmasi.",
-      en: "One of the main challenges was managing application state globally and efficiently, especially for crucial features like user authentication and shopping cart. To address this, React Context API was implemented so that data can be accessed consistently. Another challenge was integrating a secure payment system. Successfully implemented the Stripe API on the backend to process transactions and verify payments before orders are confirmed.",
-    },
-    technologies: ["React", "Node.js", "Express.js", "MongoDB", "REST API", "JWT Auth", "Stripe"],
-    category: "webdev",
-    period: "2024",
-    thumbnail: "/images/indosaji2.jpeg",
-    pdfBullets: [
-      {
-        id: "Membangun platform e-commerce full-stack end-to-end (MERN) dengan integrasi payment gateway Stripe, memproses transaksi pengguna secara real-time dari sisi klien hingga server.",
-        en: "Built a full-stack MERN e-commerce platform with Stripe payment gateway integration, processing real-time user transactions from client to server.",
-      },
-      {
-        id: "Mengimplementasikan React Context API untuk manajemen state global (autentikasi & keranjang belanja), memastikan konsistensi UX di seluruh halaman aplikasi.",
-        en: "Implemented React Context API for global state management (auth & shopping cart), ensuring consistent UX across all application views.",
-      },
-      {
-        id: "Merancang RESTful API dengan Node.js & Express, didukung skema MongoDB yang terstruktur untuk memisahkan role admin dan pengguna secara aman.",
-        en: "Architected RESTful API with Node.js & Express backed by structured MongoDB schema, enabling secure admin/user role separation.",
-      },
-    ],
-    images: [
-      { src: "/images/indosaji7.jpeg", caption: { id: "Halaman Utama & Display Produk", en: "Homepage & Product Display" } },
-      { src: "/images/indosaji1.jpeg", caption: { id: "Autentikasi Pengguna", en: "User Authentication" } },
-      { src: "/images/indosaji4.jpeg", caption: { id: "Keranjang Belanja", en: "Shopping Cart" } },
-      { src: "/images/indosaji6.jpeg", caption: { id: "Proses Pemesanan", en: "Order Process" } },
-      { src: "/images/indosaji8.jpeg", caption: { id: "Integrasi Pembayaran Stripe", en: "Stripe Payment Integration" } },
-      { src: "/images/indosaji5.jpeg", caption: { id: "Riwayat Pesanan Pengguna", en: "User Order History" } },
-      { src: "/images/indosaji10.jpeg", caption: { id: "Admin: Tambah Produk", en: "Admin: Add Product" } },
-      { src: "/images/indosaji3.jpeg", caption: { id: "Admin: Manajemen Produk", en: "Admin: Product Management" } },
-      { src: "/images/indosaji9.jpeg", caption: { id: "Admin: Manajemen Pesanan", en: "Admin: Order Management" } },
-    ],
-    githubUrl: "https://github.com/ferdiansyach/indosaji",
-    githubNote: {
-      id: "Private repo - tersedia atas permintaan",
-      en: "Private repo - available upon request",
-    },
-    role: { id: "Fullstack Developer", en: "Fullstack Developer" },
-  },
-  {
-    slug: "waste-classification-app",
-    title: "Waste Classification AI App",
-    description: {
-      id: "Aplikasi web fullstack klasifikasi sampah berbasis AI — upload foto, dapat kategori & rekomendasi penanganan secara instan. Dibangun dengan Next.js 15, Gemini Vision API, PostgreSQL, dan Drizzle ORM.",
-      en: "AI-powered fullstack waste classification web app — upload a photo, get instant category & handling recommendations. Built with Next.js 15, Gemini Vision API, PostgreSQL, and Drizzle ORM.",
-    },
-    longDescription: {
-      id: "Aplikasi web fullstack yang memanfaatkan Gemini Vision API (Google AI) untuk klasifikasi jenis sampah secara otomatis berdasarkan foto yang diunggah pengguna. Dibangun dengan arsitektur fullstack modern: Next.js 15 App Router sebagai frontend dan server-side API, PostgreSQL dengan Drizzle ORM sebagai database, dan Tailwind CSS untuk antarmuka responsif. Pengguna cukup mengunggah foto sampah dan sistem akan mengidentifikasi kategori (organik, anorganik, B3) beserta rekomendasi penanganan yang tepat secara real-time.",
-      en: "A fullstack web application leveraging the Gemini Vision API (Google AI) for automatic waste classification from user-uploaded photos. Built with modern fullstack architecture: Next.js 15 App Router for both frontend and server-side API handling, PostgreSQL with Drizzle ORM as the database layer, and Tailwind CSS for a responsive UI. Users simply upload a waste photo and the system identifies the category (organic, inorganic, hazardous) along with proper handling recommendations in real-time.",
-    },
-    challenges: {
-      id: "Tantangan utama adalah mengintegrasikan Gemini Vision API secara efisien dalam Next.js API Routes sambil mengelola state upload gambar dan menampilkan hasil klasifikasi secara real-time. Diperlukan optimasi prompt engineering untuk mendapatkan output terstruktur dari model AI, serta perancangan skema database PostgreSQL yang fleksibel untuk menyimpan riwayat klasifikasi pengguna.",
-      en: "The main challenge was integrating the Gemini Vision API efficiently within Next.js API Routes while managing image upload state and displaying classification results in real-time. Required prompt engineering optimization to get structured output from the AI model, and PostgreSQL schema design to flexibly store user classification history.",
-    },
-    technologies: ["Next.js 15", "TypeScript", "Gemini Vision API", "PostgreSQL", "Drizzle ORM", "Tailwind CSS", "Google AI"],
-    category: "webdev",
-    period: "2025",
-    thumbnail: "/images/intern3.jpeg",
-    pdfBullets: [
-      {
-        id: "Membangun aplikasi web fullstack klasifikasi sampah berbasis AI dengan Next.js 15 App Router dan Gemini Vision API, memproses klasifikasi foto secara real-time dan menyimpan riwayat ke PostgreSQL via Drizzle ORM.",
-        en: "Built a fullstack AI waste classification web app with Next.js 15 App Router and Gemini Vision API, processing real-time photo classification and persisting history to PostgreSQL via Drizzle ORM.",
-      },
-      {
-        id: "Merancang skema PostgreSQL dan REST API layer dengan Drizzle ORM untuk penyimpanan data klasifikasi pengguna yang terstruktur, dideploy secara penuh di Vercel.",
-        en: "Designed PostgreSQL schema and REST API layer with Drizzle ORM for structured user classification data storage, fully deployed on Vercel.",
-      },
-      {
-        id: "Mengimplementasikan prompt engineering pada Gemini Vision API untuk menghasilkan output terstruktur (kategori sampah + rekomendasi penanganan) dari input foto pengguna.",
-        en: "Implemented prompt engineering on Gemini Vision API to produce structured output (waste category + handling recommendations) from user photo inputs.",
-      },
-    ],
-    images: [
-      { src: "/images/intern3.jpeg", caption: { id: "Klasifikasi Sampah AI", en: "AI Waste Classification" } },
-    ],
-    githubUrl: "https://github.com/ferdiansyach/waste-classification",
-    liveUrl: "https://waste-classification-rust.vercel.app",
-    role: { id: "Fullstack Developer", en: "Fullstack Developer" },
-  },
-  {
     slug: "magangtracking",
     title: "MagangTracking Platform",
     description: {
@@ -132,51 +41,6 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/ferdiansyach/magangtracking",
     liveUrl: "https://magangtracking.vercel.app",
     role: { id: "Fullstack Developer (Go + Next.js)", en: "Fullstack Developer (Go + Next.js)" },
-  },
-  {
-    slug: "smart-meter",
-    title: "Smart Meter Analysis",
-    description: {
-      id: "Model AI prediktif (LSTM & XGBoost) untuk deteksi anomali energi dengan dashboard interaktif real-time.",
-      en: "Predictive AI models (LSTM & XGBoost) for energy anomaly detection with a real-time interactive dashboard.",
-    },
-    longDescription: {
-      id: "Proyek analisis data konsumsi energi smart meter menggunakan teknik machine learning untuk mendeteksi pola anomali dan mengoptimalkan efisiensi energi. Melibatkan pemrosesan data besar, feature engineering, dan implementasi model prediktif menggunakan Gradient Boosting dan LSTM. Dashboard interaktif dibangun menggunakan Streamlit untuk visualisasi hasil analisis secara real-time.",
-      en: "A smart meter energy consumption data analysis project using machine learning techniques to detect anomaly patterns and optimize energy efficiency. Involves large-scale data processing, feature engineering, and implementation of predictive models using Gradient Boosting and LSTM. An interactive dashboard was built using Streamlit for real-time visualization of analysis results.",
-    },
-    challenges: {
-      id: "Tantangan utama adalah menangani dataset besar dengan banyak noise dan missing values. Diperlukan pipeline preprocessing yang robust untuk memastikan kualitas data sebelum melatih model. Selain itu, memilih arsitektur model yang tepat untuk time-series forecasting juga menjadi tantangan, di mana LSTM memberikan hasil terbaik setelah tuning hyperparameter yang ekstensif.",
-      en: "The main challenge was handling large datasets with significant noise and missing values. A robust preprocessing pipeline was needed to ensure data quality before training models. Additionally, selecting the right model architecture for time-series forecasting was challenging, where LSTM provided the best results after extensive hyperparameter tuning.",
-    },
-    technologies: ["Python", "Machine Learning", "Data Analysis", "Streamlit", "XGBoost", "LSTM", "Pandas"],
-    category: "datascience",
-    period: "2025",
-    thumbnail: "/images/intern1.jpeg",
-    pdfBullets: [
-      {
-        id: "Membangun model prediktif LSTM + XGBoost dengan akurasi 92% untuk peramalan konsumsi energi dari 50.000+ data poin smart meter.",
-        en: "Engineered LSTM + XGBoost predictive models achieving 92% accuracy on 50,000+ smart meter data points for energy consumption forecasting.",
-      },
-      {
-        id: "Merancang pipeline data end-to-end (ingest → preprocessing → deployment) dengan deteksi anomali skala besar untuk divisi analisis tekno-ekonomi Telkom Indonesia.",
-        en: "Built an end-to-end data pipeline (ingestion → preprocessing → deployment) with large-scale anomaly detection for Telkom Indonesia's techno-economic analysis division.",
-      },
-      {
-        id: "Mengembangkan dashboard Streamlit real-time untuk visualisasi konsumsi energi dan perbandingan performa model, diadopsi langsung oleh tim internal.",
-        en: "Developed a real-time Streamlit dashboard for energy consumption visualization and model performance comparison, adopted directly by the internal team.",
-      },
-    ],
-    images: [
-      { src: "/images/intern1.jpeg", caption: { id: "Dashboard Utama", en: "Main Dashboard" } },
-      { src: "/images/intern2.jpeg", caption: { id: "Visualisasi Data Konsumsi", en: "Consumption Data Visualization" } },
-      { src: "/images/intern3.jpeg", caption: { id: "Analisis Pola Anomali", en: "Anomaly Pattern Analysis" } },
-      { src: "/images/intern4.jpeg", caption: { id: "Prediksi Model ML", en: "ML Model Prediction" } },
-      { src: "/images/intern5.jpeg", caption: { id: "Perbandingan Model", en: "Model Comparison" } },
-      { src: "/images/intern6.jpeg", caption: { id: "Heatmap Konsumsi Energi", en: "Energy Consumption Heatmap" } },
-      { src: "/images/intern7.jpeg", caption: { id: "Laporan Analisis", en: "Analysis Report" } },
-    ],
-    githubUrl: "https://github.com/ferdiansyach/Energy_Effeciency",
-    role: { id: "Data Analyst & ML Engineer", en: "Data Analyst & ML Engineer" },
   },
   {
     slug: "coastal-water-quality",
@@ -254,53 +118,124 @@ export const projects: Project[] = [
     role: { id: "Data Analyst & Spesialis GIS", en: "Data Analyst & GIS Specialist" },
   },
   {
-    slug: "unasfest",
-    title: "Website UNAS FEST",
+    slug: "waste-classification-app",
+    title: "Waste Classification AI App",
     description: {
-      id: "Portal website resmi berskala besar untuk mendukung operasional festival tahunan universitas.",
-      en: "A large-scale official web portal to support the operations of the university's annual festival.",
+      id: "Aplikasi web fullstack klasifikasi sampah berbasis AI — upload foto, dapat kategori & rekomendasi penanganan secara instan. Dibangun dengan Next.js 15, Gemini Vision API, PostgreSQL, dan Drizzle ORM.",
+      en: "AI-powered fullstack waste classification web app — upload a photo, get instant category & handling recommendations. Built with Next.js 15, Gemini Vision API, PostgreSQL, and Drizzle ORM.",
     },
     longDescription: {
-      id: "Website resmi untuk UNAS FEST (Universitas Nasional Festival), sebuah acara besar tahunan universitas. Dikembangkan sebagai fullstack developer yang bertanggung jawab dalam membangun komponen website yang responsif menggunakan TypeScript dan Tailwind CSS. Melakukan pengujian dan debugging komponen untuk memastikan stabilitas dan performa optimal.",
-      en: "The official website for UNAS FEST (Universitas Nasional Festival), a major annual university event. Developed as a fullstack developer responsible for building responsive website components using TypeScript and Tailwind CSS. Conducted testing and debugging of components to ensure optimal stability and performance.",
+      id: "Aplikasi web fullstack yang memanfaatkan Gemini Vision API (Google AI) untuk klasifikasi jenis sampah secara otomatis berdasarkan foto yang diunggah pengguna. Dibangun dengan arsitektur fullstack modern: Next.js 15 App Router sebagai frontend dan server-side API, PostgreSQL dengan Drizzle ORM sebagai database, dan Tailwind CSS untuk antarmuka responsif. Pengguna cukup mengunggah foto sampah dan sistem akan mengidentifikasi kategori (organik, anorganik, B3) beserta rekomendasi penanganan yang tepat secara real-time.",
+      en: "A fullstack web application leveraging the Gemini Vision API (Google AI) for automatic waste classification from user-uploaded photos. Built with modern fullstack architecture: Next.js 15 App Router for both frontend and server-side API handling, PostgreSQL with Drizzle ORM as the database layer, and Tailwind CSS for a responsive UI. Users simply upload a waste photo and the system identifies the category (organic, inorganic, hazardous) along with proper handling recommendations in real-time.",
     },
     challenges: {
-      id: "Tantangan terbesar adalah mengelola deadline yang ketat dengan koordinasi tim yang terdiri dari beberapa developer. Menggunakan Git branching strategy yang efektif dan code review untuk memastikan kualitas kode tetap terjaga selama development yang intensif.",
-      en: "The biggest challenge was managing tight deadlines with team coordination involving multiple developers. Used an effective Git branching strategy and code reviews to maintain code quality during intensive development.",
+      id: "Tantangan utama adalah mengintegrasikan Gemini Vision API secara efisien dalam Next.js API Routes sambil mengelola state upload gambar dan menampilkan hasil klasifikasi secara real-time. Diperlukan optimasi prompt engineering untuk mendapatkan output terstruktur dari model AI, serta perancangan skema database PostgreSQL yang fleksibel untuk menyimpan riwayat klasifikasi pengguna.",
+      en: "The main challenge was integrating the Gemini Vision API efficiently within Next.js API Routes while managing image upload state and displaying classification results in real-time. Required prompt engineering optimization to get structured output from the AI model, and PostgreSQL schema design to flexibly store user classification history.",
     },
-    technologies: ["TypeScript", "React", "Tailwind CSS", "Next.js"],
+    technologies: ["Next.js 15", "TypeScript", "Gemini Vision API", "PostgreSQL", "Drizzle ORM", "Tailwind CSS", "Google AI"],
     category: "webdev",
-    period: "2024",
-    thumbnail: "/images/unasfest1.jpeg",
-    githubUrl: "https://github.com/ferdiansyach/unasfest-end",
+    period: "2025",
+    thumbnail: "/images/intern3.jpeg",
     pdfBullets: [
       {
-        id: "Mengembangkan 10+ komponen website responsif dengan TypeScript & Tailwind CSS, mencapai skor Lighthouse 90+ untuk performa dan aksesibilitas pada portal festival resmi.",
-        en: "Developed 10+ responsive components with TypeScript & Tailwind CSS, achieving a Lighthouse score of 90+ for performance and accessibility on the official festival portal.",
+        id: "Membangun aplikasi web fullstack klasifikasi sampah berbasis AI dengan Next.js 15 App Router dan Gemini Vision API, memproses klasifikasi foto secara real-time dan menyimpan riwayat ke PostgreSQL via Drizzle ORM.",
+        en: "Built a fullstack AI waste classification web app with Next.js 15 App Router and Gemini Vision API, processing real-time photo classification and persisting history to PostgreSQL via Drizzle ORM.",
       },
       {
-        id: "Merancang pipeline testing komprehensif (Jest, RTL) yang memangkas bug rate produksi sebesar 60% sebelum rilis publik yang digunakan seluruh civitas universitas.",
-        en: "Engineered a comprehensive testing pipeline (Jest, RTL) reducing the production bug rate by 60% before a public release used by the entire university community.",
+        id: "Merancang skema PostgreSQL dan REST API layer dengan Drizzle ORM untuk penyimpanan data klasifikasi pengguna yang terstruktur, dideploy secara penuh di Vercel.",
+        en: "Designed PostgreSQL schema and REST API layer with Drizzle ORM for structured user classification data storage, fully deployed on Vercel.",
       },
       {
-        id: "Berkolaborasi dalam tim multi-developer menggunakan Git branching strategy dan code review untuk menjaga kualitas kode di bawah deadline yang ketat.",
-        en: "Collaborated in a multi-developer team using Git branching strategy and code reviews to maintain code quality under tight deadlines.",
+        id: "Mengimplementasikan prompt engineering pada Gemini Vision API untuk menghasilkan output terstruktur (kategori sampah + rekomendasi penanganan) dari input foto pengguna.",
+        en: "Implemented prompt engineering on Gemini Vision API to produce structured output (waste category + handling recommendations) from user photo inputs.",
       },
     ],
     images: [
-      { src: "/images/unasfest1.jpeg", caption: { id: "Halaman Utama Festival", en: "Festival Homepage" } },
-      { src: "/images/unasfest2.jpeg", caption: { id: "Lineup Acara", en: "Event Lineup" } },
-      { src: "/images/unasfest3.jpeg", caption: { id: "Informasi Tiket", en: "Ticket Information" } },
-      { src: "/images/unasfest4.jpeg", caption: { id: "Galeri Kegiatan", en: "Activity Gallery" } },
-      { src: "/images/unasfest5.jpeg", caption: { id: "Sponsor & Partner", en: "Sponsors & Partners" } },
-      { src: "/images/unasfest6.jpeg", caption: { id: "Responsif Design", en: "Responsive Design" } },
-      { src: "/images/unasfest7.jpeg", caption: { id: "Dokumentasi Acara", en: "Event Documentation" } },
+      { src: "/images/intern3.jpeg", caption: { id: "Klasifikasi Sampah AI", en: "AI Waste Classification" } },
     ],
-    githubNote: {
-      id: "Private repo - tersedia atas permintaan",
-      en: "Private repo - available upon request",
+    githubUrl: "https://github.com/ferdiansyach/waste-classification",
+    liveUrl: "https://waste-classification-rust.vercel.app",
+    role: { id: "Fullstack Developer", en: "Fullstack Developer" },
+  },
+  {
+    slug: "smart-meter",
+    title: "Smart Meter Analysis",
+    description: {
+      id: "Model AI prediktif (LSTM & XGBoost) untuk deteksi anomali energi dengan dashboard interaktif real-time.",
+      en: "Predictive AI models (LSTM & XGBoost) for energy anomaly detection with a real-time interactive dashboard.",
     },
-    role: { id: "Frontend Developer & QA Engineer", en: "Frontend Developer & QA Engineer" },
+    longDescription: {
+      id: "Proyek analisis data konsumsi energi smart meter menggunakan teknik machine learning untuk mendeteksi pola anomali dan mengoptimalkan efisiensi energi. Melibatkan pemrosesan data besar, feature engineering, dan implementasi model prediktif menggunakan Gradient Boosting dan LSTM. Dashboard interaktif dibangun menggunakan Streamlit untuk visualisasi hasil analisis secara real-time.",
+      en: "A smart meter energy consumption data analysis project using machine learning techniques to detect anomaly patterns and optimize energy efficiency. Involves large-scale data processing, feature engineering, and implementation of predictive models using Gradient Boosting and LSTM. An interactive dashboard was built using Streamlit for real-time visualization of analysis results.",
+    },
+    challenges: {
+      id: "Tantangan utama adalah menangani dataset besar dengan banyak noise dan missing values. Diperlukan pipeline preprocessing yang robust untuk memastikan kualitas data sebelum melatih model. Selain itu, memilih arsitektur model yang tepat untuk time-series forecasting juga menjadi tantangan, di mana LSTM memberikan hasil terbaik setelah tuning hyperparameter yang ekstensif.",
+      en: "The main challenge was handling large datasets with significant noise and missing values. A robust preprocessing pipeline was needed to ensure data quality before training models. Additionally, selecting the right model architecture for time-series forecasting was challenging, where LSTM provided the best results after extensive hyperparameter tuning.",
+    },
+    technologies: ["Python", "Machine Learning", "Data Analysis", "Streamlit", "XGBoost", "LSTM", "Pandas"],
+    category: "datascience",
+    period: "2025",
+    thumbnail: "/images/intern1.jpeg",
+    pdfBullets: [
+      {
+        id: "Membangun model prediktif LSTM + XGBoost dengan akurasi 92% untuk peramalan konsumsi energi dari 50.000+ data poin smart meter.",
+        en: "Engineered LSTM + XGBoost predictive models achieving 92% accuracy on 50,000+ smart meter data points for energy consumption forecasting.",
+      },
+      {
+        id: "Merancang pipeline data end-to-end (ingest → preprocessing → deployment) dengan deteksi anomali skala besar untuk divisi analisis tekno-ekonomi Telkom Indonesia.",
+        en: "Built an end-to-end data pipeline (ingestion → preprocessing → deployment) with large-scale anomaly detection for Telkom Indonesia's techno-economic analysis division.",
+      },
+      {
+        id: "Mengembangkan dashboard Streamlit real-time untuk visualisasi konsumsi energi dan perbandingan performa model, diadopsi langsung oleh tim internal.",
+        en: "Developed a real-time Streamlit dashboard for energy consumption visualization and model performance comparison, adopted directly by the internal team.",
+      },
+    ],
+    images: [
+      { src: "/images/intern1.jpeg", caption: { id: "Dashboard Utama", en: "Main Dashboard" } },
+      { src: "/images/intern2.jpeg", caption: { id: "Visualisasi Data Konsumsi", en: "Consumption Data Visualization" } },
+      { src: "/images/intern3.jpeg", caption: { id: "Analisis Pola Anomali", en: "Anomaly Pattern Analysis" } },
+      { src: "/images/intern4.jpeg", caption: { id: "Prediksi Model ML", en: "ML Model Prediction" } },
+      { src: "/images/intern5.jpeg", caption: { id: "Perbandingan Model", en: "Model Comparison" } },
+      { src: "/images/intern6.jpeg", caption: { id: "Heatmap Konsumsi Energi", en: "Energy Consumption Heatmap" } },
+      { src: "/images/intern7.jpeg", caption: { id: "Laporan Analisis", en: "Analysis Report" } },
+    ],
+    githubUrl: "https://github.com/ferdiansyach/Energy_Effeciency",
+    role: { id: "Data Analyst & ML Engineer", en: "Data Analyst & ML Engineer" },
+  },
+  {
+    slug: "waste-classification-pkm",
+    title: "AI Waste Detection System (PKM × DLHK Depok)",
+    description: {
+      id: "Model deteksi sampah real-time berbasis YOLOv11 dengan mAP (IoU 0.5) 97.5% — kolaborasi PKM Pengabdian Masyarakat dengan DLHK Kota Depok untuk pengelolaan sampah berbasis AI.",
+      en: "Real-time YOLOv11 waste detection model achieving mAP (IoU 0.5) 97.5% — PKM community service collaboration with Depok City Environmental Agency (DLHK) for AI-powered waste management.",
+    },
+    longDescription: {
+      id: "Proyek PKM Pengabdian Masyarakat yang mengembangkan sistem deteksi dan klasifikasi sampah real-time menggunakan arsitektur YOLOv11 deep learning, berkolaborasi dengan Dinas Lingkungan Hidup dan Kebersihan (DLHK) Kota Depok. Model dilatih pada 10.000+ citra sampah teranotasi lintas 6 kategori (kardus, kaca, logam, kertas, plastik, sampah umum), mencapai mAP (IoU 0.5) sebesar 97.5%, Precision 96.2%, dan Recall 95.8%. Dilengkapi platform web klasifikasi sampah dengan dashboard admin untuk monitoring real-time, serta pelaksanaan pelatihan transfer teknologi kepada komunitas pengelola sampah di Beji dan Mekarjaya, Depok.",
+      en: "A PKM (Student Creativity Program) community service project developing a real-time waste detection and classification system using YOLOv11 deep learning architecture, in collaboration with the Depok City Environmental and Sanitation Agency (DLHK). The model was trained on 10,000+ annotated images across 6 waste categories (cardboard, glass, metal, paper, plastic, trash), achieving mAP (IoU 0.5) of 97.5%, Precision of 96.2%, and Recall of 95.8%. The project also includes a web-based waste classification platform with an admin dashboard for real-time monitoring, and field deployment with technology transfer training for waste management communities in Beji and Mekarjaya, Depok.",
+    },
+    challenges: {
+      id: "Tantangan utama adalah membangun dataset citra sampah berkualitas tinggi pada berbagai kondisi pencahayaan dan latar belakang nyata, serta melakukan fine-tuning YOLOv11 agar robust terhadap variasi visual 6 kategori sampah. Integrasi model ke platform web untuk real-time inference juga memerlukan optimasi performa agar dapat berjalan pada hardware terbatas.",
+      en: "Key challenges included building a high-quality waste image dataset under varied real-world lighting and background conditions, and fine-tuning YOLOv11 to be robust across 6 waste category visual variations. Integrating the model into a web platform for real-time inference also required performance optimization for constrained hardware environments.",
+    },
+    technologies: ["Python", "YOLOv11", "Computer Vision", "Deep Learning", "PyTorch", "OpenCV", "Next.js", "Streamlit"],
+    category: "datascience",
+    period: "2024 – 2025",
+    thumbnail: "/images/intern3.jpeg",
+    pdfBullets: [
+      {
+        id: "Merancang dan melatih model deteksi objek YOLOv11 pada 10.000+ citra sampah teranotasi lintas 6 kategori, mencapai mAP (IoU 0.5) 97.5%, Precision 96.2%, dan Recall 95.8% dalam kolaborasi dengan DLHK Kota Depok.",
+        en: "Engineered and trained a YOLOv11 object detection model on 10,000+ annotated waste images across 6 categories, achieving mAP (IoU 0.5) of 97.5%, Precision 96.2%, and Recall 95.8%, in collaboration with Depok City Environmental Agency (DLHK).",
+      },
+      {
+        id: "Mengembangkan platform web klasifikasi sampah berbasis AI dengan dashboard admin real-time, serta melaksanakan pelatihan transfer teknologi kepada komunitas pengelola sampah di Beji dan Mekarjaya, Depok.",
+        en: "Developed an AI-powered waste classification web platform with a real-time admin dashboard, and conducted technology transfer training for waste management communities in Beji and Mekarjaya, Depok.",
+      },
+    ],
+    images: [
+      { src: "/images/intern3.jpeg", caption: { id: "Deteksi Sampah YOLOv11", en: "YOLOv11 Waste Detection" } },
+    ],
+    githubUrl: "https://github.com/ferdiansyach/waste-classification",
+    role: { id: "Computer Vision & ML Developer", en: "Computer Vision & ML Developer" },
   },
   {
     slug: "himasi",
@@ -348,6 +283,106 @@ export const projects: Project[] = [
       en: "Developed via WordPress CMS (No public code repository)",
     },
     role: { id: "WordPress Developer & Pengelola Konten", en: "WordPress Developer & Content Manager" },
+  },
+  {
+    slug: "indosaji",
+    title: "Indosaji E-commerce",
+    description: {
+      id: "Platform e-commerce full-stack end-to-end berbasis MERN dengan integrasi payment gateway.",
+      en: "An end-to-end full-stack e-commerce platform based on MERN with payment gateway integration.",
+    },
+    longDescription: {
+      id: "Indosaji adalah aplikasi web e-commerce yang dirancang khusus untuk industri makanan dan minuman. Proyek ini dikembangkan secara end-to-end, mencakup sisi klien (pengguna) dan sisi server (admin), untuk memberikan pengalaman belanja online yang mulus dan manajemen yang efisien. Sebagai Fullstack Developer, bertanggung jawab penuh atas arsitektur aplikasi, mulai dari perancangan skema database di MongoDB, pembuatan RESTful API menggunakan Node.js & Express, hingga pengembangan antarmuka pengguna (UI) yang dinamis dan interaktif dengan React. Proyek ini juga mengintegrasikan payment gateway Stripe untuk proses transaksi yang aman.",
+      en: "Indosaji is an e-commerce web application designed specifically for the food and beverage industry. This project was developed end-to-end, covering both the client side (user) and server side (admin), to provide a seamless online shopping experience and efficient management. As a Fullstack Developer, fully responsible for the application architecture, from designing the database schema in MongoDB, creating RESTful APIs using Node.js & Express, to developing a dynamic and interactive user interface (UI) with React. This project also integrates the Stripe payment gateway for secure transactions.",
+    },
+    challenges: {
+      id: "Salah satu tantangan utama adalah mengelola state aplikasi secara global dan efisien, terutama untuk fitur krusial seperti autentikasi pengguna dan keranjang belanja. Untuk mengatasinya, diimplementasikan React Context API agar data dapat diakses secara konsisten. Selain itu, tantangan lainnya adalah mengintegrasikan sistem pembayaran yang aman. Berhasil mengimplementasikan Stripe API di sisi backend untuk memproses transaksi dan memverifikasi pembayaran sebelum pesanan dikonfirmasi.",
+      en: "One of the main challenges was managing application state globally and efficiently, especially for crucial features like user authentication and shopping cart. To address this, React Context API was implemented so that data can be accessed consistently. Another challenge was integrating a secure payment system. Successfully implemented the Stripe API on the backend to process transactions and verify payments before orders are confirmed.",
+    },
+    technologies: ["React", "Node.js", "Express.js", "MongoDB", "REST API", "JWT Auth", "Stripe"],
+    category: "webdev",
+    period: "2024",
+    thumbnail: "/images/indosaji2.jpeg",
+    pdfBullets: [
+      {
+        id: "Membangun platform e-commerce full-stack end-to-end (MERN) dengan integrasi payment gateway Stripe, memproses transaksi pengguna secara real-time dari sisi klien hingga server.",
+        en: "Built a full-stack MERN e-commerce platform with Stripe payment gateway integration, processing real-time user transactions from client to server.",
+      },
+      {
+        id: "Mengimplementasikan React Context API untuk manajemen state global (autentikasi & keranjang belanja), memastikan konsistensi UX di seluruh halaman aplikasi.",
+        en: "Implemented React Context API for global state management (auth & shopping cart), ensuring consistent UX across all application views.",
+      },
+      {
+        id: "Merancang RESTful API dengan Node.js & Express, didukung skema MongoDB yang terstruktur untuk memisahkan role admin dan pengguna secara aman.",
+        en: "Architected RESTful API with Node.js & Express backed by structured MongoDB schema, enabling secure admin/user role separation.",
+      },
+    ],
+    images: [
+      { src: "/images/indosaji7.jpeg", caption: { id: "Halaman Utama & Display Produk", en: "Homepage & Product Display" } },
+      { src: "/images/indosaji1.jpeg", caption: { id: "Autentikasi Pengguna", en: "User Authentication" } },
+      { src: "/images/indosaji4.jpeg", caption: { id: "Keranjang Belanja", en: "Shopping Cart" } },
+      { src: "/images/indosaji6.jpeg", caption: { id: "Proses Pemesanan", en: "Order Process" } },
+      { src: "/images/indosaji8.jpeg", caption: { id: "Integrasi Pembayaran Stripe", en: "Stripe Payment Integration" } },
+      { src: "/images/indosaji5.jpeg", caption: { id: "Riwayat Pesanan Pengguna", en: "User Order History" } },
+      { src: "/images/indosaji10.jpeg", caption: { id: "Admin: Tambah Produk", en: "Admin: Add Product" } },
+      { src: "/images/indosaji3.jpeg", caption: { id: "Admin: Manajemen Produk", en: "Admin: Product Management" } },
+      { src: "/images/indosaji9.jpeg", caption: { id: "Admin: Manajemen Pesanan", en: "Admin: Order Management" } },
+    ],
+    githubUrl: "https://github.com/ferdiansyach/indosaji",
+    githubNote: {
+      id: "Private repo - tersedia atas permintaan",
+      en: "Private repo - available upon request",
+    },
+    role: { id: "Fullstack Developer", en: "Fullstack Developer" },
+  },
+  {
+    slug: "unasfest",
+    title: "Website UNAS FEST",
+    description: {
+      id: "Portal website resmi berskala besar untuk mendukung operasional festival tahunan universitas.",
+      en: "A large-scale official web portal to support the operations of the university's annual festival.",
+    },
+    longDescription: {
+      id: "Website resmi untuk UNAS FEST (Universitas Nasional Festival), sebuah acara besar tahunan universitas. Dikembangkan sebagai fullstack developer yang bertanggung jawab dalam membangun komponen website yang responsif menggunakan TypeScript dan Tailwind CSS. Melakukan pengujian dan debugging komponen untuk memastikan stabilitas dan performa optimal.",
+      en: "The official website for UNAS FEST (Universitas Nasional Festival), a major annual university event. Developed as a fullstack developer responsible for building responsive website components using TypeScript and Tailwind CSS. Conducted testing and debugging of components to ensure optimal stability and performance.",
+    },
+    challenges: {
+      id: "Tantangan terbesar adalah mengelola deadline yang ketat dengan koordinasi tim yang terdiri dari beberapa developer. Menggunakan Git branching strategy yang efektif dan code review untuk memastikan kualitas kode tetap terjaga selama development yang intensif.",
+      en: "The biggest challenge was managing tight deadlines with team coordination involving multiple developers. Used an effective Git branching strategy and code reviews to maintain code quality during intensive development.",
+    },
+    technologies: ["TypeScript", "React", "Tailwind CSS", "Next.js"],
+    category: "webdev",
+    period: "2024",
+    thumbnail: "/images/unasfest1.jpeg",
+    githubUrl: "https://github.com/ferdiansyach/unasfest-end",
+    pdfBullets: [
+      {
+        id: "Mengembangkan 10+ komponen website responsif dengan TypeScript & Tailwind CSS, mencapai skor Lighthouse 90+ untuk performa dan aksesibilitas pada portal festival resmi.",
+        en: "Developed 10+ responsive components with TypeScript & Tailwind CSS, achieving a Lighthouse score of 90+ for performance and accessibility on the official festival portal.",
+      },
+      {
+        id: "Merancang pipeline testing komprehensif (Jest, RTL) yang memangkas bug rate produksi sebesar 60% sebelum rilis publik yang digunakan seluruh civitas universitas.",
+        en: "Engineered a comprehensive testing pipeline (Jest, RTL) reducing the production bug rate by 60% before a public release used by the entire university community.",
+      },
+      {
+        id: "Berkolaborasi dalam tim multi-developer menggunakan Git branching strategy dan code review untuk menjaga kualitas kode di bawah deadline yang ketat.",
+        en: "Collaborated in a multi-developer team using Git branching strategy and code reviews to maintain code quality under tight deadlines.",
+      },
+    ],
+    images: [
+      { src: "/images/unasfest1.jpeg", caption: { id: "Halaman Utama Festival", en: "Festival Homepage" } },
+      { src: "/images/unasfest2.jpeg", caption: { id: "Lineup Acara", en: "Event Lineup" } },
+      { src: "/images/unasfest3.jpeg", caption: { id: "Informasi Tiket", en: "Ticket Information" } },
+      { src: "/images/unasfest4.jpeg", caption: { id: "Galeri Kegiatan", en: "Activity Gallery" } },
+      { src: "/images/unasfest5.jpeg", caption: { id: "Sponsor & Partner", en: "Sponsors & Partners" } },
+      { src: "/images/unasfest6.jpeg", caption: { id: "Responsif Design", en: "Responsive Design" } },
+      { src: "/images/unasfest7.jpeg", caption: { id: "Dokumentasi Acara", en: "Event Documentation" } },
+    ],
+    githubNote: {
+      id: "Private repo - tersedia atas permintaan",
+      en: "Private repo - available upon request",
+    },
+    role: { id: "Frontend Developer & QA Engineer", en: "Frontend Developer & QA Engineer" },
   },
   {
     slug: "monitoring-rth-unet",
@@ -418,41 +453,6 @@ export const projects: Project[] = [
     ],
     githubUrl: "https://github.com/ferdiansyach/Sentiment-Analysis-Dashboard",
     role: { id: "Data Analyst & NLP Developer", en: "Data Analyst & NLP Developer" },
-  },
-  {
-    slug: "waste-classification-pkm",
-    title: "AI Waste Detection System (PKM × DLHK Depok)",
-    description: {
-      id: "Model deteksi sampah real-time berbasis YOLOv11 dengan mAP (IoU 0.5) 97.5% — kolaborasi PKM Pengabdian Masyarakat dengan DLHK Kota Depok untuk pengelolaan sampah berbasis AI.",
-      en: "Real-time YOLOv11 waste detection model achieving mAP (IoU 0.5) 97.5% — PKM community service collaboration with Depok City Environmental Agency (DLHK) for AI-powered waste management.",
-    },
-    longDescription: {
-      id: "Proyek PKM Pengabdian Masyarakat yang mengembangkan sistem deteksi dan klasifikasi sampah real-time menggunakan arsitektur YOLOv11 deep learning, berkolaborasi dengan Dinas Lingkungan Hidup dan Kebersihan (DLHK) Kota Depok. Model dilatih pada 10.000+ citra sampah teranotasi lintas 6 kategori (kardus, kaca, logam, kertas, plastik, sampah umum), mencapai mAP (IoU 0.5) sebesar 97.5%, Precision 96.2%, dan Recall 95.8%. Dilengkapi platform web klasifikasi sampah dengan dashboard admin untuk monitoring real-time, serta pelaksanaan pelatihan transfer teknologi kepada komunitas pengelola sampah di Beji dan Mekarjaya, Depok.",
-      en: "A PKM (Student Creativity Program) community service project developing a real-time waste detection and classification system using YOLOv11 deep learning architecture, in collaboration with the Depok City Environmental and Sanitation Agency (DLHK). The model was trained on 10,000+ annotated images across 6 waste categories (cardboard, glass, metal, paper, plastic, trash), achieving mAP (IoU 0.5) of 97.5%, Precision of 96.2%, and Recall of 95.8%. The project also includes a web-based waste classification platform with an admin dashboard for real-time monitoring, and field deployment with technology transfer training for waste management communities in Beji and Mekarjaya, Depok.",
-    },
-    challenges: {
-      id: "Tantangan utama adalah membangun dataset citra sampah berkualitas tinggi pada berbagai kondisi pencahayaan dan latar belakang nyata, serta melakukan fine-tuning YOLOv11 agar robust terhadap variasi visual 6 kategori sampah. Integrasi model ke platform web untuk real-time inference juga memerlukan optimasi performa agar dapat berjalan pada hardware terbatas.",
-      en: "Key challenges included building a high-quality waste image dataset under varied real-world lighting and background conditions, and fine-tuning YOLOv11 to be robust across 6 waste category visual variations. Integrating the model into a web platform for real-time inference also required performance optimization for constrained hardware environments.",
-    },
-    technologies: ["Python", "YOLOv11", "Computer Vision", "Deep Learning", "PyTorch", "OpenCV", "Next.js", "Streamlit"],
-    category: "datascience",
-    period: "2024 – 2025",
-    thumbnail: "/images/intern3.jpeg",
-    pdfBullets: [
-      {
-        id: "Merancang dan melatih model deteksi objek YOLOv11 pada 10.000+ citra sampah teranotasi lintas 6 kategori, mencapai mAP (IoU 0.5) 97.5%, Precision 96.2%, dan Recall 95.8% dalam kolaborasi dengan DLHK Kota Depok.",
-        en: "Engineered and trained a YOLOv11 object detection model on 10,000+ annotated waste images across 6 categories, achieving mAP (IoU 0.5) of 97.5%, Precision 96.2%, and Recall 95.8%, in collaboration with Depok City Environmental Agency (DLHK).",
-      },
-      {
-        id: "Mengembangkan platform web klasifikasi sampah berbasis AI dengan dashboard admin real-time, serta melaksanakan pelatihan transfer teknologi kepada komunitas pengelola sampah di Beji dan Mekarjaya, Depok.",
-        en: "Developed an AI-powered waste classification web platform with a real-time admin dashboard, and conducted technology transfer training for waste management communities in Beji and Mekarjaya, Depok.",
-      },
-    ],
-    images: [
-      { src: "/images/intern3.jpeg", caption: { id: "Deteksi Sampah YOLOv11", en: "YOLOv11 Waste Detection" } },
-    ],
-    githubUrl: "https://github.com/ferdiansyach/waste-classification",
-    role: { id: "Computer Vision & ML Developer", en: "Computer Vision & ML Developer" },
   },
 ];
 
