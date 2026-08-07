@@ -7,8 +7,6 @@
   
   <p>
     <a href="https://ferdiansyach-portfolio.vercel.app">🌐 Live Website</a> •
-    <a href="https://ferdiansyach-portfolio.vercel.app/portfolio-pdf">📄 Download CV (ATS-Friendly)</a> •
-    <a href="https://ferdiansyach-portfolio.vercel.app/projects-pdf">📁 Project Portfolio PDF</a>
   </p>
 
   <br />
