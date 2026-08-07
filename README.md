@@ -48,7 +48,7 @@ The site is engineered for **high performance**, **seamless bilingual UX** (Indo
 
 ## 📸 Projects Showcase
 
-The portfolio features **10 real-world projects** ordered from newest to oldest across full-stack web, data science, machine learning, and AI/computer vision:
+The portfolio features **9 real-world projects** ordered from newest to oldest across full-stack web, data science, machine learning, and AI/computer vision:
 
 ### 📊 MagangTracking Platform *(2026)*
 *Internship tracker & analytics platform for MagangHub Kemnaker.*
@@ -116,13 +116,6 @@ The portfolio features **10 real-world projects** ordered from newest to oldest 
 *Official large-scale portal for the annual Universitas Nasional festival.*
 - Built 10+ responsive components with TypeScript & Tailwind CSS (Lighthouse 90+).
 - Engineered Jest + RTL testing pipeline, reducing production bug rate by 60%.
-
----
-
-### 🌿 RTH Monitoring (U-Net & Sentinel-2) *(2024)*
-*Deep learning urban green space change detection in DKI Jakarta (2019 vs 2023).*
-- U-Net semantic segmentation of Sentinel-2 multi-spectral satellite imagery.
-- Interactive Streamlit dashboard for spatial segmentation maps and vegetation area statistics.
 
 ---
 

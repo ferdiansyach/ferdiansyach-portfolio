@@ -385,41 +385,6 @@ export const projects: Project[] = [
     role: { id: "Frontend Developer & QA Engineer", en: "Frontend Developer & QA Engineer" },
   },
   {
-    slug: "monitoring-rth-unet",
-    title: "RTH Monitoring (U-Net & Sentinel-2)",
-    description: {
-      id: "Dashboard Streamlit interaktif untuk monitoring revolusi Ruang Terbuka Hijau (RTH) DKI Jakarta (2019 vs 2023) berbasis U-Net & Sentinel-2.",
-      en: "Interactive Streamlit dashboard monitoring Urban Green Space (RTH) transformation in DKI Jakarta (2019 vs 2023) using U-Net & Sentinel-2.",
-    },
-    longDescription: {
-      id: "Proyek penelitian deep learning dan penginderaan jauh untuk memetakan perubahan Ruang Terbuka Hijau (RTH) di DKI Jakarta antara tahun 2019 dan 2023. Menggunakan arsitektur jaringan saraf konvolusional U-Net untuk segmentasi semantik citra satelit Sentinel-2. Seluruh hasil segmentasi spasial dan statistik perubahan luasan vegetasi divisualisasikan dalam dashboard Streamlit yang interaktif.",
-      en: "A deep learning and remote sensing research project mapping Urban Green Space (RTH) changes in DKI Jakarta between 2019 and 2023. Utilizes the U-Net convolutional neural network architecture for semantic segmentation of Sentinel-2 satellite imagery. All spatial segmentation results and vegetation area statistics are visualized in an interactive Streamlit dashboard.",
-    },
-    challenges: {
-      id: "Tantangan utama adalah annotasi dataset citra satelit multi-spektra dan pelatihan model U-Net agar presisi membedakan vegetasi padat, area pemukiman, dan badan air. Melakukan preprocessing pencocokan pita spektral dan augmentasi data citra untuk meningkatkan skor IoU (Intersection over Union).",
-      en: "The main challenge was annotating multi-spectral satellite imagery dataset and training the U-Net model to accurately segment dense vegetation, urban settlement, and water bodies. Performed spectral band matching preprocessing and image augmentation to boost the IoU (Intersection over Union) score.",
-    },
-    technologies: ["Python", "PyTorch", "U-Net", "Sentinel-2", "Streamlit", "Deep Learning", "Remote Sensing"],
-    category: "datascience",
-    period: "2024",
-    thumbnail: "/images/coastal1.jpeg",
-    pdfBullets: [
-      {
-        id: "Merancang model segmentasi citra U-Net untuk pemetaan perubahan Ruang Terbuka Hijau (RTH) DKI Jakarta dari data citra satelit Sentinel-2.",
-        en: "Engineered a U-Net image segmentation model for mapping Urban Green Space (RTH) changes in DKI Jakarta from Sentinel-2 satellite imagery.",
-      },
-      {
-        id: "Membangun dashboard Streamlit interaktif untuk visualisasi peta segmentasi spasial dan perbandingan statistik luasan RTH periode 2019 vs 2023.",
-        en: "Built an interactive Streamlit dashboard for spatial segmentation map visualization and RTH area statistical comparison (2019 vs 2023).",
-      },
-    ],
-    images: [
-      { src: "/images/coastal1.jpeg", caption: { id: "Dashboard Utama Streamlit", en: "Main Streamlit Dashboard" } },
-    ],
-    githubUrl: "https://github.com/ferdiansyach/monitoring-revolusi-urban-unet",
-    role: { id: "AI & Remote Sensing Engineer", en: "AI & Remote Sensing Engineer" },
-  },
-  {
     slug: "sentiment-analysis-dashboard",
     title: "Sentiment Analysis Dashboard",
     description: {
