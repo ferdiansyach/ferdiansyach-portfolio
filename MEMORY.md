@@ -1,3 +1,0 @@
-- [Portfolio ATS Analysis](portfolio_ats_analysis.md) — Website sudah ATS-friendly, PDF resume sangat optimal untuk parser ATS
-- [Resume Multi-Version Decision](resume_multi_version_decision.md) — Decided against multi-version resume (fullstack vs data science) due to limited data science project portfolio
-- [Portfolio Audience & Positioning](portfolio_audience_positioning.md) — Recruiters/client-focused portfolio that shows the full breadth of technical skills
