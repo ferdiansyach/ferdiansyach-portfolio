@@ -1,11 +1,9 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
-import { Mail, Download, FileText } from "lucide-react";
+import { Mail } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { useLanguage } from "@/hooks/useLanguage";
-import { translations } from "@/data/translations";
 
 export const HeroSocialConnect = () => {
   const { t } = useLanguage();
@@ -70,37 +68,7 @@ export const HeroSocialConnect = () => {
             </span>
           </a>
 
-          {/* Download CV */}
-          <Link
-            href="/portfolio-pdf"
-            target="_blank"
-            className="hero-social-item cv group flex flex-col items-center text-decoration-none active:scale-95 touch-manipulation"
-            title={t(translations.hero.downloadCv)}
-            aria-label="Download CV"
-          >
-            <div className="hero-icon-container group-hover:scale-110 group-hover:-translate-y-1.5">
-              <Download className="w-6 h-6 text-white" />
-            </div>
-            <span className="hero-icon-label group-hover:opacity-100 group-hover:text-emerald-400">
-              {t({ id: "Unduh CV", en: "Download CV" })}
-            </span>
-          </Link>
 
-          {/* View Portfolio PDF */}
-          <Link
-            href="/projects-pdf"
-            target="_blank"
-            className="hero-social-item portfolio group flex flex-col items-center text-decoration-none active:scale-95 touch-manipulation"
-            title={t(translations.hero.viewPortfolio)}
-            aria-label="View Portfolio PDF"
-          >
-            <div className="hero-icon-container group-hover:scale-110 group-hover:-translate-y-1.5">
-              <FileText className="w-6 h-6 text-white" />
-            </div>
-            <span className="hero-icon-label group-hover:opacity-100 group-hover:text-sky-400">
-              {t({ id: "Portofolio", en: "Portfolio PDF" })}
-            </span>
-          </Link>
         </div>
       </div>
 

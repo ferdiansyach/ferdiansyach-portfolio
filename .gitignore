@@ -110,3 +110,10 @@ portfolio_audience_positioning.md
 reflect_instructions.md
 /tasks/
 /scripts/
+
+# ------------------------------------------------------------------------------
+# 10. Local-only CV & Portfolio PDF Routes (Do NOT push to public repo)
+# ------------------------------------------------------------------------------
+/src/app/portfolio-pdf/
+/src/app/projects-pdf/
+/src/app/cv-pdf/
